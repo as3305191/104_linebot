@@ -34,8 +34,8 @@ class Line_login extends MY_Base_Controller {
 			$l_user = $this -> users_dao -> find_by_id($l_user -> id);
 			$data['l_user'] = $l_user;
 
-			$l_parent_user = $this -> users_dao -> find_by_id($l_user -> parent_user_id);
-			$data['l_parent_user'] = $l_parent_user;
+			// $l_parent_user = $this -> users_dao -> find_by_id($l_user -> parent_user_id);
+			// $data['l_parent_user'] = $l_parent_user;
 
 			$data['sum_amt'] = $this -> wtx_dao -> get_sum_amt($l_user -> id);
 		}
