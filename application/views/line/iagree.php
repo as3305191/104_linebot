@@ -252,6 +252,7 @@ body{
 				}
 
 				$line_call_back_url = BASE_URL . "/line_callback";
+				$line_login_url = BASE_URL . "/line_login";
 				$line_cliend_id = LOGIN_CHANNEL_ID;
 			?>
       <div class="font">
@@ -267,7 +268,7 @@ body{
           <span style="color:#fff">Line的大頭照及暱稱於COC遊戲平台平台做使用來代表自己</span>
         </div >
         <div class="agree" >
-					<a id="btn-line-reg" class="" href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=<?= $line_cliend_id ?>&redirect_uri=<?= $line_call_back_url ?>&state=<?= $rand_str ?>&bot_prompt=aggressive&scope=openid%20profile&nonce=<?= $nonce ?>">
+					<a id="btn-line-reg" class="" href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=<?= $line_cliend_id ?>&redirect_uri=<?= $line_call_back_url ?>&state=<?= $line_login_url ?>&bot_prompt=aggressive&scope=openid%20profile&nonce=<?= $nonce ?>">
 						<img src="<?=base_url('img/line/agree/4.png')?>" style="width:40%">
 					</a>
         </div >
