@@ -62,7 +62,7 @@ class Line_bot extends MY_Base_Controller {
 			);
 			$msg_arr[] = array(
 				"type" => "text",
-				"text" => BASE_URL + "/line_login",
+				"text" => BASE_URL . "/line_login",
 			);
 
 			if(count($msg_arr) > 0) {
