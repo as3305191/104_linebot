@@ -92,13 +92,13 @@ define('HASH_KEY', '');
 define('HASH_IV', '');
 
 // line
-define('CHANNEL_ACCESS_TOKEN', (ENVIRONMENT_SETUP == 'production' ? 'WhT6WkHHy+ZiPkTTSMXpgIAY/h33rQGkHjEN4uUGdjg/hfRYKM/85QDEMaEDDGOj3EPX5c5uZLdUNoXvlsNVWlD1wRMo9tCqFSIxJ4PMkR08ZV5hoXer1fyJCC3OQmplbg+KXJZBZEAQoFDxaqCgjAdB04t89/1O/w1cDnyilFU=' : 'MchLOk262JP4FOd/uax9nJd+glHLd4Pc3OHuZ81Orxer+C3PHxB6v0mMuso9qnd4Ouq77PDgu1w147eMDyl7KXlhhLucaR/jI2by2kc3Zy5NKE8FZxp8O1pmzcS/YYX8JuwSMVs/0EZo7sNwtFxl8QdB04t89/1O/w1cDnyilFU='));
-define('CHANNEL_ID', (ENVIRONMENT_SETUP == 'production' ? '1592889284' : '1588780850'));
-define('CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '1a52f9499aa6c37e13069f6f9a7323ed' : 'e94c816b95918b71b98fae133c84a2f5'));
+define('CHANNEL_ACCESS_TOKEN', (ENVIRONMENT_SETUP == 'production' ? 'go8wVeBhujLrYpAf+5szEug5oaBffO+HYeOfZQ+bL4AUOiEjqN6TrJh6ROTGd1qa2jxh3XnqeJr8RUxDfjnSKEJQ80B4OhAS+teAfloTqMLB45rLtvSJvIZ7mhItuCpT1UCoOdbyI4fQ6MY05yIR5gdB04t89/1O/w1cDnyilFU=' : 'go8wVeBhujLrYpAf+5szEug5oaBffO+HYeOfZQ+bL4AUOiEjqN6TrJh6ROTGd1qa2jxh3XnqeJr8RUxDfjnSKEJQ80B4OhAS+teAfloTqMLB45rLtvSJvIZ7mhItuCpT1UCoOdbyI4fQ6MY05yIR5gdB04t89/1O/w1cDnyilFU='));
+define('CHANNEL_ID', (ENVIRONMENT_SETUP == 'production' ? '1603348732' : '1603348732'));
+define('CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '83bb1fa30ec4638aceb79012ecb8c12a' : '83bb1fa30ec4638aceb79012ecb8c12a'));
 
 define('LOGIN_CHANNEL_ID', (ENVIRONMENT_SETUP == 'production' ? '1592887977' : '1588779461'));
 define('LOGIN_CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '5a22619095436f6a520f62f2c733f31a' : '86f5c585b14bdd1695f9b99348eed558'));
-define('BASE_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://www.yunyuplay.com/fish_production' : 'https://www.yunyuplay.com/fish'));
+define('BASE_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://fish.17lineplay.com/coc_bot' : 'https://fish.17lineplay.com/coc_bot'));
 define('GAME_WEB_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://www.yunyuplay.com/fishgame/' : 'https://www.17lineplay.com/game_debug/fishTreasure/'));
 define('PUSH_URL', (ENVIRONMENT_SETUP == 'production' ? 'http://34.80.8.20:8988/check_push' : 'http://34.80.8.20:8988/check_push'));
 
