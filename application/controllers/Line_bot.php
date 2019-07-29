@@ -56,7 +56,16 @@ class Line_bot extends MY_Base_Controller {
 
 		if(empty($user)) {
 			// craete user
-			
+			if($message -> text == '綁定電話') {
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => "請先至以下網址登入登入",
+				);
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => BASE_URL + "/line_login",
+				);
+			}
 			// return when no user
 			return;
 		}
