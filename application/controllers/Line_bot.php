@@ -344,7 +344,7 @@ class Line_bot extends MY_Base_Controller {
 			} else {
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "請輸入轉帳金額",
+					"text" => "請輸入贈裡的金幣數量",
 				);
 
 				$line_session -> type = "贈禮_輸入轉帳金額";
