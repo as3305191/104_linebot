@@ -344,10 +344,10 @@ class Line_bot extends MY_Base_Controller {
 			} else {
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "請輸入贈裡的金幣數量",
+					"text" => "請輸入贈禮的金幣數量",
 				);
 
-				$line_session -> type = "贈禮_輸入轉帳金額";
+				$line_session -> type = "贈禮_輸入金幣數量";
 				$line_session -> gift_id = $message -> text;
 				$line_session -> to_user_id = $to_user -> id;
 				$this -> users_dao -> update(array(
@@ -356,7 +356,7 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 		// 贈禮_輸入轉帳金額
-		} elseif($line_session -> type == "贈禮_輸入轉帳金額") {
+		} elseif($line_session -> type == "贈禮_輸入金幣數量") {
 			$amt = intval($message -> text);
 			$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
 
@@ -382,7 +382,7 @@ class Line_bot extends MY_Base_Controller {
 					"text" => "金額不足，如果想取消請輸入881取消此功能",
 				);
 			} else {
-				$line_session -> type = "贈禮_輸入轉帳金額_確認中";
+				$line_session -> type = "贈禮_輸入金幣數量_確認中";
 				$line_session -> amt = $amt;
 				$this -> users_dao -> update(array(
 					"line_session" => json_encode($line_session)
@@ -420,7 +420,7 @@ class Line_bot extends MY_Base_Controller {
 					)
 				);
 			}
-		} elseif($line_session -> type == "贈禮_輸入轉帳金額_確認中") {
+		} elseif($line_session -> type == "贈禮_輸入金幣數量_確認中") {
 			if($message -> text == "是") {
 				$amt = intval($line_session -> amt);
 				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
