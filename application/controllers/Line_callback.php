@@ -106,24 +106,13 @@ class Line_callback extends MY_Base_Controller {
 							'promo_user_id' => $puser -> id
 						), $user -> id);
 
-						// 獲得10000金幣
-						$amt = 10000;
-						$tx = array();
-						$tx['tx_type'] = "promo_reward";
-						$tx['tx_id'] = $user -> id;
-						$tx['corp_id'] = $user -> corp_id; // corp id
-						$tx['user_id'] = $puser -> id;
-						$tx['amt'] = $amt;
-
-						$tx['brief'] = "獲得分享獎勵 $amt";
-						$this -> wtx_dao -> insert($tx);
-
-						// call line
+						//
+						// // call line
 						$p = array();
 						$p['to'] = $puser -> line_sub;
 						$p['messages'][] = array(
 							"type" => "text",
-							"text" => "推薦 {$user->nick_name} 獲得分享獎勵 {$amt} 金幣"
+							"text" => "您已推薦 {$user->nick_name} 成功"
 						);
 						$ret = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
 					}
@@ -131,31 +120,14 @@ class Line_callback extends MY_Base_Controller {
 
 				// 獲得50000金幣
 				$corp = $this -> corp_dao -> find_by_id(1);
-				$amt = $corp -> register_reward_amt;
-				$tx = array();
-				$tx['tx_type'] = "first_reward";
-				$tx['tx_id'] = $user -> id;
-				$tx['corp_id'] = $user -> corp_id; // corp id
-				$tx['user_id'] = $user -> id;
-				$tx['amt'] = $amt;
 
-				$tx['brief'] = "獲得註冊獎金 $amt";
-				$this -> wtx_dao -> insert($tx);
-
-				$tx = array();
-				$tx['corp_id'] = $user -> corp_id;
-				$tx['amt'] = -$amt;
-				$tx['income_type'] = "註冊獎金";
-				$tx['income_id'] = $user -> id;
-				$tx['note'] = "頒發註冊獎金 {$user->id} {$amt}";
-				$this -> ctx_dao -> insert($tx);
 
 				// call line
 				$p = array();
 				$p['to'] = $user -> line_sub;
 				$p['messages'][] = array(
 					"type" => "text",
-					"text" => "恭喜您獲得註冊獎金 {$amt}"
+					"text" => "恭喜您註冊成功"
 				);
 				$ret = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
 

@@ -79,10 +79,11 @@
                   }
 
                   $line_call_back_url = BASE_URL . "/line_callback";
+                  $line_login_url = BASE_URL . "/line_login";
                   $line_cliend_id = LOGIN_CHANNEL_ID;
                 ?>
 
-                <a id="btn-line-reg" class="" href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=<?= $line_cliend_id ?>&redirect_uri=<?= $line_call_back_url ?>&state=<?= $rand_str ?>&bot_prompt=aggressive&scope=openid%20profile&nonce=<?= $nonce ?>">
+                <a id="btn-line-reg" class="" href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=<?= $line_cliend_id ?>&redirect_uri=<?= $line_call_back_url ?>&state=<?= $line_login_url ?>&bot_prompt=aggressive&scope=openid%20profile&nonce=<?= $nonce ?>">
                   <img src="<?=base_url('img/line688/WEB/btn_line_login.png')?>" height="40" />
                 </a>
 
@@ -108,7 +109,7 @@
         </div>
 
       </header>
-      
+
       <style>
       </style>
 
