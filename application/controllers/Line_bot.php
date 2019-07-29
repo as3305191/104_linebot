@@ -57,7 +57,7 @@ class Line_bot extends MY_Base_Controller {
 		if(empty($user)) {
 			// craete user
 			$p = array();
-			$p['to'] = $puser -> line_sub;
+			$p['to'] = $user_id;
 			$p['messages'][] = array(
 				"type" => "text",
 				"text" => "請先至以下網址登入註冊",
