@@ -56,18 +56,20 @@ class Line_bot extends MY_Base_Controller {
 
 		if(empty($user)) {
 			// craete user
-			$p = array();
-			$p['to'] = $user_id;
-			$p['messages'][] = array(
+			$msg_arr[] = array(
 				"type" => "text",
 				"text" => "請先至以下網址登入註冊",
 			);
-			$p['messages'][] = array(
+			$msg_arr[] = array(
 				"type" => "text",
 				"text" => BASE_URL + "/line_login",
 			);
-			$ret = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
-			// return when no user
+			if(count($msg_arr) > 0) {
+				$p = array();
+				$p['replyToken'] = $evt -> replyToken;
+				$p['messages'] = $msg_arr;
+				$res = call_line_api("POST", "https://api.line.me/v2/bot/message/reply", json_encode($p), CHANNEL_ACCESS_TOKEN);
+			}
 			return;
 		}
 
