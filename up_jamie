@@ -1,3 +1,3 @@
 #!/bin/bash
 today=`date +%Y-%m-%d.%H:%M:%S`
-git add -A && git commit -m "push_$today $1" && git push && ssh -i ~/.ssh/id_rsa jamie@34.80.8.20 sudo ./up_coc_bot
+git add -A && git commit -m "push_$today $1" && git push && ssh -i ~/.ssh/id_rsa pony@34.80.8.20 sudo ./up_coc_bot
