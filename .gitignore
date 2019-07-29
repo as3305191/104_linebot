@@ -1,0 +1,4 @@
+/vendor
+/app.log
+composer.lock
+/setup.php
