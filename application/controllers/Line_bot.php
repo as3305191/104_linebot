@@ -55,6 +55,8 @@ class Line_bot extends MY_Base_Controller {
 		$user = $this -> users_dao -> find_by('line_sub', $user_id);
 
 		if(empty($user)) {
+			// craete user
+			
 			// return when no user
 			return;
 		}
