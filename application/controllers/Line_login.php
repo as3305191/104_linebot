@@ -70,7 +70,7 @@ class Line_login extends MY_Base_Controller {
 		$data['_promo_user_id'] = $_promo_user_id;
 
 		if(!empty($l_user)) {
-			if($l_user -> is_valid_mobile == 0) {
+			if($l_user -> is_valid_mobile == 0 && FALSE) {
 				// verify mobile
 				redirect('line_login/verify_mobile');
 			} else {
