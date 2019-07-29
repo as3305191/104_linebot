@@ -64,8 +64,8 @@ class Line_bot extends MY_Base_Controller {
 				"type" => "text",
 				"text" => BASE_URL + "/line_login",
 			);
-			
-			if(count($msg_arr) > 0 && FALSE) {
+
+			if(count($msg_arr) > 0) {
 				$p = array();
 				$p['replyToken'] = $evt -> replyToken;
 				$p['messages'] = $msg_arr;
@@ -314,7 +314,7 @@ class Line_bot extends MY_Base_Controller {
 		);
 
 		// send message 暫時關閉
-		if(count($msg_arr) > 0 && FALSE) {
+		if(count($msg_arr) > 0) {
 			$p = array();
 			$p['replyToken'] = $evt -> replyToken;
 			$p['messages'] = $msg_arr;
