@@ -58,13 +58,13 @@ class Line_bot extends MY_Base_Controller {
 			// craete user
 			$msg_arr[] = array(
 				"type" => "text",
-				"text" => "請先至以下網址登入註冊",
+				"text" => "請先至以下網址登入 ",
 			);
 			$msg_arr[] = array(
 				"type" => "text",
 				"text" => BASE_URL + "/line_login",
 			);
-			if(count($msg_arr) > 0) {
+			if(count($msg_arr) > 0 && FALSE) {
 				$p = array();
 				$p['replyToken'] = $evt -> replyToken;
 				$p['messages'] = $msg_arr;
