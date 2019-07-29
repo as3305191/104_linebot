@@ -263,8 +263,8 @@ body{
           <img src="<?=base_url('img/coc_bot/logo.jpg')?>" style="width:18%" id="wa">
         </div >
         <div class="text" >
-          <span style="color:#fff">我同意使用Line使用者來註冊W&A知會原定且可以使用</span></br>
-          <span style="color:#fff">Line的大頭照及暱稱於W&A平台做使用來代表自己</span>
+          <span style="color:#fff">我同意使用Line使用者來註冊COC遊戲平台知會原定且可以使用</span></br>
+          <span style="color:#fff">Line的大頭照及暱稱於COC遊戲平台平台做使用來代表自己</span>
         </div >
         <div class="agree" >
 					<a id="btn-line-reg" class="" href="https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=<?= $line_cliend_id ?>&redirect_uri=<?= $line_call_back_url ?>&state=<?= $rand_str ?>&bot_prompt=aggressive&scope=openid%20profile&nonce=<?= $nonce ?>">
