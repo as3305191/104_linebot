@@ -260,7 +260,7 @@ body{
         </div >
 
         <div class="wa" >
-          <img src="<?=base_url('img/line/w&a/logo.png')?>" style="width:18%" id="wa">
+          <img src="<?=base_url('img/coc_bot/logo.jpg')?>" style="width:18%" id="wa">
         </div >
         <div class="text" >
           <span style="color:#fff">我同意使用Line使用者來註冊W&A知會原定且可以使用</span></br>
