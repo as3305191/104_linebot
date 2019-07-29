@@ -1,0 +1,3 @@
+var DashboardAppClass = (function(app) {
+
+});

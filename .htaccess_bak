@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|pay|download|css|js|data|.well-known|img|lib|fonts|stylesheets|images|style|vendor|sound|index\.html|ajax)
+
+RewriteRule ^(.*)$ /fish/index.php/$1 [L]

@@ -1,0 +1,91 @@
+<?php
+class Bank_book_dao extends MY_Model {
+
+	function __construct() {
+		parent::__construct();
+
+		// initialize table name
+		parent::set_table_name('bank_book');
+
+		$this -> alias_map = array(
+
+		);
+	}
+
+	function list_all($user_id, $page, $page_size) {
+		$page = ($page < 1) ? 1 : $page;
+		$start = ($page - 1) * $page_size;
+		$limit = $page_size;
+
+		// select
+		$this -> db -> select('_m.*');
+
+		// join
+		$this -> ajax_from_join();
+
+		// search always
+		$this -> db -> where("_m.user_id", $user_id);
+
+		// order
+		$this -> db -> order_by('id', 'desc');
+
+		// limit
+		$this -> db -> limit($limit, $start);
+
+		// query results
+		$query = $this -> db -> get();
+		return $query -> result();
+	}
+
+	function query_ajax($data) {
+		$start = $data['start'];
+		$limit = $data['length'];
+		$columns = $data['columns'];
+		$search = $data['search'];
+		$order = $data['order'];
+
+		// select
+		$this -> db -> select('_m.*');
+
+		// join
+		$this -> ajax_from_join();
+
+		// search always
+		$this -> search_always($data);
+
+		// search
+		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
+
+		// order
+		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
+		$this -> db -> order_by('id', 'desc');
+
+		// limit
+		$this -> db -> limit($limit, $start);
+
+		// query results
+		$query = $this -> db -> get();
+		return $query -> result();
+	}
+
+	function search_always($data) {
+
+		if(isset($data['user_id']) && $data['user_id'] > -1) {
+			$this -> db -> where('_m.user_id', $data['user_id']);
+		}
+
+		if(isset($data['id']) && $data['id'] > -1) {
+			$this -> db -> where('_m.id', $data['id']);
+		}
+	}
+
+	function ajax_from_join() {
+		// join
+		$this -> db -> from("$this->table_name as _m");
+		// $this -> db -> join("users mu", "mu.id = _m.manager_id", "left");
+		// $this -> db -> join("users iu", "iu.id = _m.intro_id", "left");
+		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
+	}
+
+}
+?>

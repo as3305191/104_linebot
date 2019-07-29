@@ -1,0 +1,305 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ---------------------------------------- reset css ---------------------------------------- */
+/* Eric A. Meyer css reset over */
+/* http://meyerweb.com/eric/tools/css/reset/	v2.0 | 20110126		License: none (public domain) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	/*font: inherit;*/
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    background:url(../images/tab_bg.jpg) no-repeat;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+/* ---------------------------------------- clearfix ---------------------------------------- */
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+.clearfix {
+	display: inline-block;
+}
+html[xmlns] .clearfix {
+	display: block;
+}
+* html .clearfix {
+	height: 1%;
+}
+/* ---------------------------------------- 共同設定 ---------------------------------------- */
+body {
+	font-family: Arial, "新細明體";
+	font-size:12px;
+}
+a {
+	display:block;
+	height:100%;
+	text-decoration:none;
+}
+a,
+img,
+input,
+textarea,
+select {
+	outline:none;
+}
+/*
+br {
+	display: block !important;
+	content: "" !important;
+	margin-bottom: 5px !important;
+}
+*/
+/* ---------------------------------------- 表單區塊（div.regform）---------------------------------------- */
+div.regform {
+	overflow: hidden;	/* 非必要，可移除 */
+	border: 1px solid #e1e1e1;
+	background: #ffffff;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	display: inline-block;
+	margin-top: 30px;
+	margin-right: 20px;
+	margin-bottom: 30px;
+	margin-left: 20px;
+	padding-top: 20px;
+	padding-right: 0px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
+/* 註冊表單 */
+div.regform form {
+	float: left;
+	width: 480px;
+}
+div.regform form h1 {
+	height:50px;
+	line-height:40px;
+	font-family: Arial, "微軟正黑體";
+	font-size:32px;
+	color:#545454;
+	border-bottom:2px solid #58b2ff;
+	margin-right:20px;
+}
+div.regform form h3 {
+	height: 30px;
+	line-height: 30px;
+	font-family: Arial, "微軟正黑體";
+	font-size: 14px;
+	color: #999;
+	letter-spacing: 0.1em;
+	font-weight: normal;
+	margin-right:20px;
+}
+div.regform form fieldset {
+	margin-top: 20px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+div.regform form fieldset label {
+	float: left;
+	width: 25%;
+	min-width: 6em;
+	line-height: 38px;
+	text-align: right;
+	font-family: Arial, "微軟正黑體";
+	font-size: 16px;
+}
+div.regform form fieldset div {
+	float:left;
+	width:70%;
+}
+div.regform form fieldset div input[type="text"],
+div.regform form fieldset div input[type="password"] {
+	width:20em;
+	padding:10px;
+	border:1px solid #e1e1e1;
+	background:#f7f7f7;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	float:left;
+	color:#333;
+	font-size:15px;
+	font-family: Arial, "微軟正黑體";
+}
+div.regform form fieldset div select {
+	width:24em;
+	padding:10px;
+	border:1px solid #e1e1e1;
+	background:#f7f7f7;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	float:left;
+}
+div.regform form fieldset p {
+	float: left;
+	margin-left:8em;
+	color:#333;
+	font-size:15px;
+	font-family: Arial, "微軟正黑體";
+
+	}
+.sss {
+	margin-left:7.8em;
+	color:#333;
+	font-size:15px;
+	font-family: Arial, "微軟正黑體";
+text-align: left;
+	}
+.sss a {
+	color: #DB0003;
+	font-size: 15px;
+	font-family: Arial, "微軟正黑體";
+	text-align: left;
+	display: inline-block;
+	margin-left: 6px;
+	margin-right: 6px;
+	}
+.sss a:hover {
+	border-bottom: 1px solid #DB0003;
+	}
+
+div.regform form fieldset div b {
+	margin-right:5px;
+	font-size:13px;
+	font-weight:normal;
+}
+div.regform form fieldset.btngroup {
+	margin:60px 0px 30px;
+	text-align:center;
+}
+div.regform form fieldset.btngroup input[type="submit"],
+div.regform form fieldset.btngroup input[type="button"],
+div.regform form fieldset.btngroup input[type="reset"] {
+	width:130px;
+	height:36px;
+	padding:0px 30px;
+	margin:0px 20px;
+	line-height:36px;
+	font-family: Arial, "微軟正黑體";
+	font-size:16px;
+	color:#ffffff;
+	border:none;
+	background:#58b2ff;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+}
+div.regform form fieldset.btngroup input[type="submit"]:hover,
+div.regform form fieldset.btngroup input[type="reset"]:hover {
+	background:#ff5868;
+}
+/* 快速註冊 */
+div.regform > div {
+	position: relative;
+	width: 230px;
+	height: 942px;	/* = div.regform form height */
+	padding-left: 20px;
+	margin-left: 500px;
+	text-align: center;
+	border-left: 1px solid #e5e5e5;
+}
+div.regform > div dl {
+	position: absolute;
+	top: 50%;
+	width: 200px;
+	font-family: Arial, "微軟正黑體";
+	margin-top: -260px;
+}
+div.regform > div dt {
+	height:60px;
+	line-height:60px;
+	font-size:32px;
+	color:#545454;
+}
+div.regform > div dd {
+	position:relative;
+	overflow:hidden;
+	margin:10px auto;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+div.regform > div dd:after {
+	position:absolute;
+	top:5px;
+	left:45px;
+	width:1px;	/* 必須要給寬度，否則在 firefox 會有錯誤（位移）*/
+	height:30px;
+	content:"";
+	background:#ffffff;
+	/* 透明度設定 */
+	-moz-opacity: 0.20;
+	-khtml-opacity: 0.20;
+	opacity: 0.20;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=20);
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+	filter:alpha(opacity=20);
+}
+div.regform > div a {
+	height: 40px;
+	line-height: 40px;
+	/*
+	text-align:left;
+	text-indent:100px;
+	*/
+	font-size: 16px;
+	color: #ffffff;
+}
+div.regform > div a.facebook {
+	background:#346da6 url(../images/ico_quickfacebook.png) no-repeat 8px center;
+}
+div.regform > div a.google {
+	background:#dc422b url(../images/ico_quickgoogle.png) no-repeat 10px center;
+}
+div.regform > div a.yahoo {
+	background:#720e9e url(../images/ico_quickyahoo.png) no-repeat 10px center;
+}
+.y2 {
+	border: 1px solid #BFE1FF!important;
+	background-color: #FFF!important;
+}

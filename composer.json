@@ -1,0 +1,16 @@
+{
+    "name": "pennyapple/wa_backend",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "steve yeh",
+            "email": "aapplle123@gmail.com"
+        }
+    ],
+    "require": {
+        "codeigniter/framework": "3.1.9",
+        "alibabacloud/client": "^1.0",
+        "monolog/monolog": "1.0.*"
+    }
+}
