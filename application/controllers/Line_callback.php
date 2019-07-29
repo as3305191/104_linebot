@@ -96,7 +96,7 @@ class Line_callback extends MY_Base_Controller {
 				// game check
 				// $this -> do_game_check($payload, $user);
 
-				// $this -> do_login($user);
+				$this -> do_login($user);
 
 				if(isset($payload['nonce']) && !empty($payload['nonce'])) {
 					$gift_id = $payload['nonce'];
@@ -150,7 +150,7 @@ class Line_callback extends MY_Base_Controller {
 				$this -> users_dao -> update($u_data, $user -> id);
 				$user = $this -> users_dao -> find_by_id($user -> id);
 				// login
-				// $this -> do_login($user);
+				$this -> do_login($user);
 			}
 
 
