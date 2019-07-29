@@ -64,6 +64,7 @@ class Line_bot extends MY_Base_Controller {
 				"type" => "text",
 				"text" => BASE_URL + "/line_login",
 			);
+			
 			if(count($msg_arr) > 0 && FALSE) {
 				$p = array();
 				$p['replyToken'] = $evt -> replyToken;
