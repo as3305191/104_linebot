@@ -505,23 +505,23 @@ class Line_bot extends MY_Base_Controller {
 								$ctx['current_ntd'] =0;
 								$this -> q_r_dao -> insert($ctx);
 
-								// $Date = date("Y-m-d");
-								// $samt1 =  $this -> wtx_dao -> get_sum_amt_all();
-								// $sntd =  $this -> q_r_dao -> get_sum_ntd();
-								// $dq =  $this -> d_q_dao -> find_d_q($Date);
-								// $dtx = array();
-								// $dtx['date'] = $Date;
-								// $dtx['average_price'] = $sntd/$samt1;
-								// $dtx['last_price'] = $sntd/$samt1;
-								// $dtx['now_price'] = $sntd/$samt1;
-								// if(!empty($dq)){
-								// 	$u_data['last_price'] = $sntd/$samt1;
-								// 	$u_data['now_price'] = $sntd/$samt1;
-								// 	$this -> d_q_dao -> update_by($u_data,id,$dq->id);
-								//
-								// } else{
-								// 	$this -> d_q_dao -> insert($dtx);
-								// }
+								$Date = date("Y-m-d");
+								$samt1 =  $this -> wtx_dao -> get_sum_amt_all();
+								$sntd =  $this -> q_r_dao -> get_sum_ntd();
+								$dq =  $this -> d_q_dao -> find_d_q($Date);
+								$dtx = array();
+								$dtx['date'] = $Date;
+								$dtx['average_price'] = $sntd/$samt1;
+								$dtx['last_price'] = $sntd/$samt1;
+								$dtx['now_price'] = $sntd/$samt1;
+								if(!empty($dq)){
+									$u_data['last_price'] = $sntd/$samt1;
+									$u_data['now_price'] = $sntd/$samt1;
+									$this -> d_q_dao -> update_by($u_data,id,$dq->id);
+
+								} else{
+									$this -> d_q_dao -> insert($dtx);
+								}
 
 								$p = array();
 								$p['to'] = $in_user -> line_sub;
