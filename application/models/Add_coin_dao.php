@@ -1,11 +1,11 @@
 <?php
-class Quotes_record_dao extends MY_Model {
+class Add_coin_dao extends MY_Model {
 
 	function __construct() {
 		parent::__construct();
 
 		// initialize table name
-		parent::set_table_name('quotes_record');
+		parent::set_table_name('add_coin');
 
 		$this -> alias_map = array(
 
@@ -27,40 +27,24 @@ class Quotes_record_dao extends MY_Model {
 		return $list;
 	}
 
-	function get_sum_ntd($last_id) {
-		$this -> db -> select("sum(ntd_change) as sntd");
-		$this -> db -> where('tx_id<=',$last_id);
-		$list = $this -> find_all();
+	function find_d_q($Date) {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('date', $Date);
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list[0];
+	}
+	function find_last_d_q() {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> order_by('create_time', 'desc');
+		$query = $this -> db -> get();
+		$list = $query -> result();
 		if(count($list) > 0) {
-			$itm = $list[0];
-			return (!empty($itm -> sntd) ? $itm -> sntd : 0);
+			return $list[0];
 		}
-		return 0;
-	}
-
-	function get_current_point() {
-		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> select('_m.current_point');
-
-		$this -> db -> where('current_point<>',0);
-		$this -> db -> order_by('id','desc');
-
-		$query = $this -> db -> get();
-		$list = $query -> result();
-		return $list[0];
-	}
-
-
-	function get_current_ntd() {
-		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> select('_m.current_ntd');
-
-		$this -> db -> where('current_ntd<>',0);
-		$this -> db -> order_by('id','desc');
-
-		$query = $this -> db -> get();
-		$list = $query -> result();
-		return $list[0];
+		return NULL;
 	}
 }
 ?>
