@@ -99,8 +99,9 @@ class Wallet_tx_dao extends MY_Model {
 		return 0;
 	}
 
-	function get_sum_amt_all() {
+	function get_sum_amt_all($last_id) {
 		$this -> db -> select("sum(amt) as samt");
+		$this -> db -> where('tx_id<=',$last_id);
 		$list = $this -> find_all();
 		if(count($list) > 0) {
 			$itm = $list[0];

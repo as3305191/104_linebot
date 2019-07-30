@@ -27,8 +27,9 @@ class Quotes_record_dao extends MY_Model {
 		return $list;
 	}
 
-	function get_sum_ntd() {
+	function get_sum_ntd($last_id) {
 		$this -> db -> select("sum(ntd_change) as sntd");
+		$this -> db -> where('tx_id<=',$last_id);
 		$list = $this -> find_all();
 		if(count($list) > 0) {
 			$itm = $list[0];

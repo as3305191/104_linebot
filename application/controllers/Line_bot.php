@@ -484,7 +484,7 @@ class Line_bot extends MY_Base_Controller {
 								$atx['brief'] = "$in_user->nick_name 從 $out_user->nick_name 接受贈禮 {$item->amt}";
 								$this -> wtx_dao -> insert($atx);
 
-								$samt2 =  $this -> wtx_dao -> get_sum_amt_all();
+								$samt2 =  $this -> wtx_dao -> get_sum_amt_all($last_id);
 								$ctx = array();
 								$ctx['tx_type'] = "transfer_gift";
 								$ctx['tx_id'] = $last_id;
@@ -504,8 +504,8 @@ class Line_bot extends MY_Base_Controller {
 								$this -> ctx_dao -> insert($tx1);
 
 								$Date = date("Y-m-d");
-								$samt1 =  $this -> wtx_dao -> get_sum_amt_all();
-								$sntd =  $this -> q_r_dao -> get_sum_ntd();
+								$samt1 =  $this -> wtx_dao -> get_sum_amt_all($last_id);
+								$sntd =  $this -> q_r_dao -> get_sum_ntd($last_id);
 								$dq =  $this -> d_q_dao -> find_d_q($Date);
 								$dtx = array();
 								$dtx['date'] = $Date;
