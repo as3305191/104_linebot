@@ -287,6 +287,11 @@ body{
 				<div class=" text1" >
 					<span style="color:#fff"><?= $l_user -> line_name ?></span></br>
 				</div >
+				<?php if(!empty($p_user)): ?>
+				<div class=" text1" >
+					<span style="color:#fff">推薦人:<?= $p_user -> nick_name ?></span></br>
+				</div >
+				<?php endif ?>
 				<div class=" text1" >
 					<span style="color:#fff"><span>金幣餘額: <?= number_format($sum_amt) ?></span></span></br>
 				</div >
