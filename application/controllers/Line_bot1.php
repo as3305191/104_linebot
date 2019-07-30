@@ -192,39 +192,10 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == '分享好友') {
-				$corp = $this -> corp_dao -> find_by_id(1);
-				$line_share_url = urlencode("快來一起玩捕魚奪寶遊戲,有汽車機車手機3C家電獎品大放送免費抽,立即註冊獲得 {$corp->register_reward_amt} 金幣 " . GAME_WEB_URL . "?promo={$user->gift_id}");
-				$share_url = urlencode(GAME_WEB_URL . "?promo={$user->gift_id}");
+				$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
 				$msg_arr[] = array(
-					"type" => "imagemap",
-					"baseUrl" => base_url("line_img/line_jpg/share/v1/1"),
-					"altText" => "分享好友",
-					"baseSize" => array(
-						"width" => "1200",
-						"height" => "810"
-					),
-					"actions" => array(
-						array(
-							"type" => "uri",
-							"linkUri" => "http://line.naver.jp/R/msg/text/?{$line_share_url}",
-							"area" => array(
-								"x" => 0,
-								"y" => 0,
-								"width" => 600,
-								"height" => 810
-							)
-						),
-						array(
-							"type" => "uri",
-							"linkUri" => "https://www.facebook.com/sharer/sharer.php?u={$share_url}&quote={$line_share_url}",
-							"area" => array(
-								"x" => 600,
-								"y" => 0,
-								"width" => 600,
-								"height" => 810
-							)
-						),
-					)
+					"type" => "text",
+					"text" => $share_url,
 				);
 			}
 
