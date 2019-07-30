@@ -70,69 +70,6 @@ class Line_bot extends MY_Base_Controller {
 					return;
 			}
 
-			if($message -> text == '是') {
-				$msg_arr[] = array(
-						'type' => 'template', // 訊息類型 (模板)
-						'altText' => '歡迎您使用本系統', // 替代文字
-						'template' => array(
-								'type' => 'buttons', // 類型 (按鈕)
-								'text' => '歡迎您使用本系統，請玩家遵守以下兩項規定', // 文字
-								'actions' => array(
-										array(
-												'type' => 'message', // 類型 (訊息)
-												'label' => '1.政府宣導及公司規定', // 標籤 2
-												'text' => '1.政府宣導及公司規定' // 用戶發送文字
-										),
-										array(
-												'type' => 'message', // 類型 (訊息)
-												'label' => '2.預防網路詐騙', // 標籤 2
-												'text' => '2.預防網路詐騙' // 用戶發送文字
-										),
-								)
-						)
-				);
-
-
-				$msg_arr[] = array(
-						'type' => 'template', // 訊息類型 (模板)
-						'altText' => '認證項目', // 替代文字
-						'template' => array(
-								'type' => 'buttons', // 類型 (按鈕)
-								'text' => '正式會員必須綁定電話號碼才會有遊戲選項功能', // 文字
-								'actions' => array(
-										array(
-												'type' => 'uri', // 類型 (訊息)
-												'label' => '綁定電話', // 標籤 2
-												'uri' => 'https://wa-lotterygame.com/wa_backend/line_login' // 用戶發送文字
-										),
-								)
-						)
-				);
-			}
-
-			if($message -> text == '1.政府宣導及公司規定') {
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "https://wa-lotterygame.com/wa_backend/api/terms/get_one_html/5/1.政府宣導及公司規定",
-				);
-
-
-			}
-
-			if($message -> text == '2.預防網路詐騙') {
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "https://wa-lotterygame.com/wa_backend/api/terms/get_one_html/1/2.預防網路詐騙",
-				);
-			}
-
-			if($message -> text == '綁定電話') {
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "https://wa-lotterygame.com/wa_backend/line_login",
-				);
-			}
-
 			if($message -> text == 'COC幣發送') {
 				$msg_arr[] = array(
 					"type" => "text",
@@ -183,24 +120,6 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
-
-			if($message -> text == '客服') {
-				// $msg_arr[] = array(
-				// 	"type" => "image",
-				// 	"originalContentUrl" => "https://wa-lotterygame.com/wa_backend/line_img/line_png/cs/v1/1",
-				// 	"previewImageUrl" => "https://wa-lotterygame.com/wa_backend/line_img/line_png/cs/v1/1",
-				// );
-
-				// $msg_arr[] = array(
-				// 	"type" => "text",
-				// 	"text" => "http://nav.cx/iKAr5hT",
-				// );
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "http://nav.cx/caOzhwv",
-				);
-			}
-
 			if($message -> text == '分享好友') {
 				$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
 				$msg_arr[] = array(
@@ -219,33 +138,6 @@ class Line_bot extends MY_Base_Controller {
 					"type" => "text",
 					"text" => "您的餘額： {$sum_amt}\n您的贈禮ID為: $gift_id\n您的錢包地址為: {$users->wallet_code}",
 				);
-
-				// $msg_arr[] = array(
-				// 		'type' => 'template', // 訊息類型 (模板)
-				// 		'altText' => '線上儲值|好友贈送|至體驗區免費試玩', // 替代文字
-				// 		'template' => array(
-				// 				'type' => 'buttons', // 類型 (按鈕)
-				// 				'text' => '線上儲值|好友贈送|至體驗區免費試玩', // 文字
-				// 				'actions' => array(
-				// 						array(
-				// 								'type' => 'message', // 類型 (訊息)
-				// 								'label' => '線上儲值', // 標籤 2
-				// 								'text' => '線上儲值' // 用戶發送文字
-				// 						),
-				// 						array(
-				// 								'type' => 'message', // 類型 (訊息)
-				// 								'label' => '好友贈送', // 標籤 2
-				// 								'text' => '贈禮' // 用戶發送文字
-				// 						),
-				//
-				// 						array(
-				// 								'type' => 'uri', // 類型 (訊息)
-				// 								'label' => '至體驗區免費試玩', // 標籤 2
-				// 								'uri' => "https://wa-lotterygame.com/wa_backend/line/line/phone_binding03" // 用戶發送文字
-				// 						),
-				// 				)
-				// 		)
-				// );
 			}
 
 
@@ -267,35 +159,6 @@ class Line_bot extends MY_Base_Controller {
 		if(!empty($evt -> source -> userId)) {
 			$this -> cs_line_room_dao -> check_room($evt -> source -> userId);
 		}
-
-
-		// $msg_arr[] = array(
-		// 	"type" => "video",
-		// 	"originalContentUrl" => "https://wa-lotterygame.com/game/WA%E7%89%87%E9%A0%AD.mp4",
-		// 	"previewImageUrl" => "https://wa-lotterygame.com/wa_backend/mgmt/images/get/1",
-		// );
-		$msg_arr[] = array(
-			"type" => "text",
-			"text" => "https://youtu.be/vYx2CAzqsgM",
-		);
-
-		$msg_arr[] = array(
-				'type' => 'template', // 訊息類型 (模板)
-				'altText' => '請選擇選項', // 替代文字
-				'template' => array(
-						'type' => 'buttons', // 類型 (按鈕)
-						// 'thumbnailImageUrl' => 'https://api.reh.tw/line/bot/example/assets/images/example.jpg', // 圖片網址 <不一定需要>
-						// 'title' => 'Example Menu', // 標題 <不一定需要>
-						'text' => '歡迎您加入娛樂公益', // 文字
-						'actions' => array(
-								array(
-										'type' => 'message', // 類型 (訊息)
-										'label' => '下一步', // 標籤 2
-										'text' => '是' // 用戶發送文字
-								)
-						)
-				)
-		);
 
 		// send message 暫時關閉
 		if(count($msg_arr) > 0 && FALSE) {
