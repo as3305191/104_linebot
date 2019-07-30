@@ -33,7 +33,7 @@ class Daily_quotes_dao extends MY_Model {
 		$this -> db -> where('date', $Date);
 		$query = $this -> db -> get();
 		$list = $query -> result();
-		return $list;
+		return $list[0];
 	}
 
 }
