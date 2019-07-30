@@ -20,6 +20,9 @@ class Line_bot extends MY_Base_Controller {
 
 		$this -> load -> model('Customer_service_line_dao', 'cs_line_dao');
 		$this -> load -> model('Customer_service_line_room_dao', 'cs_line_room_dao');
+		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
+		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
+
 	}
 
 	public function index() {
@@ -501,6 +504,36 @@ class Line_bot extends MY_Base_Controller {
 								$atx['brief'] = "$in_user->nick_name 從 $out_user->nick_name 接受贈禮 {$item->amt}";
 								$this -> wtx_dao -> insert($atx);
 
+								// 銷毀50%的手續費
+								$samt =  $this -> wtx_dao -> get_sum_amt_all();
+								$ctx = array();
+								$ctx['tx_type'] = "transfer_gift";
+								$ctx['tx_id'] = $last_id;
+								$ctx['point_change'] = $ope_amt/2.0;
+								$ctx['current_point'] =$samt;
+								$ctx['ntd_change'] = 0;
+								$ctx['current_ntd'] =0;
+								$this -> q_r_dao -> insert($ctx);
+
+								$Date = date("Y-m-d");
+								$samt =  $this -> wtx_dao -> get_sum_amt_all();
+								$sntd =  $this -> q_r_dao -> get_sum_ntd();
+
+								$dq =  $this -> d_q_dao -> find_d_q($Date);
+								$dtx = array();
+								$dtx['date'] = $Date;
+								$dtx['average_price'] = $sntd/$samt;
+								$dtx['last_price'] = $sntd/$samt;
+								$dtx['now_price'] = $sntd/$samt;
+								if(!empty($dq)){
+									$u_data['last_price'] = $sntd/$samt;
+									$u_data['now_price'] = $sntd/$samt;
+									$this -> d_q_dao -> update_by($u_data,id,$dq->id);
+
+								} else{
+									$this -> d_q_dao -> insert($dtx);
+								}
+
 								$p = array();
 								$p['to'] = $in_user -> line_sub;
 								$p['messages'][] = array(
@@ -509,13 +542,13 @@ class Line_bot extends MY_Base_Controller {
 								);
 								$res = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
 
-								// $tx = array();
-								// $tx['corp_id'] = $item -> corp_id;
-								// $tx['amt'] = $ope_amt;
-								// $tx['income_type'] = "贈禮公司分潤";
-								// $tx['income_id'] = $last_id;
-								// $tx['note'] = "贈禮公司分潤 {$ope_amt}";
-								// $this -> ctx_dao -> insert($tx);
+								$tx = array();
+								$tx['corp_id'] = $item -> corp_id;
+								$tx['amt'] = $ope_amt/4.0;
+								$tx['income_type'] = "贈禮公司分潤";
+								$tx['income_id'] = $last_id;
+								$tx['note'] = "贈禮公司分潤 {$ope_amt/4.0}";
+								$this -> ctx_dao -> insert($tx);
 
 								$msg_arr[] = array(
 									"type" => "text",
