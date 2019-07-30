@@ -57,7 +57,22 @@ class Line_bot extends MY_Base_Controller {
 		$user = $this -> users_dao -> find_by('line_sub', $user_id);
 
 		if(empty($user)) {
-			// return when no user
+			// craete user
+			$msg_arr[] = array(
+				"type" => "text",
+				"text" => "請先至以下網址登入 ",
+			);
+			$msg_arr[] = array(
+				"type" => "text",
+				"text" => BASE_URL . "/line_login",
+			);
+
+			if(count($msg_arr) > 0) {
+				$p = array();
+				$p['replyToken'] = $evt -> replyToken;
+				$p['messages'] = $msg_arr;
+				$res = call_line_api("POST", "https://api.line.me/v2/bot/message/reply", json_encode($p), CHANNEL_ACCESS_TOKEN);
+			}
 			return;
 		}
 
@@ -145,31 +160,6 @@ class Line_bot extends MY_Base_Controller {
 				), $user -> id);
 			}
 
-			if($message -> text == '行情查詢') {
-				$Date = date("Y-m-d");
-				$price = $this -> d_q_dao -> find_d_q($Date);
-				if(!empty($price)){
-					$msg_arr[] = array(
-						"type" => "text",
-						"text" => "今日開盤均價: {$price->average_price}\n目前均價: {$price->now_price}",
-					);
-				} else{
-					$price = $this -> d_q_dao -> find_last_d_q($Date);
-					$dtx = array();
-					$dtx['date'] = $Date;
-					$dtx['last_price'] = $price->last_price;
-					$dtx['now_price'] = $price->now_price;
-					$this -> d_q_dao -> insert($dtx);
-					$msg_arr[] = array(
-						"type" => "text",
-						"text" => "今日開盤均價: 今日為開盤\n昨天開盤均價: {$price->average_price}\n目前均價: {$price->now_price}",
-					);
-				}
-				$sum_amt = intval($sum_amt);
-				$gift_id = $user -> gift_id;
-
-			}
-
 			if($message -> text == "線上儲值") {
 				$line_session = new stdClass;
 				$line_session -> type = "購買金幣__請輸入金額";
@@ -202,15 +192,44 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == '分享好友') {
-				$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
+				$corp = $this -> corp_dao -> find_by_id(1);
+				$line_share_url = urlencode("快來一起玩捕魚奪寶遊戲,有汽車機車手機3C家電獎品大放送免費抽,立即註冊獲得 {$corp->register_reward_amt} 金幣 " . GAME_WEB_URL . "?promo={$user->gift_id}");
+				$share_url = urlencode(GAME_WEB_URL . "?promo={$user->gift_id}");
 				$msg_arr[] = array(
-					"type" => "text",
-					"text" => $share_url,
+					"type" => "imagemap",
+					"baseUrl" => base_url("line_img/line_jpg/share/v1/1"),
+					"altText" => "分享好友",
+					"baseSize" => array(
+						"width" => "1200",
+						"height" => "810"
+					),
+					"actions" => array(
+						array(
+							"type" => "uri",
+							"linkUri" => "http://line.naver.jp/R/msg/text/?{$line_share_url}",
+							"area" => array(
+								"x" => 0,
+								"y" => 0,
+								"width" => 600,
+								"height" => 810
+							)
+						),
+						array(
+							"type" => "uri",
+							"linkUri" => "https://www.facebook.com/sharer/sharer.php?u={$share_url}&quote={$line_share_url}",
+							"area" => array(
+								"x" => 600,
+								"y" => 0,
+								"width" => 600,
+								"height" => 810
+							)
+						),
+					)
 				);
 			}
 
 
-			if($message -> text == '錢包查詢') {
+			if($message -> text == '餘額查詢') {
 				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
 				$sum_amt = intval($sum_amt);
 				$gift_id = $user -> gift_id;
@@ -297,7 +316,7 @@ class Line_bot extends MY_Base_Controller {
 		);
 
 		// send message 暫時關閉
-		if(count($msg_arr) > 0 && FALSE) {
+		if(count($msg_arr) > 0) {
 			$p = array();
 			$p['replyToken'] = $evt -> replyToken;
 			$p['messages'] = $msg_arr;
@@ -327,10 +346,10 @@ class Line_bot extends MY_Base_Controller {
 			} else {
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "請輸入轉帳金額",
+					"text" => "請輸入贈禮的金幣數量",
 				);
 
-				$line_session -> type = "贈禮_輸入轉帳金額";
+				$line_session -> type = "贈禮_輸入金幣數量";
 				$line_session -> gift_id = $message -> text;
 				$line_session -> to_user_id = $to_user -> id;
 				$this -> users_dao -> update(array(
@@ -339,7 +358,7 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 		// 贈禮_輸入轉帳金額
-		} elseif($line_session -> type == "贈禮_輸入轉帳金額") {
+		} elseif($line_session -> type == "贈禮_輸入金幣數量") {
 			$amt = intval($message -> text);
 			$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
 
@@ -365,7 +384,7 @@ class Line_bot extends MY_Base_Controller {
 					"text" => "金額不足，如果想取消請輸入881取消此功能",
 				);
 			} else {
-				$line_session -> type = "贈禮_輸入轉帳金額_確認中";
+				$line_session -> type = "贈禮_輸入金幣數量_確認中";
 				$line_session -> amt = $amt;
 				$this -> users_dao -> update(array(
 					"line_session" => json_encode($line_session)
@@ -403,7 +422,7 @@ class Line_bot extends MY_Base_Controller {
 					)
 				);
 			}
-		} elseif($line_session -> type == "贈禮_輸入轉帳金額_確認中") {
+		} elseif($line_session -> type == "贈禮_輸入金幣數量_確認中") {
 			if($message -> text == "是") {
 				$amt = intval($line_session -> amt);
 				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
@@ -468,6 +487,7 @@ class Line_bot extends MY_Base_Controller {
 								$tx['corp_id'] = $item -> corp_id; // corp id
 								$tx['user_id'] = $item -> out_user_id;
 								$tx['amt'] = -($item->amt+$item->ope_amt);
+
 								$tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt} 扣點 {$transfer_amt} 手續費 {$item->ope_amt}";
 								// $tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt}";
 
@@ -483,6 +503,9 @@ class Line_bot extends MY_Base_Controller {
 								$atx['brief'] = "$in_user->nick_name 從 $out_user->nick_name 接受贈禮 {$item->amt}";
 								$this -> wtx_dao -> insert($atx);
 
+
+
+							// 銷毀50%的手續費
 								$samt2 =  $this -> wtx_dao -> get_sum_amt_all();
 								$ctx = array();
 								$ctx['tx_type'] = "transfer_gift";
@@ -492,15 +515,6 @@ class Line_bot extends MY_Base_Controller {
 								$ctx['ntd_change'] = 0;
 								$ctx['current_ntd'] =0;
 								$this -> q_r_dao -> insert($ctx);
-
-								$tx1 = array();
-								$tx1['corp_id'] = $item -> corp_id;
-								$amt1=$ope_amt/4.0;
-								$tx1['amt'] =	$amt1;
-								$tx1['income_type'] = "贈禮公司分潤";
-								$tx1['income_id'] = $last_id;
-								$tx1['note'] = "贈禮公司分潤 {$amt1}";
-								$this -> ctx_dao -> insert($tx1);
 
 								$Date = date("Y-m-d");
 								$samt1 =  $this -> wtx_dao -> get_sum_amt_all();
@@ -528,7 +542,13 @@ class Line_bot extends MY_Base_Controller {
 								);
 								$res = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
 
-
+								$tx1 = array();
+								$tx1['corp_id'] = $item -> corp_id;
+								$tx1['amt'] = $ope_amt/4.0;
+								$tx1['income_type'] = "贈禮公司分潤";
+								$tx1['income_id'] = $last_id;
+								$tx1['note'] = "贈禮公司分潤 {$ope_amt/4.0}";
+								$this -> ctx_dao -> insert($tx1);
 
 								$msg_arr[] = array(
 									"type" => "text",
