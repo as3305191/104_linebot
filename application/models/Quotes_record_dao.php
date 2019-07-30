@@ -32,7 +32,7 @@ class Quotes_record_dao extends MY_Model {
 		$list = $this -> find_all();
 		if(count($list) > 0) {
 			$itm = $list[0];
-			return (!empty($itm -> samt) ? $itm -> samt : 0);
+			return (!empty($itm -> sntd) ? $itm -> sntd : 0);
 		}
 		return 0;
 	}
