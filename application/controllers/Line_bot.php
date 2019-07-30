@@ -214,7 +214,7 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 
-			if($message -> text == '餘額查詢') {
+			if($message -> text == '錢包查詢') {
 				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
 				$sum_amt = intval($sum_amt);
 				$gift_id = $user -> gift_id;
