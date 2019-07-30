@@ -253,6 +253,9 @@ body{
 
 				$line_call_back_url = BASE_URL . "/line_callback";
 				$line_login_url = BASE_URL . "/line_login";
+				if(!empty($p_user)) {
+					$line_login_url = "{$line_login_url}?promo={$p_user->gift_id}";
+				}
 				$line_cliend_id = LOGIN_CHANNEL_ID;
 			?>
       <div class="font">
@@ -263,6 +266,11 @@ body{
         <div class="wa" >
           <img src="<?=base_url('img/coc_bot/logo.jpg')?>" style="width:18%" id="wa">
         </div >
+				<?php if(!empty($p_user)): ?>
+				<div class=" text1" >
+					<span style="color:#fff">推薦人:<?= $p_user -> nick_name ?></span></br>
+				</div >
+				<?php endif ?>
         <div class="text" >
           <span style="color:#fff">我同意使用Line使用者來註冊COC遊戲平台知會原定且可以使用</span></br>
           <span style="color:#fff">Line的大頭照及暱稱於COC遊戲平台平台做使用來代表自己</span>
@@ -287,11 +295,7 @@ body{
 				<div class=" text1" >
 					<span style="color:#fff"><?= $l_user -> line_name ?></span></br>
 				</div >
-				<?php if(!empty($p_user)): ?>
-				<div class=" text1" >
-					<span style="color:#fff">推薦人:<?= $p_user -> nick_name ?></span></br>
-				</div >
-				<?php endif ?>
+
 				<div class=" text1" >
 					<span style="color:#fff"><span>金幣餘額: <?= number_format($sum_amt) ?></span></span></br>
 				</div >
