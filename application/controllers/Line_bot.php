@@ -510,7 +510,7 @@ class Line_bot extends MY_Base_Controller {
 								$ctx = array();
 								$ctx['tx_type'] = "transfer_gift";
 								$ctx['tx_id'] = $last_id;
-								$ctx['point_change'] = $ope_amt/2.0;
+								$ctx['point_change'] = -$ope_amt/2.0;
 								$ctx['current_point'] =$samt2;
 								$ctx['ntd_change'] = 0;
 								$ctx['current_ntd'] =0;
@@ -534,7 +534,7 @@ class Line_bot extends MY_Base_Controller {
 								} else{
 									$this -> d_q_dao -> insert($dtx);
 								}
-							
+
 								$p = array();
 								$p['to'] = $in_user -> line_sub;
 								$p['messages'][] = array(
