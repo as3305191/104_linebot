@@ -477,13 +477,13 @@ class Line_bot extends MY_Base_Controller {
 
 								$this -> wtx_dao -> insert($tx);
 
-								$tx = array();
-								$tx['corp_id'] = $item -> corp_id;
-								$tx['amt'] = $ope_amt/4.0;
-								$tx['income_type'] = "贈禮公司分潤";
-								$tx['income_id'] = $last_id;
-								$tx['note'] = "贈禮公司分潤 {$ope_amt/4.0}";
-								$this -> ctx_dao -> insert($tx);
+								$tx1 = array();
+								$tx1['corp_id'] = $item -> corp_id;
+								$tx1['amt'] = $ope_amt/4.0;
+								$tx1['income_type'] = "贈禮公司分潤";
+								$tx1['income_id'] = $last_id;
+								$tx1['note'] = "贈禮公司分潤 {$ope_amt/4.0}";
+								$this -> ctx_dao -> insert($tx1);
 
 								// 接收贈禮
 								$atx = array();
