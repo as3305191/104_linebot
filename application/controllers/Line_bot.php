@@ -484,7 +484,7 @@ class Line_bot extends MY_Base_Controller {
 								$tx['tx_id'] = $last_id;
 								$tx['corp_id'] = $item -> corp_id; // corp id
 								$tx['user_id'] = $item -> out_user_id;
-								$tx['amt'] = -(($item->amt)+($item->ope_amt));
+								$tx['amt'] = -($item->amt+$item->ope_amt);
 
 								$tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt} 扣點 {$transfer_amt} 手續費 {$item->ope_amt}";
 								// $tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt}";
