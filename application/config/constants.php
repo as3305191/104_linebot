@@ -99,7 +99,7 @@ define('CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '83bb1fa30ec4638ac
 define('LOGIN_CHANNEL_ID', (ENVIRONMENT_SETUP == 'production' ? '1603348495' : '1603348495'));
 define('LOGIN_CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '0c2db1d52348e24d56b83e12e24e58ec' : '0c2db1d52348e24d56b83e12e24e58ec'));
 define('BASE_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://fish.17lineplay.com/coc_bot' : 'https://fish.17lineplay.com/coc_bot'));
-define('GAME_WEB_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://www.yunyuplay.com/fishgame/' : 'https://www.17lineplay.com/game_debug/fishTreasure/'));
+define('GAME_WEB_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://fish.17lineplay.com/coc_bot/line_login' : 'https://fish.17lineplay.com/coc_bot/line_login'));
 define('PUSH_URL', (ENVIRONMENT_SETUP == 'production' ? 'http://34.80.8.20:8988/check_push' : 'http://34.80.8.20:8988/check_push'));
 
 define('HOME_DIR', './');
