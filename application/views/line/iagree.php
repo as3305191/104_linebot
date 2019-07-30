@@ -243,19 +243,13 @@ body{
 	<?php if(empty($l_user)): ?>
 
 			<?php
-				$nonce = "aaa123";
-				if(!empty($_promo_sn)) {
-					$nonce = $_promo_sn;
-				}
-				if(!empty($_promo_user_id)) {
-					$nonce = "puser_{$_promo_user_id}";
+				$nonce = "";
+				if(!empty($p_user)) {
+					$nonce = $p_user -> gift_id;
 				}
 
 				$line_call_back_url = BASE_URL . "/line_callback";
 				$line_login_url = BASE_URL . "/line_login";
-				if(!empty($p_user)) {
-					$line_login_url = "{$line_login_url}?promo={$p_user->gift_id}";
-				}
 				$line_cliend_id = LOGIN_CHANNEL_ID;
 			?>
       <div class="font">
