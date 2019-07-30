@@ -505,13 +505,13 @@ class Line_bot extends MY_Base_Controller {
 								);
 								$res = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
 
-								$tx = array();
-								$tx['corp_id'] = $item -> corp_id;
-								$tx['amt'] = $ope_amt/4.0;
-								$tx['income_type'] = "贈禮公司分潤";
-								$tx['income_id'] = $last_id;
-								$tx['note'] = "贈禮公司分潤 {$ope_amt/4.0}";
-								$this -> ctx_dao -> insert($tx);
+								// $tx = array();
+								// $tx['corp_id'] = $item -> corp_id;
+								// $tx['amt'] = $ope_amt/4.0;
+								// $tx['income_type'] = "贈禮公司分潤";
+								// $tx['income_id'] = $last_id;
+								// $tx['note'] = "贈禮公司分潤 {$ope_amt/4.0}";
+								// $this -> ctx_dao -> insert($tx);
 
 								$msg_arr[] = array(
 									"type" => "text",
