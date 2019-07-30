@@ -211,7 +211,8 @@ class Transfer_gift extends MY_Base_Controller {
 			if(!empty($in_user)) {
 				$samt =  $this -> wtx_dao -> get_sum_amt($out_user -> id);
 				$ope_amt = floatval($amt) * floatval($ope_pct) / 100.0;
-				$ope_amt1 = floatval(floatval($amt) * floatval($ope_pct) / 100.0)/4.0;//0.25%歸屬介紹人向上分配  
+				$ope_amt1 = floatval(floatval($amt) * floatval($ope_pct) / 100.0)/4.0;//0.25%歸屬介紹人向上分配
+				$ope_for_del = floatval(floatval($amt) * floatval($ope_pct) / 100.0)/2.0;//0.5%消滅
 
 				$transfer_amt = $amt + $ope_amt;
 				if($transfer_amt > $samt) {
@@ -253,7 +254,7 @@ class Transfer_gift extends MY_Base_Controller {
 
 					$tx = array();
 					$tx['corp_id'] = $out_user -> corp_id;
-					$tx['amt'] = $ope_amt;
+					$tx['amt'] = $ope_amt1;
 					$tx['income_type'] = "transfer_gift_ope_amt";
 					$tx['income_id'] = $last_id;
 					$tx['note'] = "贈禮手續費 {$ope_amt1}";

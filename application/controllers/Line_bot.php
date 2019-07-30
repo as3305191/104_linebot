@@ -433,7 +433,7 @@ class Line_bot extends MY_Base_Controller {
 				} else {
 					// 贈禮
 					$config = $this -> config_dao -> find_by_id(1);
-					$ope_pct = $config -> transfer_gift_pct; // 0%
+					$ope_pct = $config -> transfer_gift_pct; // 1%
 					$ope_amt = floatval($amt) * floatval($ope_pct) / 100.0;
 					$transfer_amt = $amt + $ope_amt;
 					if($transfer_amt > $sum_amt) {
@@ -484,10 +484,10 @@ class Line_bot extends MY_Base_Controller {
 								$tx['tx_id'] = $last_id;
 								$tx['corp_id'] = $item -> corp_id; // corp id
 								$tx['user_id'] = $item -> out_user_id;
-								$tx['amt'] = -($item->amt);
+								$tx['amt'] = -(($item->amt)+($item->ope_amt));
 
-								// $tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt} 扣點 {$transfer_amt} 手續費 {$item->ope_amt}";
-								$tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt}";
+								$tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt} 扣點 {$transfer_amt} 手續費 {$item->ope_amt}";
+								// $tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt}";
 
 								$this -> wtx_dao -> insert($tx);
 
