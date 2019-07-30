@@ -543,7 +543,15 @@ class Line_bot extends MY_Base_Controller {
 								} else{
 									$this -> d_q_dao -> insert($dtx);
 								}
-							
+								// // 接收贈禮
+								// $ctx = array();
+								// $ctx['tx_type'] = "gift_transfer_accept";
+								// $ctx['tx_id'] = $last_id;
+								// $ctx['corp_id'] = $item -> corp_id; // corp id
+								// $ctx['user_id'] = $item -> in_user_id;
+								// $ctx['amt'] = $item->amt;
+								// $ctx['brief'] = "$in_user->nick_name 從 $out_user->nick_name 接受贈禮 {$item->amt}";
+								// $this -> wtx_dao -> insert($ctx);
 								$p = array();
 								$p['to'] = $in_user -> line_sub;
 								$p['messages'][] = array(
