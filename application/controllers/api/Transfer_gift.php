@@ -193,7 +193,7 @@ class Transfer_gift extends MY_Base_Controller {
 		$res['success'] = TRUE;
 
 		$corp = $this -> corp_dao -> find_by_id(1);
-		$ope_pct = $corp -> transfer_gift_pct; // 5%
+		$ope_pct = $corp -> transfer_gift_pct; // 1%
 		// $ope_pct = 0;
 
 		$payload = $this -> get_payload();
@@ -211,6 +211,9 @@ class Transfer_gift extends MY_Base_Controller {
 			if(!empty($in_user)) {
 				$samt =  $this -> wtx_dao -> get_sum_amt($out_user -> id);
 				$ope_amt = floatval($amt) * floatval($ope_pct) / 100.0;
+				$ope_amt1 = floatval(floatval($amt) * floatval($ope_pct) / 100.0)/4.0;//0.25%歸屬介紹人向上分配
+				$ope_for_del = floatval(floatval($amt) * floatval($ope_pct) / 100.0)/2.0;//0.5%消滅
+
 				$transfer_amt = $amt + $ope_amt;
 				if($transfer_amt > $samt) {
 					$res['error_msg'] = "餘額不足";
@@ -246,15 +249,15 @@ class Transfer_gift extends MY_Base_Controller {
 					$tx['user_id'] = $item -> out_user_id;
 					$tx['amt'] = -($transfer_amt);
 
-					$tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt} 扣點 {$transfer_amt} 手續費 {$item->ope_amt}";
+					$tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt} 扣點 {$transfer_amt} 手續費 {$ope_amt1}";
 					$this -> wtx_dao -> insert($tx);
 
 					$tx = array();
 					$tx['corp_id'] = $out_user -> corp_id;
-					$tx['amt'] = $ope_amt;
+					$tx['amt'] = $ope_amt1;
 					$tx['income_type'] = "transfer_gift_ope_amt";
 					$tx['income_id'] = $last_id;
-					$tx['note'] = "贈禮手續費 {$ope_amt}";
+					$tx['note'] = "贈禮手續費 {$ope_amt1}";
 					$this -> ctx_dao -> insert($tx);
 
 					// 確認匯款
