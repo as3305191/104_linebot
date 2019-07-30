@@ -5,7 +5,6 @@ class App_download extends MY_Base_Controller {
 
 	function __construct() {
 		parent::__construct();
-
 		$this->load->helper('captcha');
 
 		$this -> load -> model('Users_dao', 'users_dao');

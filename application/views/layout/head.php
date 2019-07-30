@@ -42,7 +42,7 @@ specific styles this will also ensure you retrain your customization with each S
 <link rel="icon" type="image/png" href="<?= base_url('mgmt/images/get/' . $corp -> logo_image_id)  ?>" />
 
 <!-- #GOOGLE FONT -->
-<!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700"> -->
+<!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700"> -->
 
 <!-- #APP SCREEN / ICONS -->
 <!-- Specifying a Webpage Icon for Web Clip
