@@ -22,52 +22,23 @@ class Line_login extends MY_Base_Controller {
 		$_promo_sn = $this -> _promo_sn;
 		$_promo_user_id = $this -> _promo_user_id;
 
-		$intro_id = $this -> get_get("intro_id");
-		$lang = $this -> get_get('lang');
-
-		if($lang == 'zh-tw'){
-			$this -> session -> set_userdata('lang',$lang);
-		}
+		$promo = $this -> get_get("promo");
 
 		$l_user = $this->session->userdata('l_user');
 		if(!empty($l_user)) {
 			$l_user = $this -> users_dao -> find_by_id($l_user -> id);
 			$data['l_user'] = $l_user;
-
-			// $l_parent_user = $this -> users_dao -> find_by_id($l_user -> parent_user_id);
-			// $data['l_parent_user'] = $l_parent_user;
-
 			$data['sum_amt'] = $this -> wtx_dao -> get_sum_amt($l_user -> id);
 		}
 
-		if(!empty($_promo_sn)) {
-			$pg = $this -> pg_dao -> find_by('sn', $_promo_sn);
-			if(!empty($pg)) {
-				if($pg -> is_sponsor == 1 && $pg -> is_finish == 0) { // 未繳費則發佈錯誤訊息
-					$data['pg'] = $pg;
-					$pg_user = $this -> users_dao -> find_by_id($pg -> user_id);
-					$data['pg_user'] = $pg_user;
-				} else {
-					$data['error_msg'] = "此網址已結束";
-				}
-			} else {
-				$data['error_msg'] = "此網址不存在";
-			}
-		}
-
-		if(!empty($_promo_user_id)) {
-			$p_user = $this -> users_dao -> find_by_id($_promo_user_id);
+		if(!empty($promo)) {
+			$p_user = $this -> users_dao -> find_by("gift_id", $promo);
 			if(!empty($p_user)) {
 				$data['p_user'] = $p_user;
 			} else {
-				$data['error_msg'] = "此網址不存在";
+				show_404();
 			}
 		}
-
-		$data['rand_str'] = generate_random_string(8);
-
-		$data['_promo_sn'] = $_promo_sn;
-		$data['_promo_user_id'] = $_promo_user_id;
 
 		if(!empty($l_user)) {
 			if($l_user -> is_valid_mobile == 0 && FALSE) {
