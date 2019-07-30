@@ -145,6 +145,31 @@ class Line_bot extends MY_Base_Controller {
 				), $user -> id);
 			}
 
+			if($message -> text == '行情查詢') {
+				$Date = date("Y-m-d");
+				$price = $this -> d_q_dao -> find_d_q($Date);
+				if(!empty($price)){
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "今日開盤均價: {$price->average_price}\n目前均價: {$price->now_price}",
+					);
+				} else{
+					$price = $this -> d_q_dao -> find_last_d_q($Date);
+					$dtx = array();
+					$dtx['date'] = $Date;
+					$dtx['last_price'] = $price->last_price;
+					$dtx['now_price'] = $price->now_price;
+					$this -> d_q_dao -> insert($dtx);
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "今日開盤均價: 今日為開盤\n目前均價: {$price->now_price}",
+					);
+				}
+				$sum_amt = intval($sum_amt);
+				$gift_id = $user -> gift_id;
+
+			}
+
 			if($message -> text == "線上儲值") {
 				$line_session = new stdClass;
 				$line_session -> type = "購買金幣__請輸入金額";
