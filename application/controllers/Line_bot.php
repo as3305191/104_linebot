@@ -162,7 +162,7 @@ class Line_bot extends MY_Base_Controller {
 					$this -> d_q_dao -> insert($dtx);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "今日開盤均價: 今日為開盤\n目前均價: {$price->now_price}",
+						"text" => "今日開盤均價: 今日為開盤\n昨天開盤均價: {$price->average_price}\n目前均價: {$price->now_price}",
 					);
 				}
 				$sum_amt = intval($sum_amt);
