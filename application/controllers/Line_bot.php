@@ -477,14 +477,6 @@ class Line_bot extends MY_Base_Controller {
 
 								$this -> wtx_dao -> insert($tx);
 
-								$tx1 = array();
-								$tx1['corp_id'] = $item -> corp_id;
-								$tx1['amt'] = $ope_amt/4.0;
-								$tx1['income_type'] = "贈禮公司分潤";
-								$tx1['income_id'] = $last_id;
-								$tx1['note'] = "贈禮公司分潤 {$ope_amt/4.0}";
-								$this -> ctx_dao -> insert($tx1);
-
 								// 接收贈禮
 								$atx = array();
 								$atx['tx_type'] = "gift_transfer_accept";
@@ -504,6 +496,14 @@ class Line_bot extends MY_Base_Controller {
 								$ctx['ntd_change'] = 0;
 								$ctx['current_ntd'] =0;
 								$this -> q_r_dao -> insert($ctx);
+
+								$tx1 = array();
+								$tx1['corp_id'] = $item -> corp_id;
+								$tx1['amt'] = $ope_amt/4.0;
+								$tx1['income_type'] = "贈禮公司分潤";
+								$tx1['income_id'] = $last_id;
+								$tx1['note'] = "贈禮公司分潤 {$ope_amt/4.0}";
+								$this -> ctx_dao -> insert($tx1);
 
 								// $Date = date("Y-m-d");
 								// $samt1 =  $this -> wtx_dao -> get_sum_amt_all();
