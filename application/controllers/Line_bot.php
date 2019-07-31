@@ -282,7 +282,7 @@ class Line_bot extends MY_Base_Controller {
 					$config = $this -> config_dao -> find_by_id(1);
 					$ope_pct = $config -> transfer_gift_pct; // 1%
 					$ope_amt = floatval($amt) * floatval($ope_pct) / 100.0;
-					$transfer_amt = $amt + $ope_amt;
+					$transfer_amt = floatval($amt) + floatval($ope_amt);
 					if($transfer_amt > $sum_amt) {
 						$msg_arr[] = array(
 							"type" => "text",
@@ -295,7 +295,7 @@ class Line_bot extends MY_Base_Controller {
 						if(!empty($in_user)) {
 							$samt =  $this -> wtx_dao -> get_sum_amt($out_user -> id);
 							$ope_amt = floatval($amt) * floatval($ope_pct) / 100.0;
-							$transfer_amt = $amt + $ope_amt;
+							$transfer_amt = floatval($amt) + floatval($ope_amt);
 							if($transfer_amt > $samt) {
 								$res['error_msg'] = "餘額不足";
 								$res['samt'] = $samt;
@@ -331,7 +331,7 @@ class Line_bot extends MY_Base_Controller {
 								$tx['tx_id'] = $last_id;
 								$tx['corp_id'] = $item -> corp_id; // corp id
 								$tx['user_id'] = $item -> out_user_id;
-								$tx['amt'] = -($item->amt+$item->ope_amt);
+								$tx['amt'] = -(floatval($item->amt)+floatval($item->ope_amt));
 								$tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt} 扣點 {$transfer_amt} 手續費 {$item->ope_amt}";
 								// $tx['brief'] = "$out_user->nick_name 贈禮給 $in_user->nick_name - {$item->amt}";
 
@@ -351,7 +351,7 @@ class Line_bot extends MY_Base_Controller {
 								$ctx = array();
 								$ctx['tx_type'] = "transfer_gift";
 								$ctx['tx_id'] = $last_id;
-								$ctx['point_change'] = -$ope_amt/2.0;
+								$ctx['point_change'] = -floatval($ope_amt)/2.0;
 								$ctx['current_point'] =$samt2;
 								$ctx['ntd_change'] = 0;
 								$ctx['current_ntd'] =0;
@@ -359,7 +359,7 @@ class Line_bot extends MY_Base_Controller {
 
 								$tx1 = array();
 								$tx1['corp_id'] = $item -> corp_id;
-								$amt1=$ope_amt/4.0;
+								$amt1=floatval($ope_amt)/4.0;
 								$tx1['amt'] =	$amt1;
 								$tx1['income_type'] = "贈禮公司分潤";
 								$tx1['income_id'] = $last_id;
@@ -372,12 +372,12 @@ class Line_bot extends MY_Base_Controller {
 								$dq =  $this -> d_q_dao -> find_d_q($Date);
 								$dtx = array();
 								$dtx['date'] = $Date;
-								$dtx['average_price'] = $sntd/$samt1;
-								$dtx['last_price'] = $sntd/$samt1;
-								$dtx['now_price'] = $sntd/$samt1;
+								$dtx['average_price'] = floatval($sntd)/floatval($samt1);
+								$dtx['last_price'] = floatval($sntd)/floatval($samt1);
+								$dtx['now_price'] = floatval($sntd)/floatval($samt1);
 								if(!empty($dq)){
-									$u_data['last_price'] = $sntd/$samt1;
-									$u_data['now_price'] = $sntd/$samt1;
+									$u_data['last_price'] = floatval($sntd)/floatval($samt1);
+									$u_data['now_price'] = floatval($sntd)/floatval($samt1);
 									$this -> d_q_dao -> update_by($u_data,id,$dq->id);
 
 								} else{

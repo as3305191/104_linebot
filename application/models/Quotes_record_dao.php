@@ -50,7 +50,6 @@ class Quotes_record_dao extends MY_Model {
 		return $list[0];
 	}
 
-
 	function get_current_ntd() {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.current_ntd');

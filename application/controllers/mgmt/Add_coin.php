@@ -97,16 +97,19 @@ class Add_coin extends MY_Mgmt_Controller {
 		if(!empty($point)&&!empty($ntd)) {
 			// insert
 			$last_id=$this -> add_dao -> insert($data);
+			$add_coin=$this -> add_dao -> find_by_id($last_id);
+			//
 			$idata['tx_type']="add_coin";
 			$idata['tx_id']=$last_id;
 			$idata['point_change']=$point;
-			$idata['current_point']=$get_current_point+$point;
+			$idata['current_point']=floatval($get_current_point->current_point)+floatval($add_coin->point);
 			$idata['ntd_change']=$ntd;
-			$idata['current_ntd']=$get_current_ntd+$ntd;
+			$idata['current_ntd']=floatval($get_current_ntd->current_ntd)+floatval($add_coin->ntd);
 			$this -> q_r_dao -> insert($idata);
 		}
 
-		$res['success'] = TRUE;
+		$res['success'] = $idata;
+
  		$this -> to_json($res);
 	}
 
