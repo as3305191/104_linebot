@@ -142,11 +142,11 @@ class Line_bot extends MY_Base_Controller {
 				// ), $user -> id);
 				$msg_arr[] = array(
 					"type" => "imagemap",
-					"baseUrl" => base_url("line_img/line_jpg/yes_or_no/v1/1"),
+					"baseUrl" => base_url("line_img/line_jpg/first_game/v1/1"),
 					"altText" => "是否確定轉帳？",
 					"baseSize" => array(
 						"width" => "1040",
-						"height" => "520"
+						"height" => "1500"
 					),
 					"actions" => array(
 						array(
