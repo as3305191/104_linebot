@@ -126,14 +126,17 @@ class Line_bot extends MY_Base_Controller {
 					"type" => "text",
 					"text" => $share_url,
 				);
+
 			}
 
 			if($message -> text == '下注_超八_40') {
-
+				$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+				$data = json_decode($n_res);
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "下注_超八_40",
+					"text" => "$n_res",
 				);
+
 			}
 
 
