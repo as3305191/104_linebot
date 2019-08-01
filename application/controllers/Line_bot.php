@@ -618,7 +618,6 @@ class Line_bot extends MY_Base_Controller {
 	private function show_super_8_manual(&$msg_arr) {
 		$msg_arr[] = array(
 			"type" => 'image',
-			// "text" => base_url('img/line_game/game.jpg'),
 			"originalContentUrl" => "https://fish.17lineplay.com/coc_bot/img/line_game/game_big.jpg",
 			"previewImageUrl" =>  "https://fish.17lineplay.com/coc_bot/img/line_game/game_small.jpg"
 		);
