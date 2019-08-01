@@ -133,11 +133,11 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == "進入遊戲") {
-				$line_session = new stdClass;
-				$line_session -> type = "進入遊戲";
-				$this -> users_dao -> update(array(
-					"line_session" => json_encode($line_session)
-				), $user -> id);
+				// $line_session = new stdClass;
+				// $line_session -> type = "進入遊戲";
+				// $this -> users_dao -> update(array(
+				// 	"line_session" => json_encode($line_session)
+				// ), $user -> id);
 
 				$msg_arr[] = array(
 					"type" => "imagemap",
