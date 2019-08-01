@@ -140,48 +140,78 @@ class Line_bot extends MY_Base_Controller {
 				// $this -> users_dao -> update(array(
 				// 	"line_session" => json_encode($line_session)
 				// ), $user -> id);
-
 				$msg_arr[] = array(
 					"type" => "imagemap",
-					"baseUrl" => base_url('img/line_game/game.jpg'),
-					"altText" => "請點擊下注金額",
+					"baseUrl" => base_url("line_img/line_jpg/yes_or_no/v1/1"),
+					"altText" => "是否確定轉帳？",
 					"baseSize" => array(
-						"width" => "1000",
-						"height" => "1000"
+						"width" => "1040",
+						"height" => "520"
 					),
 					"actions" => array(
 						array(
 							"type" => "message",
-							"text" => "下注_超八_8",
+							"text" => "是",
 							"area" => array(
-								"x" => 101,
-								"y" => 1235,
-								"width" => 207,
-								"height" => 202
+								"x" => 0,
+								"y" => 0,
+								"width" => 520,
+								"height" => 520
 							)
 						),
 						array(
 							"type" => "message",
-							"text" => "下注_超八_40",
+							"text" => "881",
 							"area" => array(
-								"x" => 430,
-								"y" => 1235,
-								"width" => 207,
-								"height" => 202
+								"x" => 520,
+								"y" => 0,
+								"width" => 520,
+								"height" => 520
 							)
 						),
-						array(
-							"type" => "message",
-							"text" => "下注_超八_80",
-							"area" => array(
-								"x" => 757,
-								"y" => 1235,
-								"width" => 207,
-								"height" => 202
-							)
-						)
 					)
 				);
+				// $msg_arr[] = array(
+				// 	"type" => "imagemap",
+				// 	"baseUrl" => base_url('img/line_game/game.jpg'),
+				// 	"altText" => "請點擊下注金額",
+				// 	"baseSize" => array(
+				// 		"width" => "1000",
+				// 		"height" => "1000"
+				// 	),
+				// 	"actions" => array(
+				// 		array(
+				// 			"type" => "message",
+				// 			"text" => "下注_超八_8",
+				// 			"area" => array(
+				// 				"x" => 101,
+				// 				"y" => 1235,
+				// 				"width" => 207,
+				// 				"height" => 202
+				// 			)
+				// 		),
+				// 		array(
+				// 			"type" => "message",
+				// 			"text" => "下注_超八_40",
+				// 			"area" => array(
+				// 				"x" => 430,
+				// 				"y" => 1235,
+				// 				"width" => 207,
+				// 				"height" => 202
+				// 			)
+				// 		),
+				// 		array(
+				// 			"type" => "message",
+				// 			"text" => "下注_超八_80",
+				// 			"area" => array(
+				// 				"x" => 757,
+				// 				"y" => 1235,
+				// 				"width" => 207,
+				// 				"height" => 202
+				// 			)
+				// 		)
+				// 	)
+				// );
 			}
 
 
