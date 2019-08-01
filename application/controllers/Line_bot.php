@@ -132,7 +132,7 @@ class Line_bot extends MY_Base_Controller {
 			if(substr($message -> text,0,-2)=="下注_超八" ) {
 				$i = array();
 				$i['user_id'] = $user -> id;
-				if(substr($message -> text,-2)=="08"){
+				if(substr($message -> text,-1)=="8"){
 					$i['bet'] = 8;
 				}
 				if(substr($message -> text,-2)=="40"){
