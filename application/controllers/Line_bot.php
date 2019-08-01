@@ -205,10 +205,7 @@ class Line_bot extends MY_Base_Controller {
 					"type" => "text",
 					"text" => "$n_res",
 				);
-
 			}
-
-
 
 			if($message -> text == '錢包查詢') {
 				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
@@ -256,10 +253,7 @@ class Line_bot extends MY_Base_Controller {
 				"type" => "text",
 				"text" => "已取消此功能",
 			);
-			$this -> users_dao -> update(array(
-				"line_session" => ""
-			), $user -> id);
-
+			$this -> clear_session($user);
 
 		} elseif($line_session -> type == '進入遊戲_超八') {
 
@@ -269,10 +263,13 @@ class Line_bot extends MY_Base_Controller {
 					"text" => "已進入遊戲",
 				);
 				$this -> show_super_8($msg_arr);
-			}
-
-			if($message -> text == "遊戲說明") {
+			} else if($message -> text == "遊戲說明") {
 				$this -> show_super_8_manual($msg_arr);
+			} else {
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => "已進入「超八遊戲」，離開遊戲請輸入881",
+				);
 			}
 
 		} elseif($line_session -> type == "贈禮_輸入收禮ID") {
@@ -504,12 +501,10 @@ class Line_bot extends MY_Base_Controller {
 						}
 					}
 				}
-
 			}
-		}
 
-		// 儲值
-		if($line_session -> type == "購買金幣__請輸入金額") {
+			// 儲值
+		} elseif($line_session -> type == "購買金幣__請輸入金額") {
 			if(strrpos($message -> text, "購買金幣--金額--") === 0) {
 				$amt = mb_substr($message -> text, 10);
 				$pay_url = base_url("tx/do_tx?l_user_id={$user->id}&tx_amt={$amt}&tx_type=atm");
