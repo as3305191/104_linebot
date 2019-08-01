@@ -497,7 +497,7 @@ class Game_list extends MY_Base_Controller {
 				}
 
 				if($match_arr[2][0]==$match_arr[2][1]&&$match_arr[2][0]==$match_arr[2][2]){
-					$line4 = $this -> get_line_price($match_arr[2][0],$bet);
+					$line3 = $this -> get_line_price($match_arr[2][0],$bet);
 					$res['line3']=$line3;
 				} else{
 					if(substr($match_arr[2][0],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {

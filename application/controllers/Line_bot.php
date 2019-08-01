@@ -120,6 +120,56 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
+			if($message -> text == "進入遊戲") {
+				$line_session = new stdClass;
+				$line_session -> type = "進入遊戲";
+				$this -> users_dao -> update(array(
+					"line_session" => json_encode($line_session)
+				), $user -> id);
+
+				$msg_arr[] = array(
+					"type" => "imagemap",
+					"baseUrl" => base_url('img/line_game/game.jpg'),
+					"altText" => "請點擊下注金額",
+					"baseSize" => array(
+						"width" => "1040",
+						"height" => "1500"
+					),
+					"actions" => array(
+						array(
+							"type" => "message",
+							"text" => "下注_超八_8",
+							"area" => array(
+								"x" => 101,
+								"y" => 1235,
+								"width" => 207,
+								"height" => 202
+							)
+						),
+						array(
+							"type" => "message",
+							"text" => "下注_超八_40",
+							"area" => array(
+								"x" => 430,
+								"y" => 1235,
+								"width" => 207,
+								"height" => 202
+							)
+						),
+						array(
+							"type" => "message",
+							"text" => "下注_超八_80",
+							"area" => array(
+								"x" => 757,
+								"y" => 1235,
+								"width" => 207,
+								"height" => 202
+							)
+						);
+			}
+
+
+
 			if($message -> text == '分享好友') {
 				$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
 				$msg_arr[] = array(
