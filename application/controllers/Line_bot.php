@@ -134,9 +134,9 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
-			if($message -> text == "進入遊戲") {
+			if($message -> text == "進入遊戲_超八") {
 				$line_session = new stdClass;
-				$line_session -> type = "進入遊戲";
+				$line_session -> type = "進入遊戲_超八";
 				$this -> users_dao -> update(array(
 					"line_session" => json_encode($line_session)
 				), $user -> id);
@@ -297,7 +297,6 @@ class Line_bot extends MY_Base_Controller {
 	}
 
 	function do_session_action($msg_arr, $message, $line_session, $user, $evt) {
-
 		if($message -> text == '881') {
 			$msg_arr[] = array(
 				"type" => "text",
@@ -307,7 +306,17 @@ class Line_bot extends MY_Base_Controller {
 				"line_session" => ""
 			), $user -> id);
 
-		// 贈禮_輸入收禮ID
+
+		} elseif($line_session -> type == '進入遊戲_超八') {
+
+			$msg_arr[] = array(
+				"type" => "text",
+				"text" => "已取消此功能",
+			);
+			// $this -> users_dao -> update(array(
+			// 	"line_session" => ""
+			// ), $user -> id);
+
 		} elseif($line_session -> type == "贈禮_輸入收禮ID") {
 			$to_user = $this -> users_dao -> find_by_gift_id_and_corp(1, $message -> text);
 			if(empty($to_user)) {
