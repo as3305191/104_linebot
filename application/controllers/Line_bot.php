@@ -140,6 +140,10 @@ class Line_bot extends MY_Base_Controller {
 				);
 				$this -> show_super_8($msg_arr, TRUE);
 			}
+			
+			if($message -> text == "功能選單") {
+				$this -> function_menu($msg_arr);
+			}
 
 			if($message -> text == '分享好友') {
 				$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
