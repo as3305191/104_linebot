@@ -127,11 +127,18 @@ class Line_bot extends MY_Base_Controller {
 				// echo "hi,..";
 
 				$msg_arr[] = array(
-					"type" => "image",
+					"type" => MessageType::IMAGE,
 					// "text" => base_url('img/line_game/game.jpg'),
-					"originalContentUrl" => "https://fish.17lineplay.com/coc_bot/img/line_game/game.jpg",
-  				// "previewImageUrl":  base_url('img/line_game/game.jpg'),
+					"originalContentUrl" => $this->originalContentUrl,
+  				"previewImageUrl": $this->previewImageUrl,
 				);
+			}
+
+			public function __construct($originalContentUrl, $previewImageUrl, QuickReplyBuilder $quickReply = null)
+			{
+					$this->originalContentUrl = $originalContentUrl;
+					$this->previewImageUrl = $previewImageUrl;
+					$this->quickReply = $quickReply;
 			}
 
 			if($message -> text == "進入遊戲") {
