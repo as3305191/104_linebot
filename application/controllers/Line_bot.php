@@ -268,7 +268,7 @@ class Line_bot extends MY_Base_Controller {
 			} else {
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "已進入「超八遊戲」，離開遊戲請輸入881",
+					"text" => "已進入「超八遊戲」，離開遊戲請輸入 881",
 				);
 			}
 
@@ -613,8 +613,8 @@ class Line_bot extends MY_Base_Controller {
 	private function show_super_8_manual(&$msg_arr) {
 		$msg_arr[] = array(
 			"type" => 'image',
-			"originalContentUrl" => base_url("img/line_game/game_big.jpg"),
-			"previewImageUrl" =>  base_url("img/line_game/game_small.jpg")
+			"originalContentUrl" => base_url("img/line_game/super8_manual.jpg"),
+			"previewImageUrl" =>  base_url("img/line_game/super8_manual_thumb.jpg")
 		);
 	}
 
