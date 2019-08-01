@@ -263,16 +263,13 @@ class Line_bot extends MY_Base_Controller {
 
 		} elseif($line_session -> type == '進入遊戲_超八') {
 
-			if($message -> text) {
-
+			if($message -> text == "進入遊戲") {
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => "已進入遊戲",
+				);
+				$this -> show_super_8($msg_arr);
 			}
-			$msg_arr[] = array(
-				"type" => "text",
-				"text" => "已取消此功能",
-			);
-			// $this -> users_dao -> update(array(
-			// 	"line_session" => ""
-			// ), $user -> id);
 
 		} elseif($line_session -> type == "贈禮_輸入收禮ID") {
 			$to_user = $this -> users_dao -> find_by_gift_id_and_corp(1, $message -> text);
