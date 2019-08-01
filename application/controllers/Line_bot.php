@@ -151,22 +151,42 @@ class Line_bot extends MY_Base_Controller {
 					"actions" => array(
 						array(
 							"type" => "message",
-							"text" => "是",
+							"text" => "遊戲說明",
 							"area" => array(
-								"x" => 0,
-								"y" => 0,
-								"width" => 520,
-								"height" => 520
+								"x" => 90,
+								"y" => 845,
+								"width" => 880,
+								"height" => 202
 							)
 						),
 						array(
 							"type" => "message",
-							"text" => "881",
+							"text" => "下注_超八_8",
 							"area" => array(
-								"x" => 520,
-								"y" => 0,
-								"width" => 520,
-								"height" => 520
+								"x" => 90,
+								"y" => 1234,
+								"width" => 208,
+								"height" => 202
+							)
+						),
+						array(
+							"type" => "message",
+							"text" => "下注_超八_40",
+							"area" => array(
+								"x" => 425,
+								"y" => 1234,
+								"width" => 208,
+								"height" => 202
+							)
+						),
+						array(
+							"type" => "message",
+							"text" => "下注_超八_80",
+							"area" => array(
+								"x" => 758,
+								"y" => 1234,
+								"width" => 208,
+								"height" => 202
 							)
 						),
 					)
