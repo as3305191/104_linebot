@@ -61,7 +61,6 @@ class Line_bot extends MY_Base_Controller {
 			return;
 		}
 
-
 		if($message -> type == "text") {
 			$msg_arr = array();
 
@@ -70,7 +69,6 @@ class Line_bot extends MY_Base_Controller {
 					$this -> do_session_action($msg_arr, $message, $line_session, $user, $evt);
 					return;
 			}
-
 
 			if($message -> text == 'COC幣發送') {
 				$msg_arr[] = array(
@@ -106,7 +104,6 @@ class Line_bot extends MY_Base_Controller {
 				}
 				$sum_amt = intval($sum_amt);
 				$gift_id = $user -> gift_id;
-
 			}
 
 			if($message -> text == "線上儲值") {
@@ -122,13 +119,9 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
-
 			if($message -> text == "線上儲值123") {
-				// echo "hi,..";
-
 				$msg_arr[] = array(
 					"type" => 'image',
-					// "text" => base_url('img/line_game/game.jpg'),
 					"originalContentUrl" => "https://fish.17lineplay.com/coc_bot/img/line_game/game_big.jpg",
   				"previewImageUrl" =>  "https://fish.17lineplay.com/coc_bot/img/line_game/game_small.jpg"
 				);
@@ -638,6 +631,60 @@ class Line_bot extends MY_Base_Controller {
 						"y" => 1234,
 						"width" => 208,
 						"height" => 202
+					)
+				),
+			)
+		);
+	}
+
+	private function function_menu(&$msg_arr) {
+		$msg_arr[] = array(
+			"type" => "imagemap",
+			"baseUrl" => base_url("line_img/line_jpg/share/v1/1"),
+			"altText" => "功能選單",
+			"baseSize" => array(
+				"width" => "1040",
+				"height" => "585"
+			),
+			"actions" => array(
+				array(
+					"type" => "message",
+					"text" => "前往官方",
+					"area" => array(
+						"x" => 16,
+						"y" => 13,
+						"width" => 486,
+						"height" => 267
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "分享好友",
+					"area" => array(
+						"x" => 539,
+						"y" => 14,
+						"width" => 486,
+						"height" => 267
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "繳費服務",
+					"area" => array(
+						"x" => 15,
+						"y" => 309,
+						"width" => 486,
+						"height" => 267
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "合作提案",
+					"area" => array(
+						"x" => 539,
+						"y" => 309,
+						"width" => 486,
+						"height" => 267
 					)
 				),
 			)
