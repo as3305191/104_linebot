@@ -134,7 +134,7 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
-			if($message -> text == "進入遊戲_超八") {
+			if($message -> text == "進入遊戲") {
 				$line_session = new stdClass;
 				$line_session -> type = "進入遊戲_超八";
 				$this -> users_dao -> update(array(
