@@ -127,7 +127,7 @@ class Line_bot extends MY_Base_Controller {
 				// echo "hi,..";
 
 				$msg_arr[] = array(
-					"type" => image,
+					"type" => 'image',
 					// "text" => base_url('img/line_game/game.jpg'),
 					"originalContentUrl" => "https://fish.17lineplay.com/coc_bot/img/line_game/game.jpg",
   				"previewImageUrl":  "https://fish.17lineplay.com/coc_bot/img/line_game/game_small.jpg"
