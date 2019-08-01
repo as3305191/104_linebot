@@ -148,62 +148,11 @@ class Line_bot extends MY_Base_Controller {
 				$this -> show_super_8($msg_arr, TRUE);
 			}
 
-
-
 			if($message -> text == '分享好友') {
 				$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
 				$msg_arr[] = array(
 					"type" => "text",
 					"text" => $share_url,
-				);
-
-			}
-
-			if(substr($message -> text,0,-2)=="下注_超八" ) {
-				$i = array();
-				$i['user_id'] = $user -> id;
-				if(substr($message -> text,-1)=="8"){
-					$i['bet'] = 8;
-				}
-				if(substr($message -> text,-2)=="40"){
-					$i['bet'] = 40;
-				}
-				if(substr($message -> text,-2)=="80"){
-					$i['bet'] = 80;
-				}
-				$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
-				$data = json_decode($n_res);
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "$n_res",
-				);
-
-			}
-
-			if($message -> text == '下注_超八_40') {
-				$i = array();
-				$i['bet'] = 40;
-				$i['user_id'] = $user -> id;
-
-				$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
-				$data = json_decode($n_res);
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "$n_res",
-				);
-
-			}
-
-			if($message -> text == '下注_超八_80') {
-				$i = array();
-				$i['bet'] = 80;
-				$i['user_id'] = $user -> id;
-
-				$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
-				$data = json_decode($n_res);
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "$n_res",
 				);
 			}
 
@@ -226,7 +175,6 @@ class Line_bot extends MY_Base_Controller {
 				$p['messages'] = $msg_arr;
 				$res = call_line_api("POST", "https://api.line.me/v2/bot/message/reply", json_encode($p), CHANNEL_ACCESS_TOKEN);
 			}
-
 		}
 	}
 
@@ -263,8 +211,10 @@ class Line_bot extends MY_Base_Controller {
 					"text" => "已進入遊戲",
 				);
 				$this -> show_super_8($msg_arr);
-			} else if($message -> text == "遊戲說明") {
+			} elseif($message -> text == "遊戲說明") {
 				$this -> show_super_8_manual($msg_arr);
+			} elseif(mb_substr($message -> text,0,5)=="下注_超八" ) {
+				$this -> bet_super_8($msg_arr, $message, $user);
 			} else {
 				$msg_arr[] = array(
 					"type" => "text",
@@ -616,6 +566,55 @@ class Line_bot extends MY_Base_Controller {
 			"originalContentUrl" => base_url("img/line_game/super8_manual.jpg"),
 			"previewImageUrl" =>  base_url("img/line_game/super8_manual_thumb.jpg")
 		);
+	}
+
+	private function bet_super_8(&$msg_arr, $message, $user) {
+		if(mb_substr($message -> text,0,5)=="下注_超八" ) {
+			$i = array();
+			$i['user_id'] = $user -> id;
+			if(mb_substr($message -> text,-1) == "8"){
+				$i['bet'] = 8;
+			}
+			if(mb_substr($message -> text,-2)=="40"){
+				$i['bet'] = 40;
+			}
+			if(mb_substr($message -> text,-2)=="80"){
+				$i['bet'] = 80;
+			}
+			$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+			$data = json_decode($n_res);
+			$msg_arr[] = array(
+				"type" => "text",
+				"text" => "$n_res",
+			);
+		}
+
+		// if($message -> text == '下注_超八_40') {
+		// 	$i = array();
+		// 	$i['bet'] = 40;
+		// 	$i['user_id'] = $user -> id;
+		//
+		// 	$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+		// 	$data = json_decode($n_res);
+		// 	$msg_arr[] = array(
+		// 		"type" => "text",
+		// 		"text" => "$n_res",
+		// 	);
+		//
+		// }
+		//
+		// if($message -> text == '下注_超八_80') {
+		// 	$i = array();
+		// 	$i['bet'] = 80;
+		// 	$i['user_id'] = $user -> id;
+		//
+		// 	$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+		// 	$data = json_decode($n_res);
+		// 	$msg_arr[] = array(
+		// 		"type" => "text",
+		// 		"text" => "$n_res",
+		// 	);
+		// }
 	}
 
 	private function show_super_8(&$msg_arr, $is_first = FALSE) {
