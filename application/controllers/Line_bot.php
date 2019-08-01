@@ -130,9 +130,7 @@ class Line_bot extends MY_Base_Controller {
 			if($message -> text == "進入遊戲") {
 				$line_session = new stdClass;
 				$line_session -> type = "進入遊戲_超八";
-				$this -> users_dao -> update(array(
-					"line_session" => json_encode($line_session)
-				), $user -> id);
+				$this -> update_session($line_session, $user);
 
 				$msg_arr[] = array(
 					"type" => "text",
@@ -140,7 +138,7 @@ class Line_bot extends MY_Base_Controller {
 				);
 				$this -> show_super_8($msg_arr, TRUE);
 			}
-			
+
 			if($message -> text == "功能選單") {
 				$this -> function_menu($msg_arr);
 			}
@@ -709,6 +707,12 @@ class Line_bot extends MY_Base_Controller {
 	private function get_reg_code() {
 		$digits = 6;
 		return rand(pow(10, $digits - 1), pow(10, $digits) - 1);
+	}
+
+	private function update_session($line_session, $user) {
+		$this -> users_dao -> update(array(
+			"line_session" => json_encode($line_session)
+		), $user -> id);
 	}
 
 	private function clear_session($user) {
