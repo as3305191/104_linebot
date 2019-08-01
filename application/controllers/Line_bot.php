@@ -271,6 +271,10 @@ class Line_bot extends MY_Base_Controller {
 				$this -> show_super_8($msg_arr);
 			}
 
+			if($message -> text == "遊戲說明") {
+				$this -> show_super_8_manual($msg_arr);
+			}
+
 		} elseif($line_session -> type == "贈禮_輸入收禮ID") {
 			$to_user = $this -> users_dao -> find_by_gift_id_and_corp(1, $message -> text);
 			if(empty($to_user)) {
@@ -609,6 +613,15 @@ class Line_bot extends MY_Base_Controller {
 			$p['messages'] = $msg_arr;
 			$res = call_line_api("POST", "https://api.line.me/v2/bot/message/reply", json_encode($p), CHANNEL_ACCESS_TOKEN);
 		}
+	}
+
+	private function show_super_8_manual(&$msg_arr) {
+		$msg_arr[] = array(
+			"type" => 'image',
+			// "text" => base_url('img/line_game/game.jpg'),
+			"originalContentUrl" => "https://fish.17lineplay.com/coc_bot/img/line_game/game_big.jpg",
+			"previewImageUrl" =>  "https://fish.17lineplay.com/coc_bot/img/line_game/game_small.jpg"
+		);
 	}
 
 	private function show_super_8(&$msg_arr, $is_first = FALSE) {
