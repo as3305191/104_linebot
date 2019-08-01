@@ -119,6 +119,13 @@ class Line_bot extends MY_Base_Controller {
 					"text" => "請輸入金額，超商繳費最低100最高6000，ATM繳費最低100最高30000",
 				);
 			}
+			if($message -> text == "線上儲值123") {
+
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => base_url('img/line_game/game.jpg'),
+				);
+			}
 
 			if($message -> text == "進入遊戲") {
 				$line_session = new stdClass;
