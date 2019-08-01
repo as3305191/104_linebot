@@ -5,8 +5,24 @@ class Game_list extends MY_Base_Controller {
 		parent::__construct();
 		$this -> load -> model('Game_list_dao', 'gl_dao');
 		$this -> load -> model('Game_tiger_dao', 'game_tiger_dao');
+		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
+		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
+
+		$this -> load -> model('Com_tx_dao', 'ctx_dao');
+	}
+
+	public function testtest() {
+		$i = array();
+		$i['bet'] = $this -> get_post('bet');
+		// $n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+		// $data = json_decode($n_res);
+
+		// echo $data;
+		// var_dump($n_res);
+		$this -> to_json($this -> curl -> simple_post("/api/Game_list/ttt", '8'));
 
 	}
+
 
 	public function go($game_id, $user_id) {
 		$user = $this -> users_dao -> find_by_id($user_id);
@@ -86,9 +102,9 @@ class Game_list extends MY_Base_Controller {
 	}
 
 	public function game_tiger() {
-		$res = array("success" => TRUE);
-		$data = array();
-		$temporarily_bet = $this -> get_post('$bet');
+		// $res = array("success" => TRUE);
+		$res = array();
+		$temporarily_bet = $this -> get_post('bet');
 		$bet = $temporarily_bet/8;
 			// 保證只有一組在執行
 			// $key_id = $this -> game_tiger_dao -> get_key_id();
@@ -118,6 +134,29 @@ class Game_list extends MY_Base_Controller {
 			$counter_grape= 0;
 			$counter_orange = 0;
 			$counter_cherry = 0;
+			$counter_seven= 0;
+
+			$counter_seven_b1 = 0;
+			$counter_seven_r1 = 0;
+			$counter_bar1 = 0;
+			$counter_medal1 = 0;
+			$counter_bell1 = 0;
+			$counter_watermelon1 = 0;
+			$counter_grape1= 0;
+			$counter_orange1 = 0;
+			$counter_cherry1 = 0;
+			$counter_seven1= 0;
+
+			$not_same=0;
+
+			$line1=0;
+			$line2=0;
+			$line3=0;
+			$line4=0;
+			$line5=0;
+			$line6=0;
+			$line7=0;
+			$line8=0;
 
 			$new_icon_arr =shuffle($icon_arr);
 			$res['newarray']=$icon_arr;
@@ -158,16 +197,16 @@ class Game_list extends MY_Base_Controller {
 					}
 				}
 			}
-			 $res1['d']=	$match_arr;
-			 $res1['seven_b']=$counter_seven_b;
-			 $res1['seven_r']=$counter_seven_r;
-			 $res1['counter_bar']=$counter_bar;
-			 $res1['medal']=$counter_medal;
-			 $res1['bell']=$counter_bell;
-			 $res1['watermelon']=$counter_watermelon;
-			 $res1['grape']=$counter_grape;
-			 $res1['orange']=$counter_orange;
-			 $res1['cherry']=$counter_cherry;
+			 $res['list']=	$match_arr;
+			 // $res['_seven_b']=$counter_seven_b;
+			 // $res['_seven_r']=$counter_seven_r;
+			 // $res['_counter_bar']=$counter_bar;
+			 // $res['_medal']=$counter_medal;
+			 // $res['_bell']=$counter_bell;
+			 // $res['_watermelon']=$counter_watermelon;
+			 // $res['_grape']=$counter_grape;
+			 // $res['_orange']=$counter_orange;
+			 // $res['_cherry']=$counter_cherry;
 
 					if($counter_seven_b ==1 &&
 					$counter_seven_r ==1  &&
@@ -178,488 +217,396 @@ class Game_list extends MY_Base_Controller {
 					$counter_grape==1 &&
 					$counter_orange ==1 &&
 					$counter_cherry ==1 ){
-						$res1['not_line']="都不一樣";
+						$mag=100;
+						$not_same = $this -> get_tx_price_list($bet,$mag);
+						$res['not_line']="都不一樣";
 					}
+
+
 					if($counter_seven_b+$counter_seven_r>2){
 						if($counter_seven_b+$counter_seven_r==3){
-							$bet*12;
-							$res1['counter_seven']="3";
+							$mag=12;
+							$counter_seven1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_seven_b+$counter_seven_r==4){
-							$bet*80;
-							$res1['counter_seven']="4";
+							$mag=80;
+							$counter_seven1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_seven_b+$counter_seven_r==5){
-							$bet*400;
-							$res1['counter_seven']="5";
+							$mag=400;
+							$counter_seven1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_seven_b+$counter_seven_r==6){
-							$bet*2000;
-							$res1['counter_seven']="6";
+							$mag=2000;
+							$counter_seven1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_seven_b+$counter_seven_r==7){
-							$bet*12000;
-							$res1['counter_seven']="7";
+							$mag=12000;
+							$counter_seven1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_seven_b+$counter_seven_r==8){
-							$bet*50000;
-							$res1['counter_seven']="8";
+							$mag=50000;
+							$counter_seven1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_seven_b+$counter_seven_r==9){
-							$bet*100000;
-							$res1['counter_seven']="9";
+							$mag=100000;
+							$counter_seven1 = $this -> get_tx_price_list($bet,$mag);
 						}
+						$res['counter_seven']=$counter_seven1;
 					}
 
 					if($counter_bar>2){
 						if($counter_bar==3){
-							$res1['counter_bar']="3";
+							$mag=7;
+							$counter_bar1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bar==4){
-							$res1['counter_bar']="4";
+							$mag=40;
+							$counter_bar1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bar==5){
-							$res1['counter_bar']="5";
+							$mag=200;
+							$counter_bar1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bar==6){
-							$res1['counter_bar']="6";
+							$mag=1000;
+							$counter_bar1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bar==7){
-							$res1['counter_bar']="7";
+							$mag=6000;
+							$counter_bar1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bar==8){
-							$res1['counter_bar']="8";
+							$mag=30000;
+							$counter_bar1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bar==9){
-							$res1['counter_bar']="9";
+							$mag=70000;
+							$counter_bar1 = $this -> get_tx_price_list($bet,$mag);
 						}
+						$res['counter_bar']=$counter_bar1;
 					}
 
 					if($counter_medal>2){
 						if($counter_medal==3){
-							$res1['counter_medal']="3";
+							$mag=5;
+							$counter_medal1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_medal==4){
-							$res1['counter_medal']="4";
+							$mag=20;
+							$counter_medal1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_medal==5){
-							$res1['counter_medal']="5";
+							$mag=100;
+							$counter_medal1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_medal==6){
-							$res1['counter_medal']="6";
+							$mag=500;
+							$counter_medal1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_medal==7){
-							$res1['counter_medal']="7";
+							$mag=3000;
+							$counter_medal1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_medal==8){
-							$res1['counter_medal']="8";
+							$mag=20000;
+							$counter_medal1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_medal==9){
-							$res1['counter_medal']="9";
+							$mag=60000;
+							$counter_medal1 = $this -> get_tx_price_list($bet,$mag);
 						}
+						$res['counter_medal']=$counter_medal1;
 					}
 
 					if($counter_bell>2){
 						if($counter_bell==3){
-							$res1['counter_bell']="3";
+							$mag=4;
+							$counter_bell1= $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bell==4){
-							$res1['counter_bell']="4";
+							$mag=10;
+							$counter_bell1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bell==5){
-							$res1['counter_bell']="5";
+							$mag=50;
+							$counter_bell1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bell==6){
-							$res1['counter_bell']="6";
+							$mag=250;
+							$counter_bell1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bell==7){
-							$res1['counter_bell']="7";
+							$mag=1500;
+							$counter_bell1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bell==8){
-							$res1['counter_bell']="8";
+							$mag=10000;
+							$counter_bell1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_bell==9){
-							$res1['counter_bell']="9";
+							$mag=50000;
+							$counter_bell1 = $this -> get_tx_price_list($bet,$mag);
 						}
+						$res['counter_bell']=$counter_bell1;
+
 					}
 
 					if($counter_watermelon>3){
 						if($counter_watermelon==4){
-							$res1['counter_watermelon']="4";
+							$mag=10;
+							$counter_watermelon1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_watermelon==5){
-							$res1['counter_watermelon']="5";
+							$mag=40;
+							$counter_watermelon1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_watermelon==6){
-							$res1['counter_watermelon']="6";
+							$mag=200;
+							$counter_watermelon1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_watermelon==7){
-							$res1['counter_watermelon']="7";
+							$mag=1200;
+							$counter_watermelon1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_watermelon==8){
-							$res1['counter_watermelon']="8";
+							$mag=8000;
+							$counter_watermelon1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_watermelon==9){
-							$res1['counter_watermelon']="9";
+							$mag=40000;
+							$counter_watermelon1 = $this -> get_tx_price_list($bet,$mag);
 						}
+						$res['counter_watermelon']=$counter_watermelon1;
 					}
 
 					if($counter_grape>3){
 						if($counter_grape==4){
-							$res1['counter_grape']="4";
+							$mag=7;
+							$counter_grape1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_grape==5){
-							$res1['counter_grape']="5";
+							$mag=30;
+							$counter_grape1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_grape==6){
-							$res1['counter_grape']="6";
+							$mag=150;
+							$counter_grape1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_grape==7){
-							$res1['counter_grape']="7";
+							$mag=900;
+							$counter_grape1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_grape==8){
-							$res1['counter_grape']="8";
+							$mag=6000;
+							$counter_grape1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_grape==9){
-							$res1['counter_grape']="9";
+							$mag=30000;
+							$counter_grape1 = $this -> get_tx_price_list($bet,$mag);
 						}
+						$res['counter_grape']=$counter_grape1;
 					}
 
 					if($counter_cherry>3){
 						if($counter_cherry==4){
-							$res1['counter_cherry']="4";
+							$mag=4;
+							$counter_cherry1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_cherry==5){
-							$res1['counter_cherry']="5";
+							$mag=10;
+							$counter_cherry1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_cherry==6){
-							$res1['counter_cherry']="6";
+							$mag=50;
+							$counter_cherry1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_cherry==7){
-							$res1['counter_cherry']="7";
+							$mag=300;
+							$counter_cherry1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_cherry==8){
-							$res1['counter_cherry']="8";
+							$mag=2000;
+							$counter_cherry1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_cherry==9){
-							$res1['counter_cherry']="9";
+							$mag=1000;
+							$counter_cherry1 = $this -> get_tx_price_list($bet,$mag);
 						}
+						$res['counter_cherry']=$counter_cherry1;
 					}
 
 					if($counter_orange>3){
 						if($counter_orange==4){
-							$res1['counter_orange']="4";
+							$mag=5;
+							$counter_orange1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_orange==5){
-							$res1['counter_orange']="5";
+							$mag=20;
+							$counter_orange1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_orange==6){
-							$res1['counter_orange']="6";
+							$mag=100;
+							$counter_orange1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_orange==7){
-							$res1['counter_orange']="7";
+							$mag=600;
+							$counter_orange1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_orange==8){
-							$res1['counter_orange']="8";
+							$mag=4000;
+							$counter_orange1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						if($counter_orange==9){
-							$res1['counter_orange']="9";
+							$mag=20000;
+							$counter_orange1 = $this -> get_tx_price_list($bet,$mag);
 						}
+						$res['counter_orange']=$counter_orange1;
 					}
 
+					$overall=$counter_seven1+$counter_bar1+$counter_medal1+$counter_bell1+$counter_watermelon1+$counter_grape1+$counter_orange1+$counter_cherry1+$not_same;
+					// $res['overall']=$overall;
+
+
 				if($match_arr[0][0]==$match_arr[0][1]&&$match_arr[0][0]==$match_arr[0][2]){
-					if($match_arr[0][0]=="seven_b"){
-						$res1['line2']="seven_b";
-					}
-					if($match_arr[0][0]=="seven_r"){
-						$res1['line2']="seven_r";
-					}
-					if($match_arr[0][0]=="bar"){
-						$res1['line2']="bar";
-					}
-					if($match_arr[0][0]=="medal"){
-						$res1['line2']="medal";
-					}
-					if($match_arr[0][0]=="bell"){
-						$res1['line2']="bell";
-					}
-					if($match_arr[0][0]=="watermelon"){
-						$res1['line2']="watermelon";
-					}
-					if($match_arr[0][0]=="grape"){
-						$res1['line2']="grape";
-					}
-					if($match_arr[0][0]=="orange"){
-						$res1['line2']="orange";
-					}
-					if($match_arr[0][0]=="cherry"){
-						$res1['line2']="cherry";
-					}
+					$line2 = $this -> get_line_price($match_arr[0][0],$bet);
+					$res['line2']=$line2;
 
 				} else{
 					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[0][1],0,-2)=="seven" && substr($match_arr[0][2],0,-2)=="seven") {
-						$res1['message']="mixed7";
+						$mag=200;
+						$line2 = $this -> get_tx_price_list($bet,$mag);
+						$res['message2']=$line2 ;
 					}
 				}
 
 				if($match_arr[1][0]==$match_arr[1][1]&&$match_arr[1][0]==$match_arr[1][2]){
-					if($match_arr[0][0]=="seven_b"){
-					 $res1['line1']="seven_b";
-				 }
-				 if($match_arr[0][0]=="seven_r"){
-					 $res1['line1']="seven_r";
-				 }
-				 if($match_arr[0][0]=="bar"){
-					 $res1['line1']="bar";
-				 }
-				 if($match_arr[0][0]=="medal"){
-					 $res1['line1']="medal";
-				 }
-				 if($match_arr[0][0]=="bell"){
-					 $res1['line1']="bell";
-				 }
-				 if($match_arr[0][0]=="watermelon"){
-					 $res1['line2']="watermelon";
-				 }
-				 if($match_arr[0][0]=="grape"){
-					 $res1['line1']="grape";
-				 }
-				 if($match_arr[0][0]=="orange"){
-					 $res1['line1']="orange";
-				 }
-				 if($match_arr[0][0]=="cherry"){
-					 $res1['line1']="cherry";
-				 }
+					$line1 = $this -> get_line_price($match_arr[1][0],$bet);
+					$res['line1']=$line1;
 				} else{
 					if(substr($match_arr[1][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[1][2],0,-2)=="seven") {
-						$res1['message']="mixed7";
+						$mag=200;
+						$line1 = $this -> get_tx_price_list($bet,$mag);
+						$res['message1']=$line1;
 					}
 				}
 
 				if($match_arr[2][0]==$match_arr[2][1]&&$match_arr[2][0]==$match_arr[2][2]){
-					if($match_arr[0][0]=="seven_b"){
-					 $res1['line3']="seven_b";
-				 }
-				 if($match_arr[0][0]=="seven_r"){
-					 $res1['line3']="seven_r";
-				 }
-				 if($match_arr[0][0]=="bar"){
-					 $res1['line3']="bar";
-				 }
-				 if($match_arr[0][0]=="medal"){
-					 $res1['line3']="medal";
-				 }
-				 if($match_arr[0][0]=="bell"){
-					 $res1['line3']="bell";
-				 }
-				 if($match_arr[0][0]=="watermelon"){
-					 $res1['line3']="watermelon";
-				 }
-				 if($match_arr[0][0]=="grape"){
-					 $res1['line3']="grape";
-				 }
-				 if($match_arr[0][0]=="orange"){
-					 $res1['line3']="orange";
-				 }
-				 if($match_arr[0][0]=="cherry"){
-					 $res1['line3']="cherry";
-				 }
+					$line4 = $this -> get_line_price($match_arr[2][0],$bet);
+					$res['line3']=$line3;
 				} else{
 					if(substr($match_arr[2][0],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
-						$res1['message']="mixed7";
+						$mag=200;
+						$line3 = $this -> get_tx_price_list($bet,$mag);
+						$res['message3']=$line3;
 					}
 				}
 
 				if($match_arr[0][0]==$match_arr[1][1]&&$match_arr[0][0]==$match_arr[2][2]){
-					if($match_arr[0][0]=="seven_b"){
-					 $res1['line4']="seven_b";
-				 }
-				 if($match_arr[0][0]=="seven_r"){
-					 $res1['line4']="seven_r";
-				 }
-				 if($match_arr[0][0]=="bar"){
-					 $res1['line4']="bar";
-				 }
-				 if($match_arr[0][0]=="medal"){
-					 $res1['line4']="medal";
-				 }
-				 if($match_arr[0][0]=="bell"){
-					 $res1['line4']="bell";
-				 }
-				 if($match_arr[0][0]=="watermelon"){
-					 $res1['line4']="watermelon";
-				 }
-				 if($match_arr[0][0]=="grape"){
-					 $res1['line4']="grape";
-				 }
-				 if($match_arr[0][0]=="orange"){
-					 $res1['line4']="orange";
-				 }
-				 if($match_arr[0][0]=="cherry"){
-					 $res1['line4']="cherry";
-				 }
+					$line4 = $this -> get_line_price($match_arr[0][0],$bet);
+					$res['line4']=$line4;
 				} else{
 					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
-						$res1['message']="mixed7";
+						$mag=200;
+						$line4 = $this -> get_tx_price_list($bet,$mag);
+						$res['message4']=$line4;
 					}
 				}
 
 				if($match_arr[2][0]==$match_arr[1][1]&&$match_arr[2][0]==$match_arr[0][2]){
-					if($match_arr[0][0]=="seven_b"){
-					 $res1['line5']="seven_b";
-				 }
-				 if($match_arr[0][0]=="seven_r"){
-					 $res1['line5']="seven_r";
-				 }
-				 if($match_arr[0][0]=="bar"){
-					 $res1['line5']="bar";
-				 }
-				 if($match_arr[0][0]=="medal"){
-					 $res1['line5']="medal";
-				 }
-				 if($match_arr[0][0]=="bell"){
-					 $res1['line5']="bell";
-				 }
-				 if($match_arr[0][0]=="watermelon"){
-					 $res1['line5']="watermelon";
-				 }
-				 if($match_arr[0][0]=="grape"){
-					 $res1['line5']="grape";
-				 }
-				 if($match_arr[0][0]=="orange"){
-					 $res1['line5']="orange";
-				 }
-				 if($match_arr[0][0]=="cherry"){
-					 $res1['line5']="cherry";
-				 }
+					$line5 = $this -> get_line_price($match_arr[2][0],$bet);
+					$res['line5']=$line5;
 				} else{
 					if(substr($match_arr[2][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[0][2],0,-2)=="seven") {
-						$res1['message']="mixed7";
+						$mag=200;
+						$line5 = $this -> get_tx_price_list($bet,$mag);
+						$res['message5']=$line5;
 					}
 				}
 
 				if($match_arr[0][0]==$match_arr[1][0]&&$match_arr[0][0]==$match_arr[2][0]){
-					if($match_arr[0][0]=="seven_b"){
-					 $res1['line8']="seven_b";
-				 }
-				 if($match_arr[0][0]=="seven_r"){
-					 $res1['line8']="seven_r";
-				 }
-				 if($match_arr[0][0]=="bar"){
-					 $res1['line8']="bar";
-				 }
-				 if($match_arr[0][0]=="medal"){
-					 $res1['line8']="medal";
-				 }
-				 if($match_arr[0][0]=="bell"){
-					 $res1['line8']="bell";
-				 }
-				 if($match_arr[0][0]=="watermelon"){
-					 $res1['line8']="watermelon";
-				 }
-				 if($match_arr[0][0]=="grape"){
-					 $res1['line8']="grape";
-				 }
-				 if($match_arr[0][0]=="orange"){
-					 $res1['line8']="orange";
-				 }
-				 if($match_arr[0][0]=="cherry"){
-					 $res1['line8']="cherry";
-				 }
-				} else{
-					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[1][0],0,-2)=="seven" && substr($match_arr[2][0],0,-2)=="seven") {
-						$res1['message']="mixed7";
-					}
-				}
-
-				if($match_arr[0][1]==$match_arr[1][1]&&$match_arr[0][1]==$match_arr[2][1]){
-					if($match_arr[0][0]=="seven_b"){
-					 $res1['line7']="seven_b";
-				 }
-				 if($match_arr[0][0]=="seven_r"){
-					 $res1['line7']="seven_r";
-				 }
-				 if($match_arr[0][0]=="bar"){
-					 $res1['line7']="bar";
-				 }
-				 if($match_arr[0][0]=="medal"){
-					 $res1['line7']="medal";
-				 }
-				 if($match_arr[0][0]=="bell"){
-					 $res1['line7']="bell";
-				 }
-				 if($match_arr[0][0]=="watermelon"){
-					 $res1['line7']="watermelon";
-				 }
-				 if($match_arr[0][0]=="grape"){
-					 $res1['line7']="grape";
-				 }
-				 if($match_arr[0][0]=="orange"){
-					 $res1['line7']="orange";
-				 }
-				 if($match_arr[0][0]=="cherry"){
-					 $res1['line7']="cherry";
-				 }
+					$line7 = $this -> get_line_price($match_arr[0][0],$bet);
+					$res['line7']=$line7;
 				} else{
 					if(substr($match_arr[0][1],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven") {
-						$res1['message']="mixed7";
+						$mag=200;
+						$line7 = $this -> get_tx_price_list($bet,$mag);
+						$res['message7']=$line7;
 					}
 				}
 
 				if($match_arr[0][2]==$match_arr[1][2]&&$match_arr[0][2]==$match_arr[2][2]){
-					if($match_arr[0][0]=="seven_b"){
-					 $res1['line6']="seven_b";
-				 }
-				 if($match_arr[0][0]=="seven_r"){
-					 $res1['line6']="seven_r";
-				 }
-				 if($match_arr[0][0]=="bar"){
-					 $res1['line6']="bar";
-				 }
-				 if($match_arr[0][0]=="medal"){
-					 $res1['line6']="medal";
-				 }
-				 if($match_arr[0][0]=="bell"){
-					 $res1['line6']="bell";
-				 }
-				 if($match_arr[0][0]=="watermelon"){
-					 $res1['line6']="watermelon";
-				 }
-				 if($match_arr[0][0]=="grape"){
-					 $res1['line6']="grape";
-				 }
-				 if($match_arr[0][0]=="orange"){
-					 $res1['line6']="orange";
-				 }
-				 if($match_arr[0][0]=="cherry"){
-					 $res1['line6']="cherry";
-				 }
+					$line6 = $this -> get_line_price($match_arr[0][2],$bet);
+					$res['line6']=$line6;
 				} else{
 					if(substr($match_arr[0][2],0,-2)=="seven" && substr($match_arr[1][2],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
-						$res1['message']="mixed7";
+						$mag=200;
+						$line6 = $this -> get_tx_price_list($bet,$mag);
+						$res['message6']=$line6;
 					}
 				}
+				$overall1=$line1+$line2+$line3+$line4+$line5+$line6+$line7+$line8;
+				// $res['overall1']=$overall1;
+				$total=$overall1+$overall;
+				// $res['total']=$total;
+		 		$this -> insert_total_price($bet,$total);
 
 
-			$this -> to_json($res1);
+			$this -> to_json($res);
+	}
 
-			// for($i=1;$i<=3;$i++){
-			// 	$row1 = array_rand($res['newarray'],2);
-			// 	$now_row1 = $icon_arr[$row1[0]];
-			// 	echo ($icon_arr[$row1[0]])." ";
-			// }
-			// echo '<br>';
-			// for($j=1;$j<=3;$j++){
-			// 	$row2 = array_rand($res['newarray'],2);
-			// 	$now_row2 = $icon_arr[$row2[0]];
-			// 	echo ($icon_arr[$row2[0]])." ";
-			// }
-			// echo '<br>';
-			// for($k=1;$k<=3;$k++){
-			// 	$row3 = array_rand($res['newarray'],2);
-			// 	$now_row3 = $icon_arr[$row3[0]];
-			// 	echo ($icon_arr[$row3[0]])." ";
-			// }
+	public function insert_total_price($bet,$total) {
+		$res = array();
+		// $res['success'] = TRUE;
+		$bet_o=$bet*8;
+		$for_q_amt=$total-$bet_o;
+		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt);
+
+		// $this -> to_json($res);
+	}
+
+	public function get_tx_price_list($bet,$mag) {
+		$win_amt=$bet*$mag;
+
+		return $win_amt;
+	}
+
+	public function get_line_price($winning_item,$bet) {
+		$price = 0;
+
+		if($winning_item=="seven_b"){
+			$price=$bet*1000;
+		}
+		if($winning_item=="seven_r"){
+			$price=$bet*300;
+		}
+		if($winning_item=="bar"){
+			$price=$bet*100;
+		}
+		if($winning_item=="medal"){
+			$price=$bet*50;
+		}
+		if($winning_item=="bell"){
+			$price=$bet*30;
+		}
+		if($winning_item=="watermelon"){
+			$price=$bet*20;
+		}
+		if($winning_item=="grape"){
+			$price=$bet*16;
+		}
+		if($winning_item=="orange"){
+			$price=$bet*14;
+		}
+		if($winning_item=="cherry"){
+			$price=$bet*10;
+		}
+		return $price;
+
+	}
+	public function ttt($value='123')
+	{
+		$this->to_json ("123");
 	}
 }
 ?>

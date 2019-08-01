@@ -213,5 +213,7 @@ class Wallet_tx_dao extends MY_Model {
 		$list = $query -> result();
 		return $list;
 	}
+
+
 }
 ?>
