@@ -128,6 +128,14 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
+			if($message -> text == '下注_超八_40') {
+
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => "下注_超八_40",
+				);
+			}
+
 
 			if($message -> text == '錢包查詢') {
 				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
