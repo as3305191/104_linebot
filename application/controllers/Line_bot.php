@@ -588,33 +588,6 @@ class Line_bot extends MY_Base_Controller {
 				"text" => "$n_res",
 			);
 		}
-
-		// if($message -> text == '下注_超八_40') {
-		// 	$i = array();
-		// 	$i['bet'] = 40;
-		// 	$i['user_id'] = $user -> id;
-		//
-		// 	$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
-		// 	$data = json_decode($n_res);
-		// 	$msg_arr[] = array(
-		// 		"type" => "text",
-		// 		"text" => "$n_res",
-		// 	);
-		//
-		// }
-		//
-		// if($message -> text == '下注_超八_80') {
-		// 	$i = array();
-		// 	$i['bet'] = 80;
-		// 	$i['user_id'] = $user -> id;
-		//
-		// 	$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
-		// 	$data = json_decode($n_res);
-		// 	$msg_arr[] = array(
-		// 		"type" => "text",
-		// 		"text" => "$n_res",
-		// 	);
-		// }
 	}
 
 	private function show_super_8(&$msg_arr, $is_first = FALSE) {
