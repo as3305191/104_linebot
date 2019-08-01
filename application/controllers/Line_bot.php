@@ -165,7 +165,9 @@ class Line_bot extends MY_Base_Controller {
 								"width" => 207,
 								"height" => 202
 							)
-						),
+						)
+					)
+				);
 			}
 
 
