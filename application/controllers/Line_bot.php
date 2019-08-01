@@ -129,7 +129,18 @@ class Line_bot extends MY_Base_Controller {
 
 			}
 
-			if($message -> text == '下注_超八_40') {
+			if(substr($message -> text,0,-2)=="下注_超八" ) {
+				$i = array();
+				$i['user_id'] = $user -> id;
+				if(substr($message -> text,-2)=="08"){
+					$i['bet'] = 8;
+				}
+				if(substr($message -> text,-2)=="40"){
+					$i['bet'] = 40;
+				}
+				if(substr($message -> text,-2)=="80"){
+					$i['bet'] = 80;
+				}
 				$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 				$data = json_decode($n_res);
 				$msg_arr[] = array(
@@ -138,6 +149,35 @@ class Line_bot extends MY_Base_Controller {
 				);
 
 			}
+
+			if($message -> text == '下注_超八_40') {
+				$i = array();
+				$i['bet'] = 40;
+				$i['user_id'] = $user -> id;
+
+				$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+				$data = json_decode($n_res);
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => "$n_res",
+				);
+
+			}
+
+			if($message -> text == '下注_超八_80') {
+				$i = array();
+				$i['bet'] = 80;
+				$i['user_id'] = $user -> id;
+
+				$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+				$data = json_decode($n_res);
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => "$n_res",
+				);
+
+			}
+
 
 
 			if($message -> text == '錢包查詢') {

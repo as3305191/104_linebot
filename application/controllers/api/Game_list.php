@@ -109,6 +109,8 @@ class Game_list extends MY_Base_Controller {
 		$res = array();
 		$temporarily_bet = $this -> get_post('bet');
 		$bet = $temporarily_bet/8;
+		$user_id = $this -> get_post('user_id');
+
 			// 保證只有一組在執行
 			// $key_id = $this -> game_tiger_dao -> get_key_id();
 			// $un_done_list = array();
@@ -552,18 +554,18 @@ class Game_list extends MY_Base_Controller {
 				// $res['overall1']=$overall1;
 				$total=$overall1+$overall;
 				// $res['total']=$total;
-		 		$this -> insert_total_price($bet,$total);
+		 		$this -> insert_total_price($bet,$total,$user_id);
 
 
 			$this -> to_json($res);
 	}
 
-	public function insert_total_price($bet,$total) {
+	public function insert_total_price($bet,$total,$user_id) {
 		$res = array();
 		// $res['success'] = TRUE;
 		$bet_o=$bet*8;
 		$for_q_amt=$total-$bet_o;
-		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt);
+		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id);
 
 		// $this -> to_json($res);
 	}
