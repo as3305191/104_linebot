@@ -642,7 +642,7 @@ class Line_bot extends MY_Base_Controller {
 	private function function_menu(&$msg_arr) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_jpg/share/v1/1"),
+			"baseUrl" => base_url("line_img/line_jpg/share/v2/1"),
 			"altText" => "功能選單",
 			"baseSize" => array(
 				"width" => "1040",
