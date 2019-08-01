@@ -141,7 +141,7 @@ class Line_bot extends MY_Base_Controller {
 
 				$msg_arr[] = array(
 					"type" => "imagemap",
-					"baseUrl" => base_url('img/line_game/game.jpg'),
+					"baseUrl" => "https://fish.17lineplay.com/coc_bot/img/line_game/game.jpg",
 					"altText" => "請點擊下注金額",
 					"baseSize" => array(
 						"width" => "1040",
