@@ -152,32 +152,32 @@ class Line_bot extends MY_Base_Controller {
 							"type" => "message",
 							"text" => "下注_超八_8",
 							"area" => array(
-								"x" => 0,
-								"y" => 0,
+								"x" => 101,
+								"y" => 1235,
 								"width" => 207,
 								"height" => 202
 							)
 						),
-						// array(
-						// 	"type" => "message",
-						// 	"text" => "下注_超八_40",
-						// 	"area" => array(
-						// 		"x" => 430,
-						// 		"y" => 1235,
-						// 		"width" => 207,
-						// 		"height" => 202
-						// 	)
-						// ),
-						// array(
-						// 	"type" => "message",
-						// 	"text" => "下注_超八_80",
-						// 	"area" => array(
-						// 		"x" => 757,
-						// 		"y" => 1235,
-						// 		"width" => 207,
-						// 		"height" => 202
-						// 	)
-						// )
+						array(
+							"type" => "message",
+							"text" => "下注_超八_40",
+							"area" => array(
+								"x" => 430,
+								"y" => 1235,
+								"width" => 207,
+								"height" => 202
+							)
+						),
+						array(
+							"type" => "message",
+							"text" => "下注_超八_80",
+							"area" => array(
+								"x" => 757,
+								"y" => 1235,
+								"width" => 207,
+								"height" => 202
+							)
+						)
 					)
 				);
 			}
