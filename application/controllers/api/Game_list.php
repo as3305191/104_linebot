@@ -19,8 +19,11 @@ class Game_list extends MY_Base_Controller {
 
 		// echo $data;
 		// var_dump($n_res);
-		$this -> to_json($this -> curl -> simple_post("/api/Game_list/ttt", '8'));
-
+		$url = base_url("api/Game_list/ttt");
+		$i['url'] = $url;
+		$val = $this -> curl -> simple_get($url);
+		$i['val'] = $val;
+ 		$this -> to_json($i);
 	}
 
 
