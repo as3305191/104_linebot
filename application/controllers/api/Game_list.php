@@ -164,13 +164,13 @@ class Game_list extends MY_Base_Controller {
 			$line8=0;
 
 			$new_icon_arr =shuffle($icon_arr);
-			$res['newarray']=$icon_arr;
+			$res1['newarray']=$icon_arr;
 
 			$match_arr = array(); // init match array
 			for($i = 0 ; $i < 3 ; $i++) {
 				for($j = 0 ; $j < 3 ; $j++) {
 					for($k = 0 ; $k < 9 ; $k++) {
-						$row1 = array_rand($res['newarray'],2);
+						$row1 = array_rand($res1['newarray'],2);
 					}
 					$match_arr[$i][$j] =$icon_arr[$row1[0]];
 					if($icon_arr[$row1[0]]=="seven_b"){
