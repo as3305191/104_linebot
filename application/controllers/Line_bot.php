@@ -123,23 +123,16 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 
-			if($message -> text == "線上儲值123") {
-				// echo "hi,..";
-
-				$msg_arr[] = array(
-					"type" => MessageType::IMAGE,
-					// "text" => base_url('img/line_game/game.jpg'),
-					"originalContentUrl" => $this->originalContentUrl,
-  				"previewImageUrl": $this->previewImageUrl,
-				);
-			}
-
-			public function __construct($originalContentUrl, $previewImageUrl, QuickReplyBuilder $quickReply = null)
-			{
-					$this->originalContentUrl = $originalContentUrl;
-					$this->previewImageUrl = $previewImageUrl;
-					$this->quickReply = $quickReply;
-			}
+			// if($message -> text == "線上儲值123") {
+			// 	// echo "hi,..";
+			//
+			// 	$msg_arr[] = array(
+			// 		"type" => MessageType::IMAGE,
+			// 		// "text" => base_url('img/line_game/game.jpg'),
+			// 		"originalContentUrl" => "https://fish.17lineplay.com/coc_bot/img/line_game/game.jpg",
+  		// 		// "previewImageUrl":  base_url('img/line_game/game.jpg'),
+			// 	);
+			// }
 
 			if($message -> text == "進入遊戲") {
 				// $line_session = new stdClass;
