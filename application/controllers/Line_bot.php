@@ -128,7 +128,9 @@ class Line_bot extends MY_Base_Controller {
 
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => base_url('img/line_game/game.jpg'),
+					// "text" => base_url('img/line_game/game.jpg'),
+					"originalContentUrl":  base_url('img/line_game/game.jpg'),
+  				// "previewImageUrl":  base_url('img/line_game/game.jpg'),
 				);
 			}
 
