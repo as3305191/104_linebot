@@ -61,6 +61,7 @@ class Line_bot extends MY_Base_Controller {
 			return;
 		}
 
+
 		if($message -> type == "text") {
 			$msg_arr = array();
 
@@ -69,6 +70,7 @@ class Line_bot extends MY_Base_Controller {
 					$this -> do_session_action($msg_arr, $message, $line_session, $user, $evt);
 					return;
 			}
+
 
 			if($message -> text == 'COC幣發送') {
 				$msg_arr[] = array(
@@ -120,7 +122,9 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
+
 			if($message -> text == "線上儲值123") {
+				// echo "hi,..";
 
 				$msg_arr[] = array(
 					"type" => "text",
