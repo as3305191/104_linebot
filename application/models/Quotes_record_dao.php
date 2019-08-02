@@ -77,16 +77,24 @@ class Quotes_record_dao extends MY_Model {
 		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
 		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
+		$this -> load -> model('Play_game_dao', 'play_game_dao');
 
 		$get_current_point=$this -> q_r_dao -> get_current_point();
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
 
+		$tx_11 = array();
+		$tx_11['user_id'] = $user_id;
+		$tx_11['bet'] = $bet_o;
+		$tx_11['total'] = $total;
+		$last_id=	$this -> q_r_dao -> insert($tx_11);
+
+
 		$tx_1 = array();
 		$tx_1['tx_type'] = "play_game";
-		$tx_1['tx_id'] = 0;
+		$tx_1['tx_id'] = $last_id;
 		$tx_1['point_change'] = $for_q_amt;
 		$tx_1['current_point'] = floatval($get_current_point->current_point)+floatval($for_q_amt);
-		$last_id=	$this -> q_r_dao -> insert($tx_1);
+		$this -> q_r_dao -> insert($tx_1);
 
 		$tx1 = array();
 		$tx1['corp_id'] = 1;
@@ -94,7 +102,7 @@ class Quotes_record_dao extends MY_Model {
 		// $tx1['user_id'] = "xxx";
 
 		$tx1['amt'] = -$bet_o;
-		$tx1['tx_type'] = "quotes_record";
+		$tx1['tx_type'] = "play_game";
 		$tx1['tx_id'] = $last_id;
 		$tx1['brief'] = "會員 {$user_id}下注遊戲扣點 {$bet_o} ";
 
@@ -107,7 +115,7 @@ class Quotes_record_dao extends MY_Model {
 		// $tx['user_id'] = "xxx";
 
 		$tx['amt'] = $total;
-		$tx['tx_type'] = "quotes_record";
+		$tx['tx_type'] = "play_game";
 		$tx['tx_id'] = $last_id;
 		$tx['brief'] = "會員 {$user_id} 遊戲贏得 {$total} ";
 		// $tx['brief'] = "會員 xxx 遊戲贏得 {$total} ";

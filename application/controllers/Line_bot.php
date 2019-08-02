@@ -613,8 +613,6 @@ class Line_bot extends MY_Base_Controller {
 						"text" => "$n_res",);
 				}
 			}
-
-
 		}
 	}
 
