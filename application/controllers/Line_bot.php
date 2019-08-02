@@ -572,10 +572,12 @@ class Line_bot extends MY_Base_Controller {
 				if($user_point<8){
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "您的貨幣不到4,如果想取消請輸入881取消此功能",
+						"text" => "您的貨幣不到8,如果想取消請輸入881取消此功能",
 					);
 				}else{
 					$i['bet'] = 8;
+					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+
 				}
 			}
 			if(mb_substr($message -> text,-2)=="40"){
@@ -586,6 +588,8 @@ class Line_bot extends MY_Base_Controller {
 					);
 				}else{
 					$i['bet'] = 40;
+					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+
 				}
 			}
 			if(mb_substr($message -> text,-2)=="80"){
@@ -596,9 +600,10 @@ class Line_bot extends MY_Base_Controller {
 					);
 				}else{
 					$i['bet'] = 80;
+					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+
 				}
 			}
-			$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 			$data = json_decode($n_res);
 			$msg_arr[] = array(
 				"type" => "text",
