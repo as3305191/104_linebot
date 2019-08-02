@@ -16,11 +16,7 @@ class Game_list extends MY_Base_Controller {
 		$i['bet'] = 8;
 		$i['user_id'] = 524;
 
-		// $n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
-		// $data = json_decode($n_res);
 
-		// echo $data;
-		// var_dump($n_res);
 		$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 		$data = json_decode($n_res);
  		$this -> to_json($n_res);
