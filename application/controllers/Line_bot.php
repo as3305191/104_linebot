@@ -581,13 +581,13 @@ class Line_bot extends MY_Base_Controller {
 					$list =  $data -> list;
 					foreach($list as $each) {
 						foreach($each as $a_el) {
-
+							$msg_arr[] = array(
+								"type" => "text",
+								"text" => $a_el,
+							);
 						}
 					}
-					$msg_arr[] = array(
-						"type" => "text",
-						"text" => $list,
-					);
+				
 				}
 			}
 			if(mb_substr($message -> text,-2)=="40"){
