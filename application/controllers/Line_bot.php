@@ -579,14 +579,15 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$list =  $data -> list;
-
+					foreach($list as $each) {
+						foreach($each as $a_el) {
+						}
+					}
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" =>foreach($list as $each) {
-							foreach($each as $a_el) {
-								$a_el;
-							}
-						},
+						"text" => "$a_el[0],$a_el[1],$a_el[2],\n
+												$a_el[3],$a_el[4],$a_el[5],\n
+												$a_el[6],$a_el[7],$a_el[8]"
 					);
 
 				}
