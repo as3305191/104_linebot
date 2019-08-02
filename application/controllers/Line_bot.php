@@ -580,7 +580,7 @@ class Line_bot extends MY_Base_Controller {
 					$data = json_decode($n_res);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => $n_res[0]['list'],
+						"text" => $data[0],
 					);
 				}
 			}
