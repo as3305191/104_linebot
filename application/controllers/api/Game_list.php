@@ -13,17 +13,17 @@ class Game_list extends MY_Base_Controller {
 
 	public function testtest() {
 		$i = array();
-		$i['bet'] = $this -> get_post('bet');
+		$i['bet'] = 8;
+		$i['user_id'] = 524;
+
 		// $n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 		// $data = json_decode($n_res);
 
 		// echo $data;
 		// var_dump($n_res);
-		$url = base_url("api/Game_list/ttt");
-		$i['url'] = $url;
-		$val = $this -> curl -> simple_get($url);
-		$i['val'] = $val;
- 		$this -> to_json($i);
+		$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+		$data = json_decode($n_res);
+ 		$this -> to_json($n_res);
 	}
 
 
