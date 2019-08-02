@@ -414,7 +414,7 @@ class Line_bot extends MY_Base_Controller {
 								if(!empty($dq)){
 									$u_data['last_price'] = floatval($sntd)/floatval($samt1);
 									$u_data['now_price'] = floatval($sntd)/floatval($samt1);
-									$this -> d_q_dao -> update_by($u_data,id,$dq->id);
+									$this -> d_q_dao -> update_by($u_data,'id',$dq->id);
 
 								} else{
 									$this -> d_q_dao -> insert($dtx);
@@ -567,14 +567,36 @@ class Line_bot extends MY_Base_Controller {
 		if(mb_substr($message -> text,0,5)=="下注_超八" ) {
 			$i = array();
 			$i['user_id'] = $user -> id;
+			$user_point=  $this -> wtx_dao -> get_sum_amt($user -> id);
 			if(mb_substr($message -> text,-1) == "8"){
-				$i['bet'] = 8;
+				if($user_point<8){
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "您的貨幣不到4,如果想取消請輸入881取消此功能",
+					);
+				}else{
+					$i['bet'] = 8;
+				}
 			}
 			if(mb_substr($message -> text,-2)=="40"){
-				$i['bet'] = 40;
+				if($user_point<40){
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "您的貨幣不到40,如果想取消請輸入881取消此功能",
+					);
+				}else{
+					$i['bet'] = 40;
+				}
 			}
 			if(mb_substr($message -> text,-2)=="80"){
-				$i['bet'] = 80;
+				if($user_point<80){
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "您的貨幣不到80,如果想取消請輸入881取消此功能",
+					);
+				}else{
+					$i['bet'] = 80;
+				}
 			}
 			$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 			$data = json_decode($n_res);

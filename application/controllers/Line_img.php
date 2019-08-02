@@ -603,4 +603,37 @@ class Line_img extends MY_Base_Controller {
 		$digits = 6;
 		return rand(pow(10, $digits - 1), pow(10, $digits) - 1);
 	}
+
+	public function imagettftext() {
+
+		$im = HOME_DIR . "img/line688/line/tiger_back.jpg";
+		header("Content-Disposition: attachment; ");
+		header("Content-type: image/jpeg");
+		header("Content-Length: " . filesize($im));
+		$font = HOME_DIR . "img/line688/line/R7.png";
+		$text = 'Testing...';
+		$jpg_image = imagecreatefromjpeg($im);
+		$black = imagecolorallocate($jpg_image, 0, 0, 0);
+		$white = imagecolorallocate($jpg_image, 255, 255, 255);
+		$red   = imagecolorallocate($jpg_image, 255,   0,   0);
+		$green = imagecolorallocate($jpg_image,   0, 255,   0);
+		$blue  = imagecolorallocate($jpg_image,   0,   0, 255);
+		$yellow  = imagecolorallocate($jpg_image,   255,   255, 0);
+
+		imagettftext($jpg_image, 82, 177, 300, 270,$white,$font);
+
+
+		ob_clean();
+		flush();
+		// Send Image to Browser
+		imagejpeg($jpg_image);
+		// Clear Memory
+		imagedestroy($jpg_image);
+
+		exit ;
+		show_404();
+	}
+
+
+
 }
