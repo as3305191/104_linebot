@@ -580,7 +580,7 @@ class Line_bot extends MY_Base_Controller {
 					$data = json_decode($n_res);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "$n_res",
+						"text" => "$n_res",);
 				}
 			}
 			if(mb_substr($message -> text,-2)=="40"){
@@ -595,7 +595,7 @@ class Line_bot extends MY_Base_Controller {
 					$data = json_decode($n_res);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "$n_res",
+						"text" => "$n_res",);
 				}
 			}
 			if(mb_substr($message -> text,-2)=="80"){
@@ -610,11 +610,11 @@ class Line_bot extends MY_Base_Controller {
 					$data = json_decode($n_res);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "$n_res",
+						"text" => "$n_res",);
 				}
 			}
 
-			);
+
 		}
 	}
 
