@@ -576,6 +576,11 @@ class Line_bot extends MY_Base_Controller {
 					);
 				}else{
 					$i['bet'] = 8;
+					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+					$data = json_decode($n_res);
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "$n_res",
 				}
 			}
 			if(mb_substr($message -> text,-2)=="40"){
@@ -586,6 +591,11 @@ class Line_bot extends MY_Base_Controller {
 					);
 				}else{
 					$i['bet'] = 40;
+					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+					$data = json_decode($n_res);
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "$n_res",
 				}
 			}
 			if(mb_substr($message -> text,-2)=="80"){
@@ -596,13 +606,14 @@ class Line_bot extends MY_Base_Controller {
 					);
 				}else{
 					$i['bet'] = 80;
+					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
+					$data = json_decode($n_res);
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "$n_res",
 				}
 			}
-			$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
-			$data = json_decode($n_res);
-			$msg_arr[] = array(
-				"type" => "text",
-				"text" => "$n_res",
+
 			);
 		}
 	}
