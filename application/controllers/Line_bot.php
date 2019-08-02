@@ -582,11 +582,11 @@ class Line_bot extends MY_Base_Controller {
 
 					$msg_arr[] = array(
 						"type" => "text",
-						foreach($list as $each) {
+						"text" =>foreach($list as $each) {
 							foreach($each as $a_el) {
-								"text" => $a_el,
+								$a_el;
 							}
-						}
+						},
 					);
 
 				}
