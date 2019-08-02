@@ -85,7 +85,7 @@ class Quotes_record_dao extends MY_Model {
 		$tx_11 = array();
 		$tx_11['user_id'] = $user_id;
 		$tx_11['bet'] = $bet_o;
-		$tx_11['total'] = $total;
+		$tx_11['total_win_point'] = $total;
 		$last_id=	$this -> play_game_dao -> insert($tx_11);
 
 
