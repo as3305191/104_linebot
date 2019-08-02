@@ -607,7 +607,7 @@ class Line_bot extends MY_Base_Controller {
 					}
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => $a_el,
+						"text" => $n_res,
 					);
 				}
 			}
