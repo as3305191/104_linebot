@@ -585,7 +585,7 @@ class Line_bot extends MY_Base_Controller {
 					}
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "$a_el[0],$a_el[1],$a_el[2],\n
+						"text" => "$a_el[0][0],$a_el[1],$a_el[2],\n
 												$a_el[3],$a_el[4],$a_el[5],\n
 												$a_el[6],$a_el[7],$a_el[8]"
 					);
