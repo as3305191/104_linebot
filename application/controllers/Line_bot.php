@@ -435,7 +435,7 @@ class Line_bot extends MY_Base_Controller {
 											$aloc_com['corp_id'] = $item -> corp_id;
 											$aloc_com_amt = floatval($alloc_amt);
 											$aloc_com['amt'] =	$aloc_com_amt;
-											$aloc_com['income_type'] = "向上分配";
+											$aloc_com['income_type'] = "贈禮向上分配";
 											$aloc_com['income_id'] = $last_id;
 											$aloc_com['note'] = "贈禮向上分配分潤 {$aloc_com_amt}";
 											$this -> ctx_dao -> insert($aloc_com);
@@ -451,7 +451,7 @@ class Line_bot extends MY_Base_Controller {
 												$aloc_com['corp_id'] = $item -> corp_id;
 												$aloc_com_amt = floatval($alloc_amt);
 												$aloc_com['amt'] =	$aloc_com_amt;
-												$aloc_com['income_type'] = "向上分配";
+												$aloc_com['income_type'] = "贈禮向上分配";
 												$aloc_com['income_id'] = $last_id;
 												$aloc_com['note'] = "贈禮向上分配分潤 {$aloc_com_amt}";
 												$this -> ctx_dao -> insert($aloc_com);
