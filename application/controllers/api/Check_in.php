@@ -183,7 +183,7 @@ class Check_in extends MY_Base_Controller {
 			$is_login = $this-> fish_lr_dao -> find_login($user_id,$getDate);
 			if(!empty($is_login)){
 				if(!empty($receive)&&$is_login->is_receive==0){
-					$this-> fish_lr_dao -> update_by($u_data,id,$is_login->id);
+					$this-> fish_lr_dao -> update_by($u_data,'id',$is_login->id);
 					$tx = array();
 					$tx['corp_id'] = $payload["corp_id"]; // corp id
 					$tx['user_id'] = $user_id;
@@ -355,7 +355,7 @@ class Check_in extends MY_Base_Controller {
 					if($find_online->online_seconds>=10*60)	{
 						$tx['amt'] = 10000;
 						$tx1['amt'] = -10000;
-						$this-> fish_online -> update_by(array("is_receive_10"=>1),id,$find_online->id);
+						$this-> fish_online -> update_by(array("is_receive_10"=>1),'id',$find_online->id);
 						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message10'] = "領取成功";
@@ -369,7 +369,7 @@ class Check_in extends MY_Base_Controller {
 					if($find_online->online_seconds>=30*60)	{
 						$tx['amt'] = 20000;
 						$tx1['amt'] = -20000;
-						$this-> fish_online -> update_by(array("is_receive_30"=>1),id,$find_online->id);
+						$this-> fish_online -> update_by(array("is_receive_30"=>1),'id',$find_online->id);
 						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message30'] = "領取成功";
@@ -382,7 +382,7 @@ class Check_in extends MY_Base_Controller {
 					if($find_online->online_seconds>=60*60)	{
 						$tx['amt'] = 30000;
 						$tx1['amt'] = -30000;
-						$this-> fish_online -> update_by(array("is_receive_60"=>1),id,$find_online->id);
+						$this-> fish_online -> update_by(array("is_receive_60"=>1),'id',$find_online->id);
 						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message60'] = "領取成功";
@@ -395,7 +395,7 @@ class Check_in extends MY_Base_Controller {
 					if($find_online->online_seconds>=90*60)	{
 						$tx['amt'] = 40000;
 						$tx1['amt'] = -40000;
-						$this-> fish_online -> update_by(array("is_receive_90"=>1),id,$find_online->id);
+						$this-> fish_online -> update_by(array("is_receive_90"=>1),'id',$find_online->id);
 						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message90'] = "領取成功";
@@ -407,7 +407,7 @@ class Check_in extends MY_Base_Controller {
 					if($find_online->online_seconds>=120*60)	{
 						$tx['amt'] = 50000;
 						$tx1['amt'] = -50000;
-						$this-> fish_online -> update_by(array("is_receive_120"=>1),id,$find_online->id);
+						$this-> fish_online -> update_by(array("is_receive_120"=>1),'id',$find_online->id);
 						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message120'] = "領取成功";
@@ -417,7 +417,7 @@ class Check_in extends MY_Base_Controller {
 			if(!empty($receive_180)){
 				if($find_online->is_receive_180==0){
 					if($find_online->online_seconds>=180*60)	{
-						$this-> fish_online -> update_by(array("is_receive_180"=>1),id,$find_online->id);
+						$this-> fish_online -> update_by(array("is_receive_180"=>1),'id',$find_online->id);
 						$idata_1['user_id']=$user_id;
 						$idata_1['product_id']=23;
 						$this -> products_items_dao -> insert($idata_1);
@@ -465,7 +465,7 @@ class Check_in extends MY_Base_Controller {
 				if($find_day_mission->is_fb==0){
 						$tx['amt'] = 20000;
 						$tx1['amt'] = -20000;
-						$this-> fish_d_t_dao -> update_by(array("is_fb"=>1),id,$find_day_mission->id);
+						$this-> fish_d_t_dao -> update_by(array("is_fb"=>1),'id',$find_day_mission->id);
 						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message_fb'] = "領取成功";
@@ -475,7 +475,7 @@ class Check_in extends MY_Base_Controller {
 				if($find_day_mission->is_20fish==0){
 						$tx['amt'] = 10000;
 						$tx1['amt'] = -10000;
-						$this-> fish_d_t_dao -> update_by(array("is_20fish"=>1),id,$find_day_mission->id);
+						$this-> fish_d_t_dao -> update_by(array("is_20fish"=>1),'id',$find_day_mission->id);
 						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message_20fish'] = "領取成功";
@@ -485,7 +485,7 @@ class Check_in extends MY_Base_Controller {
 				if($find_day_mission->is_strengthen==0){
 						$tx['amt'] = 20000;
 						$tx1['amt'] = -20000;
-						$this-> fish_d_t_dao -> update_by(array("is_strengthen"=>1),id,$find_day_mission->id);
+						$this-> fish_d_t_dao -> update_by(array("is_strengthen"=>1),'id',$find_day_mission->id);
 						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message_strengthen'] = "領取成功";
@@ -495,8 +495,8 @@ class Check_in extends MY_Base_Controller {
 				if($find_day_mission->is_lottery==0){
 						$tx['amt'] = 20000;
 						$tx1['amt'] = -20000;
-						$this-> fish_d_t_dao -> update_by(array("is_lottery"=>1),id,$find_day_mission->id);
-						$this -> wtx_dao -> insert($tx);
+						$this-> fish_d_t_dao -> update_by(array("is_lottery"=>1),'id',$find_day_mission->id);
+						$thi$s -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message_lottery'] = "領取成功";
 				}
@@ -505,7 +505,7 @@ class Check_in extends MY_Base_Controller {
 				if($find_day_mission->is_chat==0){
 						$tx['amt'] = 10000;
 						$tx1['amt'] = -10000;
-						$this-> fish_d_t_dao -> update_by(array("is_chat"=>1),id,$find_day_mission->id);
+						$this-> fish_d_t_dao -> update_by(array("is_chat"=>1),'id',$find_day_mission->id);
 						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message_chat'] = "領取成功";
@@ -513,7 +513,7 @@ class Check_in extends MY_Base_Controller {
 			}
 			if(!empty($is_fish_king)){
 				if($find_online->is_fish_king==0){
-					$this-> fish_d_t_dao -> update_by(array("is_fish_king"=>1),id,$find_day_mission->id);
+					$this-> fish_d_t_dao -> update_by(array("is_fish_king"=>1),'id',$find_day_mission->id);
 					$idata_1['user_id']=$user_id;
 					$idata_1['product_id']=13;
 					$idata_2['user_id']=$user_id;
