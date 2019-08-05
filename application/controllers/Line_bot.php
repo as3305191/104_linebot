@@ -326,6 +326,7 @@ class Line_bot extends MY_Base_Controller {
 						);
 					} else {
 						$out_user = $this -> users_dao -> find_by_id($user -> id);
+						$promo_user = $out_user; // for 向上分配
 						$in_user = $this -> users_dao -> find_by("gift_id", $line_session -> gift_id);
 
 						if(!empty($in_user)) {
@@ -393,6 +394,7 @@ class Line_bot extends MY_Base_Controller {
 								$ctx['current_ntd'] =0;
 								$this -> q_r_dao -> insert($ctx);
 
+								// 公司分潤
 								$tx1 = array();
 								$tx1['corp_id'] = $item -> corp_id;
 								$amt1=floatval($ope_amt)/4.0;
@@ -401,6 +403,65 @@ class Line_bot extends MY_Base_Controller {
 								$tx1['income_id'] = $last_id;
 								$tx1['note'] = "贈禮公司分潤 {$amt1}";
 								$this -> ctx_dao -> insert($tx1);
+
+								// 向上分配
+								$promo_user_id = 0;
+								$alloc_amt = floatval($ope_amt) / 4.0;
+
+								do {
+									// code...
+									if(!empty($promo_user)){
+
+										// 分配推薦人
+										$promo_user_id = $promo_user -> promo_user_id;
+										$aloc = array();
+										$aloc['corp_id'] = $item -> corp_id;
+										$aloc_amt = floatval($alloc_amt) *0.2;
+										$aloc['amt'] =	$aloc_amt;
+										$aloc['income_type'] = "贈禮向上分配";
+										$aloc['income_id'] = $last_id;
+										$aloc['note'] = "贈禮向上分配分潤 {$aloc_amt}";
+										$aloc_id = $this -> ctx_dao -> insert($aloc);
+										$m_ctx = $this -> ctx_dao -> find_by_id($aloc_id);
+
+										// 計算最後剩餘金額
+										$residual_amt = $alloc_amt - $m_ctx -> amt;
+
+										if($m_ctx -> amt == 0){
+											$promo_user_id = 0;
+
+											$aloc_com = array();
+											$aloc_com['corp_id'] = $item -> corp_id;
+											$aloc_com_amt = floatval($alloc_amt);
+											$aloc_com['amt'] =	$aloc_com_amt;
+											$aloc_com['income_type'] = "向上分配";
+											$aloc_com['income_id'] = $last_id;
+											$aloc_com['note'] = "贈禮向上分配分潤 {$aloc_com_amt}";
+											$this -> ctx_dao -> insert($aloc_com);
+
+										}else {
+											$alloc_amt = $residual_amt;
+											// 搜尋上一層推薦人
+											$promo_user = $this -> users_dao -> find_by_id($promo_user_id);
+											$promo_user_id = $promo_user -> promo_user_id;
+										}
+
+									}else{
+										$promo_user_id = 0;
+
+										// 向上分配給公司
+										$aloc_com = array();
+										$aloc_com['corp_id'] = $item -> corp_id;
+										$aloc_com_amt = floatval($alloc_amt);
+										$aloc_com['amt'] =	$aloc_com_amt;
+										$aloc_com['income_type'] = "向上分配";
+										$aloc_com['income_id'] = $last_id;
+										$aloc_com['note'] = "贈禮向上分配分潤 {$aloc_com_amt}";
+										$this -> ctx_dao -> insert($aloc_com);
+
+									}
+								} while ($promo_user_id > 0);
+
 
 								$Date = date("Y-m-d");
 								$samt1 =  $this -> wtx_dao -> get_sum_amt_all($last_id);
@@ -427,6 +488,7 @@ class Line_bot extends MY_Base_Controller {
 									"text" => "從 $out_user->nick_name 接受贈禮 {$item->amt}"
 								);
 								$res = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
+
 
 
 
