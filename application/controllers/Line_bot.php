@@ -326,7 +326,7 @@ class Line_bot extends MY_Base_Controller {
 						);
 					} else {
 						$out_user = $this -> users_dao -> find_by_id($user -> id);
-						$promo_user = $out_user; // for 向上分配
+						$promo_user = $this -> users_dao -> find_by_id($user -> id); // for 向上分配
 						$in_user = $this -> users_dao -> find_by("gift_id", $line_session -> gift_id);
 
 						if(!empty($in_user)) {
@@ -418,9 +418,9 @@ class Line_bot extends MY_Base_Controller {
 										$aloc['corp_id'] = $item -> corp_id;
 										$aloc_amt = floatval($alloc_amt) *0.2;
 										$aloc['amt'] =	$aloc_amt;
-										$aloc['income_type'] = "贈禮向上分配";
-										$aloc['income_id'] = $last_id;
-										$aloc['note'] = "贈禮向上分配分潤 {$aloc_amt}";
+										$aloc['tx_type'] = "贈禮向上分配";
+										$aloc['tx_id'] = $last_id;
+										$aloc['brief'] = "贈禮向上分配分潤 {$aloc_amt}";
 										$aloc_id = $this -> wtx_dao -> insert($aloc);
 										$m_ctx = $this -> wtx_dao -> find_by_id($aloc_id);
 
