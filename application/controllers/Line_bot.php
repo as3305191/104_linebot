@@ -421,8 +421,8 @@ class Line_bot extends MY_Base_Controller {
 										$aloc['income_type'] = "贈禮向上分配";
 										$aloc['income_id'] = $last_id;
 										$aloc['note'] = "贈禮向上分配分潤 {$aloc_amt}";
-										$aloc_id = $this -> ctx_dao -> insert($aloc);
-										$m_ctx = $this -> ctx_dao -> find_by_id($aloc_id);
+										$aloc_id = $this -> wtx_dao -> insert($aloc);
+										$m_ctx = $this -> wtx_dao -> find_by_id($aloc_id);
 
 										// 計算最後剩餘金額
 										$residual_amt = $alloc_amt - $m_ctx -> amt;
