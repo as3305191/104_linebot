@@ -419,6 +419,7 @@ class Line_bot extends MY_Base_Controller {
 										$aloc_amt = floatval($alloc_amt) *0.2;
 										$aloc['amt'] =	$aloc_amt;
 										$aloc['tx_type'] = "贈禮向上分配";
+										$aloc['user_id'] = $promo_user_id;
 										$aloc['tx_id'] = $last_id;
 										$aloc['brief'] = "贈禮向上分配分潤 {$aloc_amt}";
 										$aloc_id = $this -> wtx_dao -> insert($aloc);
