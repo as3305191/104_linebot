@@ -170,7 +170,7 @@ class Line_bot extends MY_Base_Controller {
 				if(count($list) > 0){
 					$cArray= array('近期分潤紀錄');
 					foreach ($list as $each) {
-						$value = $each->ope_amt.-. $each->create_time;
+						$value = $each->ope_amt.'-'.$each->create_time;
 						array_push($cArray,$value);
 					}
 					$showContet = implode("\n",$cArray);
