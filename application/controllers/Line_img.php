@@ -613,7 +613,7 @@ class Line_img extends MY_Base_Controller {
 		$im = HOME_DIR . "img/line688/line/0802.jpg";
 		header("Content-Disposition: attachment; ");
 		header("Content-type: image/jpeg");
-		// header("Content-Length: " . filesize($im));
+		// header("Content-Length: " . filesize($im)); // 不要加這行
 		$jpg_image = imagecreatefromjpeg($im);
 		$font = HOME_DIR . "img/line688/font/wt006.ttf";
 
@@ -691,16 +691,15 @@ class Line_img extends MY_Base_Controller {
 		// // $imageData_22 = imagescale($imageData_22, 238,254);
 		// // imagecopy($jpg_image, $imageData_22, 725, 1000, 0, 0, 238, 238);
 		//
-		// ob_clean();
-		// flush();
-
+		ob_clean();
+		flush();
 		// Send Image to Browser
 		imagejpeg($jpg_image);
 		// Clear Memory
-		// imagedestroy($jpg_image);
+		imagedestroy($jpg_image);
 
-		// exit;
-		// show_404();
+		exit ;
+		show_404();
 	}
 
 
