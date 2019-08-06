@@ -169,12 +169,15 @@ class Line_bot extends MY_Base_Controller {
 
 				$cArray= array();
 				foreach ($list as $each) {
-					$value = $each['ope_amt'] .$each['create_time']; 
-
+					$value = $each['ope_amt'] .$each['create_time'];
+					array_push($value);
 				}
+
+				$show = implode("\n",$cArray);
+
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "您的餘額： {$sum_amt}\n您的贈禮ID為: $gift_id\n您的錢包地址為: {$users->wallet_code}",
+					"text" => $show ,
 				);
 			}
 
@@ -678,21 +681,11 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$list =  $data -> list;
-					// $img_00=$this -> get_line_img($list[0][0]);
-					// $img_01=$this -> get_line_img($list[0][1]);
-					// $img_02=$this -> get_line_img($list[0][2]);
-					// $img_10=$this -> get_line_img($list[1][0]);
-					// $img_11=$this -> get_line_img($list[1][1]);
-					// $img_12=$this -> get_line_img($list[1][2]);
-					// $img_20=$this -> get_line_img($list[2][0]);
-					// $img_21=$this -> get_line_img($list[2][1]);
-					// $img_22=$this -> get_line_img($list[2][2]);
 
-					// $msg_arr[] = array(
-					// 	"type" => "image",
-					// 	"originalContentUrl" =>"$img_00"
-					//
-					// );
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" =>$list[0][0],
+					);
 					$msg_arr[] = array(
 						"type" => "text",
 						"text" => "$n_res",
@@ -847,47 +840,7 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
-	private function get_line_img($winning_item) {
-		$img = 0;
 
-		if($winning_item=="seven_b"){
-			$img=base_url("line_img/line_png/seven_b/v1/1"),
-		}
-		if($winning_item=="seven_r"){
-			$img=base_url("line_img/line_png/seven_r/v1/1"),
-
-		}
-		if($winning_item=="bar"){
-			$img=base_url("line_img/line_png/bar/v1/1"),
-
-		}
-		if($winning_item=="medal"){
-			$img=base_url("line_img/line_png/medal/v1/1"),
-
-		}
-		if($winning_item=="bell"){
-			$img=base_url("line_img/line_png/bell/v1/1"),
-
-		}
-		if($winning_item=="watermelon"){
-			$img=base_url("line_img/line_png/watermelon/v1/1"),
-
-		}
-		if($winning_item=="grape"){
-			$img=base_url("line_img/line_png/grape/v1/1"),
-
-		}
-		if($winning_item=="orange"){
-			$img=base_url("line_img/line_png/orange/v1/1"),
-
-		}
-		if($winning_item=="cherry"){
-			$img=base_url("line_img/line_png/cherry/v1/1"),
-
-		}
-		return $img;
-
-	}
 
 	private function function_menu(&$msg_arr) {
 		$msg_arr[] = array(
