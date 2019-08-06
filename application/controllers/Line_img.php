@@ -699,7 +699,7 @@ class Line_img extends MY_Base_Controller {
 		// Clear Memory
 		imagedestroy($jpg_image);
 
-		exit;
+		// exit;
 		// show_404();
 	}
 
