@@ -658,7 +658,7 @@ class Line_img extends MY_Base_Controller {
 
 		$imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
 		$imageData_00 = imagescale($imageData_00, 238,254);
-		imagecopy($jpg_image, $imageData_00, 81, 366, 0, 0, 238, 238);
+		imagecopy($jpg_image, $imageData_00, 81, 366, 0, 0, 238, 254);
 		//
 		// $imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
 		// $imageData_01 = imagescale($imageData_01, 238,254);
