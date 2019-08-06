@@ -697,7 +697,6 @@ class Line_bot extends MY_Base_Controller {
 					// $this -> show_super_8_not_first($id);
 					$this -> show_super_8_second($msg_arr,$id, TRUE);
 
-
 				}
 			}
 			if(mb_substr($message -> text,-2)=="40"){
@@ -711,13 +710,11 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$id=$data->last_id;
-					$msg_arr[] = array(
-						"type" => "text",
-						"text" => "",
-					);
-					// $this -> show_super_8_not_first($id);
-					$this -> show_super_8_second($msg_arr,$id,TRUE);
-
+					// $msg_arr[] = array(
+					// 	"type" => "text",
+					// 	"text" => "$id",
+					// );
+					$this -> show_super_8_second($msg_arr,$id, TRUE);
 				}
 			}
 			if(mb_substr($message -> text,-2)=="80"){
@@ -731,10 +728,10 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$id=$data->last_id;
-					$msg_arr[] = array(
-						"type" => "text",
-						"text" => "$id",
-					);
+					// $msg_arr[] = array(
+					// 	"type" => "text",
+					// 	"text" => "$id",
+					// );
 					$this -> show_super_8_second($msg_arr,$id, TRUE);
 
 				}
