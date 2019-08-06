@@ -689,30 +689,28 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$list =  $data -> list;
-					$img_00=$list[0][0];
-					$img_01=$list[0][1];
-					$img_02=$list[0][2];
-					$img_10=$list[1][0];
-					$img_11=$list[1][1];
-					$img_12=$list[1][2];
-					$img_20=$list[2][0];
-					$img_21=$list[2][1];
-					$img_22=$list[2][2];
+					$img['_00']=$list[0][0];
+					$img['_01']=$list[0][1];
+					$img['_02']=$list[0][2];
+					$img['_10']=$list[1][0];
+					$img['_11']=$list[1][1];
+					$img['_12']=$list[1][2];
+					$img['_20']=$list[2][0];
+					$img['_21']=$list[2][1];
+					$img['_22']=$list[2][2];
+					$new_picture = $this -> curl -> simple_post("/line_img/imagettftext", $img);
 
 					$msg_arr[] = array(
 						"type" => "image",
-						"originalContentUrl" => base_url("img/line688/line/{$img_00}.png"),
-						"previewImageUrl" =>  base_url("img/line688/line/{$img_00}.png"),
-						"type" => "image",
-						"originalContentUrl" => base_url("img/line688/line/{$img_01}.png"),
-						"previewImageUrl" =>  base_url("img/line688/line/{$img_01}.png"),
+						"originalContentUrl" => $new_picture,
+						"previewImageUrl" =>  $new_picture,
 					);
 
 					$msg_arr[] = array(
 						"type" => "text",
 						"text" => "$n_res",
 					);
-					$this -> show_super_8_not_first($msg_arr);
+					// $this -> show_super_8_not_first($msg_arr);
 
 				}
 			}
