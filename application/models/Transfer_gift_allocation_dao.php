@@ -5,7 +5,7 @@ class Transfer_gift_allocation_dao extends MY_Model {
 		parent::__construct();
 
 		// initialize table name
-		parent::set_table_name('Transfer_gift_allocation');
+		parent::set_table_name('transfer_gift_allocation');
 
 		$this -> alias_map = array(
 
