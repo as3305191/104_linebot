@@ -648,8 +648,8 @@ class Line_img extends MY_Base_Controller {
 
 		// $pic_00 = HOME_DIR . "img/line688/line/bell.png";
 		// $pic_01 = HOME_DIR . "img/line688/line/bell.png";
-		// // $pic_02 = HOME_DIR . "img/line688/line/bell.png";
-		// // $pic_10 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_02 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_10 = HOME_DIR . "img/line688/line/bell.png";
 		// // $pic_11 = HOME_DIR . "img/line688/line/bell.png";
 		// // $pic_12 = HOME_DIR . "img/line688/line/bell.png";
 		// // $pic_20 = HOME_DIR . "img/line688/line/bell.png";
