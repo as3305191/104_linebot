@@ -646,18 +646,18 @@ class Line_img extends MY_Base_Controller {
 		imagettftext($jpg_image, 40, 0, 220, 260, $white, $font, $bet_id);
 		imagettftext($jpg_image, 40, 0, 275, 1375, $white, $font, $total_win_point);
 
-		// $pic_00 = HOME_DIR . "img/line688/line/bell.png";
-		// $pic_01 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_00 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_01 = HOME_DIR . "img/line688/line/bell.png";
 		$pic_02 = HOME_DIR . "img/line688/line/bell.png";
 		$pic_10 = HOME_DIR . "img/line688/line/bell.png";
-		// // $pic_11 = HOME_DIR . "img/line688/line/bell.png";
-		// // $pic_12 = HOME_DIR . "img/line688/line/bell.png";
-		// // $pic_20 = HOME_DIR . "img/line688/line/bell.png";
-		// // $pic_21 = HOME_DIR . "img/line688/line/bell.png";
-		// // $pic_22 = HOME_DIR . "img/line688/line/bell.png";
-		// $imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
-		// $imageData_00 = imagescale($imageData_00, 238,254);
-		// imagecopy($jpg_image, $imageData_00, 79, 366, 0, 0, 238, 254);
+		$pic_11 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_12 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_20 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_21 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_22 = HOME_DIR . "img/line688/line/bell.png";
+		$imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
+		$imageData_00 = imagescale($imageData_00, 238,254);
+		imagecopy($jpg_image, $imageData_00, 79, 366, 0, 0, 238, 254);
 		//
 		// $imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
 		// $imageData_01 = imagescale($imageData_01, 238,254);
