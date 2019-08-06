@@ -793,9 +793,10 @@ class Line_bot extends MY_Base_Controller {
 		);
 	}
 	private function show_super_8_not_first($id) {
+		$last_id=$id;
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_result/{$id}/v1/1"),
+			"baseUrl" => base_url("line_img/line_result/{$last_id}/v1/1"),
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
@@ -804,7 +805,7 @@ class Line_bot extends MY_Base_Controller {
 			"actions" => array(
 				array(
 					"type" => "message",
-					"text" => "881",
+					"text" => "$last_id",
 					"area" => array(
 						"x" => 70,
 						"y" => 54,
