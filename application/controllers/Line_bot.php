@@ -813,57 +813,59 @@ class Line_bot extends MY_Base_Controller {
 		header('Content-Type: image/png');
 		$image = imagejpeg($im);
 
-		$msg_arr[] = array(
-			"type" => "imagemap",
-			"baseUrl" => base_url($image),
-			"altText" => "下注金額",
-			"baseSize" => array(
-				"width" => "1040",
-				"height" => "1500"
-			),
-			"actions" => array(
-				array(
-					"type" => "message",
-					"text" => "遊戲說明",
-					"area" => array(
-						"x" => 90,
-						"y" => 845,
-						"width" => 880,
-						"height" => 202
-					)
-				),
-				array(
-					"type" => "message",
-					"text" => "下注_超八_8",
-					"area" => array(
-						"x" => 90,
-						"y" => 1234,
-						"width" => 208,
-						"height" => 202
-					)
-				),
-				array(
-					"type" => "message",
-					"text" => "下注_超八_40",
-					"area" => array(
-						"x" => 425,
-						"y" => 1234,
-						"width" => 208,
-						"height" => 202
-					)
-				),
-				array(
-					"type" => "message",
-					"text" => "下注_超八_80",
-					"area" => array(
-						"x" => 758,
-						"y" => 1234,
-						"width" => 208,
-						"height" => 202
-					)
-				),
-			)
-		);
+		echo $image;
+
+		// $msg_arr[] = array(
+		// 	"type" => "imagemap",
+		// 	"baseUrl" => base_url($image),
+		// 	"altText" => "下注金額",
+		// 	"baseSize" => array(
+		// 		"width" => "1040",
+		// 		"height" => "1500"
+		// 	),
+		// 	"actions" => array(
+		// 		array(
+		// 			"type" => "message",
+		// 			"text" => "遊戲說明",
+		// 			"area" => array(
+		// 				"x" => 90,
+		// 				"y" => 845,
+		// 				"width" => 880,
+		// 				"height" => 202
+		// 			)
+		// 		),
+		// 		array(
+		// 			"type" => "message",
+		// 			"text" => "下注_超八_8",
+		// 			"area" => array(
+		// 				"x" => 90,
+		// 				"y" => 1234,
+		// 				"width" => 208,
+		// 				"height" => 202
+		// 			)
+		// 		),
+		// 		array(
+		// 			"type" => "message",
+		// 			"text" => "下注_超八_40",
+		// 			"area" => array(
+		// 				"x" => 425,
+		// 				"y" => 1234,
+		// 				"width" => 208,
+		// 				"height" => 202
+		// 			)
+		// 		),
+		// 		array(
+		// 			"type" => "message",
+		// 			"text" => "下注_超八_80",
+		// 			"area" => array(
+		// 				"x" => 758,
+		// 				"y" => 1234,
+		// 				"width" => 208,
+		// 				"height" => 202
+		// 			)
+		// 		),
+		// 	)
+		// );
 	}
 
 	// private function get_line_img($winning_item) {
