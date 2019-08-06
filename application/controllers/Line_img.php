@@ -684,6 +684,7 @@ class Line_img extends MY_Base_Controller {
 		imagedestroy($jpg_image);
 
 		exit ;
+		return $jpg_image;
 		show_404();
 	}
 
