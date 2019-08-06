@@ -606,12 +606,13 @@ class Line_img extends MY_Base_Controller {
 
 	public function imagettftext() {
 
-		$im = HOME_DIR . "img/line688/line/tiger_back.jpg";
+		$im = HOME_DIR . "img/line688/line/0802.jpg";
 		header("Content-Disposition: attachment; ");
 		header("Content-type: image/jpeg");
 		header("Content-Length: " . filesize($im));
 		$font = HOME_DIR . "img/line688/line/R7.png";
 		$text = 'Testing...';
+
 		$jpg_image = imagecreatefromjpeg($im);
 		$black = imagecolorallocate($jpg_image, 0, 0, 0);
 		$white = imagecolorallocate($jpg_image, 255, 255, 255);
@@ -620,9 +621,14 @@ class Line_img extends MY_Base_Controller {
 		$blue  = imagecolorallocate($jpg_image,   0,   0, 255);
 		$yellow  = imagecolorallocate($jpg_image,   255,   255, 0);
 
-		imagettftext($jpg_image, 82, 177, 300, 270,$white,$font);
 
+		// imagettftext($jpg_image, 214, 226, 412, 36,$white,$text);
+		imagettftext($jpg_image, 28, 0, 292, 185, $white, $font, $text);
 
+		$image = $font;
+		$imageData = imagecreatefromstring(file_get_contents($font));
+		$imageData = imagescale($imageData, 176,112);
+		imagecopy($jpg_image, $imageData, 127, 438, 0, 0, 176, 112);
 		ob_clean();
 		flush();
 		// Send Image to Browser
