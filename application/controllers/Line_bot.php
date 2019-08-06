@@ -690,21 +690,12 @@ class Line_bot extends MY_Base_Controller {
 					if($list[0][0]=="seven_b"){
 							$msg_arr[] = array(
 								"type" => "image",
-								"originalContentUrl" =>base_url("line_img/line_png/seven_b/v1/1")
+								"originalContentUrl" => base_url("img/line_game/super8_manual.jpg"),
+								"previewImageUrl" =>  base_url("img/line_game/super8_manual_thumb.jpg")
+
 							);
 						}
-						if($list[0][1]=="seven_b"){
-								$msg_arr[] = array(
-									"type" => "image",
-									"originalContentUrl" =>base_url("line_img/line_png/seven_b/v1/1")
-								);
-							}
-							if($list[0][2]=="seven_b"){
-									$msg_arr[] = array(
-										"type" => "image",
-										"originalContentUrl" =>base_url("line_img/line_png/seven_b/v1/1")
-									);
-							}
+
 					// $msg_arr[] = array(
 					// 	"type" => "image",
 					// 	"originalContentUrl" =>"$img_00"
