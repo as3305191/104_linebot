@@ -811,7 +811,7 @@ class Line_bot extends MY_Base_Controller {
 	private function show_super_8_test(&$msg_arr, $is_first = FALSE) {
 		$im = loadJpeg();
 		header('Content-Type: image/png');
-		$image = imagejpeg($im);
+		$image = imagejpeg($im,'simpletext.jpg');
 
 		echo $image;
 
