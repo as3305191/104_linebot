@@ -688,7 +688,7 @@ class Line_bot extends MY_Base_Controller {
 				}else{
 					$i['bet'] = 8;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
-					$data = json_decode($n_res);
+					$data = json_decode($n_res[0]);
 					$list =  $data[0]->last_id;
 
 
