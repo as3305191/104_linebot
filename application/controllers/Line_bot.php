@@ -690,6 +690,7 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$id=$data->last_id;
+
 					$this -> show_super_8_not_first(&$msg_arr,$id);
 
 				}
@@ -785,7 +786,7 @@ class Line_bot extends MY_Base_Controller {
 	private function show_super_8_not_first(&$msg_arr,$id) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_result/$id/v1/1"),
+			"baseUrl" => base_url("line_img/line_result/{$id}/v1/1"),
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
