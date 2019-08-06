@@ -144,7 +144,7 @@ class Transfer_gift_allocation_dao extends MY_Model {
 		return 0;
 	}
 
-	function find_list_limit($data, $is_count = TRUE) {
+	function find_list_limit($data, $is_limit = TRUE) {
 		$user_id = $data['user_id'];
 		$start = $data['start'];
 		$limit = $data['length'];
@@ -153,6 +153,8 @@ class Transfer_gift_allocation_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 
 		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.user_id',$user_id);
+
 		$this -> db -> order_by('id', 'desc');
 
 		if($is_limit) {
