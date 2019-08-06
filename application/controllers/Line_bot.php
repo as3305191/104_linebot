@@ -678,29 +678,23 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$list =  $data -> list;
-					// $img_00=$this -> get_line_img($list[0][0]);
-					// $img_01=$this -> get_line_img($list[0][1]);
-					// $img_02=$this -> get_line_img($list[0][2]);
-					// $img_10=$this -> get_line_img($list[1][0]);
-					// $img_11=$this -> get_line_img($list[1][1]);
-					// $img_12=$this -> get_line_img($list[1][2]);
-					// $img_20=$this -> get_line_img($list[2][0]);
-					// $img_21=$this -> get_line_img($list[2][1]);
-					// $img_22=$this -> get_line_img($list[2][2]);
-					if($list[0][0]=="seven_b"){
-							$msg_arr[] = array(
-								"type" => "image",
-								"originalContentUrl" => base_url("img/line_game/super8_manual.jpg"),
-								"previewImageUrl" =>  base_url("img/line_game/super8_manual_thumb.jpg")
+					$img_00=$list[0][0];
+					$img_01=$list[0][1];
+					$img_02=$list[0][2];
+					$img_10=$list[1][0];
+					$img_11=$list[1][1];
+					$img_12=$list[1][2];
+					$img_20=$list[2][0];
+					$img_21=$list[2][1];
+					$img_22=$list[2][2];
 
-							);
-						}
+					$msg_arr[] = array(
+						"type" => "image",
+						"originalContentUrl" => base_url("img/line688/line/{$img_00}.png"),
+						"previewImageUrl" =>  base_url("img/line688/line/{$img_00}.png")
 
-					// $msg_arr[] = array(
-					// 	"type" => "image",
-					// 	"originalContentUrl" =>"$img_00"
-					//
-					// );
+					);
+
 					$msg_arr[] = array(
 						"type" => "text",
 						"text" => "$n_res",
