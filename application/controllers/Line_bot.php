@@ -809,12 +809,13 @@ class Line_bot extends MY_Base_Controller {
 	}
 
 	private function show_super_8_test(&$msg_arr, $is_first = FALSE) {
+		$im = loadJpeg();
 		header('Content-Type: image/png');
-		$im = LoadJpeg();
+		$image = imagejpeg($im);
 
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => imagejpeg($im),
+			"baseUrl" => base_url($image),
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
@@ -1016,8 +1017,7 @@ class Line_bot extends MY_Base_Controller {
 		), $user -> id);
 	}
 
-	function LoadJpeg()
-	{
+	function loadJpeg(){
 
 		/* 尝试打开 */
 		$im = @imagecreatefromjpeg(base_url("line_img/line_jpg/first_game/v1/1"));
