@@ -710,7 +710,7 @@ class Line_bot extends MY_Base_Controller {
 					$data = json_decode($n_res);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => $n_res,
+						"text" => "$data->last_id",
 					);
 					$this -> show_super_8_not_first($msg_arr);
 
@@ -728,7 +728,7 @@ class Line_bot extends MY_Base_Controller {
 					$data = json_decode($n_res);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => $n_res,
+						"text" => "$data->last_id",
 					);
 					$this -> show_super_8_not_first($msg_arr);
 
