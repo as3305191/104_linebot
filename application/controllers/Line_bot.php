@@ -655,8 +655,8 @@ class Line_bot extends MY_Base_Controller {
 					$data = json_decode($n_res);
 					$list =  $data -> list;
 					foreach($list as $each) {
-						// foreach($each as $a_el) {
-						// }
+						foreach($each as $a_el) {
+						}
 					}
 					$msg_arr[] = array(
 						"type" => "text",
@@ -666,6 +666,7 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "$n_res",
 					);
+					$this -> show_super_8($msg_arr, TRUE);
 
 				}
 			}
