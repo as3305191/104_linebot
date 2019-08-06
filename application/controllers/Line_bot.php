@@ -425,6 +425,14 @@ class Line_bot extends MY_Base_Controller {
 										$aloc_id = $this -> wtx_dao -> insert($aloc);
 										$m_ctx = $this -> wtx_dao -> find_by_id($aloc_id);
 
+										// 分配記錄
+										$aloc1 = array();
+										$aloc1['corp_id'] = $item -> corp_id;
+										$aloc1['transfter_gift_id'] = $last_id;
+										$aloc1['ope_amt'] =	$aloc_amt;
+										$aloc1['user_id'] = $promo_user_id;
+										$this -> tsga_dao -> insert($aloc1);
+
 										// 計算最後剩餘金額
 										$residual_amt = $alloc_amt - $m_ctx -> amt;
 
