@@ -666,7 +666,7 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "$n_res",
 					);
-					$this -> show_super_8($msg_arr, TRUE);
+					$this -> show_super_8_not_first($msg_arr);
 
 				}
 			}
@@ -758,6 +758,61 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
+
+	private function show_super_8_not_first(&$msg_arr) {
+		$msg_arr[] = array(
+			"type" => "imagemap",
+			"baseUrl" => base_url("line_img/line_jpg/first_game/v1/1"),
+			"altText" => "下注金額",
+			"baseSize" => array(
+				"width" => "1040",
+				"height" => "1500"
+			),
+			"actions" => array(
+				array(
+					"type" => "message",
+					"text" => "下注_超八_8",
+					"area" => array(
+						"x" => 90,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_40",
+					"area" => array(
+						"x" => 425,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_80",
+					"area" => array(
+						"x" => 758,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "881",
+					"area" => array(
+						"x" => 68,
+						"y" => 55,
+						"width" => 913,
+						"height" => 121
+					)
+				),
+			)
+		);
+	}
+
 
 	private function function_menu(&$msg_arr) {
 		$msg_arr[] = array(
