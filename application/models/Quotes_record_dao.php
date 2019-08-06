@@ -81,12 +81,12 @@ class Quotes_record_dao extends MY_Model {
 
 		$get_current_point=$this -> q_r_dao -> get_current_point();
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
-
+		$data = json_decode($match_arr);
 		$tx_11 = array();
 		$tx_11['user_id'] = $user_id;
 		$tx_11['bet'] = $bet_o;
 		$tx_11['total_win_point'] = $total;
-		$tx_11['result'] = $match_arr;
+		$tx_11['result'] = $data;
 
 		$last_id=	$this -> play_game_dao -> insert($tx_11);
 
