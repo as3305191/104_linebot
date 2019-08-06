@@ -605,8 +605,8 @@ class Line_img extends MY_Base_Controller {
 		return rand(pow(10, $digits - 1), pow(10, $digits) - 1);
 	}
 
-	public function line_result() {
-		$bet = $this -> play_game_dao -> find_by_id(303);
+	public function line_result($last_id) {
+		$bet = $this -> play_game_dao -> find_by_id($last_id);
 		$result=$bet->result;
 		$value = json_decode($result);
 
