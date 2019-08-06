@@ -605,13 +605,20 @@ class Line_img extends MY_Base_Controller {
 	}
 
 	public function imagettftext() {
+		$img00 = $this -> get_post('_00');
+		$img01 = $this -> get_post('_01');
+		$img02 = $this -> get_post('_02');
+		$img10 = $this -> get_post('_10');
+		$img11 = $this -> get_post('_11');
+		$img12 = $this -> get_post('_12');
+		$img20 = $this -> get_post('_20');
+		$img21 = $this -> get_post('_21');
+		$img22 = $this -> get_post('_22');
 
 		$im = HOME_DIR . "img/line688/line/0802.jpg";
 		header("Content-Disposition: attachment; ");
 		header("Content-type: image/jpeg");
 		header("Content-Length: " . filesize($im));
-		$font = HOME_DIR . "img/line688/line/R7.png";
-		$text = 'Testing...';
 
 		$jpg_image = imagecreatefromjpeg($im);
 		$black = imagecolorallocate($jpg_image, 0, 0, 0);
@@ -624,11 +631,51 @@ class Line_img extends MY_Base_Controller {
 
 		// imagettftext($jpg_image, 214, 226, 412, 36,$white,$text);
 		imagettftext($jpg_image, 28, 0, 292, 185, $white, $font, $text);
+		$pic_00 = HOME_DIR . "img/line688/line/{$img00}.png";
+		$pic_01 = HOME_DIR . "img/line688/line/{$img01}.png";
+		$pic_02 = HOME_DIR . "img/line688/line/{$img02}.png";
+		$pic_10 = HOME_DIR . "img/line688/line/{$img10}.png";
+		$pic_11 = HOME_DIR . "img/line688/line/{$img11}.png";
+		$pic_12 = HOME_DIR . "img/line688/line/{$img12}.png";
+		$pic_20 = HOME_DIR . "img/line688/line/{$img20}.png";
+		$pic_21 = HOME_DIR . "img/line688/line/{$img21}.png";
+		$pic_22 = HOME_DIR . "img/line688/line/{$img22}.png";
+		$imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
+		$imageData_00 = imagescale($imageData_00, 238,254);
+		imagecopy($jpg_image, $imageData_00, 79, 366, 0, 0, 238, 238);
 
-		$image = $font;
-		$imageData = imagecreatefromstring(file_get_contents($font));
-		$imageData = imagescale($imageData, 176,112);
-		imagecopy($jpg_image, $imageData, 127, 438, 0, 0, 176, 112);
+		$imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
+		$imageData_01 = imagescale($imageData_01, 238,254);
+		imagecopy($jpg_image, $imageData_01, 400, 366, 0, 0, 238, 238);
+
+		$imageData_02 = imagecreatefromstring(file_get_contents($pic_02));
+		$imageData_02 = imagescale($imageData_02, 238,254);
+		imagecopy($jpg_image, $imageData_02, 400, 366, 0, 0, 238, 238);
+
+		$imageData_10 = imagecreatefromstring(file_get_contents($pic_10));
+		$imageData_10 = imagescale($imageData_10, 238,254);
+		imagecopy($jpg_image, $imageData_10, 400, 366, 0, 0, 238, 238);
+
+		$imageData_11 = imagecreatefromstring(file_get_contents($pic_11));
+		$imageData_11 = imagescale($imageData_11, 238,254);
+		imagecopy($jpg_image, $imageData_11, 400, 366, 0, 0, 238, 238);
+
+		$imageData_12 = imagecreatefromstring(file_get_contents($pic_12));
+		$imageData_12 = imagescale($imageData_12, 238,254);
+		imagecopy($jpg_image, $imageData_12, 400, 366, 0, 0, 238, 238);
+
+		$imageData_20 = imagecreatefromstring(file_get_contents($pic_20));
+		$imageData_20 = imagescale($imageData_20, 238,254);
+		imagecopy($jpg_image, $imageData_20, 400, 366, 0, 0, 238, 238);
+
+		$imageData_21 = imagecreatefromstring(file_get_contents($pic_21));
+		$imageData_21 = imagescale($imageData_21, 238,254);
+		imagecopy($jpg_image, $imageData_21, 400, 366, 0, 0, 238, 238);
+
+		$imageData_22 = imagecreatefromstring(file_get_contents($pic_22));
+		$imageData_22 = imagescale($imageData_22, 238,254);
+		imagecopy($jpg_image, $imageData_22, 400, 366, 0, 0, 238, 238);
+
 		ob_clean();
 		flush();
 		// Send Image to Browser
