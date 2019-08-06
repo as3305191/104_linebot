@@ -15,6 +15,7 @@ class Line_img extends MY_Base_Controller {
 
 		$this -> load -> model('Baccarat_tab_round_detail_dao', 'btrd_dao');
 		$this -> load -> model('Baccarat_tab_round_dao', 'btr_dao');
+		$this -> load -> model('Play_game_dao', 'play_game_dao');
 
 
 		// line models
@@ -605,77 +606,91 @@ class Line_img extends MY_Base_Controller {
 	}
 
 	public function line_result() {
-		$img00 = $this -> get_post('_00');
-		$img01 = $this -> get_post('_01');
-		$img02 = $this -> get_post('_02');
-		$img10 = $this -> get_post('_10');
-		$img11 = $this -> get_post('_11');
-		$img12 = $this -> get_post('_12');
-		$img20 = $this -> get_post('_20');
-		$img21 = $this -> get_post('_21');
-		$img22 = $this -> get_post('_22');
+		$bet = $this -> play_game_dao -> find_by_id(303);
+		$result=$bet->result;
+		$value = json_decode($result);
 
 		$im = HOME_DIR . "img/line688/line/0802.jpg";
 		header("Content-Disposition: attachment; ");
 		header("Content-type: image/jpeg");
 		header("Content-Length: " . filesize($im));
-
 		$jpg_image = imagecreatefromjpeg($im);
+		$font = HOME_DIR . "img/line688/font/wt006.ttf";
+
 		$black = imagecolorallocate($jpg_image, 0, 0, 0);
 		$white = imagecolorallocate($jpg_image, 255, 255, 255);
-		$red   = imagecolorallocate($jpg_image, 255,   0,   0);
-		$green = imagecolorallocate($jpg_image,   0, 255,   0);
-		$blue  = imagecolorallocate($jpg_image,   0,   0, 255);
-		$yellow  = imagecolorallocate($jpg_image,   255,   255, 0);
+		$img00 = $value[0][0];
+		$img01 = $value[0][1];
+		$img02 = $value[0][2];
+		$img10 = $value[1][0];
+		$img11 = $value[1][1];
+		$img12 = $value[1][2];
+		$img20 = $value[2][0];
+		$img21 = $value[2][1];
+		$img22 = $value[2][2];
 
+		$total_win_point=mb_substr($bet->total_win_point,0,-7);
+		$bet_b=mb_substr($bet->bet,0,-7);
+		$bet_id=$bet->id;
 
-		// imagettftext($jpg_image, 214, 226, 412, 36,$white,$text);
-		imagettftext($jpg_image, 28, 0, 292, 185, $white, $font, $text);
-		$pic_00 = HOME_DIR . "img/line688/line/bell.png";
-		$pic_01 = HOME_DIR . "img/line688/line/bell.png";
-		// $pic_02 = HOME_DIR . "img/line688/line/bell.png";
-		// $pic_10 = HOME_DIR . "img/line688/line/bell.png";
-		// $pic_11 = HOME_DIR . "img/line688/line/bell.png";
-		// $pic_12 = HOME_DIR . "img/line688/line/bell.png";
-		// $pic_20 = HOME_DIR . "img/line688/line/bell.png";
-		// $pic_21 = HOME_DIR . "img/line688/line/bell.png";
-		// $pic_22 = HOME_DIR . "img/line688/line/bell.png";
-		$imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
-		$imageData_00 = imagescale($imageData_00, 238,254);
-		imagecopy($jpg_image, $imageData_00, 79, 366, 0, 0, 238, 254);
+		imagettftext($jpg_image, 40, 0, 74, 500, $black, $font, $img00);
+		imagettftext($jpg_image, 40, 0, 393, 500, $black, $font, $img01);
+		imagettftext($jpg_image, 40, 0, 712, 500, $black, $font, $img02);
+		imagettftext($jpg_image, 40, 0, 74, 800, $black, $font, $img10);
+		imagettftext($jpg_image, 40, 0, 393, 800, $black, $font, $img12);
+		imagettftext($jpg_image, 40, 0, 712, 800, $black, $font, $img00);
+		imagettftext($jpg_image, 40, 0, 74, 1130, $black, $font, $img20);
+		imagettftext($jpg_image, 40, 0, 393, 1130, $black, $font, $img21);
+		imagettftext($jpg_image, 40, 0, 712, 1130, $black, $font, $img22);
+		imagettftext($jpg_image, 40, 0, 817, 260, $white, $font, $bet_b);
+		imagettftext($jpg_image, 40, 0, 220, 260, $white, $font, $bet_id);
+		imagettftext($jpg_image, 40, 0, 275, 1375, $white, $font, $total_win_point);
 
-		$imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
-		$imageData_01 = imagescale($imageData_01, 238,254);
-		imagecopy($jpg_image, $imageData_01, 400, 366, 0, 0, 238, 254);
-
-		// $imageData_02 = imagecreatefromstring(file_get_contents($pic_02));
-		// $imageData_02 = imagescale($imageData_02, 238,254);
-		// imagecopy($jpg_image, $imageData_02, 725, 366, 0, 0, 238, 238);
-
-		// $imageData_10 = imagecreatefromstring(file_get_contents($pic_10));
-		// $imageData_10 = imagescale($imageData_10, 238,254);
-		// imagecopy($jpg_image, $imageData_10, 79, 670, 0, 0, 238, 238);
+		// $pic_00 = HOME_DIR . "img/line688/line/bell.png";
+		// $pic_01 = HOME_DIR . "img/line688/line/bell.png";
+		// // $pic_02 = HOME_DIR . "img/line688/line/bell.png";
+		// // $pic_10 = HOME_DIR . "img/line688/line/bell.png";
+		// // $pic_11 = HOME_DIR . "img/line688/line/bell.png";
+		// // $pic_12 = HOME_DIR . "img/line688/line/bell.png";
+		// // $pic_20 = HOME_DIR . "img/line688/line/bell.png";
+		// // $pic_21 = HOME_DIR . "img/line688/line/bell.png";
+		// // $pic_22 = HOME_DIR . "img/line688/line/bell.png";
+		// $imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
+		// $imageData_00 = imagescale($imageData_00, 238,254);
+		// imagecopy($jpg_image, $imageData_00, 79, 366, 0, 0, 238, 254);
 		//
-		// $imageData_11 = imagecreatefromstring(file_get_contents($pic_11));
-		// $imageData_11 = imagescale($imageData_11, 238,254);
-		// imagecopy($jpg_image, $imageData_11, 400, 670, 0, 0, 238, 238);
+		// $imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
+		// $imageData_01 = imagescale($imageData_01, 238,254);
+		// imagecopy($jpg_image, $imageData_01, 400, 366, 0, 0, 238, 254);
 		//
-		// $imageData_12 = imagecreatefromstring(file_get_contents($pic_12));
-		// $imageData_12 = imagescale($imageData_12, 238,254);
-		// imagecopy($jpg_image, $imageData_12, 725, 670, 0, 0, 238, 238);
+		// // $imageData_02 = imagecreatefromstring(file_get_contents($pic_02));
+		// // $imageData_02 = imagescale($imageData_02, 238,254);
+		// // imagecopy($jpg_image, $imageData_02, 725, 366, 0, 0, 238, 238);
 		//
-		// $imageData_20 = imagecreatefromstring(file_get_contents($pic_20));
-		// $imageData_20 = imagescale($imageData_20, 238,254);
-		// imagecopy($jpg_image, $imageData_20, 79, 1000, 0, 0, 238, 238);
+		// // $imageData_10 = imagecreatefromstring(file_get_contents($pic_10));
+		// // $imageData_10 = imagescale($imageData_10, 238,254);
+		// // imagecopy($jpg_image, $imageData_10, 79, 670, 0, 0, 238, 238);
+		// //
+		// // $imageData_11 = imagecreatefromstring(file_get_contents($pic_11));
+		// // $imageData_11 = imagescale($imageData_11, 238,254);
+		// // imagecopy($jpg_image, $imageData_11, 400, 670, 0, 0, 238, 238);
+		// //
+		// // $imageData_12 = imagecreatefromstring(file_get_contents($pic_12));
+		// // $imageData_12 = imagescale($imageData_12, 238,254);
+		// // imagecopy($jpg_image, $imageData_12, 725, 670, 0, 0, 238, 238);
+		// //
+		// // $imageData_20 = imagecreatefromstring(file_get_contents($pic_20));
+		// // $imageData_20 = imagescale($imageData_20, 238,254);
+		// // imagecopy($jpg_image, $imageData_20, 79, 1000, 0, 0, 238, 238);
+		// //
+		// // $imageData_21 = imagecreatefromstring(file_get_contents($pic_21));
+		// // $imageData_21 = imagescale($imageData_21, 238,254);
+		// // imagecopy($jpg_image, $imageData_21, 400, 1000, 0, 0, 238, 238);
+		// //
+		// // $imageData_22 = imagecreatefromstring(file_get_contents($pic_22));
+		// // $imageData_22 = imagescale($imageData_22, 238,254);
+		// // imagecopy($jpg_image, $imageData_22, 725, 1000, 0, 0, 238, 238);
 		//
-		// $imageData_21 = imagecreatefromstring(file_get_contents($pic_21));
-		// $imageData_21 = imagescale($imageData_21, 238,254);
-		// imagecopy($jpg_image, $imageData_21, 400, 1000, 0, 0, 238, 238);
-		//
-		// $imageData_22 = imagecreatefromstring(file_get_contents($pic_22));
-		// $imageData_22 = imagescale($imageData_22, 238,254);
-		// imagecopy($jpg_image, $imageData_22, 725, 1000, 0, 0, 238, 238);
-
 		ob_clean();
 		flush();
 		// Send Image to Browser

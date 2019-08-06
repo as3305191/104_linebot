@@ -694,7 +694,7 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "$data->last_id",
 					);
-					$this -> show_super_8_not_first($msg_arr);
+					$this -> show_super_8_not_first($data->last_id);
 
 				}
 			}
@@ -712,7 +712,7 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "$data->last_id",
 					);
-					$this -> show_super_8_not_first($msg_arr);
+					$this -> show_super_8_not_first($data->last_id);
 
 				}
 			}
@@ -730,7 +730,7 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "$data->last_id",
 					);
-					$this -> show_super_8_not_first($msg_arr);
+					$this -> show_super_8_not_first($data->last_id);
 
 				}
 			}
@@ -790,10 +790,10 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
-	private function show_super_8_not_first(&$msg_arr) {
+	private function show_super_8_not_first($last_id) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_result//v1/1"),
+			"baseUrl" => base_url("line_img/line_result/{$last_id}/v1/1"),
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
