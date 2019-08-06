@@ -170,11 +170,12 @@ class Line_bot extends MY_Base_Controller {
 				$cArray= array();
 				foreach ($list as $each) {
 					$value = $each['ope_amt'] .$each['create_time'];
-
 				}
+				$showContet = implode("\n",$arr);
+
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "您的餘額： {$sum_amt}\n您的贈禮ID為: $gift_id\n您的錢包地址為: {$users->wallet_code}",
+					"text" => $showContet ,
 				);
 			}
 
