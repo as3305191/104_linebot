@@ -692,8 +692,10 @@ class Line_bot extends MY_Base_Controller {
 					$msg_arr[] = array(
 						"type" => "image",
 						"originalContentUrl" => base_url("img/line688/line/{$img_00}.png"),
-						"previewImageUrl" =>  base_url("img/line688/line/{$img_00}.png")
-
+						"previewImageUrl" =>  base_url("img/line688/line/{$img_00}.png"),
+						"type" => "image",
+						"originalContentUrl" => base_url("img/line688/line/{$img_01}.png"),
+						"previewImageUrl" =>  base_url("img/line688/line/{$img_01}.png"),
 					);
 
 					$msg_arr[] = array(
