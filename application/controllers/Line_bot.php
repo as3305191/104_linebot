@@ -165,7 +165,7 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == '查詢分潤') {
-				$list = $this -> tsga_dao -> find_list_limit(array('user_id'=> $user -> id,'start' => 0,'length'=> 10));
+				$list = $this -> tsga_dao -> find_list_limit(array('user_id'=> 525 ,'start' => 0,'length'=> 10));
 
 				if(count($list) > 0){
 					$cArray= array();
