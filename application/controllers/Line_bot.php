@@ -699,7 +699,6 @@ class Line_bot extends MY_Base_Controller {
 					$img['_20']=$list[2][0];
 					$img['_21']=$list[2][1];
 					$img['_22']=$list[2][2];
-					// $new_picture = $this -> curl -> simple_post("/line_img/imagettftext", $img);
 
 					// $msg_arr[] = array(
 					// 	"type" => "image",
@@ -711,7 +710,7 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "$n_res",
 					);
-					// $this -> show_super_8_not_first($msg_arr);
+					$this -> show_super_8_not_first($msg_arr);
 
 				}
 			}
@@ -729,7 +728,7 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => $n_res,
 					);
-					// $this -> show_super_8_not_first($msg_arr);
+					$this -> show_super_8_not_first($msg_arr);
 
 				}
 			}
@@ -747,7 +746,7 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => $n_res,
 					);
-					$this -> show_super_8_test($msg_arr);
+					$this -> show_super_8_not_first($msg_arr);
 
 				}
 			}
@@ -807,7 +806,59 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
-
+	private function show_super_8_not_first(&$msg_arr) {
+		$msg_arr[] = array(
+			"type" => "imagemap",
+			"baseUrl" => base_url("line_img/line_result//v1/1"),
+			"altText" => "下注金額",
+			"baseSize" => array(
+				"width" => "1040",
+				"height" => "1500"
+			),
+			"actions" => array(
+				array(
+					"type" => "message",
+					"text" => "遊戲說明",
+					"area" => array(
+						"x" => 90,
+						"y" => 845,
+						"width" => 880,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_8",
+					"area" => array(
+						"x" => 90,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_40",
+					"area" => array(
+						"x" => 425,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_80",
+					"area" => array(
+						"x" => 758,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+			)
+		);
+	}
 	private function show_super_8_test(&$msg_arr, $is_first = FALSE) {
 		$im = loadJpeg();
 		header('Content-Type: image/png');
@@ -868,74 +919,7 @@ class Line_bot extends MY_Base_Controller {
 		// );
 	}
 
-	// private function get_line_img($winning_item) {
-	//
-	// 	if($winning_item=="seven_b"){
-	// 		$msg_arr[] = array(
-	// 			"type" => "image",
-	// 			"originalContentUrl" =>base_url("line_img/line_png/seven_b/v1/1")
-	//
-	// 		);
-	// 	}
-	// 	if($winning_item=="seven_r"){
-	// 		$msg_arr[] = array(
-	// 			"type" => "image",
-	// 			"originalContentUrl" =>base_url("line_img/line_png/seven_r/v1/1")
-	//
-	// 		);
-	// 	}
-	// 	if($winning_item=="bar"){
-	// 		$msg_arr[] = array(
-	// 			"type" => "image",
-	// 			"originalContentUrl" =>base_url("line_img/line_png/bar/v1/1")
-	//
-	// 		);
-	// 	}
-	// 	if($winning_item=="medal"){
-	// 		$msg_arr[] = array(
-	// 			"type" => "image",
-	// 			"originalContentUrl" =>base_url("line_img/line_png/medal/v1/1")
-	//
-	// 		);
-	// 	}
-	// 	if($winning_item=="bell"){
-	// 		$msg_arr[] = array(
-	// 			"type" => "image",
-	// 			"originalContentUrl" =>base_url("line_img/line_png/bell/v1/1")
-	//
-	// 		);
-	// 	}
-	// 	if($winning_item=="watermelon"){
-	// 		$msg_arr[] = array(
-	// 			"type" => "image",
-	// 			"originalContentUrl" =>base_url("line_img/line_png/watermelon/v1/1")
-	//
-	// 		);
-	// 	}
-	// 	if($winning_item=="grape"){
-	// 		$msg_arr[] = array(
-	// 			"type" => "image",
-	// 			"originalContentUrl" =>base_url("line_img/line_png/grape/v1/1")
-	//
-	// 		);
-	// 	}
-	// 	if($winning_item=="orange"){
-	// 		$msg_arr[] = array(
-	// 			"type" => "image",
-	// 			"originalContentUrl" =>base_url("line_img/line_png/orange/v1/1")
-	//
-	// 		);
-	// 	}
-	// 	if($winning_item=="cherry"){
-	// 		$msg_arr[] = array(
-	// 			"type" => "image",
-	// 			"originalContentUrl" =>base_url("line_img/line_png/cherry/v1/1")
-	//
-	// 		);
-	// 	}
-	// 	return $msg_arr[];
-	//
-	// }
+
 
 	private function function_menu(&$msg_arr) {
 		$msg_arr[] = array(

@@ -604,7 +604,7 @@ class Line_img extends MY_Base_Controller {
 		return rand(pow(10, $digits - 1), pow(10, $digits) - 1);
 	}
 
-	public function imagettftext() {
+	public function line_result() {
 		$img00 = $this -> get_post('_00');
 		$img01 = $this -> get_post('_01');
 		$img02 = $this -> get_post('_02');

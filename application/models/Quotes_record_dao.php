@@ -143,7 +143,7 @@ class Quotes_record_dao extends MY_Model {
 			$this -> d_q_dao -> insert($dtx);
 		}
 
-		return TRUE;
+		return $last_id;
 	}
 }
 ?>
