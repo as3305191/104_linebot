@@ -662,10 +662,19 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$list =  $data -> list;
+					$img_00=$this -> get_line_img($list[0][0]);
+					$img_01=$this -> get_line_img($list[0][1]);
+					$img_02=$this -> get_line_img($list[0][2]);
+					$img_10=$this -> get_line_img($list[1][0]);
+					$img_11=$this -> get_line_img($list[1][1]);
+					$img_12=$this -> get_line_img($list[1][2]);
+					$img_20=$this -> get_line_img($list[2][0]);
+					$img_21=$this -> get_line_img($list[2][1]);
+					$img_22=$this -> get_line_img($list[2][2]);
 
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" =>$list[0][0],
+						"text" =>"$img_00,$img_01,$img_02\n$img_10,$img_11,$img_12\n$img_20,$img_21,$img_22"
 					);
 					$msg_arr[] = array(
 						"type" => "text",
@@ -821,7 +830,46 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
+	private function get_line_img($winning_item) {
 
+		if($winning_item=="seven_b"){
+			$img=base_url("line_img/line_jpg/seven_b/v1/1"),
+		}
+		if($winning_item=="seven_r"){
+			$img=base_url("line_img/line_jpg/seven_r/v1/1"),
+
+		}
+		if($winning_item=="bar"){
+			$img=base_url("line_img/line_jpg/bar/v1/1"),
+
+		}
+		if($winning_item=="medal"){
+			$img=base_url("line_img/line_jpg/medal/v1/1"),
+
+		}
+		if($winning_item=="bell"){
+			$img=base_url("line_img/line_jpg/bell/v1/1"),
+
+		}
+		if($winning_item=="watermelon"){
+			$img=base_url("line_img/line_jpg/watermelon/v1/1"),
+
+		}
+		if($winning_item=="grape"){
+			$img=base_url("line_img/line_jpg/grape/v1/1"),
+
+		}
+		if($winning_item=="orange"){
+			$img=base_url("line_img/line_jpg/orange/v1/1"),
+
+		}
+		if($winning_item=="cherry"){
+			$img=base_url("line_img/line_jpg/cherry/v1/1"),
+
+		}
+		return $img;
+
+	}
 
 	private function function_menu(&$msg_arr) {
 		$msg_arr[] = array(
