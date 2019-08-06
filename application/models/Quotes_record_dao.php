@@ -98,7 +98,16 @@ class Quotes_record_dao extends MY_Model {
 		$tx_11['user_id'] = $user_id;
 		$tx_11['bet'] = $bet_o;
 		$tx_11['total_win_point'] = $total;
-		$tx_11['result'] = $img;
+		$tx_11['result'] = array(	$img['_00']=$list[0][0];
+			$list[0][1],
+			$list[0][2],
+			$list[1][0],
+			$list[1][1],
+			$list[1][2],
+			$list[2][0],
+			$list[2][1],
+			$list[2][2],
+);
 
 		$last_id=	$this -> play_game_dao -> insert($tx_11);
 
