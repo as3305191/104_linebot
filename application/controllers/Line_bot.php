@@ -170,16 +170,14 @@ class Line_bot extends MY_Base_Controller {
 				$cArray= array();
 				foreach ($list as $each) {
 					$value = $each['ope_amt'] .$each['create_time'];
-					array_push($value);
+
 				}
-
-				$show = implode("\n",$cArray);
-
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => $show ,
+					"text" => "您的餘額： {$sum_amt}\n您的贈禮ID為: $gift_id\n您的錢包地址為: {$users->wallet_code}",
 				);
 			}
+
 
 			// send message
 			if(count($msg_arr) > 0) {
@@ -680,13 +678,6 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$list =  $data -> list;
-<<<<<<< HEAD
-
-					$msg_arr[] = array(
-						"type" => "text",
-						"text" =>$list[0][0],
-					);
-=======
 					// $img_00=$this -> get_line_img($list[0][0]);
 					// $img_01=$this -> get_line_img($list[0][1]);
 					// $img_02=$this -> get_line_img($list[0][2]);
@@ -710,7 +701,6 @@ class Line_bot extends MY_Base_Controller {
 					// 	"originalContentUrl" =>"$img_00"
 					//
 					// );
->>>>>>> 3a49f9b6fead89eedd77d6c5d97942b65ef54fcd
 					$msg_arr[] = array(
 						"type" => "text",
 						"text" => "$n_res",
@@ -865,7 +855,74 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
-
+	// private function get_line_img($winning_item) {
+	//
+	// 	if($winning_item=="seven_b"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/seven_b/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="seven_r"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/seven_r/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="bar"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/bar/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="medal"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/medal/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="bell"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/bell/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="watermelon"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/watermelon/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="grape"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/grape/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="orange"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/orange/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="cherry"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/cherry/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	return $msg_arr[];
+	//
+	// }
 
 	private function function_menu(&$msg_arr) {
 		$msg_arr[] = array(
