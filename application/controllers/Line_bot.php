@@ -675,15 +675,15 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$list =  $data -> list;
-					$img_00=$this -> get_line_img($list[0][0]);
-					$img_01=$this -> get_line_img($list[0][1]);
-					$img_02=$this -> get_line_img($list[0][2]);
-					$img_10=$this -> get_line_img($list[1][0]);
-					$img_11=$this -> get_line_img($list[1][1]);
-					$img_12=$this -> get_line_img($list[1][2]);
-					$img_20=$this -> get_line_img($list[2][0]);
-					$img_21=$this -> get_line_img($list[2][1]);
-					$img_22=$this -> get_line_img($list[2][2]);
+					// $img_00=$this -> get_line_img($list[0][0]);
+					// $img_01=$this -> get_line_img($list[0][1]);
+					// $img_02=$this -> get_line_img($list[0][2]);
+					// $img_10=$this -> get_line_img($list[1][0]);
+					// $img_11=$this -> get_line_img($list[1][1]);
+					// $img_12=$this -> get_line_img($list[1][2]);
+					// $img_20=$this -> get_line_img($list[2][0]);
+					// $img_21=$this -> get_line_img($list[2][1]);
+					// $img_22=$this -> get_line_img($list[2][2]);
 
 					// $msg_arr[] = array(
 					// 	"type" => "image",
