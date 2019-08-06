@@ -810,7 +810,7 @@ class Line_bot extends MY_Base_Controller {
 			"actions" => array(
 				array(
 					"type" => "message",
-					"text" => "遊戲說明",
+					"text" => "881",
 					"area" => array(
 						"x" => 70,
 						"y" => 54,
