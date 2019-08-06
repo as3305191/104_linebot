@@ -686,8 +686,8 @@ class Line_bot extends MY_Base_Controller {
 					$img_22=$this -> get_line_img($list[2][2]);
 
 					$msg_arr[] = array(
-						"type" => "text",
-						"text" =>"$img_00,$img_01,$img_02\n$img_10,$img_11,$img_12\n$img_20,$img_21,$img_22"
+						"type" => "imagemap",
+						"baseUrl" =>"$img_00,$img_01,$img_02\n$img_10,$img_11,$img_12\n$img_20,$img_21,$img_22"
 					);
 					$msg_arr[] = array(
 						"type" => "text",
