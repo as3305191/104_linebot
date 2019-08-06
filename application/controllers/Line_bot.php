@@ -7,6 +7,8 @@ class Line_bot extends MY_Base_Controller {
 		parent::__construct();
 
 		$this -> load -> model('Transfer_gift_dao', 'tsg_dao');
+		$this -> load -> model('Transfer_gift_allocation_dao', 'tsga_dao');
+
 		$this -> load -> model('Transfer_gift_friends_dao', 'tsgf_dao');
 
 		$this -> load -> model('Users_dao', 'users_dao');
