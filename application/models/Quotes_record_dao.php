@@ -72,7 +72,7 @@ class Quotes_record_dao extends MY_Model {
 		return $list[0];
 	}
 
-	function insert_all_total($bet_o,$total,$for_q_amt,$user_id) {
+	function insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr) {
 		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
