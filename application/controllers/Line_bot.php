@@ -165,10 +165,13 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == '查詢分潤') {
-				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
-				$users = $this -> users_dao -> find_by_id($user -> id);
-				$sum_amt = intval($sum_amt);
-				$gift_id = $user -> gift_id;
+				$list = $this -> tsga_dao -> find_list_limit(array('user_id'=> $user -> id,'start' => 0,'length'=> 10));
+
+				$cArray= array();
+				foreach ($list as $each) {
+					$value = $each['ope_amt'] .$each['create_time']; 
+
+				}
 				$msg_arr[] = array(
 					"type" => "text",
 					"text" => "您的餘額： {$sum_amt}\n您的贈禮ID為: $gift_id\n您的錢包地址為: {$users->wallet_code}",
