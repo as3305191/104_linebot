@@ -171,11 +171,11 @@ class Line_bot extends MY_Base_Controller {
 				foreach ($list as $each) {
 					$value = $each['ope_amt'] .$each['create_time'];
 				}
-				$showContet = implode("\n",$arr);
+				// $showContet = implode("\n",$arr);
 
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => $showContet ,
+					"text" => $cArray ,
 				);
 			}
 
