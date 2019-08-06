@@ -176,7 +176,7 @@ class Line_bot extends MY_Base_Controller {
 					// $showContet = implode("\n",$cArray);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => json_encode($list),
+						"text" => " $list[0]-> ope_amt ",
 					);
 				}else{
 
