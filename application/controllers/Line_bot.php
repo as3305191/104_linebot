@@ -689,7 +689,7 @@ class Line_bot extends MY_Base_Controller {
 					$i['bet'] = 8;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
-					$list =  $data->last_id;
+					$list =  $data->last_id[0];
 
 
 					// $msg_arr[] = array(
