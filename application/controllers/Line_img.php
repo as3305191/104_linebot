@@ -691,8 +691,8 @@ class Line_img extends MY_Base_Controller {
 		// // $imageData_22 = imagescale($imageData_22, 238,254);
 		// // imagecopy($jpg_image, $imageData_22, 725, 1000, 0, 0, 238, 238);
 		//
-		ob_clean();
-		flush();
+		// ob_clean();
+		// flush();
 
 		// Send Image to Browser
 		imagejpeg($jpg_image);
