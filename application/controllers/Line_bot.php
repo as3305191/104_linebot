@@ -687,7 +687,11 @@ class Line_bot extends MY_Base_Controller {
 
 					$msg_arr[] = array(
 						"type" => "imagemap",
-						"baseUrl" =>"$img_00"
+						"baseUrl" =>"$img_00",
+						"baseSize" => array(
+							"width" => "200",
+							"height" => "200"
+						),
 					);
 					$msg_arr[] = array(
 						"type" => "text",
