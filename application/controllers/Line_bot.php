@@ -689,16 +689,8 @@ class Line_bot extends MY_Base_Controller {
 					$i['bet'] = 8;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
-					$list =  $data -> list;
-					$img['_00']=$list[0][0];
-					$img['_01']=$list[0][1];
-					$img['_02']=$list[0][2];
-					$img['_10']=$list[1][0];
-					$img['_11']=$list[1][1];
-					$img['_12']=$list[1][2];
-					$img['_20']=$list[2][0];
-					$img['_21']=$list[2][1];
-					$img['_22']=$list[2][2];
+					$list =  $data [0];
+	
 
 					// $msg_arr[] = array(
 					// 	"type" => "image",
@@ -708,7 +700,7 @@ class Line_bot extends MY_Base_Controller {
 
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "$n_res",
+						"text" => "$list",
 					);
 					$this -> show_super_8_not_first($msg_arr);
 
