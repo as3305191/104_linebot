@@ -167,29 +167,25 @@ class Line_bot extends MY_Base_Controller {
 			if($message -> text == '查詢分潤') {
 				$list = $this -> tsga_dao -> find_list_limit(array('user_id'=> $user -> id,'start' => 0,'length'=> 10));
 
-				// if(!empty($list) && count($list)>0){
-				// 	$cArray= array();
-				// 	foreach ($list as $each) {
-				// 		$value = $each['ope_amt'] .$each['create_time'];
-				// 		array_push($cArray,$value);
-				// 	}
-				// 	$showContet = implode("\n",$cArray);
-				// 	$msg_arr[] = array(
-				// 		"type" => "text",
-				// 		"text" => $showContet ,
-				// 	);
-				// }else{
-				//
-				// 	$msg_arr[] = array(
-				// 		"type" => "text",
-				// 		"text" => "目前無紀錄" ,
-				// 	);
-				// }
+				if(count($list) > 0){
+					$cArray= array();
+					foreach ($list as $each) {
+						$value = $each['ope_amt'] .$each['create_time'];
+						array_push($cArray,$value);
+					}
+					$showContet = implode("\n",$cArray);
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => $showContet ,
+					);
+				}else{
 
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => $list ,
-				);
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "目前無紀錄" ,
+					);
+				}
+
 
 			}
 
