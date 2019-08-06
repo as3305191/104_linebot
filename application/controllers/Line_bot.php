@@ -170,16 +170,15 @@ class Line_bot extends MY_Base_Controller {
 				if(count($list) > 0){
 					$cArray= array();
 					foreach ($list as $each) {
-						$value = $each['ope_amt'] .$each['create_time'];
+						$value = $each->ope_amt .$each->create_time;
 						array_push($cArray,$value);
 					}
-
-					$m = $list[0];
-					// $showContet = implode("\n",$cArray);
+					$showContet = implode("\n",$cArray);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => " {$m['ope_amt']}",
+						"text" => " {$showContet}",
 					);
+
 				}else{
 
 					$msg_arr[] = array(
