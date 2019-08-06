@@ -809,9 +809,10 @@ class Line_bot extends MY_Base_Controller {
 	}
 
 	private function show_super_8_test(&$msg_arr, $is_first = FALSE) {
+		$im = LoadJpeg();
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => LoadJpeg(),
+			"baseUrl" => $im,
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
