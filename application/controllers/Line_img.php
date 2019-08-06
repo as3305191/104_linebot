@@ -605,15 +605,6 @@ class Line_img extends MY_Base_Controller {
 	}
 
 	public function imagettftext() {
-		$img00 = $this -> get_post('_00');
-		$img01 = $this -> get_post('_01');
-		$img02 = $this -> get_post('_02');
-		$img10 = $this -> get_post('_10');
-		$img11 = $this -> get_post('_11');
-		$img12 = $this -> get_post('_12');
-		$img20 = $this -> get_post('_20');
-		$img21 = $this -> get_post('_21');
-		$img22 = $this -> get_post('_22');
 
 		$im = HOME_DIR . "img/line688/line/0802.jpg";
 		header("Content-Disposition: attachment; ");
@@ -627,26 +618,23 @@ class Line_img extends MY_Base_Controller {
 		$green = imagecolorallocate($jpg_image,   0, 255,   0);
 		$blue  = imagecolorallocate($jpg_image,   0,   0, 255);
 		$yellow  = imagecolorallocate($jpg_image,   255,   255, 0);
+		$font = HOME_DIR . "img/line688/font/wt006.ttf";
 
 
-		// imagettftext($jpg_image, 214, 226, 412, 36,$white,$text);
-		imagettftext($jpg_image, 28, 0, 292, 185, $white, $font, $text);
-		$pic_00 = HOME_DIR . "img/line688/line/bell.png";
-		$pic_01 = HOME_DIR . "img/line688/line/bell.png";
-		$pic_02 = HOME_DIR . "img/line688/line/bell.png";
-		$pic_10 = HOME_DIR . "img/line688/line/bell.png";
-		$pic_11 = HOME_DIR . "img/line688/line/bell.png";
-		$pic_12 = HOME_DIR . "img/line688/line/bell.png";
-		$pic_20 = HOME_DIR . "img/line688/line/bell.png";
-		$pic_21 = HOME_DIR . "img/line688/line/bell.png";
-		$pic_22 = HOME_DIR . "img/line688/line/bell.png";
-		$imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
-		$imageData_00 = imagescale($imageData_00, 238,254);
-		imagecopy($jpg_image, $imageData_00, 79, 366, 0, 0, 238, 254);
+		imagettftext($jpg_image, 30, 0, 190, 600, $black, $font, 123);
+		// imagettftext($jpg_image, 30, 0, 190, 600, $black, $font, 123);
+		// imagettftext($jpg_image, 30, 0, 190, 600, $black, $font, 123);
+		// imagettftext($jpg_image, 30, 0, 190, 600, $black, $font, 123);
+		// imagettftext($jpg_image, 30, 0, 190, 600, $black, $font, 123);
+		// imagettftext($jpg_image, 30, 0, 190, 600, $black, $font, 123);
 
-		$imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
-		$imageData_01 = imagescale($imageData_01, 238,254);
-		imagecopy($jpg_image, $imageData_01, 400, 366, 0, 0, 238, 254);
+		// $imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
+		// $imageData_00 = imagescale($imageData_00, 238,254);
+		// imagecopy($jpg_image, $imageData_00, 79, 366, 0, 0, 238, 254);
+		//
+		// $imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
+		// $imageData_01 = imagescale($imageData_01, 238,254);
+		// imagecopy($jpg_image, $imageData_01, 400, 366, 0, 0, 238, 254);
 
 		// $imageData_02 = imagecreatefromstring(file_get_contents($pic_02));
 		// $imageData_02 = imagescale($imageData_02, 238,254);
