@@ -800,7 +800,7 @@ class Line_bot extends MY_Base_Controller {
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
-				"height" => "1688"
+				"height" => "1500"
 			),
 			"actions" => array(
 			array(
