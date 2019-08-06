@@ -812,7 +812,7 @@ class Line_bot extends MY_Base_Controller {
 		$im = LoadJpeg();
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => $im,
+			"baseUrl" => imagejpeg($im),
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
