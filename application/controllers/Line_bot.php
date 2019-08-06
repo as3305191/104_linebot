@@ -685,11 +685,11 @@ class Line_bot extends MY_Base_Controller {
 					$img_21=$this -> get_line_img($list[2][1]);
 					$img_22=$this -> get_line_img($list[2][2]);
 
-					$msg_arr[] = array(
-						"type" => "image",
-						"originalContentUrl" =>"$img_00"
-
-					);
+					// $msg_arr[] = array(
+					// 	"type" => "image",
+					// 	"originalContentUrl" =>"$img_00"
+					//
+					// );
 					$msg_arr[] = array(
 						"type" => "text",
 						"text" => "$n_res",
