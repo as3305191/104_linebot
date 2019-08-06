@@ -809,7 +809,9 @@ class Line_bot extends MY_Base_Controller {
 	}
 
 	private function show_super_8_test(&$msg_arr, $is_first = FALSE) {
+		header('Content-Type: image/png');
 		$im = LoadJpeg();
+
 		$msg_arr[] = array(
 			"type" => "imagemap",
 			"baseUrl" => imagejpeg($im),
@@ -1016,26 +1018,28 @@ class Line_bot extends MY_Base_Controller {
 
 	function LoadJpeg()
 	{
-	    /* 尝试打开 */
-	    $im = @imagecreatefromjpeg(base_url("line_img/line_jpg/first_game/v1/1"));
 
-	    /* See if it failed */
-	    if(!$im)
-	    {
-	        /* Create a black image */
-	        $im  = imagecreatetruecolor(150, 30);
-	        $bgc = imagecolorallocate($im, 255, 255, 255);
-	        $tc  = imagecolorallocate($im, 0, 0, 0);
+		/* 尝试打开 */
+		$im = @imagecreatefromjpeg(base_url("line_img/line_jpg/first_game/v1/1"));
 
-	        imagefilledrectangle($im, 0, 0, 150, 30, $bgc);
+		/* See if it failed */
+		if(!$im)
+		{
+				/* Create a black image */
+				$im  = imagecreatetruecolor(150, 30);
+				$bgc = imagecolorallocate($im, 255, 255, 255);
+				$tc  = imagecolorallocate($im, 0, 0, 0);
 
-	        /* Output an error message */
-	        imagestring($im, 1, 5, 5, 'Error loading ' . $imgname, $tc);
-	    }
+				imagefilledrectangle($im, 0, 0, 150, 30, $bgc);
 
-			imagettftext($im, 30, 0, 190, 600, $black, $font, '1111');
+				/* Output an error message */
+				imagestring($im, 1, 5, 5, 'Error loading ' . $imgname, $tc);
+		}
 
-	    return $im;
+		imagettftext($im, 30, 0, 190, 600, $black, $font, '1111');
+
+		return $im;
+
 	}
 
 }
