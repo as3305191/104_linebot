@@ -765,38 +765,38 @@ class Line_bot extends MY_Base_Controller {
 			"baseUrl" => base_url("line_img/line_jpg/0802/v1/1"),
 			"altText" => "下注金額",
 			"baseSize" => array(
-				"width" => "1040",
-				"height" => "1500"
+				"width" => "1044",
+				"height" => "1688"
 			),
 			"actions" => array(
 				array(
 					"type" => "message",
 					"text" => "下注_超八_8",
 					"area" => array(
-						"x" => 90,
-						"y" => 1234,
-						"width" => 208,
-						"height" => 202
+						"x" => 93,
+						"y" => 1436,
+						"width" => 204,
+						"height" => 216
 					)
 				),
 				array(
 					"type" => "message",
 					"text" => "下注_超八_40",
 					"area" => array(
-						"x" => 425,
-						"y" => 1234,
-						"width" => 208,
-						"height" => 202
+						"x" => 423,
+						"y" => 1436,
+						"width" => 204,
+						"height" => 216
 					)
 				),
 				array(
 					"type" => "message",
 					"text" => "下注_超八_80",
 					"area" => array(
-						"x" => 758,
-						"y" => 1234,
-						"width" => 208,
-						"height" => 202
+						"x" => 755,
+						"y" => 1436,
+						"width" => 204,
+						"height" => 216
 					)
 				),
 				array(
