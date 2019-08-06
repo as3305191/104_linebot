@@ -686,8 +686,8 @@ class Line_bot extends MY_Base_Controller {
 					$img_22=$this -> get_line_img($list[2][2]);
 
 					$msg_arr[] = array(
-						"type" => "imagemap",
-						"baseUrl" =>"$img_00",
+						"type" => "image",
+						"originalContentUrl" =>"$img_00",
 						"baseSize" => array(
 							"width" => "200",
 							"height" => "200"
@@ -851,38 +851,38 @@ class Line_bot extends MY_Base_Controller {
 		$img = 0;
 
 		if($winning_item=="seven_b"){
-			$img=base_url("line_img/line_jpg/seven_b/v1/1"),
+			$img=base_url("line_img/line_png/seven_b/v1/1"),
 		}
 		if($winning_item=="seven_r"){
-			$img=base_url("line_img/line_jpg/seven_r/v1/1"),
+			$img=base_url("line_img/line_png/seven_r/v1/1"),
 
 		}
 		if($winning_item=="bar"){
-			$img=base_url("line_img/line_jpg/bar/v1/1"),
+			$img=base_url("line_img/line_png/bar/v1/1"),
 
 		}
 		if($winning_item=="medal"){
-			$img=base_url("line_img/line_jpg/medal/v1/1"),
+			$img=base_url("line_img/line_png/medal/v1/1"),
 
 		}
 		if($winning_item=="bell"){
-			$img=base_url("line_img/line_jpg/bell/v1/1"),
+			$img=base_url("line_img/line_png/bell/v1/1"),
 
 		}
 		if($winning_item=="watermelon"){
-			$img=base_url("line_img/line_jpg/watermelon/v1/1"),
+			$img=base_url("line_img/line_png/watermelon/v1/1"),
 
 		}
 		if($winning_item=="grape"){
-			$img=base_url("line_img/line_jpg/grape/v1/1"),
+			$img=base_url("line_img/line_png/grape/v1/1"),
 
 		}
 		if($winning_item=="orange"){
-			$img=base_url("line_img/line_jpg/orange/v1/1"),
+			$img=base_url("line_img/line_png/orange/v1/1"),
 
 		}
 		if($winning_item=="cherry"){
-			$img=base_url("line_img/line_jpg/cherry/v1/1"),
+			$img=base_url("line_img/line_png/cherry/v1/1"),
 
 		}
 		return $img;
