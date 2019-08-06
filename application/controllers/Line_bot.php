@@ -762,7 +762,7 @@ class Line_bot extends MY_Base_Controller {
 	private function show_super_8_not_first(&$msg_arr) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_jpg/first_game/v1/1"),
+			"baseUrl" => base_url("line_img/line_jpg/0802/v1/1"),
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
