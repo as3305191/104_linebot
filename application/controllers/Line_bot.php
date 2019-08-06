@@ -164,22 +164,7 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
-			if($message -> text == '查詢分潤') {
-				$list = $this -> tsga_dao -> find_list_limit(array('user_id'=> $user -> id,'start' => 0,'length'=> 10));
 
-				$cArray= array();
-				foreach ($list as $each) {
-					$value = $each['ope_amt'] .$each['create_time'];
-					array_push($value);
-				}
-
-				$show = implode("\n",$cArray);
-
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => $show ,
-				);
-			}
 
 
 			// send message
