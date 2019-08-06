@@ -792,7 +792,7 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
-	private function show_super_8_not_first($id) {
+	private function show_super_8_not_first(&$msg_arr,$id) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
 			"baseUrl" => base_url("line_img/line_result/$id/v1/1"),
