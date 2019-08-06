@@ -688,8 +688,8 @@ class Line_bot extends MY_Base_Controller {
 				}else{
 					$i['bet'] = 8;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
-					$data = json_decode($n_res);
-					$list =  $data->last_id;
+					// $data = json_decode($n_res);
+					// $list =  $data->last_id;
 
 
 					// $msg_arr[] = array(
@@ -700,7 +700,7 @@ class Line_bot extends MY_Base_Controller {
 
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "$list",
+						"text" => "$n_res",
 					);
 					$this -> show_super_8_not_first($msg_arr);
 
