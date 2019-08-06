@@ -814,8 +814,8 @@ class Line_bot extends MY_Base_Controller {
 					"type" => "message",
 					"text" => "下注_超八_8",
 					"area" => array(
-						"x" => 90,
-						"y" => 1234,
+						"x" => 100,
+						"y" => 1440,
 						"width" => 208,
 						"height" => 202
 					)
@@ -824,8 +824,8 @@ class Line_bot extends MY_Base_Controller {
 					"type" => "message",
 					"text" => "下注_超八_40",
 					"area" => array(
-						"x" => 425,
-						"y" => 1234,
+						"x" => 423,
+						"y" => 1440,
 						"width" => 208,
 						"height" => 202
 					)
@@ -835,7 +835,7 @@ class Line_bot extends MY_Base_Controller {
 					"text" => "下注_超八_80",
 					"area" => array(
 						"x" => 758,
-						"y" => 1234,
+						"y" => 1440,
 						"width" => 208,
 						"height" => 202
 					)
