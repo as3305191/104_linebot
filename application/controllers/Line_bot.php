@@ -188,7 +188,7 @@ class Line_bot extends MY_Base_Controller {
 
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "目前無紀錄" ,
+					"text" => $list ,
 				);
 
 			}
