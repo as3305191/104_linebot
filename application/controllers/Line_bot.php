@@ -690,7 +690,7 @@ class Line_bot extends MY_Base_Controller {
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$id=$data->last_id;
-					
+
 					$this -> show_super_8_not_first(&$msg_arr,$id);
 
 				}
