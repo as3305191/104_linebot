@@ -693,10 +693,11 @@ class Line_img extends MY_Base_Controller {
 		//
 		ob_clean();
 		flush();
+
 		// Send Image to Browser
 		imagejpeg($jpg_image);
 		// Clear Memory
-		imagedestroy($jpg_image);
+		// imagedestroy($jpg_image);
 
 		exit ;
 		show_404();
