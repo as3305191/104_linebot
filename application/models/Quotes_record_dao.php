@@ -72,7 +72,7 @@ class Quotes_record_dao extends MY_Model {
 		return $list[0];
 	}
 
-	function insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr) {
+	function insert_all_total($bet_o,$total,$for_q_amt,$user_id) {
 		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
@@ -82,33 +82,10 @@ class Quotes_record_dao extends MY_Model {
 		$get_current_point=$this -> q_r_dao -> get_current_point();
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
 
-		$match_arr = json_decode($n_res);
-		$list =  $match_arr -> list;
-		$img['_00']=$list[0][0];
-		$img['_01']=$list[0][1];
-		$img['_02']=$list[0][2];
-		$img['_10']=$list[1][0];
-		$img['_11']=$list[1][1];
-		$img['_12']=$list[1][2];
-		$img['_20']=$list[2][0];
-		$img['_21']=$list[2][1];
-		$img['_22']=$list[2][2];
-
 		$tx_11 = array();
 		$tx_11['user_id'] = $user_id;
 		$tx_11['bet'] = $bet_o;
 		$tx_11['total_win_point'] = $total;
-		$tx_11['result'] = array(	$img['_00']=$list[0][0];
-			$list[0][1],
-			$list[0][2],
-			$list[1][0],
-			$list[1][1],
-			$list[1][2],
-			$list[2][0],
-			$list[2][1],
-			$list[2][2],
-);
-
 		$last_id=	$this -> play_game_dao -> insert($tx_11);
 
 
