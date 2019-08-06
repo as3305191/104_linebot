@@ -694,7 +694,7 @@ class Line_bot extends MY_Base_Controller {
 					// 	"type" => "text",
 					// 	"text" => "$id",
 					// );
-					$this -> show_super_8_not($id);
+					$this -> show_super_8_not_first($id);
 
 				}
 			}
@@ -713,7 +713,7 @@ class Line_bot extends MY_Base_Controller {
 					// 	"type" => "text",
 					// 	"text" => "$id",
 					// );
-					$this -> show_super_8_not($id);
+					$this -> show_super_8_not_first($id);
 
 				}
 			}
@@ -732,7 +732,7 @@ class Line_bot extends MY_Base_Controller {
 					// 	"type" => "text",
 					// 	"text" => "$id",
 					// );
-						$this -> show_super_8_not($id);
+						$this -> show_super_8_not_first($id);
 
 				}
 			}
@@ -792,63 +792,61 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
-	private function show_super_8_not($id) {
+
+	private function show_super_8_not_first($id) {
 		$msg_arr[] = array(
-			"type" => "text",
-			"text" => "$id",
+			"type" => "imagemap",
+			"baseUrl" => base_url("line_img/line_result/{$id}/v1/1"),
+			"altText" => "下注金額",
+			"baseSize" => array(
+				"width" => "1040",
+				"height" => "1500"
+			),
+			"actions" => array(
+			array(
+				"type" => "message",
+				"text" => "881",
+				"area" => array(
+					"x" => 70,
+					"y" => 54,
+					"width" => 910,
+					"height" => 130
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_8",
+					"area" => array(
+						"x" => 90,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_40",
+					"area" => array(
+						"x" => 425,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_80",
+					"area" => array(
+						"x" => 758,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+			)
 		);
-		// $msg_arr[] = array(
-		// 	"type" => "imagemap",
-		// 	"baseUrl" => base_url("line_img/line_result/{$id}/v1/1"),
-		// 	"altText" => "下注金額",
-		// 	"baseSize" => array(
-		// 		"width" => "1040",
-		// 		"height" => "1688"
-		// 	),
-		// 	"actions" => array(
-		// 		array(
-		// 			"type" => "message",
-		// 			"text" => "881",
-		// 			"area" => array(
-		// 				"x" => 70,
-		// 				"y" => 54,
-		// 				"width" => 910,
-		// 				"height" => 130
-		// 			)
-		// 		),
-		// 		array(
-		// 			"type" => "message",
-		// 			"text" => "下注_超八_8",
-		// 			"area" => array(
-		// 				"x" => 100,
-		// 				"y" => 1440,
-		// 				"width" => 208,
-		// 				"height" => 202
-		// 			)
-		// 		),
-		// 		array(
-		// 			"type" => "message",
-		// 			"text" => "下注_超八_40",
-		// 			"area" => array(
-		// 				"x" => 423,
-		// 				"y" => 1440,
-		// 				"width" => 208,
-		// 				"height" => 202
-		// 			)
-		// 		),
-		// 		array(
-		// 			"type" => "message",
-		// 			"text" => "下注_超八_80",
-		// 			"area" => array(
-		// 				"x" => 758,
-		// 				"y" => 1440,
-		// 				"width" => 208,
-		// 				"height" => 202
-		// 			)
-		// 		),
-		// 	)
-		// );
 	}
+
 	private function show_super_8_test(&$msg_arr, $is_first = FALSE) {
 		$im = loadJpeg();
 		header('Content-Type: image/png');
