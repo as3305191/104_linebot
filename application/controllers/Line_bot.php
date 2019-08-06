@@ -848,6 +848,7 @@ class Line_bot extends MY_Base_Controller {
 		);
 	}
 	private function get_line_img($winning_item) {
+		$img = 0;
 
 		if($winning_item=="seven_b"){
 			$img=base_url("line_img/line_jpg/seven_b/v1/1"),
