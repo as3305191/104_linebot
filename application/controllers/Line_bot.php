@@ -747,7 +747,7 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => $n_res,
 					);
-					// $this -> show_super_8_not_first($msg_arr);
+					$this -> show_super_8_test($msg_arr);
 
 				}
 			}
@@ -758,6 +758,60 @@ class Line_bot extends MY_Base_Controller {
 		$msg_arr[] = array(
 			"type" => "imagemap",
 			"baseUrl" => base_url("line_img/line_jpg/first_game/v1/1"),
+			"altText" => "下注金額",
+			"baseSize" => array(
+				"width" => "1040",
+				"height" => "1500"
+			),
+			"actions" => array(
+				array(
+					"type" => "message",
+					"text" => "遊戲說明",
+					"area" => array(
+						"x" => 90,
+						"y" => 845,
+						"width" => 880,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_8",
+					"area" => array(
+						"x" => 90,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_40",
+					"area" => array(
+						"x" => 425,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_80",
+					"area" => array(
+						"x" => 758,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+			)
+		);
+	}
+
+	private function show_super_8_test(&$msg_arr, $is_first = FALSE) {
+		$msg_arr[] = array(
+			"type" => "imagemap",
+			"baseUrl" => LoadJpeg(),
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
@@ -958,4 +1012,29 @@ class Line_bot extends MY_Base_Controller {
 			"line_session" => ""
 		), $user -> id);
 	}
+
+	function LoadJpeg()
+	{
+	    /* 尝试打开 */
+	    $im = @imagecreatefromjpeg(base_url("line_img/line_jpg/first_game/v1/1"));
+
+	    /* See if it failed */
+	    if(!$im)
+	    {
+	        /* Create a black image */
+	        $im  = imagecreatetruecolor(150, 30);
+	        $bgc = imagecolorallocate($im, 255, 255, 255);
+	        $tc  = imagecolorallocate($im, 0, 0, 0);
+
+	        imagefilledrectangle($im, 0, 0, 150, 30, $bgc);
+
+	        /* Output an error message */
+	        imagestring($im, 1, 5, 5, 'Error loading ' . $imgname, $tc);
+	    }
+
+			imagettftext($im, 30, 0, 190, 600, $black, $font, '1111');
+
+	    return $im;
+	}
+
 }
