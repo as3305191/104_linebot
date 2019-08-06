@@ -173,10 +173,12 @@ class Line_bot extends MY_Base_Controller {
 						$value = $each['ope_amt'] .$each['create_time'];
 						array_push($cArray,$value);
 					}
+
+					$m = $list[0];
 					// $showContet = implode("\n",$cArray);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => " {$list[0]-> ope_amt}",
+						"text" => " {$m['ope_amt']}",
 					);
 				}else{
 
