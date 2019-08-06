@@ -640,18 +640,17 @@ class Line_img extends MY_Base_Controller {
 		$pic_20 = HOME_DIR . "img/line688/line/bell.png";
 		$pic_21 = HOME_DIR . "img/line688/line/bell.png";
 		$pic_22 = HOME_DIR . "img/line688/line/bell.png";
+		$imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
+		$imageData_00 = imagescale($imageData_00, 238,254);
+		imagecopy($jpg_image, $imageData_00, 79, 366, 0, 0, 238, 254);
 
-		$imageData = imagecreatefromstring(file_get_contents($pic_00));
-		$imageData = imagescale($imageData, 238,254);
-		imagecopy($jpg_image, $imageData, 79, 366, 0, 0, 238, 254);
+		$imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
+		$imageData_01 = imagescale($imageData_01, 238,254);
+		imagecopy($jpg_image, $imageData_01, 400, 366, 0, 0, 238, 254);
 
-		$imageData = imagecreatefromstring(file_get_contents($pic_01));
-		$imageData = imagescale($imageData, 238,254);
-		imagecopy($jpg_image, $imageData, 400, 366, 0, 0, 238, 254);
-
-		// $imageData = imagecreatefromstring(file_get_contents($pic_02));
-		// $imageData = imagescale($imageData, 238,254);
-		// imagecopy($jpg_image, $imageData, 725, 366, 0, 0, 238, 254);
+		// $imageData_02 = imagecreatefromstring(file_get_contents($pic_02));
+		// $imageData_02 = imagescale($imageData_02, 238,254);
+		// imagecopy($jpg_image, $imageData_02, 725, 366, 0, 0, 238, 254);
 
 		// $imageData_10 = imagecreatefromstring(file_get_contents($pic_10));
 		// $imageData_10 = imagescale($imageData_10, 238,254);

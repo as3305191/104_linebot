@@ -699,13 +699,13 @@ class Line_bot extends MY_Base_Controller {
 					$img['_20']=$list[2][0];
 					$img['_21']=$list[2][1];
 					$img['_22']=$list[2][2];
-					$new_picture = $this -> curl -> simple_post("/line_img/imagettftext", $img);
+					// $new_picture = $this -> curl -> simple_post("/line_img/imagettftext", $img);
 
-					$msg_arr[] = array(
-						"type" => "image",
-						"originalContentUrl" => $new_picture,
-						"previewImageUrl" =>  $new_picture,
-					);
+					// $msg_arr[] = array(
+					// 	"type" => "image",
+					// 	"originalContentUrl" => $new_picture,
+					// 	"previewImageUrl" =>  $new_picture,
+					// );
 
 					$msg_arr[] = array(
 						"type" => "text",
@@ -808,59 +808,6 @@ class Line_bot extends MY_Base_Controller {
 		);
 	}
 
-	private function show_super_8_not_first(&$msg_arr) {
-		$msg_arr[] = array(
-			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_jpg/0802/v1/1"),
-			"altText" => "下注金額",
-			"baseSize" => array(
-				"width" => "1044",
-				"height" => "1688"
-			),
-			"actions" => array(
-				array(
-					"type" => "message",
-					"text" => "下注_超八_8",
-					"area" => array(
-						"x" => 93,
-						"y" => 1436,
-						"width" => 204,
-						"height" => 216
-					)
-				),
-				array(
-					"type" => "message",
-					"text" => "下注_超八_40",
-					"area" => array(
-						"x" => 423,
-						"y" => 1436,
-						"width" => 204,
-						"height" => 216
-					)
-				),
-				array(
-					"type" => "message",
-					"text" => "下注_超八_80",
-					"area" => array(
-						"x" => 755,
-						"y" => 1436,
-						"width" => 204,
-						"height" => 216
-					)
-				),
-				array(
-					"type" => "message",
-					"text" => "881",
-					"area" => array(
-						"x" => 68,
-						"y" => 55,
-						"width" => 913,
-						"height" => 121
-					)
-				),
-			)
-		);
-	}
 	// private function get_line_img($winning_item) {
 	//
 	// 	if($winning_item=="seven_b"){
