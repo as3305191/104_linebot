@@ -631,50 +631,51 @@ class Line_img extends MY_Base_Controller {
 
 		// imagettftext($jpg_image, 214, 226, 412, 36,$white,$text);
 		imagettftext($jpg_image, 28, 0, 292, 185, $white, $font, $text);
-		$pic_00 = HOME_DIR . "img/line688/line/{$img00}.png";
-		$pic_01 = HOME_DIR . "img/line688/line/{$img01}.png";
-		$pic_02 = HOME_DIR . "img/line688/line/{$img02}.png";
-		$pic_10 = HOME_DIR . "img/line688/line/{$img10}.png";
-		$pic_11 = HOME_DIR . "img/line688/line/{$img11}.png";
-		$pic_12 = HOME_DIR . "img/line688/line/{$img12}.png";
-		$pic_20 = HOME_DIR . "img/line688/line/{$img20}.png";
-		$pic_21 = HOME_DIR . "img/line688/line/{$img21}.png";
-		$pic_22 = HOME_DIR . "img/line688/line/{$img22}.png";
-		$imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
-		$imageData_00 = imagescale($imageData_00, 238,254);
-		imagecopy($jpg_image, $imageData_00, 79, 366, 0, 0, 238, 238);
+		$pic_00 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_01 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_02 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_10 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_11 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_12 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_20 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_21 = HOME_DIR . "img/line688/line/bell.png";
+		$pic_22 = HOME_DIR . "img/line688/line/bell.png";
 
-		$imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
-		$imageData_01 = imagescale($imageData_01, 238,254);
-		imagecopy($jpg_image, $imageData_01, 400, 366, 0, 0, 238, 238);
+		$imageData = imagecreatefromstring(file_get_contents($pic_00));
+		$imageData = imagescale($imageData, 238,254);
+		imagecopy($jpg_image, $imageData, 79, 366, 0, 0, 238, 254);
 
-		$imageData_02 = imagecreatefromstring(file_get_contents($pic_02));
-		$imageData_02 = imagescale($imageData_02, 238,254);
-		imagecopy($jpg_image, $imageData_02, 400, 366, 0, 0, 238, 238);
+		$imageData = imagecreatefromstring(file_get_contents($pic_01));
+		$imageData = imagescale($imageData, 238,254);
+		imagecopy($jpg_image, $imageData, 400, 366, 0, 0, 238, 254);
 
-		$imageData_10 = imagecreatefromstring(file_get_contents($pic_10));
-		$imageData_10 = imagescale($imageData_10, 238,254);
-		imagecopy($jpg_image, $imageData_10, 400, 366, 0, 0, 238, 238);
+		// $imageData = imagecreatefromstring(file_get_contents($pic_02));
+		// $imageData = imagescale($imageData, 238,254);
+		// imagecopy($jpg_image, $imageData, 725, 366, 0, 0, 238, 254);
 
-		$imageData_11 = imagecreatefromstring(file_get_contents($pic_11));
-		$imageData_11 = imagescale($imageData_11, 238,254);
-		imagecopy($jpg_image, $imageData_11, 400, 366, 0, 0, 238, 238);
-
-		$imageData_12 = imagecreatefromstring(file_get_contents($pic_12));
-		$imageData_12 = imagescale($imageData_12, 238,254);
-		imagecopy($jpg_image, $imageData_12, 400, 366, 0, 0, 238, 238);
-
-		$imageData_20 = imagecreatefromstring(file_get_contents($pic_20));
-		$imageData_20 = imagescale($imageData_20, 238,254);
-		imagecopy($jpg_image, $imageData_20, 400, 366, 0, 0, 238, 238);
-
-		$imageData_21 = imagecreatefromstring(file_get_contents($pic_21));
-		$imageData_21 = imagescale($imageData_21, 238,254);
-		imagecopy($jpg_image, $imageData_21, 400, 366, 0, 0, 238, 238);
-
-		$imageData_22 = imagecreatefromstring(file_get_contents($pic_22));
-		$imageData_22 = imagescale($imageData_22, 238,254);
-		imagecopy($jpg_image, $imageData_22, 400, 366, 0, 0, 238, 238);
+		// $imageData_10 = imagecreatefromstring(file_get_contents($pic_10));
+		// $imageData_10 = imagescale($imageData_10, 238,254);
+		// imagecopy($jpg_image, $imageData_10, 79, 670, 0, 0, 238, 254);
+		//
+		// $imageData_11 = imagecreatefromstring(file_get_contents($pic_11));
+		// $imageData_11 = imagescale($imageData_11, 238,254);
+		// imagecopy($jpg_image, $imageData_11, 400, 670, 0, 0, 238, 254);
+		//
+		// $imageData_12 = imagecreatefromstring(file_get_contents($pic_12));
+		// $imageData_12 = imagescale($imageData_12, 238,254);
+		// imagecopy($jpg_image, $imageData_12, 725, 670, 0, 0, 238, 254);
+		//
+		// $imageData_20 = imagecreatefromstring(file_get_contents($pic_20));
+		// $imageData_20 = imagescale($imageData_20, 238,254);
+		// imagecopy($jpg_image, $imageData_20, 79, 1000, 0, 0, 238, 254);
+		//
+		// $imageData_21 = imagecreatefromstring(file_get_contents($pic_21));
+		// $imageData_21 = imagescale($imageData_21, 238,254);
+		// imagecopy($jpg_image, $imageData_21, 400, 1000, 0, 0, 238, 254);
+		//
+		// $imageData_22 = imagecreatefromstring(file_get_contents($pic_22));
+		// $imageData_22 = imagescale($imageData_22, 238,254);
+		// imagecopy($jpg_image, $imageData_22, 725, 1000, 0, 0, 238, 254);
 
 		ob_clean();
 		flush();
@@ -684,7 +685,6 @@ class Line_img extends MY_Base_Controller {
 		imagedestroy($jpg_image);
 
 		exit ;
-		return $jpg_image;
 		show_404();
 	}
 
