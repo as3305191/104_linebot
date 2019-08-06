@@ -694,7 +694,7 @@ class Line_bot extends MY_Base_Controller {
 					// 	"type" => "text",
 					// 	"text" => "$id",
 					// );
-					$this -> show_super_8_not_first($id);
+					$this -> show_super_8_not($id);
 
 				}
 			}
@@ -713,7 +713,7 @@ class Line_bot extends MY_Base_Controller {
 					// 	"type" => "text",
 					// 	"text" => "$id",
 					// );
-					$this -> show_super_8_not_first($id);
+					$this -> show_super_8_not($id);
 
 				}
 			}
@@ -732,7 +732,7 @@ class Line_bot extends MY_Base_Controller {
 					// 	"type" => "text",
 					// 	"text" => "$id",
 					// );
-						$this -> show_super_8_not_first($id);
+						$this -> show_super_8_not($id);
 
 				}
 			}
@@ -792,7 +792,7 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
-	private function show_super_8_not_first($id) {
+	private function show_super_8_not($id) {
 		$msg_arr[] = array(
 			"type" => "text",
 			"text" => "$id",
