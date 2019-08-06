@@ -168,16 +168,17 @@ class Line_bot extends MY_Base_Controller {
 				$list = $this -> tsga_dao -> find_list_limit(array('user_id'=> 525 ,'start' => 0,'length'=> 10));
 
 				if(count($list) > 0){
-					$cArray= array();
+					$cArray= array("近期分潤紀錄");
 					foreach ($list as $each) {
-						$value = $each['ope_amt'] .$each['create_time'];
+						$value =' $'.$each->ope_amt.' '. substr($each->create_time, 0, -3); ;
 						array_push($cArray,$value);
 					}
-					// $showContet = implode("\n",$cArray);
+					$showContet = implode("\n",$cArray);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => " {$list[0]-> ope_amt}",
+						"text" => " {$showContet}",
 					);
+
 				}else{
 
 					$msg_arr[] = array(
