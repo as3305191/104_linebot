@@ -685,16 +685,12 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "您的貨幣不到8,如果想取消請輸入881取消此功能",
 					);
-				}else{
+				} else{
 					$i['bet'] = 8;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 
-					// $msg_arr[] = array(
-					// 	"type" => "text",
-					// 	"text" => "$data->last_id",
-					// );
-					$this -> show_super_8_not_first($data->last_id);
+					$this -> show_super_8_not_first(&$msg_arr, $message,$data->last_id);
 
 				}
 			}
@@ -704,15 +700,12 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "您的貨幣不到40,如果想取消請輸入881取消此功能",
 					);
-				}else{
+				} else{
 					$i['bet'] = 40;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
-					// $msg_arr[] = array(
-					// 	"type" => "text",
-					// 	"text" => "$data->last_id",
-					// );
-					$this -> show_super_8_not_first($data->last_id);
+
+					$this -> show_super_8_not_first(&$msg_arr, $message,$data->last_id);
 
 				}
 			}
@@ -722,15 +715,12 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "您的貨幣不到80,如果想取消請輸入881取消此功能",
 					);
-				}else{
+				} else{
 					$i['bet'] = 80;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
-					// $msg_arr[] = array(
-					// 	"type" => "text",
-					// 	"text" => "$data->last_id",
-					// );
-					$this -> show_super_8_not_first($data->last_id);
+
+					$this -> show_super_8_not_first(&$msg_arr, $message,$data->last_id);
 
 				}
 			}
@@ -790,7 +780,7 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
-	private function show_super_8_not_first($last_id) {
+	private function show_super_8_not_first(&$msg_arr, $message,$last_id) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
 			"baseUrl" => base_url("line_img/line_result/{$last_id}/v1/1"),
@@ -850,57 +840,7 @@ class Line_bot extends MY_Base_Controller {
 
 		echo $image;
 
-		// $msg_arr[] = array(
-		// 	"type" => "imagemap",
-		// 	"baseUrl" => base_url($image),
-		// 	"altText" => "下注金額",
-		// 	"baseSize" => array(
-		// 		"width" => "1040",
-		// 		"height" => "1500"
-		// 	),
-		// 	"actions" => array(
-		// 		array(
-		// 			"type" => "message",
-		// 			"text" => "遊戲說明",
-		// 			"area" => array(
-		// 				"x" => 90,
-		// 				"y" => 845,
-		// 				"width" => 880,
-		// 				"height" => 202
-		// 			)
-		// 		),
-		// 		array(
-		// 			"type" => "message",
-		// 			"text" => "下注_超八_8",
-		// 			"area" => array(
-		// 				"x" => 90,
-		// 				"y" => 1234,
-		// 				"width" => 208,
-		// 				"height" => 202
-		// 			)
-		// 		),
-		// 		array(
-		// 			"type" => "message",
-		// 			"text" => "下注_超八_40",
-		// 			"area" => array(
-		// 				"x" => 425,
-		// 				"y" => 1234,
-		// 				"width" => 208,
-		// 				"height" => 202
-		// 			)
-		// 		),
-		// 		array(
-		// 			"type" => "message",
-		// 			"text" => "下注_超八_80",
-		// 			"area" => array(
-		// 				"x" => 758,
-		// 				"y" => 1234,
-		// 				"width" => 208,
-		// 				"height" => 202
-		// 			)
-		// 		),
-		// 	)
-		// );
+
 	}
 
 
