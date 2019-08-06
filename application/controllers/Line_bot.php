@@ -694,7 +694,9 @@ class Line_bot extends MY_Base_Controller {
 					// 	"type" => "text",
 					// 	"text" => "$id",
 					// );
-					$this -> show_super_8_not_first($id);
+					// $this -> show_super_8_not_first($id);
+					$msg_arr[] = array();
+					$this -> show_super_8_second($msg_arr,$id,TRUE);
 
 				}
 			}
@@ -713,7 +715,9 @@ class Line_bot extends MY_Base_Controller {
 					// 	"type" => "text",
 					// 	"text" => "$id",
 					// );
-					$this -> show_super_8_not_first($id);
+					// $this -> show_super_8_not_first($id);
+					$msg_arr[] = array();
+					$this -> show_super_8_second($msg_arr,$id,TRUE);
 
 				}
 			}
@@ -732,7 +736,8 @@ class Line_bot extends MY_Base_Controller {
 					// 	"type" => "text",
 					// 	"text" => "$id",
 					// );
-						$this -> show_super_8_not_first($id);
+					$msg_arr[] = array();
+					$this -> show_super_8_second($msg_arr,$id,TRUE);
 
 				}
 			}
@@ -743,6 +748,60 @@ class Line_bot extends MY_Base_Controller {
 		$msg_arr[] = array(
 			"type" => "imagemap",
 			"baseUrl" => base_url("line_img/line_jpg/first_game/v1/1"),
+			"altText" => "下注金額",
+			"baseSize" => array(
+				"width" => "1040",
+				"height" => "1500"
+			),
+			"actions" => array(
+				array(
+					"type" => "message",
+					"text" => "遊戲說明",
+					"area" => array(
+						"x" => 90,
+						"y" => 845,
+						"width" => 880,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_8",
+					"area" => array(
+						"x" => 90,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_40",
+					"area" => array(
+						"x" => 425,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+				array(
+					"type" => "message",
+					"text" => "下注_超八_80",
+					"area" => array(
+						"x" => 758,
+						"y" => 1234,
+						"width" => 208,
+						"height" => 202
+					)
+				),
+			)
+		);
+	}
+
+	private function show_super_8_second(&$msg_arr,$id ,$is_first = FALSE) {
+		$msg_arr[] = array(
+			"type" => "imagemap",
+			"baseUrl" => base_url("line_img/line_result/{$id}/v1/1"),
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
