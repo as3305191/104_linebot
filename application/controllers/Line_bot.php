@@ -169,7 +169,7 @@ class Line_bot extends MY_Base_Controller {
 
 				$cArray= array();
 				foreach ($list as $each) {
-					$value = $each['ope_amt'] .$each['create_time']; 
+					$value = $each['ope_amt'] .$each['create_time'];
 
 				}
 				$msg_arr[] = array(
@@ -687,7 +687,12 @@ class Line_bot extends MY_Base_Controller {
 					$img_20=$this -> get_line_img($list[2][0]);
 					$img_21=$this -> get_line_img($list[2][1]);
 					$img_22=$this -> get_line_img($list[2][2]);
-
+					if($img_00=="seven_b"){
+							$msg_arr[] = array(
+								"type" => "image",
+								"originalContentUrl" =>base_url("line_img/line_png/seven_b/v1/1")
+							);
+						}
 					// $msg_arr[] = array(
 					// 	"type" => "image",
 					// 	"originalContentUrl" =>"$img_00"
@@ -847,74 +852,74 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
-	private function get_line_img($winning_item) {
-
-		if($winning_item=="seven_b"){
-			$msg_arr[] = array(
-				"type" => "image",
-				"originalContentUrl" =>base_url("line_img/line_png/seven_b/v1/1")
-
-			);
-		}
-		if($winning_item=="seven_r"){
-			$msg_arr[] = array(
-				"type" => "image",
-				"originalContentUrl" =>base_url("line_img/line_png/seven_r/v1/1")
-
-			);
-		}
-		if($winning_item=="bar"){
-			$msg_arr[] = array(
-				"type" => "image",
-				"originalContentUrl" =>base_url("line_img/line_png/bar/v1/1")
-
-			);
-		}
-		if($winning_item=="medal"){
-			$msg_arr[] = array(
-				"type" => "image",
-				"originalContentUrl" =>base_url("line_img/line_png/medal/v1/1")
-
-			);
-		}
-		if($winning_item=="bell"){
-			$msg_arr[] = array(
-				"type" => "image",
-				"originalContentUrl" =>base_url("line_img/line_png/bell/v1/1")
-
-			);
-		}
-		if($winning_item=="watermelon"){
-			$msg_arr[] = array(
-				"type" => "image",
-				"originalContentUrl" =>base_url("line_img/line_png/watermelon/v1/1")
-
-			);
-		}
-		if($winning_item=="grape"){
-			$msg_arr[] = array(
-				"type" => "image",
-				"originalContentUrl" =>base_url("line_img/line_png/grape/v1/1")
-
-			);
-		}
-		if($winning_item=="orange"){
-			$msg_arr[] = array(
-				"type" => "image",
-				"originalContentUrl" =>base_url("line_img/line_png/orange/v1/1")
-
-			);
-		}
-		if($winning_item=="cherry"){
-			$msg_arr[] = array(
-				"type" => "image",
-				"originalContentUrl" =>base_url("line_img/line_png/cherry/v1/1")
-
-			);
-		}
-		return $msg_arr[];
-
-	}
+	// private function get_line_img($winning_item) {
+	//
+	// 	if($winning_item=="seven_b"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/seven_b/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="seven_r"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/seven_r/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="bar"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/bar/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="medal"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/medal/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="bell"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/bell/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="watermelon"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/watermelon/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="grape"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/grape/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="orange"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/orange/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	if($winning_item=="cherry"){
+	// 		$msg_arr[] = array(
+	// 			"type" => "image",
+	// 			"originalContentUrl" =>base_url("line_img/line_png/cherry/v1/1")
+	//
+	// 		);
+	// 	}
+	// 	return $msg_arr[];
+	//
+	// }
 
 	private function function_menu(&$msg_arr) {
 		$msg_arr[] = array(
