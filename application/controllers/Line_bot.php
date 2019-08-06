@@ -698,10 +698,10 @@ class Line_bot extends MY_Base_Controller {
 					// 	"originalContentUrl" =>"$img_00"
 					//
 					// );
-					// $msg_arr[] = array(
-					// 	"type" => "text",
-					// 	"text" => "$n_res",
-					// );
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "$n_res",
+					);
 					$this -> show_super_8_not_first($msg_arr);
 
 				}
