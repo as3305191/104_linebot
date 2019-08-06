@@ -9,6 +9,8 @@ class Coins extends MY_Base_Controller {
 
 		$this -> load -> model('Corp_dao', 'corp_dao');
 		$this -> load -> model('Transfer_coin_dao', 'tc_dao');
+		$this -> load -> model('Transfer_gift_allocation_dao', 'tsga_dao');
+
 	}
 
 	public function do_update() {
@@ -148,6 +150,12 @@ class Coins extends MY_Base_Controller {
 		// check_expired_transfer_in
 		$this -> tc_dao -> check_expired_transfer_in();
 
+		$this -> to_json($res);
+	}
+
+	public function doTest() {
+		$list = $this -> tsga_dao -> find_list_limit(array('user_id'=> 525 ,'start' => 0,'length'=> 10));
+		$res['list'] = $list;
 		$this -> to_json($res);
 	}
 
