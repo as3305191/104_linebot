@@ -914,55 +914,55 @@ class Line_img extends MY_Base_Controller {
 			}
 		}
 
-		if(!empty($win->medal)){
-			if($img00=="medal"){
-				$imageData_medal = imagecreatefromstring(file_get_contents($light));
-				$imageData_medal = imagescale($imageData_medal, 350,390);
-				imagecopy($jpg_image, $imageData_medal, 30, 300, 0, 0, 350, 390);//00
+		if(!empty($win->bar)){
+			if($img00=="bar"){
+				$imageData_bar = imagecreatefromstring(file_get_contents($light));
+				$imageData_bar = imagescale($imageData_bar, 350,390);
+				imagecopy($jpg_image, $imageData_bar, 30, 300, 0, 0, 350, 390);//00
 			}
-			if($img01=="medal"){
-				$imageData_medal = imagecreatefromstring(file_get_contents($light));
-				$imageData_medal = imagescale($imageData_medal, 350,390);
-				imagecopy($jpg_image, $imageData_medal, 350, 300, 0, 0, 350, 390);//01
+			if($img01=="bar"){
+				$imageData_bar = imagecreatefromstring(file_get_contents($light));
+				$imageData_bar = imagescale($imageData_bar, 350,390);
+				imagecopy($jpg_image, $imageData_bar, 350, 300, 0, 0, 350, 390);//01
 
 			}
-			if($img02=="medal"){
-				$imageData_medal = imagecreatefromstring(file_get_contents($light));
-				$imageData_medal = imagescale($imageData_medal, 350,390);
-				imagecopy($jpg_image, $imageData_medal, 670, 300, 0, 0, 350, 390);//02
+			if($img02=="bar"){
+				$imageData_bar = imagecreatefromstring(file_get_contents($light));
+				$imageData_bar = imagescale($imageData_bar, 350,390);
+				imagecopy($jpg_image, $imageData_bar, 670, 300, 0, 0, 350, 390);//02
 
 			}
-			if($img10=="medal"){
-				$imageData_medal = imagecreatefromstring(file_get_contents($light));
-				$imageData_medal = imagescale($imageData_medal, 350,390);
-				imagecopy($jpg_image, $imageData_medal, 30, 605, 0, 0, 350, 390);//10
+			if($img10=="bar"){
+				$imageData_bar = imagecreatefromstring(file_get_contents($light));
+				$imageData_bar = imagescale($imageData_bar, 350,390);
+				imagecopy($jpg_image, $imageData_bar, 30, 605, 0, 0, 350, 390);//10
 			}
-			if($img11=="medal"){
-				$imageData_medal = imagecreatefromstring(file_get_contents($light));
-				$imageData_medal = imagescale($imageData_medal, 350,390);
-				imagecopy($jpg_image, $imageData_medal, 350, 605, 0, 0, 350, 390);//11
+			if($img11=="bar"){
+				$imageData_bar = imagecreatefromstring(file_get_contents($light));
+				$imageData_bar = imagescale($imageData_bar, 350,390);
+				imagecopy($jpg_image, $imageData_bar, 350, 605, 0, 0, 350, 390);//11
 
 			}
-			if($img12=="medal"){
-				$imageData_medal = imagecreatefromstring(file_get_contents($light));
-				$imageData_medal = imagescale($imageData_medal, 350,390);
-				imagecopy($jpg_image, $imageData_medal, 670, 605, 0, 0, 350, 390);//12
+			if($img12=="bar"){
+				$imageData_bar = imagecreatefromstring(file_get_contents($light));
+				$imageData_bar = imagescale($imageData_bar, 350,390);
+				imagecopy($jpg_image, $imageData_bar, 670, 605, 0, 0, 350, 390);//12
 			}
-			if($img20=="medal"){
-				$imageData_medal = imagecreatefromstring(file_get_contents($light));
-				$imageData_medal = imagescale($imageData_medal, 350,390);
-				imagecopy($jpg_image, $imageData_medal, 30, 920, 0, 0, 350, 390);//20
+			if($img20=="bar"){
+				$imageData_bar = imagecreatefromstring(file_get_contents($light));
+				$imageData_bar = imagescale($imageData_bar, 350,390);
+				imagecopy($jpg_image, $imageData_bar, 30, 920, 0, 0, 350, 390);//20
 			}
-			if($img21=="medal"){
-				$imageData_medal = imagecreatefromstring(file_get_contents($light));
-				$imageData_medal = imagescale($imageData_medal, 350,390);
-				imagecopy($jpg_image, $imageData_medal, 350, 920, 0, 0, 350, 390);//21
+			if($img21=="bar"){
+				$imageData_bar = imagecreatefromstring(file_get_contents($light));
+				$imageData_bar = imagescale($imageData_bar, 350,390);
+				imagecopy($jpg_image, $imageData_bar, 350, 920, 0, 0, 350, 390);//21
 
 			}
-			if($img22=="medal"){
-				$imageData_medal = imagecreatefromstring(file_get_contents($light));
-				$imageData_medal = imagescale($imageData_medal, 350,390);
-				imagecopy($jpg_image, $imageData_medal, 670, 920, 0, 0, 350, 390);//22
+			if($img22=="bar"){
+				$imageData_bar = imagecreatefromstring(file_get_contents($light));
+				$imageData_bar = imagescale($imageData_bar, 350,390);
+				imagecopy($jpg_image, $imageData_bar, 670, 920, 0, 0, 350, 390);//22
 			}
 		}
 
