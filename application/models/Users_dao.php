@@ -499,11 +499,11 @@ class Users_dao extends MY_Model {
 		return NULL;
 	}
 
-	function find_by_gift_id_and_corp($corp_id, $gift_id) {
+	function find_by_wallet_code_and_corp($corp_id, $wallet_code) {
 		$list = array();
 		$this -> db -> where('status', 0);
 		$this -> db -> where('corp_id', $corp_id);
-		$this -> db -> where('gift_id', $gift_id);
+		$this -> db -> where('wallet_code', $wallet_code);
 		$list = $this -> db -> get($this -> table_name) -> result();
 		if(count($list) > 0) {
 			return $list[0];
