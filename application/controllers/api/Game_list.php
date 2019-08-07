@@ -465,7 +465,6 @@ class Game_list extends MY_Base_Controller {
 						$res['counter_orange']=$counter_orange1;
 					}
 
-					$overall=$counter_seven1+$counter_bar1+$counter_medal1+$counter_bell1+$counter_watermelon1+$counter_grape1+$counter_orange1+$counter_cherry1+$not_same;
 					// $res['overall']=$overall;
 
 
@@ -546,9 +545,23 @@ class Game_list extends MY_Base_Controller {
 						$res['message6']=$line6;
 					}
 				}
-				$overall1=$line1+$line2+$line3+$line4+$line5+$line6+$line7+$line8;
-				// $res['overall1']=$overall1;
-				$total=$overall1+$overall;
+				$total=$counter_seven1+
+				$counter_bar1+
+				$counter_medal1+
+				$counter_bell1+
+				$counter_watermelon1+
+				$counter_grape1+
+				$counter_orange1+
+				$counter_cherry1+
+				$not_same$line1+
+				$line2+
+				$line3+
+				$line4+
+				$line5+
+				$line6+
+				$line7+
+				$line8;
+
 				// $res['total']=$total;
 		 		$this -> insert_total_price($bet,$total,$user_id,$match_arr);
 
