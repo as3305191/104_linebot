@@ -149,12 +149,13 @@ class Quotes_record_dao extends MY_Model {
 		$sntd =  $this -> q_r_dao -> get_sum_ntd1($last_id);
 		$dtx = array();
 		$dtx['date'] = $Date;
-		$dtx['average_price'] = floatval($sntd)/floatval($samt1->current_point);
-		$dtx['last_price'] = floatval($sntd)/floatval($samt1->current_point);
-		$dtx['now_price'] = floatval($sntd)/floatval($samt1->current_point);
+		$price=floatval($sntd)/floatval($samt1->current_point);
+		$dtx['average_price'] =$price;
+		$dtx['last_price'] = $price;
+		$dtx['now_price'] = $price;
 		if(!empty($dq)){
-			$u_data['last_price'] = floatval($sntd)/floatval($samt1->current_point);
-			$u_data['now_price'] = floatval($sntd)/floatval($samt1->current_point);
+			$u_data['last_price'] = $price;
+			$u_data['now_price'] = $price;
 			$this -> d_q_dao -> update_by($u_data,'id',$dq->id);
 
 		} else{
