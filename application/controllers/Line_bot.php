@@ -160,7 +160,7 @@ class Line_bot extends MY_Base_Controller {
 				$gift_id = $user -> gift_id;
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "您的餘額： {$sum_amt}\n您的贈禮ID為: $gift_id\n您的錢包地址為: {$users->wallet_code}",
+					"text" => "您的餘額： {$sum_amt}\n您的錢包地址為: {$users->wallet_code}",
 				);
 			}
 
