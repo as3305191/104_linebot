@@ -550,21 +550,21 @@ class Game_list extends MY_Base_Controller {
 				// $res['overall1']=$overall1;
 				$total=$overall1+$overall;
 				// $res['total']=$total;
-		 		$this -> insert_total_price($bet,$total,$user_id,$match_arr);
+		 		$this -> insert_total_price($bet,$total,$user_id,$match_arr,$res);
 
 
-			// $this -> to_json($res1);
+			// $this -> to_json($res);
 	}
 
-	public function insert_total_price($bet,$total,$user_id,$match_arr) {
-		$res = array();
+	public function insert_total_price($bet,$total,$user_id,$match_arr,$res) {
+		$res1 = array();
 		// $res['success'] = TRUE;
 		$bet_o=$bet*8;
 		$for_q_amt=$total-$bet_o;
-		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr);
-		$res['last_id']=$do_insert;
+		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr,$res);
+		$res1['last_id']=$do_insert;
 
-		$this -> to_json($res);
+		$this -> to_json($res1);
 	}
 
 	public function get_tx_price_list($bet,$mag) {
