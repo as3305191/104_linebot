@@ -864,57 +864,419 @@ class Line_img extends MY_Base_Controller {
 
 		if(!empty($win->seven)){
 			if(mb_substr($img00,0,-2)=="seven"){
-				$imageData_11 = imagecreatefromstring(file_get_contents($light));
-				$imageData_11 = imagescale($imageData_11, 350,390);
-				imagecopy($jpg_image, $imageData_11, 30, 300, 0, 0, 350, 390);//00
+				$imageData_seven = imagecreatefromstring(file_get_contents($light));
+				$imageData_seven = imagescale($imageData_seven, 350,390);
+				imagecopy($jpg_image, $imageData_seven, 30, 300, 0, 0, 350, 390);//00
 			}
 			if(mb_substr($img01,0,-2)=="seven"){
-				$imageData_1 = imagecreatefromstring(file_get_contents($light));
-				$imageData_1 = imagescale($imageData_1, 350,390);
-				imagecopy($jpg_image, $imageData_1, 350, 300, 0, 0, 350, 390);//01
+				$imageData_seven = imagecreatefromstring(file_get_contents($light));
+				$imageData_seven = imagescale($imageData_seven, 350,390);
+				imagecopy($jpg_image, $imageData_seven, 350, 300, 0, 0, 350, 390);//01
 
 			}
 			if(mb_substr($img02,0,-2)=="seven"){
-				$imageData_2 = imagecreatefromstring(file_get_contents($light));
-				$imageData_2 = imagescale($imageData_2, 350,390);
-				imagecopy($jpg_image, $imageData_2, 670, 300, 0, 0, 350, 390);//02
+				$imageData_seven = imagecreatefromstring(file_get_contents($light));
+				$imageData_seven = imagescale($imageData_seven, 350,390);
+				imagecopy($jpg_image, $imageData_seven, 670, 300, 0, 0, 350, 390);//02
 
 			}
 			if(mb_substr($img10,0,-2)=="seven"){
-				$imageData_3 = imagecreatefromstring(file_get_contents($light));
-				$imageData_3 = imagescale($imageData_3, 350,390);
-				imagecopy($jpg_image, $imageData_3, 30, 605, 0, 0, 350, 390);//10
+				$imageData_seven = imagecreatefromstring(file_get_contents($light));
+				$imageData_seven = imagescale($imageData_seven, 350,390);
+				imagecopy($jpg_image, $imageData_seven, 30, 605, 0, 0, 350, 390);//10
 			}
 			if(mb_substr($img11,0,-2)=="seven"){
-				$imageData_4 = imagecreatefromstring(file_get_contents($light));
-				$imageData_4 = imagescale($imageData_4, 350,390);
-				imagecopy($jpg_image, $imageData_4, 350, 605, 0, 0, 350, 390);//11
+				$imageData_seven = imagecreatefromstring(file_get_contents($light));
+				$imageData_seven = imagescale($imageData_seven, 350,390);
+				imagecopy($jpg_image, $imageData_seven, 350, 605, 0, 0, 350, 390);//11
 
 			}
 			if(mb_substr($img12,0,-2)=="seven"){
-				$imageData_5 = imagecreatefromstring(file_get_contents($light));
-				$imageData_5 = imagescale($imageData_5, 350,390);
-				imagecopy($jpg_image, $imageData_5, 670, 605, 0, 0, 350, 390);//12
+				$imageData_seven = imagecreatefromstring(file_get_contents($light));
+				$imageData_seven = imagescale($imageData_seven, 350,390);
+				imagecopy($jpg_image, $imageData_seven, 670, 605, 0, 0, 350, 390);//12
 			}
 			if(mb_substr($img20,0,-2)=="seven"){
-				$imageData_6 = imagecreatefromstring(file_get_contents($light));
-				$imageData_6 = imagescale($imageData_6, 350,390);
-				imagecopy($jpg_image, $imageData_6, 30, 920, 0, 0, 350, 390);//20
+				$imageData_seven = imagecreatefromstring(file_get_contents($light));
+				$imageData_seven = imagescale($imageData_seven, 350,390);
+				imagecopy($jpg_image, $imageData_seven, 30, 920, 0, 0, 350, 390);//20
 			}
 			if(mb_substr($img21,0,-2)=="seven"){
-				$imageData_7 = imagecreatefromstring(file_get_contents($light));
-				$imageData_7 = imagescale($imageData_7, 350,390);
-				imagecopy($jpg_image, $imageData_7, 350, 920, 0, 0, 350, 390);//21
+				$imageData_seven = imagecreatefromstring(file_get_contents($light));
+				$imageData_seven = imagescale($imageData_seven, 350,390);
+				imagecopy($jpg_image, $imageData_seven, 350, 920, 0, 0, 350, 390);//21
 
 			}
 			if(mb_substr($img22,0,-2)=="seven"){
-				$imageData_8 = imagecreatefromstring(file_get_contents($light));
-				$imageData_8 = imagescale($imageData_8, 350,390);
-				imagecopy($jpg_image, $imageData_8, 670, 920, 0, 0, 350, 390);//22
+				$imageData_seven = imagecreatefromstring(file_get_contents($light));
+				$imageData_seven = imagescale($imageData_seven, 350,390);
+				imagecopy($jpg_image, $imageData_seven, 670, 920, 0, 0, 350, 390);//22
 			}
 		}
 
+		if(!empty($win->medal)){
+			if($img00=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 30, 300, 0, 0, 350, 390);//00
+			}
+			if($img01=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 350, 300, 0, 0, 350, 390);//01
 
+			}
+			if($img02=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 670, 300, 0, 0, 350, 390);//02
+
+			}
+			if($img10=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 30, 605, 0, 0, 350, 390);//10
+			}
+			if($img11=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 350, 605, 0, 0, 350, 390);//11
+
+			}
+			if($img12=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 670, 605, 0, 0, 350, 390);//12
+			}
+			if($img20=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 30, 920, 0, 0, 350, 390);//20
+			}
+			if($img21=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 350, 920, 0, 0, 350, 390);//21
+
+			}
+			if($img22=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 670, 920, 0, 0, 350, 390);//22
+			}
+		}
+
+		if(!empty($win->medal)){
+			if($img00=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 30, 300, 0, 0, 350, 390);//00
+			}
+			if($img01=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 350, 300, 0, 0, 350, 390);//01
+
+			}
+			if($img02=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 670, 300, 0, 0, 350, 390);//02
+
+			}
+			if($img10=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 30, 605, 0, 0, 350, 390);//10
+			}
+			if($img11=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 350, 605, 0, 0, 350, 390);//11
+
+			}
+			if($img12=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 670, 605, 0, 0, 350, 390);//12
+			}
+			if($img20=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 30, 920, 0, 0, 350, 390);//20
+			}
+			if($img21=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 350, 920, 0, 0, 350, 390);//21
+
+			}
+			if($img22=="medal"){
+				$imageData_medal = imagecreatefromstring(file_get_contents($light));
+				$imageData_medal = imagescale($imageData_medal, 350,390);
+				imagecopy($jpg_image, $imageData_medal, 670, 920, 0, 0, 350, 390);//22
+			}
+		}
+
+		if(!empty($win->bell)){
+			if($img00=="bell"){
+				$imageData_bell = imagecreatefromstring(file_get_contents($light));
+				$imageData_bell = imagescale($imageData_bell, 350,390);
+				imagecopy($jpg_image, $imageData_bell, 30, 300, 0, 0, 350, 390);//00
+			}
+			if($img01=="bell"){
+				$imageData_bell = imagecreatefromstring(file_get_contents($light));
+				$imageData_bell = imagescale($imageData_bell, 350,390);
+				imagecopy($jpg_image, $imageData_bell, 350, 300, 0, 0, 350, 390);//01
+
+			}
+			if($img02=="bell"){
+				$imageData_bell = imagecreatefromstring(file_get_contents($light));
+				$imageData_bell = imagescale($imageData_bell, 350,390);
+				imagecopy($jpg_image, $imageData_bell, 670, 300, 0, 0, 350, 390);//02
+
+			}
+			if($img10=="bell"){
+				$imageData_bell = imagecreatefromstring(file_get_contents($light));
+				$imageData_bell = imagescale($imageData_bell, 350,390);
+				imagecopy($jpg_image, $imageData_bell, 30, 605, 0, 0, 350, 390);//10
+			}
+			if($img11=="bell"){
+				$imageData_bell = imagecreatefromstring(file_get_contents($light));
+				$imageData_bell = imagescale($imageData_bell, 350,390);
+				imagecopy($jpg_image, $imageData_bell, 350, 605, 0, 0, 350, 390);//11
+
+			}
+			if($img12=="bell"){
+				$imageData_bell = imagecreatefromstring(file_get_contents($light));
+				$imageData_bell = imagescale($imageData_bell, 350,390);
+				imagecopy($jpg_image, $imageData_bell, 670, 605, 0, 0, 350, 390);//12
+			}
+			if($img20=="bell"){
+				$imageData_bell = imagecreatefromstring(file_get_contents($light));
+				$imageData_bell = imagescale($imageData_bell, 350,390);
+				imagecopy($jpg_image, $imageData_bell, 30, 920, 0, 0, 350, 390);//20
+			}
+			if($img21=="bell"){
+				$imageData_bell = imagecreatefromstring(file_get_contents($light));
+				$imageData_bell = imagescale($imageData_bell, 350,390);
+				imagecopy($jpg_image, $imageData_bell, 350, 920, 0, 0, 350, 390);//21
+
+			}
+			if($img22=="bell"){
+				$imageData_bell = imagecreatefromstring(file_get_contents($light));
+				$imageData_bell = imagescale($imageData_bell, 350,390);
+				imagecopy($jpg_image, $imageData_bell, 670, 920, 0, 0, 350, 390);//22
+			}
+		}
+
+		if(!empty($win->watermelon)){
+			if($img00=="watermelon"){
+				$imageData_watermelon = imagecreatefromstring(file_get_contents($light));
+				$imageData_watermelon = imagescale($imageData_watermelon, 350,390);
+				imagecopy($jpg_image, $imageData_watermelon, 30, 300, 0, 0, 350, 390);//00
+			}
+			if($img01=="watermelon"){
+				$imageData_watermelon = imagecreatefromstring(file_get_contents($light));
+				$imageData_watermelon = imagescale($imageData_watermelon, 350,390);
+				imagecopy($jpg_image, $imageData_watermelon, 350, 300, 0, 0, 350, 390);//01
+
+			}
+			if($img02=="watermelon"){
+				$imageData_watermelon = imagecreatefromstring(file_get_contents($light));
+				$imageData_watermelon = imagescale($imageData_watermelon, 350,390);
+				imagecopy($jpg_image, $imageData_watermelon, 670, 300, 0, 0, 350, 390);//02
+
+			}
+			if($img10=="watermelon"){
+				$imageData_watermelon = imagecreatefromstring(file_get_contents($light));
+				$imageData_watermelon = imagescale($imageData_watermelon, 350,390);
+				imagecopy($jpg_image, $imageData_watermelon, 30, 605, 0, 0, 350, 390);//10
+			}
+			if($img11=="watermelon"){
+				$imageData_watermelon = imagecreatefromstring(file_get_contents($light));
+				$imageData_watermelon = imagescale($imageData_watermelon, 350,390);
+				imagecopy($jpg_image, $imageData_watermelon, 350, 605, 0, 0, 350, 390);//11
+
+			}
+			if($img12=="watermelon"){
+				$imageData_watermelon = imagecreatefromstring(file_get_contents($light));
+				$imageData_watermelon = imagescale($imageData_watermelon, 350,390);
+				imagecopy($jpg_image, $imageData_watermelon, 670, 605, 0, 0, 350, 390);//12
+			}
+			if($img20=="watermelon"){
+				$imageData_watermelon = imagecreatefromstring(file_get_contents($light));
+				$imageData_watermelon = imagescale($imageData_watermelon, 350,390);
+				imagecopy($jpg_image, $imageData_watermelon, 30, 920, 0, 0, 350, 390);//20
+			}
+			if($img21=="watermelon"){
+				$imageData_watermelon = imagecreatefromstring(file_get_contents($light));
+				$imageData_watermelon = imagescale($imageData_watermelon, 350,390);
+				imagecopy($jpg_image, $imageData_watermelon, 350, 920, 0, 0, 350, 390);//21
+
+			}
+			if($img22=="watermelon"){
+				$imageData_watermelon = imagecreatefromstring(file_get_contents($light));
+				$imageData_watermelon = imagescale($imageData_watermelon, 350,390);
+				imagecopy($jpg_image, $imageData_watermelon, 670, 920, 0, 0, 350, 390);//22
+			}
+		}
+
+		if(!empty($win->grape)){
+			if($img00=="grape"){
+				$imageData_grape = imagecreatefromstring(file_get_contents($light));
+				$imageData_grape = imagescale($imageData_grape, 350,390);
+				imagecopy($jpg_image, $imageData_grape, 30, 300, 0, 0, 350, 390);//00
+			}
+			if($img01=="grape"){
+				$imageData_grape = imagecreatefromstring(file_get_contents($light));
+				$imageData_grape = imagescale($imageData_grape, 350,390);
+				imagecopy($jpg_image, $imageData_grape, 350, 300, 0, 0, 350, 390);//01
+
+			}
+			if($img02=="grape"){
+				$imageData_grape = imagecreatefromstring(file_get_contents($light));
+				$imageData_grape = imagescale($imageData_grape, 350,390);
+				imagecopy($jpg_image, $imageData_grape, 670, 300, 0, 0, 350, 390);//02
+
+			}
+			if($img10=="grape"){
+				$imageData_grape = imagecreatefromstring(file_get_contents($light));
+				$imageData_grape = imagescale($imageData_grape, 350,390);
+				imagecopy($jpg_image, $imageData_grape, 30, 605, 0, 0, 350, 390);//10
+			}
+			if($img11=="grape"){
+				$imageData_grape = imagecreatefromstring(file_get_contents($light));
+				$imageData_grape = imagescale($imageData_grape, 350,390);
+				imagecopy($jpg_image, $imageData_grape, 350, 605, 0, 0, 350, 390);//11
+
+			}
+			if($img12=="grape"){
+				$imageData_grape = imagecreatefromstring(file_get_contents($light));
+				$imageData_grape = imagescale($imageData_grape, 350,390);
+				imagecopy($jpg_image, $imageData_grape, 670, 605, 0, 0, 350, 390);//12
+			}
+			if($img20=="grape"){
+				$imageData_grape = imagecreatefromstring(file_get_contents($light));
+				$imageData_grape = imagescale($imageData_grape, 350,390);
+				imagecopy($jpg_image, $imageData_grape, 30, 920, 0, 0, 350, 390);//20
+			}
+			if($img21=="grape"){
+				$imageData_grape = imagecreatefromstring(file_get_contents($light));
+				$imageData_grape = imagescale($imageData_grape, 350,390);
+				imagecopy($jpg_image, $imageData_grape, 350, 920, 0, 0, 350, 390);//21
+
+			}
+			if($img22=="grape"){
+				$imageData_grape = imagecreatefromstring(file_get_contents($light));
+				$imageData_grape = imagescale($imageData_grape, 350,390);
+				imagecopy($jpg_image, $imageData_grape, 670, 920, 0, 0, 350, 390);//22
+			}
+		}
+
+		if(!empty($win->cherry)){
+			if($img00=="cherry"){
+				$imageData_cherry = imagecreatefromstring(file_get_contents($light));
+				$imageData_cherry = imagescale($imageData_cherry, 350,390);
+				imagecopy($jpg_image, $imageData_cherry, 30, 300, 0, 0, 350, 390);//00
+			}
+			if($img01=="cherry"){
+				$imageData_cherry = imagecreatefromstring(file_get_contents($light));
+				$imageData_cherry = imagescale($imageData_cherry, 350,390);
+				imagecopy($jpg_image, $imageData_cherry, 350, 300, 0, 0, 350, 390);//01
+
+			}
+			if($img02=="cherry"){
+				$imageData_cherry = imagecreatefromstring(file_get_contents($light));
+				$imageData_cherry = imagescale($imageData_cherry, 350,390);
+				imagecopy($jpg_image, $imageData_cherry, 670, 300, 0, 0, 350, 390);//02
+
+			}
+			if($img10=="cherry"){
+				$imageData_cherry = imagecreatefromstring(file_get_contents($light));
+				$imageData_cherry = imagescale($imageData_cherry, 350,390);
+				imagecopy($jpg_image, $imageData_cherry, 30, 605, 0, 0, 350, 390);//10
+			}
+			if($img11=="cherry"){
+				$imageData_cherry = imagecreatefromstring(file_get_contents($light));
+				$imageData_cherry = imagescale($imageData_cherry, 350,390);
+				imagecopy($jpg_image, $imageData_cherry, 350, 605, 0, 0, 350, 390);//11
+
+			}
+			if($img12=="cherry"){
+				$imageData_cherry = imagecreatefromstring(file_get_contents($light));
+				$imageData_cherry = imagescale($imageData_cherry, 350,390);
+				imagecopy($jpg_image, $imageData_cherry, 670, 605, 0, 0, 350, 390);//12
+			}
+			if($img20=="cherry"){
+				$imageData_cherry = imagecreatefromstring(file_get_contents($light));
+				$imageData_cherry = imagescale($imageData_cherry, 350,390);
+				imagecopy($jpg_image, $imageData_cherry, 30, 920, 0, 0, 350, 390);//20
+			}
+			if($img21=="cherry"){
+				$imageData_cherry = imagecreatefromstring(file_get_contents($light));
+				$imageData_cherry = imagescale($imageData_cherry, 350,390);
+				imagecopy($jpg_image, $imageData_cherry, 350, 920, 0, 0, 350, 390);//21
+
+			}
+			if($img22=="cherry"){
+				$imageData_cherry = imagecreatefromstring(file_get_contents($light));
+				$imageData_cherry = imagescale($imageData_cherry, 350,390);
+				imagecopy($jpg_image, $imageData_cherry, 670, 920, 0, 0, 350, 390);//22
+			}
+		}
+
+		if(!empty($win->orange)){
+			if($img00=="orange"){
+				$imageData_orange = imagecreatefromstring(file_get_contents($light));
+				$imageData_orange = imagescale($imageData_orange, 350,390);
+				imagecopy($jpg_image, $imageData_orange, 30, 300, 0, 0, 350, 390);//00
+			}
+			if($img01=="orange"){
+				$imageData_orange = imagecreatefromstring(file_get_contents($light));
+				$imageData_orange = imagescale($imageData_orange, 350,390);
+				imagecopy($jpg_image, $imageData_orange, 350, 300, 0, 0, 350, 390);//01
+
+			}
+			if($img02=="orange"){
+				$imageData_orange = imagecreatefromstring(file_get_contents($light));
+				$imageData_orange = imagescale($imageData_orange, 350,390);
+				imagecopy($jpg_image, $imageData_orange, 670, 300, 0, 0, 350, 390);//02
+
+			}
+			if($img10=="orange"){
+				$imageData_orange = imagecreatefromstring(file_get_contents($light));
+				$imageData_orange = imagescale($imageData_orange, 350,390);
+				imagecopy($jpg_image, $imageData_orange, 30, 605, 0, 0, 350, 390);//10
+			}
+			if($img11=="orange"){
+				$imageData_orange = imagecreatefromstring(file_get_contents($light));
+				$imageData_orange = imagescale($imageData_orange, 350,390);
+				imagecopy($jpg_image, $imageData_orange, 350, 605, 0, 0, 350, 390);//11
+
+			}
+			if($img12=="orange"){
+				$imageData_orange = imagecreatefromstring(file_get_contents($light));
+				$imageData_orange = imagescale($imageData_orange, 350,390);
+				imagecopy($jpg_image, $imageData_orange, 670, 605, 0, 0, 350, 390);//12
+			}
+			if($img20=="orange"){
+				$imageData_orange = imagecreatefromstring(file_get_contents($light));
+				$imageData_orange = imagescale($imageData_orange, 350,390);
+				imagecopy($jpg_image, $imageData_orange, 30, 920, 0, 0, 350, 390);//20
+			}
+			if($img21=="orange"){
+				$imageData_orange = imagecreatefromstring(file_get_contents($light));
+				$imageData_orange = imagescale($imageData_orange, 350,390);
+				imagecopy($jpg_image, $imageData_orange, 350, 920, 0, 0, 350, 390);//21
+
+			}
+			if($img22=="orange"){
+				$imageData_orange = imagecreatefromstring(file_get_contents($light));
+				$imageData_orange = imagescale($imageData_orange, 350,390);
+				imagecopy($jpg_image, $imageData_orange, 670, 920, 0, 0, 350, 390);//22
+			}
+		}
 		ob_clean();
 		flush();
 		// Send Image to Browser
