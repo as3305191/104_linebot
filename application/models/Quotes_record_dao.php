@@ -39,7 +39,7 @@ class Quotes_record_dao extends MY_Model {
 	}
 	function get_sum_ntd1($last_id) {
 		$this -> db -> select("sum(ntd_change) as sntd");
-		$this -> db -> where('id<=',$last_id);
+		$this -> db -> where('id<',$last_id+1);
 		$list = $this -> find_all();
 		if(count($list) > 0) {
 			$itm = $list[0];
@@ -89,7 +89,7 @@ class Quotes_record_dao extends MY_Model {
 		$value = json_encode($match_arr);
 		$tx_11['result'] = $value;
 
-	
+
 		$value1 = json_encode($res);
 		$tx_11['win_status'] = $value1;
 
