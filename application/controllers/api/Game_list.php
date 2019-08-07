@@ -198,7 +198,7 @@ class Game_list extends MY_Base_Controller {
 					}
 				}
 			}
-			 $res['list']=	$match_arr;
+			 // $res['list']=	$match_arr;
 			 // $res['_seven_b']=$counter_seven_b;
 			 // $res['_seven_r']=$counter_seven_r;
 			 // $res['_counter_bar']=$counter_bar;
@@ -545,36 +545,36 @@ class Game_list extends MY_Base_Controller {
 						$res['message6']=$line6;
 					}
 				}
-				$total=$counter_seven1+
-				$counter_bar1+
-				$counter_medal1+
-				$counter_bell1+
-				$counter_watermelon1+
-				$counter_grape1+
-				$counter_orange1+
-				$counter_cherry1+
-				$not_same$line1+
-				$line2+
-				$line3+
-				$line4+
-				$line5+
-				$line6+
-				$line7+
-				$line8;
+				$total= $counter_seven1+
+								$counter_bar1+
+								$counter_medal1+
+								$counter_bell1+
+								$counter_watermelon1+
+								$counter_grape1+
+								$counter_orange1+
+								$counter_cherry1+
+								$not_same$line1+
+								$line2+
+								$line3+
+								$line4+
+								$line5+
+								$line6+
+								$line7+
+								$line8;
 
 				// $res['total']=$total;
-		 		$this -> insert_total_price($bet,$total,$user_id,$match_arr);
+		 		$this -> insert_total_price($bet,$total,$user_id,$match_arr,$res);
 
 
 			// $this -> to_json($res1);
 	}
 
-	public function insert_total_price($bet,$total,$user_id,$match_arr) {
+	public function insert_total_price($bet,$total,$user_id,$match_arr,$res) {
 		$res = array();
 		// $res['success'] = TRUE;
 		$bet_o=$bet*8;
 		$for_q_amt=$total-$bet_o;
-		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr);
+		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr,$res);
 		$res['last_id']=$do_insert;
 
 		$this -> to_json($res);
@@ -619,9 +619,6 @@ class Game_list extends MY_Base_Controller {
 		return $price;
 
 	}
-	public function ttt($value='123')
-	{
-		$this->to_json ("123");
-	}
+
 }
 ?>

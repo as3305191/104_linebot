@@ -692,8 +692,9 @@ class Line_bot extends MY_Base_Controller {
 					$id=$data->last_id;
 					// $msg_arr[] = array(
 					// 	"type" => "text",
-					// 	"text" => "$n_res",
+					// 	"text" => "$id",
 					// );
+					// $this -> show_super_8_not_first($id);
 					$this -> show_super_8_second($msg_arr,$id, TRUE);
 
 				}
