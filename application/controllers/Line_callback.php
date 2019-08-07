@@ -77,11 +77,11 @@ class Line_callback extends MY_Base_Controller {
 					$i_data['gift_id'] = $code;
 				}
 
-				// 12碼錢包
+				// 16碼錢包
 				// get wallet code
 				$find_code = FALSE;
 				while(!$find_code) {
-					$code = coin_token(12);
+					$code = coin_token(16);
 					$c_list = $this -> users_dao -> find_all_by('wallet_code', $code);
 					$find_code = (count($c_list) == 0);
 					$i_data['wallet_code'] = $code;
