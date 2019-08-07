@@ -198,7 +198,7 @@ class Game_list extends MY_Base_Controller {
 					}
 				}
 			}
-			 $res['list']=	$match_arr;
+			 // $res['list']=	$match_arr;
 			 // $res['_seven_b']=$counter_seven_b;
 			 // $res['_seven_r']=$counter_seven_r;
 			 // $res['_counter_bar']=$counter_bar;
@@ -254,6 +254,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_seven1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_seven']=$counter_seven1;
+						$res['seven']=1;
+
 					}
 
 					if($counter_bar>2){
@@ -286,6 +288,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_bar1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_bar']=$counter_bar1;
+						$res['bar']=1;
+
 					}
 
 					if($counter_medal>2){
@@ -318,6 +322,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_medal1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_medal']=$counter_medal1;
+						$res['medal']=1;
+
 					}
 
 					if($counter_bell>2){
@@ -350,6 +356,7 @@ class Game_list extends MY_Base_Controller {
 							$counter_bell1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_bell']=$counter_bell1;
+						$res['bell']=1;
 
 					}
 
@@ -379,6 +386,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_watermelon1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_watermelon']=$counter_watermelon1;
+						$res['watermelon']=1;
+
 					}
 
 					if($counter_grape>3){
@@ -407,6 +416,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_grape1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_grape']=$counter_grape1;
+						$res['grape']=1;
+
 					}
 
 					if($counter_cherry>3){
@@ -435,6 +446,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_cherry1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_cherry']=$counter_cherry1;
+						$res['cherry']=1;
+
 					}
 
 					if($counter_orange>3){
@@ -463,6 +476,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_orange1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_orange']=$counter_orange1;
+						$res['orange']=1;
+
 					}
 
 					$overall=$counter_seven1+$counter_bar1+$counter_medal1+$counter_bell1+$counter_watermelon1+$counter_grape1+$counter_orange1+$counter_cherry1+$not_same;
@@ -477,7 +492,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[0][1],0,-2)=="seven" && substr($match_arr[0][2],0,-2)=="seven") {
 						$mag=200;
 						$line2 = $this -> get_tx_price_list($bet,$mag);
-						$res['message2']=$line2 ;
+						$res['line2']=$line2 ;
 					}
 				}
 
@@ -488,7 +503,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[1][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[1][2],0,-2)=="seven") {
 						$mag=200;
 						$line1 = $this -> get_tx_price_list($bet,$mag);
-						$res['message1']=$line1;
+						$res['line1']=$line1;
 					}
 				}
 
@@ -499,7 +514,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[2][0],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
 						$mag=200;
 						$line3 = $this -> get_tx_price_list($bet,$mag);
-						$res['message3']=$line3;
+						$res['line3']=$line3;
 					}
 				}
 
@@ -510,7 +525,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
 						$mag=200;
 						$line4 = $this -> get_tx_price_list($bet,$mag);
-						$res['message4']=$line4;
+						$res['line4']=$line4;
 					}
 				}
 
@@ -521,18 +536,18 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[2][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[0][2],0,-2)=="seven") {
 						$mag=200;
 						$line5 = $this -> get_tx_price_list($bet,$mag);
-						$res['message5']=$line5;
+						$res['line5']=$line5;
 					}
 				}
 
-				if($match_arr[0][0]==$match_arr[1][0]&&$match_arr[0][0]==$match_arr[2][0]){
-					$line7 = $this -> get_line_price($match_arr[0][0],$bet);
+				if($match_arr[0][1]==$match_arr[1][1]&&$match_arr[0][1]==$match_arr[2][1]){
+					$line7 = $this -> get_line_price($match_arr[0][1],$bet);
 					$res['line7']=$line7;
 				} else{
 					if(substr($match_arr[0][1],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven") {
 						$mag=200;
 						$line7 = $this -> get_tx_price_list($bet,$mag);
-						$res['message7']=$line7;
+						$res['line7']=$line7;
 					}
 				}
 
@@ -543,28 +558,39 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[0][2],0,-2)=="seven" && substr($match_arr[1][2],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
 						$mag=200;
 						$line6 = $this -> get_tx_price_list($bet,$mag);
-						$res['message6']=$line6;
+						$res['line6']=$line6;
+					}
+				}
+
+				if($match_arr[0][0]==$match_arr[1][0]&&$match_arr[0][0]==$match_arr[2][0]){
+					$line8 = $this -> get_line_price($match_arr[0][0],$bet);
+					$res['line8']=$line8;
+				} else{
+					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[1][0],0,-2)=="seven" && substr($match_arr[2][0],0,-2)=="seven") {
+						$mag=200;
+						$line8 = $this -> get_tx_price_list($bet,$mag);
+						$res['line8']=$line8;
 					}
 				}
 				$overall1=$line1+$line2+$line3+$line4+$line5+$line6+$line7+$line8;
 				// $res['overall1']=$overall1;
 				$total=$overall1+$overall;
 				// $res['total']=$total;
-		 		$this -> insert_total_price($bet,$total,$user_id,$match_arr);
+		 		$this -> insert_total_price($bet,$total,$user_id,$match_arr,$res);
 
 
-			// $this -> to_json($res1);
+			// $this -> to_json($res);
 	}
 
-	public function insert_total_price($bet,$total,$user_id,$match_arr) {
-		$res = array();
+	public function insert_total_price($bet,$total,$user_id,$match_arr,$res) {
+		$res1 = array();
 		// $res['success'] = TRUE;
 		$bet_o=$bet*8;
 		$for_q_amt=$total-$bet_o;
-		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr);
-		$res['last_id']=$do_insert;
+		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr,$res);
+		$res1['last_id']=$do_insert;
 
-		$this -> to_json($res);
+		$this -> to_json($res1);
 	}
 
 	public function get_tx_price_list($bet,$mag) {

@@ -75,10 +75,10 @@ class Line_bot extends MY_Base_Controller {
 			if($message -> text == 'COC幣發送') {
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "請輸入收禮ID",
+					"text" => "請輸入錢包地址",
 				);
 				$line_session = new stdClass;
-				$line_session -> type = "贈禮_輸入收禮ID";
+				$line_session -> type = "贈禮_輸入錢包地址";
 				$this -> users_dao -> update(array(
 					"line_session" => json_encode($line_session)
 				), $user -> id);
@@ -160,7 +160,7 @@ class Line_bot extends MY_Base_Controller {
 				$gift_id = $user -> gift_id;
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "您的餘額： {$sum_amt}\n您的贈禮ID為: $gift_id\n您的錢包地址為: {$users->wallet_code}",
+					"text" => "您的餘額： {$sum_amt}\n您的錢包地址為: {$users->wallet_code}",
 				);
 			}
 
@@ -245,12 +245,12 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
-		} elseif($line_session -> type == "贈禮_輸入收禮ID") {
+		} elseif($line_session -> type == "贈禮_輸入錢包地址") {
 			$to_user = $this -> users_dao -> find_by_gift_id_and_corp(1, $message -> text);
 			if(empty($to_user)) {
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "查無此收禮ID，請輸入881取消此功能",
+					"text" => "查無此錢包地址，請輸入881取消此功能",
 				);
 			} else {
 				$msg_arr[] = array(
@@ -692,9 +692,8 @@ class Line_bot extends MY_Base_Controller {
 					$id=$data->last_id;
 					// $msg_arr[] = array(
 					// 	"type" => "text",
-					// 	"text" => "$id",
+					// 	"text" => "$n_res",
 					// );
-					// $this -> show_super_8_not_first($id);
 					$this -> show_super_8_second($msg_arr,$id, TRUE);
 
 				}
