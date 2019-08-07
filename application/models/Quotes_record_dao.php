@@ -72,7 +72,7 @@ class Quotes_record_dao extends MY_Model {
 		return $list[0];
 	}
 
-	function insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr,$res) {
+	function insert_all_total($bet_o,$total,$for_q_amt,$user_id) {
 		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
@@ -81,17 +81,11 @@ class Quotes_record_dao extends MY_Model {
 
 		$get_current_point=$this -> q_r_dao -> get_current_point();
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
+
 		$tx_11 = array();
 		$tx_11['user_id'] = $user_id;
 		$tx_11['bet'] = $bet_o;
 		$tx_11['total_win_point'] = $total;
-
-		$value = json_encode($match_arr);
-		$tx_11['result'] = $value;
-
-		$value1 = json_encode($res);
-		$tx_11['win_status'] = $value1;
-
 		$last_id=	$this -> play_game_dao -> insert($tx_11);
 
 
@@ -146,7 +140,7 @@ class Quotes_record_dao extends MY_Model {
 			$this -> d_q_dao -> insert($dtx);
 		}
 
-		return $last_id;
+		return TRUE;
 	}
 }
 ?>
