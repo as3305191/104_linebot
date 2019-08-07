@@ -820,18 +820,17 @@ class Line_img extends MY_Base_Controller {
 		}
 
 		if(!empty($win->line8)){
-			$imageData_41 = imagecreatefromstring(file_get_contents($light));
-			$imageData_41 = imagescale($imageData_41, 350,390);
-			imagecopy($jpg_image, $imageData_41, 30, 300, 0, 0, 350, 390);//00
+			$imageData_81 = imagecreatefromstring(file_get_contents($light));
+			$imageData_81 = imagescale($imageData_81, 350,390);
+			imagecopy($jpg_image, $imageData_81, 30, 300, 0, 0, 350, 390);//00
 
-			$imageData_42 = imagecreatefromstring(file_get_contents($light));
-			$imageData_42 = imagescale($imageData_42, 350,390);
-			imagecopy($jpg_image, $imageData_42, 30, 605, 0, 0, 350, 390);//10
+			$imageData_82 = imagecreatefromstring(file_get_contents($light));
+			$imageData_82 = imagescale($imageData_82, 350,390);
+			imagecopy($jpg_image, $imageData_82, 30, 605, 0, 0, 350, 390);//10
 
-			$imageData_43 = imagecreatefromstring(file_get_contents($light));
-			$imageData_43 = imagescale($imageData_43, 350,390);
-			imagecopy($jpg_image, $imageData_43, 30, 920, 0, 0, 350, 390);//20
-
+			$imageData_83 = imagecreatefromstring(file_get_contents($light));
+			$imageData_83 = imagescale($imageData_83, 350,390);
+			imagecopy($jpg_image, $imageData_83, 30, 920, 0, 0, 350, 390);//20
 		}
 		ob_clean();
 		flush();
