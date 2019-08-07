@@ -149,7 +149,8 @@ class Quotes_record_dao extends MY_Model {
 		$sntd =  $this -> q_r_dao -> get_sum_ntd1($last_id);
 		$dtx = array();
 		$dtx['date'] = $Date;
-		$price=floatval($sntd)/floatval($samt1->current_point);
+		$p=floatval($sntd)/floatval($samt1->current_point);
+		$price=round($p,[8])
 		$dtx['average_price'] =$price;
 		$dtx['last_price'] = $price;
 		$dtx['now_price'] = $price;
