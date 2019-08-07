@@ -473,7 +473,7 @@ class Game_list extends MY_Base_Controller {
 					$res['line2']=$line2;
 
 				} else{
-					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[0][1],0,-2)=="seven" && substr($match_arr[0][2],0,-2)=="seven") {
+					if(mb_substr($match_arr[0][0],0,-2)=="seven" && mb_substr($match_arr[0][1],0,-2)=="seven" && mb_substr($match_arr[0][2],0,-2)=="seven") {
 						$mag=200;
 						$line2 = $this -> get_tx_price_list($bet,$mag);
 						$res['message2']=$line2 ;
@@ -484,7 +484,7 @@ class Game_list extends MY_Base_Controller {
 					$line1 = $this -> get_line_price($match_arr[1][0],$bet);
 					$res['line1']=$line1;
 				} else{
-					if(substr($match_arr[1][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[1][2],0,-2)=="seven") {
+					if(mb_substr($match_arr[1][0],0,-2)=="seven" && mb_substr($match_arr[1][1],0,-2)=="seven" && mb_substr($match_arr[1][2],0,-2)=="seven") {
 						$mag=200;
 						$line1 = $this -> get_tx_price_list($bet,$mag);
 						$res['message1']=$line1;
@@ -495,7 +495,7 @@ class Game_list extends MY_Base_Controller {
 					$line3 = $this -> get_line_price($match_arr[2][0],$bet);
 					$res['line3']=$line3;
 				} else{
-					if(substr($match_arr[2][0],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
+					if(mb_substr($match_arr[2][0],0,-2)=="seven" && mb_substr($match_arr[2][1],0,-2)=="seven" && mb_substr($match_arr[2][2],0,-2)=="seven") {
 						$mag=200;
 						$line3 = $this -> get_tx_price_list($bet,$mag);
 						$res['message3']=$line3;
@@ -506,7 +506,7 @@ class Game_list extends MY_Base_Controller {
 					$line4 = $this -> get_line_price($match_arr[0][0],$bet);
 					$res['line4']=$line4;
 				} else{
-					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
+					if(mb_substr($match_arr[0][0],0,-2)=="seven" && mb_substr($match_arr[1][1],0,-2)=="seven" && mb_substr($match_arr[2][2],0,-2)=="seven") {
 						$mag=200;
 						$line4 = $this -> get_tx_price_list($bet,$mag);
 						$res['message4']=$line4;
@@ -517,7 +517,7 @@ class Game_list extends MY_Base_Controller {
 					$line5 = $this -> get_line_price($match_arr[2][0],$bet);
 					$res['line5']=$line5;
 				} else{
-					if(substr($match_arr[2][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[0][2],0,-2)=="seven") {
+					if(mb_substr($match_arr[2][0],0,-2)=="seven" && mb_substr($match_arr[1][1],0,-2)=="seven" && mb_substr($match_arr[0][2],0,-2)=="seven") {
 						$mag=200;
 						$line5 = $this -> get_tx_price_list($bet,$mag);
 						$res['message5']=$line5;
@@ -528,7 +528,7 @@ class Game_list extends MY_Base_Controller {
 					$line7 = $this -> get_line_price($match_arr[0][0],$bet);
 					$res['line7']=$line7;
 				} else{
-					if(substr($match_arr[0][1],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven") {
+					if(mb_substr($match_arr[0][1],0,-2)=="seven" && mb_substr($match_arr[1][1],0,-2)=="seven" && mb_substr($match_arr[2][1],0,-2)=="seven") {
 						$mag=200;
 						$line7 = $this -> get_tx_price_list($bet,$mag);
 						$res['message7']=$line7;
@@ -539,7 +539,7 @@ class Game_list extends MY_Base_Controller {
 					$line6 = $this -> get_line_price($match_arr[0][2],$bet);
 					$res['line6']=$line6;
 				} else{
-					if(substr($match_arr[0][2],0,-2)=="seven" && substr($match_arr[1][2],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
+					if(mb_substr($match_arr[0][2],0,-2)=="seven" && mb_substr($match_arr[1][2],0,-2)=="seven" && mb_substr($match_arr[2][2],0,-2)=="seven") {
 						$mag=200;
 						$line6 = $this -> get_tx_price_list($bet,$mag);
 						$res['message6']=$line6;
@@ -566,7 +566,7 @@ class Game_list extends MY_Base_Controller {
 		 		$this -> insert_total_price($bet,$total,$user_id,$match_arr);
 
 
-			$this -> to_json($res1);
+			// $this -> to_json($res1);
 	}
 
 	public function insert_total_price($bet,$total,$user_id,$match_arr) {
