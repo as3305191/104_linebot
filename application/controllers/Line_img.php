@@ -743,33 +743,9 @@ class Line_img extends MY_Base_Controller {
 			$imageData_41 = imagescale($imageData_41, 350,390);
 			imagecopy($jpg_image, $imageData_41, 30, 300, 0, 0, 350, 390);//00
 
-			// $imageData_41 = imagecreatefromstring(file_get_contents($light));
-			// $imageData_41 = imagescale($imageData_41, 350,390);
-			// imagecopy($jpg_image, $imageData_41, 350, 300, 0, 0, 350, 390);//01
-			//
-			// $imageData_41 = imagecreatefromstring(file_get_contents($light));
-			// $imageData_41 = imagescale($imageData_41, 350,390);
-			// imagecopy($jpg_image, $imageData_41, 670, 300, 0, 0, 350, 390);//02
-
-			// $imageData_42 = imagecreatefromstring(file_get_contents($light));
-			// $imageData_42 = imagescale($imageData_42, 350,390);
-			// imagecopy($jpg_image, $imageData_42, 30, 605, 0, 0, 350, 390);//10
-
 			$imageData_42 = imagecreatefromstring(file_get_contents($light));
 			$imageData_42 = imagescale($imageData_42, 350,390);
 			imagecopy($jpg_image, $imageData_42, 350, 605, 0, 0, 350, 390);//11
-
-			// $imageData_42 = imagecreatefromstring(file_get_contents($light));
-			// $imageData_42 = imagescale($imageData_42, 350,390);
-			// imagecopy($jpg_image, $imageData_42, 670, 605, 0, 0, 350, 390);//12
-
-			// $imageData_43 = imagecreatefromstring(file_get_contents($light));
-			// $imageData_43 = imagescale($imageData_43, 350,390);
-			// imagecopy($jpg_image, $imageData_43, 30, 920, 0, 0, 350, 390);//20
-			//
-			// $imageData_43 = imagecreatefromstring(file_get_contents($light));
-			// $imageData_43 = imagescale($imageData_43, 350,390);
-			// imagecopy($jpg_image, $imageData_43, 350, 920, 0, 0, 350, 390);//21
 
 			$imageData_43 = imagecreatefromstring(file_get_contents($light));
 			$imageData_43 = imagescale($imageData_43, 350,390);
