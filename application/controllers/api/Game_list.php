@@ -254,6 +254,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_seven1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_seven']=$counter_seven1;
+						$res['seven']=1;
+
 					}
 
 					if($counter_bar>2){
@@ -286,6 +288,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_bar1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_bar']=$counter_bar1;
+						$res['bar']=1;
+
 					}
 
 					if($counter_medal>2){
@@ -318,6 +322,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_medal1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_medal']=$counter_medal1;
+						$res['medal']=1;
+
 					}
 
 					if($counter_bell>2){
@@ -350,6 +356,7 @@ class Game_list extends MY_Base_Controller {
 							$counter_bell1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_bell']=$counter_bell1;
+						$res['bell']=1;
 
 					}
 
@@ -379,6 +386,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_watermelon1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_watermelon']=$counter_watermelon1;
+						$res['watermelon']=1;
+
 					}
 
 					if($counter_grape>3){
@@ -407,6 +416,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_grape1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_grape']=$counter_grape1;
+						$res['grape']=1;
+
 					}
 
 					if($counter_cherry>3){
@@ -435,6 +446,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_cherry1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_cherry']=$counter_cherry1;
+						$res['cherry']=1;
+
 					}
 
 					if($counter_orange>3){
@@ -463,6 +476,8 @@ class Game_list extends MY_Base_Controller {
 							$counter_orange1 = $this -> get_tx_price_list($bet,$mag);
 						}
 						$res['counter_orange']=$counter_orange1;
+						$res['orange']=1;
+
 					}
 
 					$overall=$counter_seven1+$counter_bar1+$counter_medal1+$counter_bell1+$counter_watermelon1+$counter_grape1+$counter_orange1+$counter_cherry1+$not_same;
