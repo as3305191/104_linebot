@@ -637,5 +637,11 @@ class Game_list extends MY_Base_Controller {
 		$this->to_json ("123");
 	}
 
+	// function get_sum_amt_all() {
+	// 	$p = floatval(1000000000)/floatval(1000000000.00135032);
+	// 	// $price=round($p,8);
+	// 	$this->to_json ($p);
+	//
+	// }
 }
 ?>
