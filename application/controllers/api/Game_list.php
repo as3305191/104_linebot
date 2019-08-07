@@ -525,8 +525,8 @@ class Game_list extends MY_Base_Controller {
 					}
 				}
 
-				if($match_arr[0][0]==$match_arr[1][0]&&$match_arr[0][0]==$match_arr[2][0]){
-					$line7 = $this -> get_line_price($match_arr[0][0],$bet);
+				if($match_arr[0][1]==$match_arr[1][1]&&$match_arr[0][1]==$match_arr[2][1]){
+					$line7 = $this -> get_line_price($match_arr[0][1],$bet);
 					$res['line7']=$line7;
 				} else{
 					if(substr($match_arr[0][1],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven") {
@@ -544,6 +544,17 @@ class Game_list extends MY_Base_Controller {
 						$mag=200;
 						$line6 = $this -> get_tx_price_list($bet,$mag);
 						$res['message6']=$line6;
+					}
+				}
+
+				if($match_arr[0][0]==$match_arr[1][0]&&$match_arr[0][0]==$match_arr[2][0]){
+					$line8 = $this -> get_line_price($match_arr[0][0],$bet);
+					$res['line8']=$line8;
+				} else{
+					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[1][0],0,-2)=="seven" && substr($match_arr[2][0],0,-2)=="seven") {
+						$mag=200;
+						$line8 = $this -> get_tx_price_list($bet,$mag);
+						$res['message8']=$line8;
 					}
 				}
 				$overall1=$line1+$line2+$line3+$line4+$line5+$line6+$line7+$line8;
