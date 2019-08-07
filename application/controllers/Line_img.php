@@ -695,12 +695,144 @@ class Line_img extends MY_Base_Controller {
 		$imageData_22 = imagescale($imageData_22, 238,254);
 		imagecopy($jpg_image, $imageData_22, 725, 1000, 0, 0, 238, 254);
 
-		if(!empty($win->line4)){
-			$imageData_4 = imagecreatefromstring(file_get_contents($light));
-			$imageData_4 = imagescale($imageData_4, 282,281);
-			imagecopy($jpg_image, $imageData_4, 60, 338, 0, 0, 282, 281);
+		if(!empty($win->line1)){
+
+			$imageData_11 = imagecreatefromstring(file_get_contents($light));
+			$imageData_11 = imagescale($imageData_11, 350,390);
+			imagecopy($jpg_image, $imageData_11, 30, 605, 0, 0, 350, 390);//10
+
+			$imageData_12 = imagecreatefromstring(file_get_contents($light));
+			$imageData_12 = imagescale($imageData_12, 350,390);
+			imagecopy($jpg_image, $imageData_12, 350, 605, 0, 0, 350, 390);//11
+
+			$imageData_13 = imagecreatefromstring(file_get_contents($light));
+			$imageData_13 = imagescale($imageData_13, 350,390);
+			imagecopy($jpg_image, $imageData_13, 670, 605, 0, 0, 350, 390);//12
 		}
 
+		if(!empty($win->line2)){
+			$imageData_11 = imagecreatefromstring(file_get_contents($light));
+			$imageData_11 = imagescale($imageData_11, 350,390);
+			imagecopy($jpg_image, $imageData_11, 30, 300, 0, 0, 350, 390);//00
+
+			$imageData_41 = imagecreatefromstring(file_get_contents($light));
+			$imageData_41 = imagescale($imageData_41, 350,390);
+			imagecopy($jpg_image, $imageData_41, 350, 300, 0, 0, 350, 390);//01
+
+			$imageData_13 = imagecreatefromstring(file_get_contents($light));
+			$imageData_13 = imagescale($imageData_13, 350,390);
+			imagecopy($jpg_image, $imageData_13, 670, 300, 0, 0, 350, 390);//02
+		}
+
+		if(!empty($win->line3)){
+			$imageData_31 = imagecreatefromstring(file_get_contents($light));
+			$imageData_31 = imagescale($imageData_31, 350,390);
+			imagecopy($jpg_image, $imageData_31, 30, 920, 0, 0, 350, 390);//20
+
+			$imageData_32 = imagecreatefromstring(file_get_contents($light));
+			$imageData_32 = imagescale($imageData_32, 350,390);
+			imagecopy($jpg_image, $imageData_32, 350, 920, 0, 0, 350, 390);//21
+
+			$imageData_33 = imagecreatefromstring(file_get_contents($light));
+			$imageData_33 = imagescale($imageData_33, 350,390);
+			imagecopy($jpg_image, $imageData_33, 670, 920, 0, 0, 350, 390);//22
+		}
+
+		if(!empty($win->line4)){
+			$imageData_41 = imagecreatefromstring(file_get_contents($light));
+			$imageData_41 = imagescale($imageData_41, 350,390);
+			imagecopy($jpg_image, $imageData_41, 30, 300, 0, 0, 350, 390);//00
+
+			// $imageData_41 = imagecreatefromstring(file_get_contents($light));
+			// $imageData_41 = imagescale($imageData_41, 350,390);
+			// imagecopy($jpg_image, $imageData_41, 350, 300, 0, 0, 350, 390);//01
+			//
+			// $imageData_41 = imagecreatefromstring(file_get_contents($light));
+			// $imageData_41 = imagescale($imageData_41, 350,390);
+			// imagecopy($jpg_image, $imageData_41, 670, 300, 0, 0, 350, 390);//02
+
+			// $imageData_42 = imagecreatefromstring(file_get_contents($light));
+			// $imageData_42 = imagescale($imageData_42, 350,390);
+			// imagecopy($jpg_image, $imageData_42, 30, 605, 0, 0, 350, 390);//10
+
+			$imageData_42 = imagecreatefromstring(file_get_contents($light));
+			$imageData_42 = imagescale($imageData_42, 350,390);
+			imagecopy($jpg_image, $imageData_42, 350, 605, 0, 0, 350, 390);//11
+
+			// $imageData_42 = imagecreatefromstring(file_get_contents($light));
+			// $imageData_42 = imagescale($imageData_42, 350,390);
+			// imagecopy($jpg_image, $imageData_42, 670, 605, 0, 0, 350, 390);//12
+
+			// $imageData_43 = imagecreatefromstring(file_get_contents($light));
+			// $imageData_43 = imagescale($imageData_43, 350,390);
+			// imagecopy($jpg_image, $imageData_43, 30, 920, 0, 0, 350, 390);//20
+			//
+			// $imageData_43 = imagecreatefromstring(file_get_contents($light));
+			// $imageData_43 = imagescale($imageData_43, 350,390);
+			// imagecopy($jpg_image, $imageData_43, 350, 920, 0, 0, 350, 390);//21
+
+			$imageData_43 = imagecreatefromstring(file_get_contents($light));
+			$imageData_43 = imagescale($imageData_43, 350,390);
+			imagecopy($jpg_image, $imageData_43, 670, 920, 0, 0, 350, 390);//22
+		}
+
+		if(!empty($win->line5)){
+			$imageData_51 = imagecreatefromstring(file_get_contents($light));
+			$imageData_51 = imagescale($imageData_51, 350,390);
+			imagecopy($jpg_image, $imageData_51, 670, 300, 0, 0, 350, 390);//02
+
+			$imageData_52 = imagecreatefromstring(file_get_contents($light));
+			$imageData_52 = imagescale($imageData_52, 350,390);
+			imagecopy($jpg_image, $imageData_52, 350, 605, 0, 0, 350, 390);//11
+
+			$imageData_53 = imagecreatefromstring(file_get_contents($light));
+			$imageData_53 = imagescale($imageData_53, 350,390);
+			imagecopy($jpg_image, $imageData_53, 30, 920, 0, 0, 350, 390);//20
+		}
+
+		if(!empty($win->line6)){
+
+			$imageData_61 = imagecreatefromstring(file_get_contents($light));
+			$imageData_61 = imagescale($imageData_61, 350,390);
+			imagecopy($jpg_image, $imageData_61, 670, 300, 0, 0, 350, 390);//02
+
+			$imageData_62 = imagecreatefromstring(file_get_contents($light));
+			$imageData_62 = imagescale($imageData_62, 350,390);
+			imagecopy($jpg_image, $imageData_62, 670, 605, 0, 0, 350, 390);//12
+
+			$imageData_63 = imagecreatefromstring(file_get_contents($light));
+			$imageData_63 = imagescale($imageData_63, 350,390);
+			imagecopy($jpg_image, $imageData_63, 670, 920, 0, 0, 350, 390);//22
+		}
+
+		if(!empty($win->line7)){
+			$imageData_71 = imagecreatefromstring(file_get_contents($light));
+			$imageData_71 = imagescale($imageData_71, 350,390);
+			imagecopy($jpg_image, $imageData_71, 350, 300, 0, 0, 350, 390);//01
+
+			$imageData_72 = imagecreatefromstring(file_get_contents($light));
+			$imageData_72 = imagescale($imageData_72, 350,390);
+			imagecopy($jpg_image, $imageData_72, 350, 605, 0, 0, 350, 390);//11
+
+			$imageData_73 = imagecreatefromstring(file_get_contents($light));
+			$imageData_73 = imagescale($imageData_73, 350,390);
+			imagecopy($jpg_image, $imageData_73, 350, 920, 0, 0, 350, 390);//21
+		}
+
+		if(!empty($win->line8)){
+			$imageData_41 = imagecreatefromstring(file_get_contents($light));
+			$imageData_41 = imagescale($imageData_41, 350,390);
+			imagecopy($jpg_image, $imageData_41, 30, 300, 0, 0, 350, 390);//00
+
+			$imageData_42 = imagecreatefromstring(file_get_contents($light));
+			$imageData_42 = imagescale($imageData_42, 350,390);
+			imagecopy($jpg_image, $imageData_42, 30, 605, 0, 0, 350, 390);//10
+
+			$imageData_43 = imagecreatefromstring(file_get_contents($light));
+			$imageData_43 = imagescale($imageData_43, 350,390);
+			imagecopy($jpg_image, $imageData_43, 30, 920, 0, 0, 350, 390);//20
+
+		}
 		ob_clean();
 		flush();
 		// Send Image to Browser
