@@ -790,6 +790,7 @@ class Line_bot extends MY_Base_Controller {
 			)
 		);
 	}
+	
 
 	private function show_super_8_second(&$msg_arr,$id ,$is_first = FALSE) {
 		$msg_arr[] = array(
