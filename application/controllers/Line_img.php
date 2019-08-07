@@ -633,15 +633,15 @@ class Line_img extends MY_Base_Controller {
 		$bet_b=mb_substr($bet->bet,0,-7);
 		$bet_id=$bet->id;
 
-		imagettftext($jpg_image, 40, 0, 74, 500, $black, $font, $img00);
-		imagettftext($jpg_image, 40, 0, 393, 500, $black, $font, $img01);
-		imagettftext($jpg_image, 40, 0, 712, 500, $black, $font, $img02);
-		imagettftext($jpg_image, 40, 0, 74, 800, $black, $font, $img10);
-		imagettftext($jpg_image, 40, 0, 393, 800, $black, $font, $img12);
-		imagettftext($jpg_image, 40, 0, 712, 800, $black, $font, $img00);
-		imagettftext($jpg_image, 40, 0, 74, 1130, $black, $font, $img20);
-		imagettftext($jpg_image, 40, 0, 393, 1130, $black, $font, $img21);
-		imagettftext($jpg_image, 40, 0, 712, 1130, $black, $font, $img22);
+		// imagettftext($jpg_image, 40, 0, 74, 500, $black, $font, $img00);
+		// imagettftext($jpg_image, 40, 0, 393, 500, $black, $font, $img01);
+		// imagettftext($jpg_image, 40, 0, 712, 500, $black, $font, $img02);
+		// imagettftext($jpg_image, 40, 0, 74, 800, $black, $font, $img10);
+		// imagettftext($jpg_image, 40, 0, 393, 800, $black, $font, $img12);
+		// imagettftext($jpg_image, 40, 0, 712, 800, $black, $font, $img00);
+		// imagettftext($jpg_image, 40, 0, 74, 1130, $black, $font, $img20);
+		// imagettftext($jpg_image, 40, 0, 393, 1130, $black, $font, $img21);
+		// imagettftext($jpg_image, 40, 0, 712, 1130, $black, $font, $img22);
 		imagettftext($jpg_image, 40, 0, 817, 260, $white, $font, $bet_b);
 		imagettftext($jpg_image, 40, 0, 220, 260, $white, $font, $bet_id);
 		imagettftext($jpg_image, 40, 0, 275, 1375, $white, $font, $total_win_point);
