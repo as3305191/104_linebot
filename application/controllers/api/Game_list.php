@@ -198,7 +198,7 @@ class Game_list extends MY_Base_Controller {
 					}
 				}
 			}
-			 $res['list']=	$match_arr;
+			 // $res['list']=	$match_arr;
 			 // $res['_seven_b']=$counter_seven_b;
 			 // $res['_seven_r']=$counter_seven_r;
 			 // $res['_counter_bar']=$counter_bar;

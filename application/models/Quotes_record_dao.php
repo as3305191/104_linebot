@@ -89,8 +89,10 @@ class Quotes_record_dao extends MY_Model {
 		$value = json_encode($match_arr);
 		$tx_11['result'] = $value;
 
-		$value1 = json_encode($match_arr);
+	
+		$value1 = json_encode($res);
 		$tx_11['win_status'] = $value1;
+
 		$last_id=	$this -> play_game_dao -> insert($tx_11);
 
 
