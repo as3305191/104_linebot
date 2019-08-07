@@ -819,7 +819,7 @@ class Line_img extends MY_Base_Controller {
 			imagecopy($jpg_image, $imageData_73, 350, 920, 0, 0, 350, 390);//21
 		}
 
-		if(!empty($win->line8)||!empty($win->line8)){
+		if(!empty($win->line8)){
 			$imageData_81 = imagecreatefromstring(file_get_contents($light));
 			$imageData_81 = imagescale($imageData_81, 350,390);
 			imagecopy($jpg_image, $imageData_81, 30, 300, 0, 0, 350, 390);//00
