@@ -39,7 +39,7 @@ class Quotes_record_dao extends MY_Model {
 	}
 	function get_sum_ntd1($last_id) {
 		$this -> db -> select("sum(ntd_change) as sntd");
-		$this -> db -> where('id<=',$last_id);
+		$this -> db -> where('id<',$last_id+1);
 		$list = $this -> find_all();
 		if(count($list) > 0) {
 			$itm = $list[0];
@@ -52,8 +52,20 @@ class Quotes_record_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.current_point');
 
-		$this -> db -> where('current_point<>',0);
+		$this -> db -> where('current_point<>',0.00000000);
 		$this -> db -> order_by('id','desc');
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list[0];
+	}
+
+	function get_current_point1($last_id) {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.current_point');
+
+		$this -> db -> where('current_point<>',0.00000000);
+		$this -> db -> where('id',$last_id);
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
@@ -64,7 +76,7 @@ class Quotes_record_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.current_ntd');
 
-		$this -> db -> where('current_ntd<>',0);
+		$this -> db -> where('current_ntd<>',0.00000000);
 		$this -> db -> order_by('id','desc');
 
 		$query = $this -> db -> get();
@@ -81,6 +93,7 @@ class Quotes_record_dao extends MY_Model {
 
 		$get_current_point=$this -> q_r_dao -> get_current_point();
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
+
 		$tx_11 = array();
 		$tx_11['user_id'] = $user_id;
 		$tx_11['bet'] = $bet_o;
@@ -89,7 +102,7 @@ class Quotes_record_dao extends MY_Model {
 		$value = json_encode($match_arr);
 		$tx_11['result'] = $value;
 
-	
+
 		$value1 = json_encode($res);
 		$tx_11['win_status'] = $value1;
 
@@ -100,7 +113,8 @@ class Quotes_record_dao extends MY_Model {
 		$tx_1['tx_type'] = "play_game";
 		$tx_1['tx_id'] = $last_id;
 		$tx_1['point_change'] = $for_q_amt;
-		$tx_1['current_point'] = floatval($get_current_point->current_point)+floatval($for_q_amt);
+		$current_point= intval($get_current_point->current_point)+intval($for_q_amt);
+		$tx_1['current_point'] =$current_point;
 		$this -> q_r_dao -> insert($tx_1);
 
 		$tx1 = array();
@@ -131,16 +145,18 @@ class Quotes_record_dao extends MY_Model {
 
 		$Date = date("Y-m-d");
 		$dq =  $this -> d_q_dao -> find_d_q($Date);
-		$samt1 =  $this -> wtx_dao -> get_sum_amt_all($last_id);
+		$samt1 =  $this -> q_r_dao -> get_current_point1($last_id);
 		$sntd =  $this -> q_r_dao -> get_sum_ntd1($last_id);
 		$dtx = array();
 		$dtx['date'] = $Date;
-		$dtx['average_price'] = floatval($sntd)/floatval($samt1);
-		$dtx['last_price'] = floatval($sntd)/floatval($samt1);
-		$dtx['now_price'] = floatval($sntd)/floatval($samt1);
+		$p=floatval($sntd)/floatval($samt1->current_point);
+		$price=round($p,8);
+		$dtx['average_price'] =$price;
+		$dtx['last_price'] = $price;
+		$dtx['now_price'] = $price;
 		if(!empty($dq)){
-			$u_data['last_price'] = floatval($sntd)/floatval($samt1);
-			$u_data['now_price'] = floatval($sntd)/floatval($samt1);
+			$u_data['last_price'] = $price;
+			$u_data['now_price'] = $price;
 			$this -> d_q_dao -> update_by($u_data,'id',$dq->id);
 
 		} else{

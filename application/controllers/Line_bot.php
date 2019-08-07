@@ -157,7 +157,6 @@ class Line_bot extends MY_Base_Controller {
 				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
 				$users = $this -> users_dao -> find_by_id($user -> id);
 				$sum_amt = intval($sum_amt);
-				$gift_id = $user -> gift_id;
 				$msg_arr[] = array(
 					"type" => "text",
 					"text" => "您的餘額： {$sum_amt}\n您的錢包地址為: {$users->wallet_code}",
@@ -246,7 +245,7 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 		} elseif($line_session -> type == "贈禮_輸入錢包地址") {
-			$to_user = $this -> users_dao -> find_by_gift_id_and_corp(1, $message -> text);
+			$to_user = $this -> users_dao -> find_by_wallet_code_and_corp(1, $message -> text);
 			if(empty($to_user)) {
 				$msg_arr[] = array(
 					"type" => "text",
@@ -259,7 +258,7 @@ class Line_bot extends MY_Base_Controller {
 				);
 
 				$line_session -> type = "贈禮_輸入轉帳金額";
-				$line_session -> gift_id = $message -> text;
+				$line_session -> wallet_code = $message -> text;
 				$line_session -> to_user_id = $to_user -> id;
 				$this -> users_dao -> update(array(
 					"line_session" => json_encode($line_session)
@@ -355,7 +354,7 @@ class Line_bot extends MY_Base_Controller {
 					} else {
 						$out_user = $this -> users_dao -> find_by_id($user -> id);
 						$promo_user = $this -> users_dao -> find_by_id($user -> id); // for 向上分配
-						$in_user = $this -> users_dao -> find_by("gift_id", $line_session -> gift_id);
+						$in_user = $this -> users_dao -> find_by("wallet_code", $line_session -> wallet_code);
 
 						if(!empty($in_user)) {
 							$samt =  $this -> wtx_dao -> get_sum_amt($out_user -> id);
@@ -552,7 +551,7 @@ class Line_bot extends MY_Base_Controller {
 						} else {
 							$msg_arr[] = array(
 								"type" => "text",
-								"text" => "查無收禮者" . $line_session -> gift_id . "??",
+								"text" => "查無收禮者" . $line_session -> wallet_code . "??",
 							);
 						}
 					}

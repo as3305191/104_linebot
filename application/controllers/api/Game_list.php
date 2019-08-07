@@ -579,7 +579,7 @@ class Game_list extends MY_Base_Controller {
 		 		$this -> insert_total_price($bet,$total,$user_id,$match_arr,$res);
 
 
-			// $this -> to_json($res);
+			$this -> to_json($res);
 	}
 
 	public function insert_total_price($bet,$total,$user_id,$match_arr,$res) {
@@ -590,7 +590,7 @@ class Game_list extends MY_Base_Controller {
 		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr,$res);
 		$res1['last_id']=$do_insert;
 
-		$this -> to_json($res1);
+		// $this -> to_json($res1);
 	}
 
 	public function get_tx_price_list($bet,$mag) {
@@ -636,5 +636,12 @@ class Game_list extends MY_Base_Controller {
 	{
 		$this->to_json ("123");
 	}
+
+	// function get_sum_amt_all() {
+	// 	$p = floatval(1000000000)/floatval(1000000000.00135032);
+	// 	// $price=round($p,8);
+	// 	$this->to_json ($p);
+	//
+	// }
 }
 ?>
