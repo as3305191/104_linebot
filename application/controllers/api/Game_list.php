@@ -477,7 +477,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[0][1],0,-2)=="seven" && substr($match_arr[0][2],0,-2)=="seven") {
 						$mag=200;
 						$line2 = $this -> get_tx_price_list($bet,$mag);
-						$res['message2']=$line2 ;
+						$res['line2']=$line2 ;
 					}
 				}
 
@@ -488,7 +488,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[1][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[1][2],0,-2)=="seven") {
 						$mag=200;
 						$line1 = $this -> get_tx_price_list($bet,$mag);
-						$res['message1']=$line1;
+						$res['line1']=$line1;
 					}
 				}
 
@@ -499,7 +499,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[2][0],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
 						$mag=200;
 						$line3 = $this -> get_tx_price_list($bet,$mag);
-						$res['message3']=$line3;
+						$res['line3']=$line3;
 					}
 				}
 
@@ -510,7 +510,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
 						$mag=200;
 						$line4 = $this -> get_tx_price_list($bet,$mag);
-						$res['message4']=$line4;
+						$res['line4']=$line4;
 					}
 				}
 
@@ -521,7 +521,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[2][0],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[0][2],0,-2)=="seven") {
 						$mag=200;
 						$line5 = $this -> get_tx_price_list($bet,$mag);
-						$res['message5']=$line5;
+						$res['line5']=$line5;
 					}
 				}
 
@@ -532,7 +532,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[0][1],0,-2)=="seven" && substr($match_arr[1][1],0,-2)=="seven" && substr($match_arr[2][1],0,-2)=="seven") {
 						$mag=200;
 						$line7 = $this -> get_tx_price_list($bet,$mag);
-						$res['message7']=$line7;
+						$res['line7']=$line7;
 					}
 				}
 
@@ -543,7 +543,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[0][2],0,-2)=="seven" && substr($match_arr[1][2],0,-2)=="seven" && substr($match_arr[2][2],0,-2)=="seven") {
 						$mag=200;
 						$line6 = $this -> get_tx_price_list($bet,$mag);
-						$res['message6']=$line6;
+						$res['line6']=$line6;
 					}
 				}
 
@@ -554,7 +554,7 @@ class Game_list extends MY_Base_Controller {
 					if(substr($match_arr[0][0],0,-2)=="seven" && substr($match_arr[1][0],0,-2)=="seven" && substr($match_arr[2][0],0,-2)=="seven") {
 						$mag=200;
 						$line8 = $this -> get_tx_price_list($bet,$mag);
-						$res['message8']=$line8;
+						$res['line8']=$line8;
 					}
 				}
 				$overall1=$line1+$line2+$line3+$line4+$line5+$line6+$line7+$line8;
