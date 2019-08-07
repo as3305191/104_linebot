@@ -607,8 +607,10 @@ class Line_img extends MY_Base_Controller {
 
 	public function line_result($id, $v, $size = 0) {
 		$bet = $this -> play_game_dao -> find_by_id($id);
-		$result=$bet->result;
+		$result = $bet -> result;
 		$value = json_decode($result);
+		$win_status = $bet -> win_status;
+		$win = json_decode($win_status);
 
 		$im = HOME_DIR . "img/line688/line/0802.jpg";
 		header("Content-Disposition: attachment; ");
@@ -655,43 +657,50 @@ class Line_img extends MY_Base_Controller {
 		$pic_20 = HOME_DIR . "img/line688/line/$img20.png";
 		$pic_21 = HOME_DIR . "img/line688/line/$img21.png";
 		$pic_22 = HOME_DIR . "img/line688/line/$img22.png";
+		$light = HOME_DIR . "img/line688/line/light.png";
 
 		$imageData_00 = imagecreatefromstring(file_get_contents($pic_00));
 		$imageData_00 = imagescale($imageData_00, 238,254);
 		imagecopy($jpg_image, $imageData_00, 81, 366, 0, 0, 238, 254);
-		//
+
 		$imageData_01 = imagecreatefromstring(file_get_contents($pic_01));
 		$imageData_01 = imagescale($imageData_01, 238,254);
 		imagecopy($jpg_image, $imageData_01, 400, 366, 0, 0, 238, 254);
-		//
+
 		$imageData_02 = imagecreatefromstring(file_get_contents($pic_02));
 		$imageData_02 = imagescale($imageData_02, 238,254);
 		imagecopy($jpg_image, $imageData_02, 725, 366, 0, 0, 238, 254);
-		//
+
 		$imageData_10 = imagecreatefromstring(file_get_contents($pic_10));
 		$imageData_10 = imagescale($imageData_10, 238,254);
 		imagecopy($jpg_image, $imageData_10, 79, 670, 0, 0, 238, 254);
-		// //
+
 		$imageData_11 = imagecreatefromstring(file_get_contents($pic_11));
 		$imageData_11 = imagescale($imageData_11, 238,254);
 		imagecopy($jpg_image, $imageData_11, 400, 670, 0, 0, 238, 254);
-		// //
+
 		$imageData_12 = imagecreatefromstring(file_get_contents($pic_12));
 		$imageData_12 = imagescale($imageData_12, 238,254);
 		imagecopy($jpg_image, $imageData_12, 725, 670, 0, 0, 238, 254);
-		// //
+
 		$imageData_20 = imagecreatefromstring(file_get_contents($pic_20));
 		$imageData_20 = imagescale($imageData_20, 238,254);
 		imagecopy($jpg_image, $imageData_20, 79, 1000, 0, 0, 238, 254);
-		// //
+
 		$imageData_21 = imagecreatefromstring(file_get_contents($pic_21));
 		$imageData_21 = imagescale($imageData_21, 238,254);
 		imagecopy($jpg_image, $imageData_21, 400, 1000, 0, 0, 238, 254);
-		// //
+
 		$imageData_22 = imagecreatefromstring(file_get_contents($pic_22));
 		$imageData_22 = imagescale($imageData_22, 238,254);
 		imagecopy($jpg_image, $imageData_22, 725, 1000, 0, 0, 238, 254);
-		//
+
+		if(!empty($win->line4)){
+			$imageData_4 = imagecreatefromstring(file_get_contents($light));
+			$imageData_4 = imagescale($imageData_4, 238,254);
+			imagecopy($jpg_image, $imageData_4, 725, 1000, 0, 0, 238, 254);
+		}
+
 		ob_clean();
 		flush();
 		// Send Image to Browser
