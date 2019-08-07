@@ -637,6 +637,5 @@ class Game_list extends MY_Base_Controller {
 		$this->to_json ("123");
 	}
 
-
 }
 ?>
