@@ -150,7 +150,7 @@ class Quotes_record_dao extends MY_Model {
 		$dtx = array();
 		$dtx['date'] = $Date;
 		$p=floatval($sntd)/floatval($samt1->current_point);
-		$price=round($p,[8])
+		$price=round($p,[8]);
 		$dtx['average_price'] =$price;
 		$dtx['last_price'] = $price;
 		$dtx['now_price'] = $price;
