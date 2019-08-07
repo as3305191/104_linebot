@@ -613,8 +613,8 @@ class Line_img extends MY_Base_Controller {
 		$win = json_decode($win_status);
 
 		$im = HOME_DIR . "img/line688/line/0802.jpg";
-		// header("Content-Disposition: attachment; ");
-		// header("Content-type: image/jpg");
+		header("Content-Disposition: attachment; ");
+		header("Content-type: image/jpeg");
 		// header("Content-Length: " . filesize($im)); // 不要加這行
 		$jpg_image = imagecreatefromjpeg($im);
 		$font = HOME_DIR . "img/line688/font/wt006.ttf";
@@ -1280,9 +1280,9 @@ class Line_img extends MY_Base_Controller {
 		ob_clean();
 		flush();
 		// Send Image to Browser
-		// imagejpeg($jpg_image);
+		imagejpeg($jpg_image);
 		// Clear Memory
-		// imagedestroy($jpg_image);
+		imagedestroy($jpg_image);
 
 		exit ;
 		show_404();
