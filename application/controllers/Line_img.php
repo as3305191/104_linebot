@@ -697,8 +697,8 @@ class Line_img extends MY_Base_Controller {
 
 		if(!empty($win->line4)){
 			$imageData_4 = imagecreatefromstring(file_get_contents($light));
-			$imageData_4 = imagescale($imageData_4, 238,254);
-			imagecopy($jpg_image, $imageData_4, 725, 1000, 0, 0, 238, 254);
+			$imageData_4 = imagescale($imageData_4, 282,281);
+			imagecopy($jpg_image, $imageData_4, 60, 338, 0, 0, 282, 281);
 		}
 
 		ob_clean();
