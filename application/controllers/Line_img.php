@@ -634,6 +634,7 @@ class Line_img extends MY_Base_Controller {
 
 		$total_win_point=mb_substr($bet->total_win_point,0,-7);
 		$bet_b=mb_substr($bet->bet,0,-7);
+		$bet_sum_amt=mb_substr($sum_amt,0,-7);
 		$bet_id=$bet->id;
 
 		// imagettftext($jpg_image, 40, 0, 74, 500, $black, $font, $img00);
@@ -648,7 +649,7 @@ class Line_img extends MY_Base_Controller {
 		imagettftext($jpg_image, 40, 0, 510, 260, $white, $font, $bet_b);
 		imagettftext($jpg_image, 40, 0, 220, 260, $white, $font, $bet_id);
 		imagettftext($jpg_image, 40, 0, 275, 1375, $white, $font, $total_win_point);
-		imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $sum_amt);
+		imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_sum_amt);
 
 
 		$pic_00 = HOME_DIR . "img/line688/line/$img00.png";
