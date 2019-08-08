@@ -607,6 +607,7 @@ class Line_img extends MY_Base_Controller {
 
 	public function line_result($id, $v, $size = 0) {
 		$bet = $this -> play_game_dao -> find_by_id($id);
+		$sum_amt = $this -> wtx_dao -> get_sum_amt($bet ->user_id);
 		$result = $bet -> result;
 		$value = json_decode($result);
 		$win_status = $bet -> win_status;
@@ -647,7 +648,7 @@ class Line_img extends MY_Base_Controller {
 		imagettftext($jpg_image, 40, 0, 510, 260, $white, $font, $bet_b);
 		imagettftext($jpg_image, 40, 0, 220, 260, $white, $font, $bet_id);
 		imagettftext($jpg_image, 40, 0, 275, 1375, $white, $font, $total_win_point);
-		imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_b);
+		imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $sum_amt);
 
 
 		$pic_00 = HOME_DIR . "img/line688/line/$img00.png";
