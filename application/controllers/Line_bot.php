@@ -156,26 +156,8 @@ class Line_bot extends MY_Base_Controller {
 			if($message -> text == '錢包查詢') {
 				$id=$user -> id;
 				// $users = $this -> users_dao -> find_by_id($user -> id);
-				$msg_arr[] = array(
-					"type" => "imagemap",
-					"baseUrl" => base_url("line_img/line_gift/{$id}/v1/1"),
-					"baseSize" => array(
-						"width" => "1040",
-						"height" => "653"
-					),
-					"actions" => array(
-						array(
-							"type" => "message",
-							"text" => "複製地址",
-							"area" => array(
-								"x" => 587,
-								"y" => 479,
-								"width" => 359,
-								"height" => 109
-							)
-						),
-					)
-				);
+				$this -> wallet_card($msg_arr,$id, TRUE);
+
 			}
 
 			if($message -> text == '複製地址') {
@@ -946,6 +928,30 @@ class Line_bot extends MY_Base_Controller {
 
 	}
 
+	private function wallet_card(&$msg_arr,$id,$is_first = FALSE) {
+		$msg_arr[] = array(
+			"type" => "imagemap",
+			"baseUrl" => base_url("line_img/line_gift/{$id}/v1/1"),
+			"baseSize" => array(
+				"width" => "1040",
+				"height" => "653"
+			),
+			"actions" => array(
+				array(
+					"type" => "message",
+					"text" => "複製地址",
+					"area" => array(
+						"x" => 587,
+						"y" => 479,
+						"width" => 359,
+						"height" => 109
+					)
+				),
+			)
+		);
+
+
+	}
 
 
 	private function function_menu(&$msg_arr) {
