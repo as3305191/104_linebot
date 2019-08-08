@@ -156,7 +156,7 @@ class Line_bot extends MY_Base_Controller {
 			if($message -> text == '錢包查詢') {
 				$id=$user -> id;
 				// $users = $this -> users_dao -> find_by_id($user -> id);
-				$this -> wallet_card($msg_arr,$id, TRUE);
+				$this -> wallet_card($msg_arr,$id);
 
 			}
 
@@ -928,7 +928,7 @@ class Line_bot extends MY_Base_Controller {
 
 	}
 
-	private function wallet_card(&$msg_arr,$id,$is_first = FALSE) {
+	private function wallet_card(&$msg_arr,$id) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
 			"baseUrl" => base_url("line_img/line_gift/{$id}/v1/1"),
