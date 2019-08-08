@@ -1283,30 +1283,15 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
-	public function line_gift($id = 0, $v, $size = 0) {
-		// $sum_amt = $this -> wtx_dao -> get_sum_amt($id);
-
-		$im = HOME_DIR . "img/line688/line/wallet_card.jpg";
-		header("Content-Disposition: attachment; ");
+	public function line_gift($id , $v, $size = 0) {
+		$download_file_name = HOME_DIR . "img/line688/line/wallet_card.jpg";
+		// header("Content-Disposition: attachment; filename=$img_name.jpg");
 		header("Content-type: image/jpeg");
-		// header("Content-Length: " . filesize($im)); // 不要加這行
-		$jpg_image = imagecreatefromjpeg($im);
-		$font = HOME_DIR . "img/line688/font/wt006.ttf";
-
-		$black = imagecolorallocate($jpg_image, 0, 0, 0);
-		$white = imagecolorallocate($jpg_image, 255, 255, 255);
-
-		// $bet_sum_amt=mb_substr($sum_amt,0,-7);
-		//
-		// imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_sum_amt);
+		header("Content-Length: " . filesize($download_file_name));
 
 		ob_clean();
 		flush();
-		// Send Image to Browser
-		imagejpeg($jpg_image);
-		// Clear Memory
-		imagedestroy($jpg_image);
-
+		readfile($download_file_name);
 		exit ;
 		show_404();
 	}

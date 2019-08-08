@@ -155,12 +155,12 @@ class Line_bot extends MY_Base_Controller {
 
 			if($message -> text == '錢包查詢') {
 				$id=$user -> id;
-				$users = $this -> users_dao -> find_by_id($user -> id);
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "您的餘額： {$id}\n您的錢包地址為: {$users->wallet_code}",
-				);
-				// $this -> wallet_card($msg_arr,$id);
+				// $users = $this -> users_dao -> find_by_id($user -> id);
+				// $msg_arr[] = array(
+				// 	"type" => "text",
+				// 	"text" => "您的餘額： {$id}\n您的錢包地址為: {$users->wallet_code}",
+				// );
+				$this -> wallet_card($msg_arr,$id);
 
 			}
 
