@@ -1283,7 +1283,7 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
-	public function line_gift($id , $v, $size = 0) {
+	public function line_gift($id , $v, $size) {
 		$download_file_name = HOME_DIR . "img/line688/line/wallet_card.jpg";
 		// header("Content-Disposition: attachment; filename=$img_name.jpg");
 		header("Content-type: image/jpeg");
