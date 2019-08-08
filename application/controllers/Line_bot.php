@@ -156,12 +156,27 @@ class Line_bot extends MY_Base_Controller {
 			if($message -> text == '錢包查詢') {
 				$id=$user -> id;
 				// $users = $this -> users_dao -> find_by_id($user -> id);
-				// $msg_arr[] = array(
-				// 	"type" => "text",
-				// 	"text" => "您的餘額： {$id}\n您的錢包地址為: {$users->wallet_code}",
-				// );
-				$this -> wallet_card($msg_arr,$id);
-
+				$msg_arr[] = array(
+					"type" => "imagemap",
+					"baseUrl" => base_url("line_img/line_gift/{$id}/v1/1"),
+					"altText" => "COC錢包",
+					"baseSize" => array(
+						"width" => "1040",
+						"height" => "653"
+					),
+					"actions" => array(
+						array(
+							"type" => "message",
+							"text" => "複製地址",
+							"area" => array(
+								"x" => 587,
+								"y" => 479,
+								"width" => 359,
+								"height" => 109
+							)
+						),
+					)
+				);
 			}
 
 			if($message -> text == '複製地址') {
@@ -802,29 +817,6 @@ class Line_bot extends MY_Base_Controller {
 		);
 	}
 
-	private function wallet_card(&$msg_arr,$id) {
-		$msg_arr[] = array(
-			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_gift"),
-			"altText" => "COC錢包",
-			"baseSize" => array(
-				"width" => "1040",
-				"height" => "653"
-			),
-			"actions" => array(
-				array(
-					"type" => "message",
-					"text" => "複製地址",
-					"area" => array(
-						"x" => 587,
-						"y" => 479,
-						"width" => 359,
-						"height" => 109
-					)
-				),
-			)
-		);
-	}
 
 	private function show_super_8_second(&$msg_arr,$id ,$is_first = FALSE) {
 		// $msg_arr[] = array(
