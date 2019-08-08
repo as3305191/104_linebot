@@ -1289,7 +1289,7 @@ class Line_img extends MY_Base_Controller {
 		$im = HOME_DIR . "img/line688/line/wallet_card.jpg";
 		header("Content-Disposition: attachment; ");
 		header("Content-type: image/jpeg");
-		// header("Content-Length: " . filesize($im)); // 不要加這行
+		header("Content-Length: " . filesize($im)); 
 		$jpg_image = imagecreatefromjpeg($im);
 		$font = HOME_DIR . "img/line688/font/wt006.ttf";
 
