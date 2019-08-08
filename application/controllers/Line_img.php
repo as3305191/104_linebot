@@ -1284,21 +1284,21 @@ class Line_img extends MY_Base_Controller {
 	}
 
 	public function line_gift($id, $v, $size = 0) {
-		$sum_amt = $this -> wtx_dao -> get_sum_amt($id);
+		// $sum_amt = $this -> wtx_dao -> get_sum_amt($id);
 
 		$im = HOME_DIR . "img/line688/line/wallet_card.jpg";
 		header("Content-Disposition: attachment; ");
 		header("Content-type: image/jpeg");
-		header("Content-Length: " . filesize($im)); 
+		// header("Content-Length: " . filesize($im)); // 不要加這行
 		$jpg_image = imagecreatefromjpeg($im);
 		$font = HOME_DIR . "img/line688/font/wt006.ttf";
 
 		$black = imagecolorallocate($jpg_image, 0, 0, 0);
 		$white = imagecolorallocate($jpg_image, 255, 255, 255);
 
-		$bet_sum_amt=mb_substr($sum_amt,0,-7);
-
-		imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_sum_amt);
+		// $bet_sum_amt=mb_substr($sum_amt,0,-7);
+		//
+		// imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_sum_amt);
 
 		ob_clean();
 		flush();
