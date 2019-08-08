@@ -1284,7 +1284,7 @@ class Line_img extends MY_Base_Controller {
 	}
 
 	public function line_gift($id, $v, $size = 0) {
-		// $sum_amt = $this -> wtx_dao -> get_sum_amt($id);
+		$sum_amt = $this -> wtx_dao -> get_sum_amt($id);
 
 		$im = HOME_DIR . "img/line688/line/wallet_card.jpg";
 		header("Content-Disposition: attachment; ");
