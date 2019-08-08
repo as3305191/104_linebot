@@ -637,15 +637,6 @@ class Line_img extends MY_Base_Controller {
 		$bet_sum_amt=mb_substr($sum_amt,0,-7);
 		$bet_id=$bet->id;
 
-		// imagettftext($jpg_image, 40, 0, 74, 500, $black, $font, $img00);
-		// imagettftext($jpg_image, 40, 0, 393, 500, $black, $font, $img01);
-		// imagettftext($jpg_image, 40, 0, 712, 500, $black, $font, $img02);
-		// imagettftext($jpg_image, 40, 0, 74, 800, $black, $font, $img10);
-		// imagettftext($jpg_image, 40, 0, 393, 800, $black, $font, $img12);
-		// imagettftext($jpg_image, 40, 0, 712, 800, $black, $font, $img00);
-		// imagettftext($jpg_image, 40, 0, 74, 1130, $black, $font, $img20);
-		// imagettftext($jpg_image, 40, 0, 393, 1130, $black, $font, $img21);
-		// imagettftext($jpg_image, 40, 0, 712, 1130, $black, $font, $img22);
 		imagettftext($jpg_image, 40, 0, 510, 260, $white, $font, $bet_b);
 		imagettftext($jpg_image, 40, 0, 220, 260, $white, $font, $bet_id);
 		imagettftext($jpg_image, 40, 0, 275, 1375, $white, $font, $total_win_point);
@@ -1292,6 +1283,33 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
+	public function line_gift($id, $v, $size = 0) {
+		$sum_amt = $this -> wtx_dao -> get_sum_amt($id);
+
+		$im = HOME_DIR . "img/line688/line/_3.jpg";
+		header("Content-Disposition: attachment; ");
+		header("Content-type: image/jpeg");
+		// header("Content-Length: " . filesize($im)); // 不要加這行
+		$jpg_image = imagecreatefromjpeg($im);
+		$font = HOME_DIR . "img/line688/font/wt006.ttf";
+
+		$black = imagecolorallocate($jpg_image, 0, 0, 0);
+		$white = imagecolorallocate($jpg_image, 255, 255, 255);
+
+		$bet_sum_amt=mb_substr($sum_amt,0,-7);
+
+		imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_sum_amt);
+
+		ob_clean();
+		flush();
+		// Send Image to Browser
+		imagejpeg($jpg_image);
+		// Clear Memory
+		imagedestroy($jpg_image);
+
+		exit ;
+		show_404();
+	}
 
 
 }
