@@ -1285,7 +1285,6 @@ class Line_img extends MY_Base_Controller {
 
 	public function line_gift($id , $v, $size) {
 		$download_file_name = HOME_DIR . "img/line688/line/wallet_card.jpg";
-		// header("Content-Disposition: attachment; filename=$img_name.jpg");
 		header("Content-type: image/jpeg");
 		header("Content-Length: " . filesize($download_file_name));
 
