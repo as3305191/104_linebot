@@ -644,7 +644,7 @@ class Line_img extends MY_Base_Controller {
 		// imagettftext($jpg_image, 40, 0, 74, 1130, $black, $font, $img20);
 		// imagettftext($jpg_image, 40, 0, 393, 1130, $black, $font, $img21);
 		// imagettftext($jpg_image, 40, 0, 712, 1130, $black, $font, $img22);
-		imagettftext($jpg_image, 40, 0, 817, 260, $white, $font, $bet_b);
+		imagettftext($jpg_image, 40, 0, 400, 260, $white, $font, $bet_b);
 		imagettftext($jpg_image, 40, 0, 220, 260, $white, $font, $bet_id);
 		imagettftext($jpg_image, 40, 0, 275, 1375, $white, $font, $total_win_point);
 
