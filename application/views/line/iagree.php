@@ -280,7 +280,7 @@ body{
 
 			<div class="  font" >
 				<div class=" background" >
-          <img src="<?=base_url('img/line/background/5.png')?>" style="width:100%" >
+					<img src="<?=base_url('img/line/background/6.jpg')?>" style="width:100%" >
         </div >
 
 				<div class="circle" >
