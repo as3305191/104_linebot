@@ -160,7 +160,7 @@ class Line_bot extends MY_Base_Controller {
 				// 	"type" => "text",
 				// 	"text" => "您的餘額： {$sum_amt}\n您的錢包地址為: {$users->wallet_code}",
 				// );
-				$this -> wallet_card($id, TRUE);
+				$this -> wallet_card($msg_arr,$id);
 
 			}
 
@@ -802,11 +802,11 @@ class Line_bot extends MY_Base_Controller {
 		);
 	}
 
-	private function wallet_card($id, $is_first = FALSE) {
+	private function wallet_card(&$msg_arr,$id) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
 			"baseUrl" => base_url("line_img/line_gift/$id/v1/1"),
-			"altText" => "下注金額",
+			"altText" => "COC錢包",
 			"baseSize" => array(
 				"width" => "1040",
 				"height" => "653"
