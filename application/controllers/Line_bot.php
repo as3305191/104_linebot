@@ -931,7 +931,7 @@ class Line_bot extends MY_Base_Controller {
 	private function wallet_card(&$msg_arr,$id) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_gift/$id/v1/1"),
+			"baseUrl" => base_url("line_img/line_gift/$id/v123/34"),
 			"altText" => "COC錢包",
 			"baseSize" => array(
 				"width" => "1040",
