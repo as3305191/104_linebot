@@ -612,7 +612,7 @@ class Line_img extends MY_Base_Controller {
 		$win_status = $bet -> win_status;
 		$win = json_decode($win_status);
 
-		$im = HOME_DIR . "img/line688/line/0807.jpg";
+		$im = HOME_DIR . "img/line688/line/0802.jpg";
 		header("Content-Disposition: attachment; ");
 		header("Content-type: image/jpeg");
 		// header("Content-Length: " . filesize($im)); // 不要加這行
