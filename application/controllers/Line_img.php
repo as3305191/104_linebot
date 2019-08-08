@@ -1284,8 +1284,8 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
-	public function line_gift() {
-		$sum_amt = $this -> wtx_dao -> get_sum_amt(524);
+	public function line_gift($id, $v, $size = 0) {
+		$sum_amt = $this -> wtx_dao -> get_sum_amt($id);
 
 		$Date = date("Y-m-d");
 		$price = $this -> d_q_dao -> find_d_q($Date);
@@ -1332,23 +1332,5 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
-	public function line_gift123123() {
-		$sum_amt = $this -> wtx_dao -> get_sum_amt(524);
 
-		$Date = date("Y-m-d");
-		$price = $this -> d_q_dao -> find_d_q($Date);
-		if(!empty($price)){
-		 $total=intval($price->now_price)*intval($sum_amt);
-
-		} else{
-			$p = $this -> d_q_dao -> find_last_d_q($Date);
-			$dtx = array();
-			$dtx['date'] = $Date;
-			$dtx['last_price'] = $p->last_price;
-			$dtx['now_price'] = $p->now_price;
-			$this -> d_q_dao -> insert($dtx);
-			$total=intval($p->now_price)*intval($sum_amt);
-		}
-		$this -> to_json($total);
-	}
 }
