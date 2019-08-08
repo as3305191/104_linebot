@@ -647,6 +647,8 @@ class Line_img extends MY_Base_Controller {
 		imagettftext($jpg_image, 40, 0, 510, 260, $white, $font, $bet_b);
 		imagettftext($jpg_image, 40, 0, 220, 260, $white, $font, $bet_id);
 		imagettftext($jpg_image, 40, 0, 275, 1375, $white, $font, $total_win_point);
+		imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_b);
+
 
 		$pic_00 = HOME_DIR . "img/line688/line/$img00.png";
 		$pic_01 = HOME_DIR . "img/line688/line/$img01.png";
