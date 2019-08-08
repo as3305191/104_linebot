@@ -16,6 +16,7 @@ class Line_img extends MY_Base_Controller {
 		$this -> load -> model('Baccarat_tab_round_detail_dao', 'btrd_dao');
 		$this -> load -> model('Baccarat_tab_round_dao', 'btr_dao');
 		$this -> load -> model('Play_game_dao', 'play_game_dao');
+		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
 
 
 		// line models
@@ -640,7 +641,7 @@ class Line_img extends MY_Base_Controller {
 		imagettftext($jpg_image, 40, 0, 510, 260, $white, $font, $bet_b);
 		imagettftext($jpg_image, 40, 0, 220, 260, $white, $font, $bet_id);
 		imagettftext($jpg_image, 40, 0, 275, 1375, $white, $font, $total_win_point);
-		imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_sum_amt);
+		imagettftext($jpg_image, 25, 0, 810, 260, $white, $font, $bet_sum_amt);
 
 
 		$pic_00 = HOME_DIR . "img/line688/line/$img00.png";
@@ -1283,8 +1284,23 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
-	public function line_gift($id, $v, $size = 0) {
-		$sum_amt = $this -> wtx_dao -> get_sum_amt($id);
+	public function line_gift() {
+		$sum_amt = $this -> wtx_dao -> get_sum_amt(524);
+
+		$Date = date("Y-m-d");
+		$price = $this -> d_q_dao -> find_d_q($Date);
+		if(!empty($price)){
+		 $total=intval($price->now_price)*intval($sum_amt);
+
+		} else{
+			$p = $this -> d_q_dao -> find_last_d_q($Date);
+			$dtx = array();
+			$dtx['date'] = $Date;
+			$dtx['last_price'] = $p->last_price;
+			$dtx['now_price'] = $p->now_price;
+			$this -> d_q_dao -> insert($dtx);
+			$total=intval($p->now_price)*intval($sum_amt);
+		}
 
 		$im = HOME_DIR . "img/line688/line/wallet_card.jpg";
 		header("Content-Disposition: attachment; ");
@@ -1297,8 +1313,13 @@ class Line_img extends MY_Base_Controller {
 		$white = imagecolorallocate($jpg_image, 255, 255, 255);
 
 		$bet_sum_amt=mb_substr($sum_amt,0,-7);
-
-		imagettftext($jpg_image, 20, 0, 200, 230, $white, $font, $bet_sum_amt);
+		if($total==0){
+			$bet_total=$total;
+		}else{
+			$bet_total=mb_substr($total,0,-7);
+		}
+		imagettftext($jpg_image, 25, 0, 470, 225, $white, $font, $bet_sum_amt);
+		imagettftext($jpg_image, 25, 0, 470, 285, $white, $font, $bet_total);
 
 		ob_clean();
 		flush();
@@ -1311,5 +1332,23 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
+	public function line_gift123123() {
+		$sum_amt = $this -> wtx_dao -> get_sum_amt(524);
 
+		$Date = date("Y-m-d");
+		$price = $this -> d_q_dao -> find_d_q($Date);
+		if(!empty($price)){
+		 $total=intval($price->now_price)*intval($sum_amt);
+
+		} else{
+			$p = $this -> d_q_dao -> find_last_d_q($Date);
+			$dtx = array();
+			$dtx['date'] = $Date;
+			$dtx['last_price'] = $p->last_price;
+			$dtx['now_price'] = $p->now_price;
+			$this -> d_q_dao -> insert($dtx);
+			$total=intval($p->now_price)*intval($sum_amt);
+		}
+		$this -> to_json($total);
+	}
 }
