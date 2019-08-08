@@ -1287,7 +1287,7 @@ class Line_img extends MY_Base_Controller {
 		$sum_amt = $this -> wtx_dao -> get_sum_amt($id);
 
 		$im = HOME_DIR . "img/line688/line/wallet_card.jpg";
-		header("Content-Disposition: attachment; ");
+		// header("Content-Disposition: attachment; ");
 		header("Content-type: image/jpeg");
 		// header("Content-Length: " . filesize($im)); // 不要加這行
 		$jpg_image = imagecreatefromjpeg($im);
