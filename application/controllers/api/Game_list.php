@@ -590,7 +590,7 @@ class Game_list extends MY_Base_Controller {
 		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr,$res);
 		$res1['last_id']=$do_insert;
 
-		// $this -> to_json($res1);
+		$this -> to_json($res1);
 	}
 
 	public function get_tx_price_list($bet,$mag) {
