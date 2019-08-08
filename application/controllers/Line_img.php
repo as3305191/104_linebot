@@ -1298,17 +1298,15 @@ class Line_img extends MY_Base_Controller {
 
 		$bet_sum_amt=mb_substr($sum_amt,0,-7);
 
-		// imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_sum_amt);
+		imagettftext($jpg_image, 40, 0, 810, 260, $white, $font, $bet_sum_amt);
 
 		ob_clean();
 		flush();
-		// // Send Image to Browser
-		// imagejpeg($jpg_image);
-		// // Clear Memory
-		// imagedestroy($jpg_image);
+		// Send Image to Browser
+		imagejpeg($jpg_image);
+		// Clear Memory
+		imagedestroy($jpg_image);
 
-
-		readfile($jpg_image);
 		exit ;
 		show_404();
 	}
