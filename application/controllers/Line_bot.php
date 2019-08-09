@@ -153,23 +153,6 @@ class Line_bot extends MY_Base_Controller {
 				);
 			}
 
-			if($message -> text == '錢包查詢') {
-				$id=$user -> id;
-				// $users = $this -> users_dao -> find_by_id($user -> id);
-				$this -> wallet_card($msg_arr,$id);
-
-			}
-
-			if($message -> text == '複製地址') {
-				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
-				$users = $this -> users_dao -> find_by_id($user -> id);
-				$sum_amt = intval($sum_amt);
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "{$users->wallet_code}",
-				);
-			}
-
 			if($message -> text == '查詢分潤') {
 				$list = $this -> tsga_dao -> find_list_limit(array('user_id'=> $user -> id ,'start' => 0,'length'=> 10));
 
@@ -193,8 +176,28 @@ class Line_bot extends MY_Base_Controller {
 					);
 				}
 
+			}
+
+			if($message -> text == '錢包查詢') {
+				$id=$user -> id;
+				// $users = $this -> users_dao -> find_by_id($user -> id);
+				$this -> wallet_card($msg_arr,$id);
 
 			}
+
+
+
+			if($message -> text == '複製地址') {
+				$sum_amt = $this -> wtx_dao -> get_sum_amt($user -> id);
+				$users = $this -> users_dao -> find_by_id($user -> id);
+				$sum_amt = intval($sum_amt);
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => "{$users->wallet_code}",
+				);
+			}
+
+
 
 
 			// send message
