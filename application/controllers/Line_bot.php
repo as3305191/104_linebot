@@ -142,11 +142,8 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == "功能選單") {
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => $user ->id,
-				);
-				// $this -> function_menu($msg_arr, $user -> id);
+				$user_id=$user -> id;
+				$this -> function_menu($msg_arr, $user_id);
 			}
 
 			// if($message -> text == '分享好友') {
