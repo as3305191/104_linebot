@@ -977,7 +977,7 @@ class Line_bot extends MY_Base_Controller {
 	}
 
 
-	private function function_menu(&$msg_arr) {
+	private function function_menu(&$msg_arr,$user) {
 		$corp = $this -> corp_dao -> find_by_id(1);
 		$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
 		$line_share_url = urlencode("立即加入coc娛樂虛擬貨幣平台，讓你體驗漲的感覺及虛擬貨幣的娛樂應用" . GAME_WEB_URL . "?promo={$user->gift_id}");
