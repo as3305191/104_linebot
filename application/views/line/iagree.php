@@ -262,7 +262,7 @@ body{
         </div >
 				<?php if(!empty($p_user)): ?>
 				<div class=" text1" >
-					<span style="color:#fff">推薦人:<?= $p_user -> nick_name ?></span></br>
+					<span style="color:#000000">推薦人:<?= $p_user -> nick_name ?></span></br>
 				</div >
 				<?php endif ?>
         <!-- <div class="text" >
