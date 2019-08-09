@@ -150,9 +150,18 @@ class Line_bot extends MY_Base_Controller {
 				$line_share_url = urlencode("立即加入coc娛樂虛擬貨幣平台，讓你體驗漲的感覺及虛擬貨幣的娛樂應用" . GAME_WEB_URL . "?promo={$user->gift_id}");
 				$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
 				$msg_arr[] = array(
-					"type" => "uri",
-					"linkUri" => "http://line.naver.jp/R/msg/text/?{$line_share_url}",
-				);
+					"actions" => array(
+						array(
+							"type" => "uri",
+							"linkUri" => "http://line.naver.jp/R/msg/text/?{$line_share_url}",
+							"area" => array(
+								"x" => 0,
+								"y" => 0,
+								"width" => 600,
+								"height" => 810
+							)
+						),
+					);
 			}
 
 			if($message -> text == '查詢分潤') {
