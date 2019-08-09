@@ -145,25 +145,33 @@ class Line_bot extends MY_Base_Controller {
 				$this -> function_menu($msg_arr);
 			}
 
-			if($message -> text == '分享好友') {
-				$corp = $this -> corp_dao -> find_by_id(1);
-				$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
-				$line_share_url = urlencode("立即加入coc娛樂虛擬貨幣平台，讓你體驗漲的感覺及虛擬貨幣的娛樂應用" . GAME_WEB_URL . "?promo={$user->gift_id}");
-				$msg_arr[] = array(
-					"actions" => array(
-						array(
-							"type" => "uri",
-							"linkUri" => "http://line.naver.jp/R/msg/text/?{$line_share_url}",
-							"area" => array(
-								"x" => 0,
-								"y" => 0,
-								"width" => 600,
-								"height" => 810
-							)
-						),
-					)
-				);
-			}
+			// if($message -> text == '分享好友') {
+			// 	$corp = $this -> corp_dao -> find_by_id(1);
+			// 	$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
+			// 	$line_share_url = urlencode("立即加入coc娛樂虛擬貨幣平台，讓你體驗漲的感覺及虛擬貨幣的娛樂應用" . GAME_WEB_URL . "?promo={$user->gift_id}");
+			// 	$msg_arr[] = array(
+			// 		"type" => "imagemap",
+			// 		"baseUrl" => base_url("line_img/line_jpg/share/v1/1"),
+			// 		"altText" => "分享好友",
+			// 		"baseSize" => array(
+			// 			"width" => "1200",
+			// 			"height" => "810"
+			// 		),
+			// 		"actions" => array(
+			// 			array(
+			// 				"type" => "uri",
+			// 				"linkUri" => "http://line.naver.jp/R/msg/text/?{$line_share_url}",
+			// 				"area" => array(
+			// 					"x" => 0,
+			// 					"y" => 0,
+			// 					"width" => 600,
+			// 					"height" => 810
+			// 				)
+			// 			),
+			//
+			// 		)
+			// 	);
+			// }
 
 			if($message -> text == '查詢分潤') {
 				$list = $this -> tsga_dao -> find_list_limit(array('user_id'=> $user -> id ,'start' => 0,'length'=> 10));
@@ -970,6 +978,9 @@ class Line_bot extends MY_Base_Controller {
 
 
 	private function function_menu(&$msg_arr) {
+		$corp = $this -> corp_dao -> find_by_id(1);
+		$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
+		$line_share_url = urlencode("立即加入coc娛樂虛擬貨幣平台，讓你體驗漲的感覺及虛擬貨幣的娛樂應用" . GAME_WEB_URL . "?promo={$user->gift_id}");
 		$msg_arr[] = array(
 			"type" => "imagemap",
 			"baseUrl" => base_url("line_img/line_jpg/share/v2/1"),
@@ -992,12 +1003,16 @@ class Line_bot extends MY_Base_Controller {
 				array(
 					"type" => "message",
 					"text" => "分享好友",
-					"area" => array(
-						"x" => 539,
-						"y" => 14,
-						"width" => 486,
-						"height" => 267
-					)
+					array(
+						"type" => "uri",
+						"linkUri" => "http://line.naver.jp/R/msg/text/?{$line_share_url}",
+						"area" => array(
+							"x" => 539,
+							"y" => 14,
+							"width" => 486,
+							"height" => 267
+						)
+					),
 				),
 				array(
 					"type" => "message",
