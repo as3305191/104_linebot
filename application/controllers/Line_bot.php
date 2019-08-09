@@ -142,7 +142,7 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == "功能選單") {
-				$this -> function_menu($msg_arr);
+				$this -> function_menu($msg_arr, $user);
 			}
 
 			// if($message -> text == '分享好友') {
@@ -978,7 +978,6 @@ class Line_bot extends MY_Base_Controller {
 
 
 	private function function_menu(&$msg_arr) {
-		$user = $this -> users_dao -> find_by('line_sub', $user_id);
 		$corp = $this -> corp_dao -> find_by_id(1);
 		$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
 		$line_share_url = urlencode("立即加入coc娛樂虛擬貨幣平台，讓你體驗漲的感覺及虛擬貨幣的娛樂應用" . GAME_WEB_URL . "?promo={$user->gift_id}");
