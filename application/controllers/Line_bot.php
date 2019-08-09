@@ -146,10 +146,12 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == '分享好友') {
+				$corp = $this -> corp_dao -> find_by_id(1);
+				$line_share_url = urlencode("立即加入coc娛樂虛擬貨幣平台，讓你體驗漲的感覺及虛擬貨幣的娛樂應用" . GAME_WEB_URL . "?promo={$user->gift_id}");
 				$share_url = GAME_WEB_URL . "?promo={$user->gift_id}";
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => $share_url,
+					"text" => $line_share_url,
 				);
 			}
 
