@@ -1001,9 +1001,6 @@ class Line_bot extends MY_Base_Controller {
 					)
 				),
 				array(
-					"type" => "message",
-					"text" => "分享好友",
-					array(
 						"type" => "uri",
 						"linkUri" => "http://line.naver.jp/R/msg/text/?{$line_share_url}",
 						"area" => array(
