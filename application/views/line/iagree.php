@@ -287,17 +287,17 @@ body{
           <img src="<?= $l_user -> line_picture ?>" style="width:150px" id="circle">
         </div >
 				<div class=" text1" >
-					<span style="color:#fff"><?= $l_user -> line_name ?></span></br>
+					<span style="color:#000000"><?= $l_user -> line_name ?></span></br>
 				</div >
 
 				<div class=" text1" >
-					<span style="color:#fff"><span>金幣餘額: <?= number_format($sum_amt) ?></span></span></br>
+					<span style="color:#000000"><span>金幣餘額: <?= number_format($sum_amt) ?></span></span></br>
 				</div >
 				<div class=" aline" >
 					<img src="<?=base_url('img/line/aline/aline.png')?>" style="width:3px" id="aline">
 				</div >
 				<div class="buttom" >
-					<a style="color:white;" href="<?=base_url('line_login/signout')?>">登出</a>
+					<a style="color:#000000;" href="<?=base_url('line_login/signout')?>">登出</a>
         </div >
 
       </div >
