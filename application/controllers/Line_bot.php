@@ -1064,4 +1064,8 @@ class Line_bot extends MY_Base_Controller {
 
 	}
 
+	function aaaaaa() {
+	$a =	generate_random_string($length = 4);
+	$this->to_json($a);
+	}
 }

@@ -93,11 +93,13 @@ class Quotes_record_dao extends MY_Model {
 
 		$get_current_point=$this -> q_r_dao -> get_current_point();
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
+		$bureau_num = generate_random_string($length = 4);
 
 		$tx_11 = array();
 		$tx_11['user_id'] = $user_id;
 		$tx_11['bet'] = $bet_o;
 		$tx_11['total_win_point'] = $total;
+		$tx_11['bureau_num'] = $bureau_num;
 
 		$value = json_encode($match_arr);
 		$tx_11['result'] = $value;
