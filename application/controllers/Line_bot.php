@@ -1009,7 +1009,6 @@ class Line_bot extends MY_Base_Controller {
 							"width" => 486,
 							"height" => 267
 						)
-					),
 				),
 				array(
 					"type" => "message",
