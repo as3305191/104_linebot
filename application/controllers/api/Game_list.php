@@ -15,7 +15,6 @@ class Game_list extends MY_Base_Controller {
 		$this -> load -> model('Corp_dao', 'corp_dao');
 
 
-
 	}
 
 	public function testtest() {
@@ -120,6 +119,8 @@ class Game_list extends MY_Base_Controller {
 			// 	$un_done_list = $this -> game_tiger_dao -> get_un_done_list($key_id);
 			// } while(count($un_done_list) > 0);
 			// ------------------------- start
+		$p=mt_rand(1,100);//1~10全盤,11~86一般,大於86沒中
+
 		$config = $this -> config_dao -> find_by_id(1);
 		$pool_pct = floatval($config -> normal_pct)+floatval($config -> overall_pct);
 		$multiple = floor(floatval($pool_pct)*$temporarily_bet);
@@ -134,7 +135,6 @@ class Game_list extends MY_Base_Controller {
 		$advance_id = $list->id;
 		$total = floatval($list->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id);
-
 		// $this -> to_json($bet);
 		// $this -> to_json($find_multiple);
 		// $this -> to_json($get_all);
@@ -200,7 +200,7 @@ class Game_list extends MY_Base_Controller {
 	public function advance_play(){
 
 
-		for($aa=0;$aa<1000;$aa++){
+		for($aa=0;$aa<1;$aa++){
 			$icon_arr = array(
 				'seven_b',
 				'seven_r',
