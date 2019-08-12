@@ -183,7 +183,7 @@ class Game_pool_dao extends MY_Model {
 
 	function get_sum_pool_amt($last_id,$temporarily_bet) {
 		$this -> db -> select("sum(pool_amt) as pool_amt");
-		$this -> db -> where('id<=',$last_id);
+		$this -> db -> where('id<',$last_id+1);
 		$this -> db -> where('bet_type',$temporarily_bet);
 
 		$list = $this -> find_all();
