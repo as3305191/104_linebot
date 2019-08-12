@@ -168,18 +168,18 @@ class Game_pool_dao extends MY_Model {
 	}
 
 
-	function find_rand($multiple) {
-		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> select('_m.*');
-		if(!empty($multiple)){
-			$this -> db -> where('_m.total_multiple>=',$multiple);
-		}
-		$this -> db -> order_by('id', 'RANDOM');
-    $this -> db -> limit(1);
-		$query = $this -> db -> get();
-		$list = $query -> result();
-		return $list;
-	}
+	// function find_rand($multiple) {
+	// 	$this -> db -> from("$this->table_name as _m");
+	// 	$this -> db -> select('_m.*');
+	// 	if(!empty($multiple)){
+	// 		$this -> db -> where('_m.total_multiple>=',$multiple);
+	// 	}
+	// 	$this -> db -> order_by('id', 'RANDOM');
+  //   $this -> db -> limit(1);
+	// 	$query = $this -> db -> get();
+	// 	$list = $query -> result();
+	// 	return $list;
+	// }
 
 	function get_sum_pool_amt($last_id,$temporarily_bet) {
 		$this -> db -> select("sum(pool_amt) as pool_amt");
