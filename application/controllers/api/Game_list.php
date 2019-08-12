@@ -12,6 +12,8 @@ class Game_list extends MY_Base_Controller {
 		$this -> load -> model('Advance_play_dao', 'advance_play_dao');
 		$this -> load -> model('Config_dao', 'config_dao');
 		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
+		$this -> load -> model('Corp_dao', 'corp_dao');
+
 
 
 	}
