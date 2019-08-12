@@ -85,6 +85,7 @@ class Add_coin extends MY_Mgmt_Controller {
 	}
 
 	public function insert() {
+		
 		$res = array();
 		$point = $this -> get_post('point');
 		$ntd = $this -> get_post('ntd');
