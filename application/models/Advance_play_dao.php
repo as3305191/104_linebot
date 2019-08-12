@@ -1,11 +1,11 @@
 <?php
-class Quotes_record_dao extends MY_Model {
+class Advance_play_dao extends MY_Model {
 
 	function __construct() {
 		parent::__construct();
 
 		// initialize table name
-		parent::set_table_name('quotes_record');
+		parent::set_table_name('advance_play');
 
 		$this -> alias_map = array(
 
@@ -84,7 +84,7 @@ class Quotes_record_dao extends MY_Model {
 		return $list[0];
 	}
 
-	function insert_all_total($bet_o,$total,$for_q_amt,$user_id) {
+	function insert_all_total($bet_o,$total,$for_q_amt,$user_id,$match_arr,$res) {
 		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
@@ -100,6 +100,13 @@ class Quotes_record_dao extends MY_Model {
 		$tx_11['bet'] = $bet_o;
 		$tx_11['total_win_point'] = $total;
 		$tx_11['bureau_num'] = $bureau_num;
+
+		$value = json_encode($match_arr);
+		$tx_11['result'] = $value;
+
+
+		$value1 = json_encode($res);
+		$tx_11['win_status'] = $value1;
 
 		$last_id=	$this -> play_game_dao -> insert($tx_11);
 
@@ -158,6 +165,18 @@ class Quotes_record_dao extends MY_Model {
 		}
 
 		return $last_id;
+	}
+
+
+	function find_rand() {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
+		$this -> db -> order_by('id', 'RANDOM');
+    $this -> db -> limit(1);
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list;
 	}
 }
 ?>
