@@ -12,10 +12,10 @@
 			</a>
 		</div>
 		<div class="widget-toolbar pull-left">
-			貨幣：<span id="current_point"><?= $add_coin_daily -> current_point ?></span>
+			貨幣：<span id="current_point"><?= !empty($add_coin_daily) ? $add_coin_daily -> current_point : 0 ?></span>
 		</div>
 		<div class="widget-toolbar pull-left">
-			台幣：<span id="current_ntd"><?= $add_coin_daily -> current_ntd ?></span>
+			台幣：<span id="current_ntd"><?= !empty($add_coin_daily) ? $add_coin_daily -> current_ntd : 0 ?></span>
 		</div>
 	</header>
 
