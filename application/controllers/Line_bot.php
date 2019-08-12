@@ -73,6 +73,7 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == 'COC幣發送') {
+				
 				$msg_arr[] = array(
 					"type" => "text",
 					"text" => "請輸入錢包地址",
