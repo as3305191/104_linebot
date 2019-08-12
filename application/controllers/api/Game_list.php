@@ -133,7 +133,7 @@ class Game_list extends MY_Base_Controller {
 		$this -> insert_total_price($bet,$total,$user_id);
 
 
-		$this -> to_json($get_all);
+		// $this -> to_json($get_all);
 	}
 
 	public function insert_total_price($bet,$total,$user_id) {
