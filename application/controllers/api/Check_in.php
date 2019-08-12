@@ -496,7 +496,7 @@ class Check_in extends MY_Base_Controller {
 						$tx['amt'] = 20000;
 						$tx1['amt'] = -20000;
 						$this-> fish_d_t_dao -> update_by(array("is_lottery"=>1),'id',$find_day_mission->id);
-						$thi$s -> wtx_dao -> insert($tx);
+						$this -> wtx_dao -> insert($tx);
 						$this -> ctx_dao -> insert($tx1);
 						$res['message_lottery'] = "領取成功";
 				}
