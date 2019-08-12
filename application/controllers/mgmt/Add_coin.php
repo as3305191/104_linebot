@@ -24,6 +24,9 @@ class Add_coin extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['role_list'] = $this -> dao -> find_all_roles();
+
+		$add_coin_daily = $this -> q_r_dao -> find_last();
+		$data['add_coin_daily'] = $add_coin_daily;
 		$this->load->view('mgmt/add_coin/edit', $data);
 	}
 
@@ -85,7 +88,7 @@ class Add_coin extends MY_Mgmt_Controller {
 	}
 
 	public function insert() {
-		
+
 		$res = array();
 		$point = $this -> get_post('point');
 		$ntd = $this -> get_post('ntd');

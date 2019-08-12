@@ -8,29 +8,15 @@
 	<header>
 		<div class="widget-toolbar pull-left">
 			<a href="javascript:void(0);" id="back_parent" onclick="save_coin()" class="btn btn-default btn-danger">
-				<i class="fa fa-save"></i>存檔
+				<i class="fa fa-save"></i>新增
 			</a>
 		</div>
-		<!-- <?php if(isset($item) && $item -> role_id == 3 && false) : ?>
-			<?php if($corp -> disable_upgrade == 1): ?>
-				<div class="widget-toolbar pull-left">
-					<a href="javascript:void(0);" id="" class="btn btn-default btn-warning">
-						<i class="fa fa-close"></i>經理人已經額滿，暫時無法升級
-					</a>
-				</div>
-			<?php else: ?>
-				<div class="widget-toolbar pull-left">
-					<a href="javascript:void(0);" id="" onclick="currentApp.upgradeMe()" class="btn btn-default btn-warning">
-						<i class="fa fa-shopping-cart"></i>升級經理人 $<?= number_format($config -> upgrade_amt) ?>
-					</a>
-				</div>
-			<?php endif ?>
-		<?php endif ?>
-		<?php if(isset($item)): ?>
-			<div class="widget-toolbar pull-left">
-				目前餘額：<span style="color: red;"><?= number_format($sum_amt) ?></span>
-			</div>
-		<?php endif ?> -->
+		<div class="widget-toolbar pull-left">
+			貨幣：<span id="current_point"><?= $add_coin_daily -> current_point ?></span>
+		</div>
+		<div class="widget-toolbar pull-left">
+			台幣：<span id="current_ntd"><?= $add_coin_daily -> current_ntd ?></span>
+		</div>
 	</header>
 
 	<!-- widget div-->
@@ -94,11 +80,12 @@
 				data: {
 					point: $('#point').val(),
 					ntd: $('#ntd').val()
-
 				},
 				dataType: 'json',
 				success: function(d) {
-					// location.reload();
+					console.log(d);
+					$("#current_point").text(d.current_point);
+					$("#current_ntd").text(d.current_ntd);
 				}
 				// failure:function(){
 				// 	alert('faialure');

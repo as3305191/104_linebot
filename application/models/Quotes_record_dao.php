@@ -162,5 +162,16 @@ class Quotes_record_dao extends MY_Model {
 	}
 
 
+	function find_last() {
+		$this -> db -> order_by("id", 'desc');
+		$this -> db -> limit(1);
+
+		$list = $this -> db -> get($this -> table_name) -> result();
+		if(count($list) == 0) {
+			return NULL;
+		}
+		return $list[0];
+	}
+
 }
 ?>
