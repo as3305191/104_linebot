@@ -451,13 +451,15 @@ class Line_bot extends MY_Base_Controller {
 								$this -> wtx_dao -> insert($atx);
 
 								$samt2 =  $this -> wtx_dao -> get_sum_amt_all($last_id);
+								$get_current_ntd = $this -> q_r_dao -> get_current_ntd();
+
 								$ctx = array();
 								$ctx['tx_type'] = "transfer_gift";
 								$ctx['tx_id'] = $last_id;
 								$ctx['point_change'] = -floatval($ope_amt)/2.0;
-								$ctx['current_point'] =$samt2;
+								$ctx['current_point'] = $samt2;
 								$ctx['ntd_change'] = 0;
-								$ctx['current_ntd'] =0;
+								$ctx['current_ntd'] = $get_current_ntd -> current_ntd;
 								$this -> q_r_dao -> insert($ctx);
 
 								// 公司分潤
