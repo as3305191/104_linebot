@@ -1290,13 +1290,13 @@ class Line_img extends MY_Base_Controller {
 		$Date = date("Y-m-d");
 		$price = $this -> d_q_dao -> find_d_q($Date);
 		if(!empty($price)){
-		 $total=floatval($price->now_price)*floatval($sum_amt);
+			$total=floatval($price->now_price)*floatval($sum_amt);
 
 		} else{
 			$p = $this -> d_q_dao -> find_last_d_q($Date);
 			$dtx = array();
 			$dtx['date'] = $Date;
-			$dtx['last_price'] = $p->last_price;
+			$dtx['last_price'] = $p->now_price;
 			$dtx['now_price'] = $p->now_price;
 			$this -> d_q_dao -> insert($dtx);
 			$total=floatval($p->now_price)*floatval($sum_amt);
@@ -1313,7 +1313,7 @@ class Line_img extends MY_Base_Controller {
 		$white = imagecolorallocate($jpg_image, 255, 255, 255);
 
 		$bet_sum_amt=mb_substr($sum_amt,0,-7);
-		if($total==0){
+		if($total=0){
 			$bet_total=$total;
 		}else{
 			$bet_total=mb_substr($total,0,-7);
