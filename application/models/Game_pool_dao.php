@@ -1,11 +1,11 @@
 <?php
-class Advance_play_dao extends MY_Model {
+class Game_pool_dao extends MY_Model {
 
 	function __construct() {
 		parent::__construct();
 
 		// initialize table name
-		parent::set_table_name('advance_play');
+		parent::set_table_name('game_pool');
 
 		$this -> alias_map = array(
 
@@ -179,6 +179,19 @@ class Advance_play_dao extends MY_Model {
 		$query = $this -> db -> get();
 		$list = $query -> result();
 		return $list;
+	}
+
+	function get_sum_pool_amt($last_id,$temporarily_bet) {
+		$this -> db -> select("sum(pool_amt) as pool_amt");
+		$this -> db -> where('id<=',$last_id);
+		$this -> db -> where('bet_type',$temporarily_bet);
+
+		$list = $this -> find_all();
+		if(count($list) > 0) {
+			$itm = $list[0];
+			return (!empty($itm -> pool_amt) ? $itm -> pool_amt : 0);
+		}
+		return 0;
 	}
 }
 ?>

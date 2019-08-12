@@ -10,6 +10,9 @@ class Game_list extends MY_Base_Controller {
 
 		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Advance_play_dao', 'advance_play_dao');
+		$this -> load -> model('Corp_dao', 'corp_dao');
+		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
+
 
 	}
 
@@ -115,13 +118,22 @@ class Game_list extends MY_Base_Controller {
 			// 	$un_done_list = $this -> game_tiger_dao -> get_un_done_list($key_id);
 			// } while(count($un_done_list) > 0);
 			// ------------------------- start
-		$list = $this -> advance_play_dao -> find_rand();
+		$corp = $this -> corp_dao -> find_by_id(1);
+		$pool_pct = $corp -> pool_pct;
+		$multiple = floor(floatval($pool_pct)*$temporarily_bet);
+
+		$idata['bet_type']=$temporarily_bet;
+		$idata['pool_amt']=$multiple;
+		$last_id = $this -> game_pool_dao -> insert($idata);
+
+		$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
+
+		$list = $this -> advance_play_dao -> find_rand($get_all);
 		$total = floatval($list[0]->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id);
 
-		$this -> to_json($list);
 
-		// $this -> to_json($res);
+		$this -> to_json($get_all);
 	}
 
 	public function insert_total_price($bet,$total,$user_id) {

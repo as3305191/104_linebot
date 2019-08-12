@@ -159,5 +159,7 @@ class Quotes_record_dao extends MY_Model {
 
 		return $last_id;
 	}
+
+
 }
 ?>
