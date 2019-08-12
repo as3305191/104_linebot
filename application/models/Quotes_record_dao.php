@@ -117,7 +117,7 @@ class Quotes_record_dao extends MY_Model {
 		$tx_1['point_change'] = $for_q_amt;
 		$current_point= intval($get_current_point->current_point)+intval($for_q_amt);
 		$tx_1['current_point'] =$current_point;
-		$this -> q_r_dao -> insert($tx_1);
+		$last_id_insert_q=$this -> q_r_dao -> insert($tx_1);
 
 		$tx1 = array();
 		$tx1['corp_id'] = 1;
@@ -144,15 +144,13 @@ class Quotes_record_dao extends MY_Model {
 		// $tx['brief'] = "會員 xxx 遊戲贏得 {$total} ";
 
 		$this -> wtx_dao -> insert($tx);
-
+		$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
 		$Date = date("Y-m-d");
 		$dq =  $this -> d_q_dao -> find_d_q($Date);
-		$samt1 =  $this -> q_r_dao -> get_current_point1($last_id);
-		$sntd =  $this -> q_r_dao -> get_sum_ntd1($last_id);
 		$dtx = array();
-		$dtx['date'] = $Date;
-		$p=floatval($sntd)/floatval($samt1->current_point);
+		$p=floatval($add_coin_daily->current_ntd)/floatval($add_coin_daily->current_point);
 		$price=round($p,8);
+		$dtx['date'] = $Date;
 		$dtx['average_price'] =$price;
 		$dtx['last_price'] = $price;
 		$dtx['now_price'] = $price;
@@ -160,7 +158,6 @@ class Quotes_record_dao extends MY_Model {
 			$u_data['last_price'] = $price;
 			$u_data['now_price'] = $price;
 			$this -> d_q_dao -> update_by($u_data,'id',$dq->id);
-
 		} else{
 			$this -> d_q_dao -> insert($dtx);
 		}

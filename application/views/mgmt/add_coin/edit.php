@@ -98,11 +98,11 @@
 				},
 				dataType: 'json',
 				success: function(d) {
-					location.reload();
-				},
-				failure:function(){
-					alert('faialure');
+					// location.reload();
 				}
+				// failure:function(){
+				// 	alert('faialure');
+				// }
 			});
 		}
 

@@ -12,6 +12,7 @@ class Add_coin extends MY_Mgmt_Controller {
 		$this -> load -> model('Role_share_dao', 'rs_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 		$this -> load -> model('Banks_dao', 'banks_dao');
+		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
 
 		$this -> load -> model('Add_coin_dao', 'add_dao');
 		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
@@ -93,24 +94,45 @@ class Add_coin extends MY_Mgmt_Controller {
 
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
 		$get_current_point=$this -> q_r_dao -> get_current_point();
+		$Date = date("Y-m-d");
 
-		if(!empty($point)&&!empty($ntd)) {
+		if(!empty($point)||!empty($ntd)) {
 			// insert
 			$last_id=$this -> add_dao -> insert($data);
 			$add_coin=$this -> add_dao -> find_by_id($last_id);
-			//
+
+
+
 			$idata['tx_type']="add_coin";
 			$idata['tx_id']=$last_id;
 			$idata['point_change']=$point;
-			$idata['current_point']=floatval($get_current_point->current_point)+floatval($add_coin->point);
+			$idata['current_point']=intval($get_current_point->current_point)+intval($point);
 			$idata['ntd_change']=$ntd;
-			$idata['current_ntd']=floatval($get_current_ntd->current_ntd)+floatval($add_coin->ntd);
-			$this -> q_r_dao -> insert($idata);
+			$idata['current_ntd']=intval($get_current_ntd->current_ntd)+intval($ntd);
+			$last_id_insert_q = $this -> q_r_dao -> insert($idata);
+
+			$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
+
+			$dq =  $this -> d_q_dao -> find_d_q($Date);
+			$p=floatval($add_coin_daily->current_ntd)/floatval($add_coin_daily->current_point);
+			$price1=round($p,8);
+			$dtx['date'] = $Date;
+			$dtx['average_price'] =$price1;
+			$dtx['last_price'] = $price1;
+			$dtx['now_price'] = $price1;
+			if(!empty($dq)){
+				$u_data['last_price'] = $price1;
+				$u_data['now_price'] = $price1;
+				$this -> d_q_dao -> update_by($u_data,'id',$dq->id);
+			} else{
+				$this -> d_q_dao -> insert($dtx);
+			}
+
 		}
 
-		$res['success'] = $idata;
+		$res['success'] = TRUE;
 
- 		$this -> to_json($res);
+ 		$this -> to_json($get_current_ntd);
 	}
 
 	public function upgrade_me() {
