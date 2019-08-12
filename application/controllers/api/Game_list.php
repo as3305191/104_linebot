@@ -135,11 +135,11 @@ class Game_list extends MY_Base_Controller {
 		$total = floatval($list[0]->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id);
 
-		$this -> to_json($pool_pct);
-		$this -> to_json($find_multiple);
-		$this -> to_json($get_all);
-
-		$this -> to_json($list);
+		// $this -> to_json($bet);
+		// $this -> to_json($find_multiple);
+		// $this -> to_json($get_all);
+		//
+		// $this -> to_json($list);
 	}
 
 	public function insert_total_price($bet,$total,$user_id,$advance_id) {
