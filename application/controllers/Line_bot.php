@@ -955,7 +955,7 @@ class Line_bot extends MY_Base_Controller {
 	private function wallet_card(&$msg_arr,$id) {
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_gift/$id/v123/34"),
+			"baseUrl" => base_url("line_img/line_gift/$id/v3/8"),
 			"altText" => "COC錢包",
 			"baseSize" => array(
 				"width" => "1040",
@@ -1106,7 +1106,7 @@ class Line_bot extends MY_Base_Controller {
 			$this -> d_q_dao -> insert($dtx);
 			$total=floatval($p->now_price)*floatval($sum_amt);
 		}
-		$this->to_json($total);
+		$this->to_json($sum_amt);
 
 	}
 }
