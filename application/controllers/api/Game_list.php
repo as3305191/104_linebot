@@ -10,7 +10,7 @@ class Game_list extends MY_Base_Controller {
 
 		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Advance_play_dao', 'advance_play_dao');
-		$this -> load -> model('Corp_dao', 'corp_dao');
+		$this -> load -> model('Config_dao', 'config_dao');
 		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
 
 
@@ -118,8 +118,8 @@ class Game_list extends MY_Base_Controller {
 			// 	$un_done_list = $this -> game_tiger_dao -> get_un_done_list($key_id);
 			// } while(count($un_done_list) > 0);
 			// ------------------------- start
-		$corp = $this -> corp_dao -> find_by_id(1);
-		$pool_pct = $corp -> pool_pct;
+		$config = $this -> config_dao -> find_by_id(1);
+		$pool_pct = $config -> pool_pct;
 		$multiple = floor(floatval($pool_pct)*$temporarily_bet);
 
 		$idata['bet_type']=$temporarily_bet;
