@@ -1290,7 +1290,7 @@ class Line_img extends MY_Base_Controller {
 		$Date = date("Y-m-d");
 		$price = $this -> d_q_dao -> find_d_q($Date);
 		if(!empty($price)){
-		 $total=intval($price->now_price)*intval($sum_amt);
+		 $total=floatval($price->now_price)*floatval($sum_amt);
 
 		} else{
 			$p = $this -> d_q_dao -> find_last_d_q($Date);
@@ -1299,7 +1299,7 @@ class Line_img extends MY_Base_Controller {
 			$dtx['last_price'] = $p->last_price;
 			$dtx['now_price'] = $p->now_price;
 			$this -> d_q_dao -> insert($dtx);
-			$total=intval($p->now_price)*intval($sum_amt);
+			$total=floatval($p->now_price)*floatval($sum_amt);
 		}
 
 		$im = HOME_DIR . "img/line688/line/wallet_card.jpg";
