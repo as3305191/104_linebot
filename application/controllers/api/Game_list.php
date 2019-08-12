@@ -124,25 +124,25 @@ class Game_list extends MY_Base_Controller {
 
 		$idata['bet_type']=$temporarily_bet;
 		$idata['pool_amt']=$multiple;
-		$last_id = $this -> game_pool_dao -> insert($idata);
+		$last_id1111 = $this -> game_pool_dao -> insert($idata);
 
 		$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
 
 		$list = $this -> advance_play_dao -> find_rand($get_all);
 		$total = floatval($list[0]->total_multiple)*$bet;
-		$this -> insert_total_price($bet,$total,$user_id);
+		$this -> insert_total_price($bet,$total,$user_id,$last_id1111);
 
 		// $this -> to_json($get_all);
-		// $this -> to_json($list);
+		$this -> to_json($list);
 
 	}
 
-	public function insert_total_price($bet,$total,$user_id) {
+	public function insert_total_price($bet,$total,$user_id,$last_id1111) {
 		$res1 = array();
 		// $res['success'] = TRUE;
 		$bet_o=$bet*8;
 		$for_q_amt=$total-$bet_o;
-		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id);
+		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$last_id1111);
 		$res1['last_id']=$do_insert;
 
 		$this -> to_json($res1);

@@ -17,6 +17,7 @@ class Line_img extends MY_Base_Controller {
 		$this -> load -> model('Baccarat_tab_round_dao', 'btr_dao');
 		$this -> load -> model('Play_game_dao', 'play_game_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
+		$this -> load -> model('Advance_play_dao', 'advance_play_dao');
 
 
 		// line models
@@ -609,7 +610,9 @@ class Line_img extends MY_Base_Controller {
 	public function line_result($id, $v, $size = 0) {
 		$bet = $this -> play_game_dao -> find_by_id($id);
 		$sum_amt = $this -> wtx_dao -> get_sum_amt($bet ->user_id);
-		$result = $bet -> result;
+		$result_id = $bet -> advance_id;
+		$result111 = $this -> advance_play_dao -> find_by_id($result_id);
+		$result = $result111 -> result;
 		$value = json_decode($result);
 		$win_status = $bet -> win_status;
 		$win = json_decode($win_status);
