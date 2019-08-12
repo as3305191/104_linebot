@@ -1284,7 +1284,7 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
-	public function line_gift($id, $v, $size = 0) {
+	public function line_gift($id, $v, $size = 3) {
 		$sum_amt = $this -> wtx_dao -> get_sum_amt($id);
 
 		$Date = date("Y-m-d");
