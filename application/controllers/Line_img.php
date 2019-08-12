@@ -1284,7 +1284,7 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
-	public function line_gift($id, $v, $size = 3) {
+	public function line_gift($id, $v, $size) {
 		$sum_amt = $this -> wtx_dao -> get_sum_amt($id);
 
 		$Date = date("Y-m-d");
@@ -1312,14 +1312,14 @@ class Line_img extends MY_Base_Controller {
 		$black = imagecolorallocate($jpg_image, 0, 0, 0);
 		$white = imagecolorallocate($jpg_image, 255, 255, 255);
 
-		$bet_sum_amt=mb_substr($sum_amt,0,-7);
-		if($total=0){
-			$bet_total=$total;
-		}else{
-			$bet_total=mb_substr($total,0,-7);
-		}
-		imagettftext($jpg_image, 25, 0, 470, 225, $white, $font, $bet_sum_amt);
-		imagettftext($jpg_image, 25, 0, 470, 285, $white, $font, $bet_total);
+		// $bet_sum_amt=mb_substr($sum_amt,0,-7);
+		// if($total=0){
+		// 	$bet_total=$total;
+		// }else{
+		// 	$bet_total=mb_substr($total,0,-7);
+		// }
+		imagettftext($jpg_image, 25, 0, 470, 225, $white, $font, $sum_amt);
+		imagettftext($jpg_image, 25, 0, 470, 285, $white, $font, $total);
 
 		ob_clean();
 		flush();
