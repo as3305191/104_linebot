@@ -131,8 +131,8 @@ class Game_list extends MY_Base_Controller {
 		$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
 		$find_multiple=floatval($get_all)/$bet;
 		$list = $this -> advance_play_dao -> find_rand($get_all);
-		$advance_id = $list[0]->id;
-		$total = floatval($list[0]->total_multiple)*$bet;
+		$advance_id = $list->id;
+		$total = floatval($list->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id);
 
 		// $this -> to_json($bet);
