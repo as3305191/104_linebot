@@ -148,8 +148,9 @@ class Quotes_record_dao extends MY_Model {
 		$Date = date("Y-m-d");
 		$dq =  $this -> d_q_dao -> find_d_q($Date);
 		$dtx = array();
-		$sntd =  $this -> q_r_dao -> get_sum_ntd1($last_id);
-		$p=floatval($sntd)/floatval($add_coin_daily->current_point);
+		$get_current_ntd1=$this -> q_r_dao -> get_current_ntd();
+		$get_current_point1=$this -> q_r_dao -> get_current_point();
+		$p=floatval($get_current_ntd1)/floatval($get_current_point1);
 		$price=round($p,8);
 		$dtx['date'] = $Date;
 		$dtx['average_price'] =$price;
