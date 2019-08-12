@@ -73,7 +73,7 @@ class Line_bot extends MY_Base_Controller {
 			}
 
 			if($message -> text == 'COC幣發送') {
-				
+
 				$msg_arr[] = array(
 					"type" => "text",
 					"text" => "請輸入錢包地址",
@@ -961,9 +961,10 @@ class Line_bot extends MY_Base_Controller {
 	}
 
 	private function wallet_card(&$msg_arr,$id) {
+		$time = time();
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_gift/$id/v1/8"),
+			"baseUrl" => base_url("line_img/line_gift/{$id}/v{$time}/8"),
 			"altText" => "COC錢包",
 			"baseSize" => array(
 				"width" => "1040",
