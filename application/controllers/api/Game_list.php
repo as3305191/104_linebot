@@ -121,7 +121,7 @@ class Game_list extends MY_Base_Controller {
 			// } while(count($un_done_list) > 0);
 			// ------------------------- start
 		$config = $this -> config_dao -> find_by_id(1);
-		$pool_pct = $config -> pool_pct;
+		$pool_pct = intval($config -> normal_pct)+intval($config -> overall_pct);
 		$multiple = floor(floatval($pool_pct)*$temporarily_bet);
 
 		$idata['bet_type']=$temporarily_bet;
