@@ -1284,9 +1284,9 @@ class Line_img extends MY_Base_Controller {
 		show_404();
 	}
 
-	public function line_gift($id, $v, $size) {
-		$sum_amt = $this -> wtx_dao -> get_sum_amt($id);
-
+	public function line_gift() {
+		$sum_amt = $this -> wtx_dao -> get_sum_amt(524);
+		$user = $this -> users_dao -> find_by_id(524);
 		$Date = date("Y-m-d");
 		$price = $this -> d_q_dao -> find_d_q($Date);
 		if(!empty($price)){
@@ -1318,8 +1318,18 @@ class Line_img extends MY_Base_Controller {
 		// }else{
 		// 	$bet_total=mb_substr($total,0,-7);
 		// }
+		$wallet_code1=mb_substr($user->wallet_code,0,4);
+		$wallet_code2=mb_substr($user->wallet_code,4,4);
+		$wallet_code3=mb_substr($user->wallet_code,8,4);
+		$wallet_code4=mb_substr($user->wallet_code,12,4);
+
 		imagettftext($jpg_image, 25, 0, 470, 225, $white, $font, $sum_amt);
 		imagettftext($jpg_image, 25, 0, 470, 285, $white, $font, $total);
+		imagettftext($jpg_image, 60, 0, 100, 400, $white, $font, $wallet_code1);
+		imagettftext($jpg_image, 60, 0, 325, 400, $white, $font, $wallet_code2);
+		imagettftext($jpg_image, 60, 0, 550, 400, $white, $font, $wallet_code3);
+		imagettftext($jpg_image, 60, 0, 775, 400, $white, $font, $wallet_code4);
+
 
 		ob_clean();
 		flush();
