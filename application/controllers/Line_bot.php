@@ -84,6 +84,13 @@ class Line_bot extends MY_Base_Controller {
 				), $user -> id);
 			}
 
+			if($message -> text == '交流群組') {
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => "http://line.me/ti/g/fkZ0uKbcmj",
+				);
+			}
+
 			if($message -> text == '行情查詢') {
 				$Date = date("Y-m-d");
 				$price = $this -> d_q_dao -> find_d_q($Date);
