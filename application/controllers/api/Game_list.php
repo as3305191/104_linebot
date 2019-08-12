@@ -129,7 +129,7 @@ class Game_list extends MY_Base_Controller {
 		$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
 
 		$list = $this -> advance_play_dao -> find_rand($get_all);
-		$last_id1111 = $list->id;
+		$last_id1111 = $list[0]->id;
 		$total = floatval($list[0]->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$last_id1111);
 
