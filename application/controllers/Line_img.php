@@ -614,7 +614,7 @@ class Line_img extends MY_Base_Controller {
 		$result111 = $this -> advance_play_dao -> find_by_id($result_id);
 		$result = $result111 -> result;
 		$value = json_decode($result);
-		$win_status = $bet -> win_status;
+		$win_status = $result111 -> win_status;
 		$win = json_decode($win_status);
 
 		$im = HOME_DIR . "img/line688/line/0807.jpg";
