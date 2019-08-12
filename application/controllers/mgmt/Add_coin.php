@@ -128,7 +128,12 @@ class Add_coin extends MY_Mgmt_Controller {
 			$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
 
 			$dq =  $this -> d_q_dao -> find_d_q($Date);
-			$p=floatval($add_coin_daily->current_ntd)/floatval($add_coin_daily->current_point);
+			$cp = floatval($add_coin_daily->current_point);
+			$p = 0;
+			if($cp != 0) {
+				$p=floatval($add_coin_daily->current_ntd)/floatval($add_coin_daily->current_point);
+
+			}
 			$price1=round($p,8);
 			$dtx['date'] = $Date;
 			$dtx['average_price'] = $price1;
