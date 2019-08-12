@@ -125,9 +125,9 @@
 										<button type="submit" class="btn btn-primary">
 											登入
 										</button>
-										<a href="<?= base_url($corp -> corp_code . '/login/forgot') ?>" class="btn btn-warning pull-left">
+										<!-- <a href="<?= base_url($corp -> corp_code . '/login/forgot') ?>" class="btn btn-warning pull-left">
 											忘記密碼
-										</a>
+										</a> -->
 									</footer>
 								</form>
 							<?php endif ?>

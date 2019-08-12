@@ -92,8 +92,10 @@ class Add_coin extends MY_Mgmt_Controller {
 		$data['point']=$point;
 		$data['ntd']=$ntd;
 
-		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
-		$get_current_point=$this -> q_r_dao -> get_current_point();
+		// $get_current_ntd = $this -> q_r_dao -> get_current_ntd();
+		$get_current_ntd = $this -> add_dao -> sum_all_ntd();
+		// $get_current_point=$this -> q_r_dao -> get_current_point();
+		$get_current_point =  $this -> wtx_dao -> get_sum_amt_total();
 		$Date = date("Y-m-d");
 
 		if(!empty($point)||!empty($ntd)) {
@@ -101,14 +103,22 @@ class Add_coin extends MY_Mgmt_Controller {
 			$last_id=$this -> add_dao -> insert($data);
 			$add_coin=$this -> add_dao -> find_by_id($last_id);
 
-
+			// 增加 point
+			$atx = array();
+			$atx['tx_type'] = "add_coin";
+			$atx['tx_id'] = $last_id;
+			$atx['corp_id'] = 1; // corp id
+			$atx['user_id'] = 528; // 固定給小林
+			$atx['amt'] = $point;
+			$atx['brief'] = "系統增加點數 {$point}";
+			$this -> wtx_dao -> insert($atx);
 
 			$idata['tx_type']="add_coin";
 			$idata['tx_id']=$last_id;
 			$idata['point_change']=$point;
-			$idata['current_point']=intval($get_current_point->current_point)+intval($point);
+			$idata['current_point']=intval($get_current_point)+intval($point);
 			$idata['ntd_change']=$ntd;
-			$idata['current_ntd']=intval($get_current_ntd->current_ntd)+intval($ntd);
+			$idata['current_ntd']=intval($get_current_ntd)+intval($ntd);
 			$last_id_insert_q = $this -> q_r_dao -> insert($idata);
 
 			$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
@@ -117,7 +127,7 @@ class Add_coin extends MY_Mgmt_Controller {
 			$p=floatval($add_coin_daily->current_ntd)/floatval($add_coin_daily->current_point);
 			$price1=round($p,8);
 			$dtx['date'] = $Date;
-			$dtx['average_price'] =$price1;
+			$dtx['average_price'] = $price1;
 			$dtx['last_price'] = $price1;
 			$dtx['now_price'] = $price1;
 			if(!empty($dq)){
@@ -127,12 +137,11 @@ class Add_coin extends MY_Mgmt_Controller {
 			} else{
 				$this -> d_q_dao -> insert($dtx);
 			}
-
 		}
 
 		$res['success'] = TRUE;
 
- 		$this -> to_json($get_current_ntd);
+ 		$this -> to_json($add_coin_daily);
 	}
 
 	public function upgrade_me() {

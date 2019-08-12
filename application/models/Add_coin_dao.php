@@ -35,6 +35,7 @@ class Add_coin_dao extends MY_Model {
 		$list = $query -> result();
 		return $list[0];
 	}
+
 	function find_last_d_q() {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
@@ -45,6 +46,17 @@ class Add_coin_dao extends MY_Model {
 			return $list[0];
 		}
 		return NULL;
+	}
+
+	function sum_all_ntd() {
+		$this -> db -> select("sum(ntd) as samt");
+		$this -> db -> from($this -> table_name);
+		$list = $this -> db -> get() -> result();
+		if(count($list) > 0) {
+			$item = $list[0];
+			return (!empty($item -> samt) ? $item -> samt : 0);
+		}
+		return 0;
 	}
 }
 ?>
