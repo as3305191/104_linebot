@@ -1090,7 +1090,23 @@ class Line_bot extends MY_Base_Controller {
 	}
 
 	function aaaaaa() {
-	$a =	generate_random_string($length = 4);
-	$this->to_json($a);
+		$sum_amt = $this -> wtx_dao -> get_sum_amt(524);
+
+		$Date = date("Y-m-d");
+		$price = $this -> d_q_dao -> find_d_q($Date);
+		if(!empty($price)){
+			$total=floatval($price->now_price)*floatval($sum_amt);
+
+		} else{
+			$p = $this -> d_q_dao -> find_last_d_q($Date);
+			$dtx = array();
+			$dtx['date'] = $Date;
+			$dtx['last_price'] = $p->now_price;
+			$dtx['now_price'] = $p->now_price;
+			$this -> d_q_dao -> insert($dtx);
+			$total=floatval($p->now_price)*floatval($sum_amt);
+		}
+		$this->to_json($total);
+
 	}
 }
