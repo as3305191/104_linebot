@@ -1327,7 +1327,7 @@ class Line_img extends MY_Base_Controller {
 		$wallet_code4=mb_substr($user->wallet_code,12,4);
 
 		imagettftext($jpg_image, 25, 0, 470, 225, $white, $font, "samt:" . $sum_amt);
-		imagettftext($jpg_image, 25, 0, 470, 285, $white, $font, $total);
+		imagettftext($jpg_image, 25, 0, 470, 285, $white, $font, "total:" .$total);
 		imagettftext($jpg_image, 60, 0, 100, 400, $white, $font, $wallet_code1);
 		imagettftext($jpg_image, 60, 0, 325, 400, $white, $font, $wallet_code2);
 		imagettftext($jpg_image, 60, 0, 550, 400, $white, $font, $wallet_code3);
