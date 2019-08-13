@@ -106,5 +106,51 @@ class Game_pool_dao extends MY_Model {
 		}
 		return 0;
 	}
+	function find_all_pool_now($data, $is_count = FALSE) {
+		$start = $data['start'];
+		$limit = $data['length'];
+		// select
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select("sum(pool_amt) as pool_amt");
+		// $this -> db -> select("type");
+		$this -> db -> select("bet_type");
+		$this -> db -> where('type',0);
+
+
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+
+		$this -> db -> group_by('bet_type');
+		// $this -> db -> group_by('type');
+
+		// query results
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
+
+	}
+
+	function sum_amt_by_type($bet_type,$type) {
+		$this -> db -> select("sum(pool_amt) as amt");
+		// $this -> db -> select("bet_type");
+
+		$this -> db -> where("type", $type);
+		$this -> db -> where("bet_type", $bet_type);
+		// $this -> db -> group_by('bet_type');
+		$list = $this -> find_all();
+		if(!empty($list)) {
+			$item = $list[0];
+			if(!empty($item -> amt)) {
+				return $item -> amt;
+			}
+		}
+		return 0;
+
+	}
 }
 ?>

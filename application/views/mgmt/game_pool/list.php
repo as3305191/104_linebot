@@ -13,22 +13,22 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
 						<header>
-							<div class="widget-toolbar pull-left">
+							<!-- <div class="widget-toolbar pull-left">
 								<div class="btn-group">
 									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
 										<i class="fa fa-plus"></i>新增
 									</button>
 								</div>
-							</div>
-							<div class="widget-toolbar pull-left">
+							</div> -->
+							<!-- <div class="widget-toolbar pull-left">
 								<span id="fish_jp_amt"></span>
 							</div>
 							<div class="widget-toolbar pull-left">
 								<input type="number" class="fonm-control input-xs" id="jp_amt" value=""/>
 								<a href="javascript:void(0);" id="" onclick="do_change_jp()" class="btn btn-default btn-warning">
-									增減JP
+									增減
 								</a>
-							</div>
+							</div> -->
 						</header>
 
 						<!-- widget div-->
@@ -42,18 +42,10 @@
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min100">桌名</th>
-											<th class="min100">在線人數</th>
-											<th class="min100">彩池100</th>
-											<th class="min100">彩池100魚王</th>
-											<th class="min100">彩池2000</th>
-											<th class="min100">彩池2000魚王</th>
-											<th class="min100">彩池20000</th>
-											<th class="min100">彩池20000魚王</th>
-											<th class="min100">彩池200000</th>
-											<th class="min100">彩池200000魚王</th>
-											<th class="min100">彩池1000000</th>
-											<th class="min100">彩池1000000魚王</th>
+											<th class="min100">彩池名稱</th>
+											<th class="min100">一般彩池</th>
+											<th class="min100">全盤彩池</th>
+
 										</tr>
 									</thead>
 									<tbody>
@@ -129,15 +121,15 @@
 
 <script type="text/javascript">
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/fish_table_view/list.js", function(){
-			currentApp = new FishtableviewAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/game_pool/list.js", function(){
+			currentApp = new GamepoolAppClass(new BaseAppClass({}));
 			currentApp.lastMap = {};
 
 		});
 	});
 
 	function save_edit_page111() {
-			var url = '<?= base_url() ?>' + 'mgmt/fish_table_view/insert_edit_page';
+			var url = '<?= base_url() ?>' + 'mgmt/game_pool/insert_edit_page';
 
 			$.ajax({
 				url : url,
@@ -167,7 +159,7 @@
 		}
 
 		function do_change_jp() {
-				var url = '<?= base_url() ?>' + 'mgmt/fish_table_view/do_change_jp';
+				var url = '<?= base_url() ?>' + 'mgmt/game_pool/do_change_jp';
 				$.ajax({
 					url : url,
 					type: 'POST',
