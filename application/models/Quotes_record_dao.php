@@ -84,20 +84,36 @@ class Quotes_record_dao extends MY_Model {
 		return $list[0];
 	}
 
-	function insert_all_total($bet_o,$total,$for_q_amt,$user_id,$advance_id) {
+	function insert_all_total($bet_o,$total,$for_q_amt,$user_id,$advance_id,$type) {
 		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
 		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
 		$this -> load -> model('Play_game_dao', 'play_game_dao');
 		$this -> load -> model('Config_dao', 'config_dao');
-		
+		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
+
 		$config = $this -> config_dao -> find_by_id(1);//設定%的地方
 
 		$get_current_point=$this -> q_r_dao -> get_current_point();
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
 		$bureau_num = generate_random_string($length = 4);
+		$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
 
+
+		if($type==1){
+			$idata2['bet_type']=$bet_o;
+			$idata2['pool_amt']=-$total;
+			$idata2['type']=1;
+			$this -> game_pool_dao -> insert($idata2);
+
+		}elseif ($type==0) {
+			$idata22['bet_type']=$bet_o;
+			$idata22['pool_amt']=-$total;
+			$idata22['type']=0;
+			$this -> game_pool_dao -> insert($idata22);
+
+		}
 		$tx_11 = array();
 		$tx_11['user_id'] = $user_id;
 		$tx_11['bet'] = $bet_o;
@@ -148,7 +164,7 @@ class Quotes_record_dao extends MY_Model {
 		$dtx = array();
 		$get_current_ntd1=$this -> q_r_dao -> get_current_ntd();
 		$get_current_point1=$this -> q_r_dao -> get_current_point();
-		$p=floatval($get_current_ntd1->current_ntd)/floatval($get_current_point1->current_point);
+		$p=floatval($get_current_ntd1->current_ntd)/floatval(intval($get_current_point1->current_point)+intval($get_all_pool));
 		$price=round($p,8);
 		$dtx['date'] = $Date;
 		$dtx['average_price'] =$price;

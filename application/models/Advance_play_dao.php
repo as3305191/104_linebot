@@ -185,7 +185,7 @@ class Advance_play_dao extends MY_Model {
     $this -> db -> limit(1);
 		$query = $this -> db -> get();
 		$list = $query -> result();
-		return $list[0];
+		return $list;
 	}
 }
 ?>

@@ -193,5 +193,15 @@ class Game_pool_dao extends MY_Model {
 		}
 		return 0;
 	}
+	
+	function get_all_pool_amt() {
+		$this -> db -> select("sum(pool_amt) as pool_amt");
+		$list = $this -> find_all();
+		if(count($list) > 0) {
+			$itm = $list[0];
+			return (!empty($itm -> pool_amt) ? $itm -> pool_amt : 0);
+		}
+		return 0;
+	}
 }
 ?>
