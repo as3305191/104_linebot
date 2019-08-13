@@ -119,9 +119,7 @@ class Game_list extends MY_Base_Controller {
 			// 	$un_done_list = $this -> game_tiger_dao -> get_un_done_list($key_id);
 			// } while(count($un_done_list) > 0);
 			// ------------------------- start
-		$p=mt_rand(1,100);//1~10全盤,11~86一般,大於86沒中
-
-		$config = $this -> config_dao -> find_by_id(1);
+		$config = $this -> config_dao -> find_by_id(1);//設定%的地方
 		$pool_pct = floatval($config -> normal_pct)+floatval($config -> overall_pct);
 		$multiple = floor(floatval($pool_pct)*$temporarily_bet);
 
@@ -131,15 +129,25 @@ class Game_list extends MY_Base_Controller {
 
 		$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
 		$find_multiple=floatval($get_all)/$bet;
-		$list = $this -> advance_play_dao -> find_rand($get_all);
+
+		$p=mt_rand(1,100);
+		if($p>=$config->normal_winning&&$p<=$config->overall_winning){//全盤
+			$type =1;
+			$list = $this -> advance_play_dao -> find_rand($get_all,$type);
+
+		} elseif($p<=$config->normal_winning) {//一般
+			$type =0;
+			$list = $this -> advance_play_dao -> find_rand($get_all,$type);
+
+		} elseif ($p>$config->overall_winning) {//沒中
+			$type =3;
+			$list = $this -> advance_play_dao -> find_rand($get_all,$type);
+		}
+
 		$advance_id = $list->id;
 		$total = floatval($list->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id);
-		// $this -> to_json($bet);
-		// $this -> to_json($find_multiple);
-		// $this -> to_json($get_all);
-		//
-		// $this -> to_json($list);
+
 	}
 
 	public function insert_total_price($bet,$total,$user_id,$advance_id) {

@@ -90,6 +90,9 @@ class Quotes_record_dao extends MY_Model {
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
 		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
 		$this -> load -> model('Play_game_dao', 'play_game_dao');
+		$this -> load -> model('Config_dao', 'config_dao');
+		
+		$config = $this -> config_dao -> find_by_id(1);//設定%的地方
 
 		$get_current_point=$this -> q_r_dao -> get_current_point();
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
