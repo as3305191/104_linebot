@@ -14,6 +14,8 @@ class Game_list extends MY_Base_Controller {
 		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 
+		$this -> load -> model('Transfer_gift_allocation_dao', 'tsga_dao');
+
 
 	}
 
