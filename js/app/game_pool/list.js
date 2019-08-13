@@ -1,6 +1,21 @@
 var GamepoolAppClass = (function(app) {
 	app.basePath = "mgmt/game_pool/";
-
+	app.dtConfig = {
+		// processing : true,
+		serverSide : true,
+		responsive : true,
+		deferLoading : 0, // don't reload on init
+		iDisplayLength : 10,
+		sDom: app.sDom,
+		language : {
+			url : baseUrl + "js/datatables-lang/zh-TW.json"
+		},
+		bSortCellsTop : true,
+		fnRowCallback : app.fnRowCallback1,
+		footerCallback: function( tfoot, data, start, end, display ) {
+			setTimeout(function(){ $(window).trigger('resize'); }, 300);
+		}
+	};
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
@@ -167,9 +182,9 @@ var GamepoolAppClass = (function(app) {
 			currentApp.tableReload();
 		});
 
-		// setInterval( function () {
-		// 	 app.tableReload();
-		// }, 1000 );
+		setInterval( function () {
+			 app.tableReload();
+		}, 1000 );
 
 		return app;
 	};
