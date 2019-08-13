@@ -170,7 +170,7 @@ class Game_list extends MY_Base_Controller {
 		$qqq['$find_multiple']=$find_multiple;
 		$qqq['$p']=$p;
 
-		$this -> to_json($qqq);
+		// $this -> to_json($qqq);
 
 
 
