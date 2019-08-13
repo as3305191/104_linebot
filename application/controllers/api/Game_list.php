@@ -123,7 +123,9 @@ class Game_list extends MY_Base_Controller {
 		$pool_pct = floatval($config -> normal_pct)+floatval($config -> overall_pct);
 		$multiple = floor(floatval($pool_pct)*$temporarily_bet);
 
-		$for姿儀 =floor(floatval($config -> com_pct)*$temporarily_bet);
+
+		$for姿儀 =floor(floatval($config -> com_pct)*$temporarily_bet);//姿儀你的3%
+
 
 		$idata['bet_type']=$temporarily_bet;
 		$idata['pool_amt']=$multiple;
