@@ -122,15 +122,21 @@ class Game_list extends MY_Base_Controller {
 		$config = $this -> config_dao -> find_by_id(1);//設定%的地方
 		$pool_normal_pct = floatval($config -> normal_pct);//一般彩池
 		$pool_overall_pct = floatval($config -> overall_pct);//全盤彩池
-		$multiple_normal = floor(floatval($pool_normal_pct)*$temporarily_bet);
-		$multiple_overall = floor(floatval($pool_overall_pct)*$temporarily_bet);
+		$multiple_normal = floatval($pool_normal_pct)*$temporarily_bet;
+		$multiple_overall = floatval($pool_overall_pct)*$temporarily_bet;
 
-		$company3 = floor(floatval($config -> com_pct)*$temporarily_bet);
+		$company3 = floatval($config -> com_pct)*$temporarily_bet;
 
 
 		$idata['bet_type']=$temporarily_bet;
-		$idata['pool_amt']=$multiple;
+		$idata['pool_amt']=$multiple_normal;
+		$idata['type']=0;
 		$last_id = $this -> game_pool_dao -> insert($idata);
+
+		$idata1['bet_type']=$temporarily_bet;
+		$idata1['pool_amt']=$multiple_overall;
+		$idata1['type']=1;
+		$last_id = $this -> game_pool_dao -> insert($idata1);
 
 		$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
 		$find_multiple=floatval($get_all)/$bet;
