@@ -5,18 +5,16 @@ class Game_list extends MY_Base_Controller {
 		parent::__construct();
 		$this -> load -> model('Game_list_dao', 'gl_dao');
 		$this -> load -> model('Game_tiger_dao', 'game_tiger_dao');
+		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
 
+		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Advance_play_dao', 'advance_play_dao');
 		$this -> load -> model('Config_dao', 'config_dao');
 		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 
-		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
-		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 
-		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Transfer_gift_allocation_dao', 'tsga_dao');
 	}
 
 	public function testtest() {
@@ -122,11 +120,13 @@ class Game_list extends MY_Base_Controller {
 			// } while(count($un_done_list) > 0);
 			// ------------------------- start
 		$config = $this -> config_dao -> find_by_id(1);//設定%的地方
-		$pool_pct = floatval($config -> normal_pct)+floatval($config -> overall_pct);
-		$multiple = floor(floatval($pool_pct)*$temporarily_bet);
+		$pool_normal_pct = floatval($config -> normal_pct);//一般彩池
+		$pool_overall_pct = floatval($config -> overall_pct);//全盤彩池
+		$multiple_normal = floor(floatval($pool_normal_pct)*$temporarily_bet);
+		$multiple_overall = floor(floatval($pool_overall_pct)*$temporarily_bet);
 
-		// 公司3%
 		$company3 = floor(floatval($config -> com_pct)*$temporarily_bet);
+
 
 		$idata['bet_type']=$temporarily_bet;
 		$idata['pool_amt']=$multiple;
@@ -151,110 +151,17 @@ class Game_list extends MY_Base_Controller {
 
 		$advance_id = $list->id;
 		$total = floatval($list->total_multiple)*$bet;
-		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3);
+		$this -> insert_total_price($bet,$total,$user_id,$advance_id);
 
 	}
 
-	public function insert_total_price($bet,$total,$user_id,$advance_id,$company3) {
+	public function insert_total_price($bet,$total,$user_id,$advance_id) {
 		$res1 = array();
 		// $res['success'] = TRUE;
 		$bet_o=$bet*8;
 		$for_q_amt=$total-$bet_o;
 		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$advance_id);
 		$res1['last_id']=$do_insert;
-
-		// 1%介紹人拆分往上1%公司1%消滅
-		$last_id = $do_insert;
-		$promo_user = $this -> users_dao -> find_by_id($user_id);
-
-		$aloc_com_1 = array();
-		$aloc_com_1['corp_id'] = $promo_user -> corp_id;
-		$aloc_com_1_amt = floatval($company3) / 3.0;
-		$aloc_com_1['amt'] =	$aloc_com_1_amt;
-		$aloc_com_1['income_type'] = "下注向上分配";
-		$aloc_com_1['income_id'] = $last_id;
-		$aloc_com_1['note'] = "下注向上分配分潤 {$aloc_com_1_amt}";
-		$this -> ctx_dao -> insert($aloc_com_1);
-
-		// 向上分配
-		$promo_user_id = 0;
-		$alloc_amt = floatval($company3) / 3.0;
-
-		do {
-			// code...
-			if(!empty($promo_user)){
-
-				// 分配推薦人
-				$promo_user_id = $promo_user -> promo_user_id;
-				$aloc = array();
-				$aloc['corp_id'] = $promo_user -> corp_id;
-				$aloc_amt = floatval($alloc_amt) *0.2;
-				$aloc['amt'] =	$aloc_amt;
-				$aloc['tx_type'] = "bet_allocation";
-				$aloc['user_id'] = $promo_user_id;
-				$aloc['tx_id'] = $last_id;
-				$aloc['brief'] = "下注向上分配分潤 {$aloc_amt}";
-				$aloc_id = $this -> wtx_dao -> insert($aloc);
-				$m_ctx = $this -> wtx_dao -> find_by_id($aloc_id);
-
-				// 分配記錄
-				$aloc1 = array();
-				$aloc1['corp_id'] = $item -> corp_id;
-				$aloc1['game_id'] = $last_id;
-				$aloc1['ope_amt'] =	$aloc_amt;
-				$aloc1['user_id'] = $promo_user_id;
-				$this -> tsga_dao -> insert($aloc1);
-
-				// 計算最後剩餘金額
-				$residual_amt = $alloc_amt - $m_ctx -> amt;
-
-				if($m_ctx -> amt == 0){
-					$promo_user_id = 0;
-
-					$aloc_com = array();
-					$aloc_com['corp_id'] = $item -> corp_id;
-					$aloc_com_amt = floatval($alloc_amt);
-					$aloc_com['amt'] =	$aloc_com_amt;
-					$aloc_com['income_type'] = "下注向上分配";
-					$aloc_com['income_id'] = $last_id;
-					$aloc_com['note'] = "下注向上分配分潤 {$aloc_com_amt}";
-					$this -> ctx_dao -> insert($aloc_com);
-
-				}else {
-					$alloc_amt = $residual_amt;
-					// 搜尋上一層推薦人
-					$promo_user = $this -> users_dao -> find_by_id($promo_user_id);
-					$promo_user_id = $promo_user -> promo_user_id;
-
-					if($promo_user_id == 0){
-						$aloc_com = array();
-						$aloc_com['corp_id'] = $item -> corp_id;
-						$aloc_com_amt = floatval($alloc_amt);
-						$aloc_com['amt'] =	$aloc_com_amt;
-						$aloc_com['income_type'] = "下注向上分配";
-						$aloc_com['income_id'] = $last_id;
-						$aloc_com['note'] = "下注向上分配分潤 {$aloc_com_amt}";
-						$this -> ctx_dao -> insert($aloc_com);
-					}
-
-				}
-
-			}else{
-				$promo_user_id = 0;
-
-				// 向上分配給公司
-				$aloc_com = array();
-				$aloc_com['corp_id'] = $item -> corp_id;
-				$aloc_com_amt = floatval($alloc_amt);
-				$aloc_com['amt'] =	$aloc_com_amt;
-				$aloc_com['income_type'] = "下注向上分配";
-				$aloc_com['income_id'] = $last_id;
-				$aloc_com['note'] = "下注向上分配分潤 {$aloc_com_amt}";
-				$this -> ctx_dao -> insert($aloc_com);
-
-			}
-		} while ($promo_user_id > 0);
-
 
 		$this -> to_json($res1);
 	}
