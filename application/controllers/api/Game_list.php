@@ -14,6 +14,8 @@ class Game_list extends MY_Base_Controller {
 		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 
+		$this -> load -> model('Transfer_gift_allocation_dao', 'tsga_dao');
+
 
 	}
 
@@ -207,6 +209,7 @@ class Game_list extends MY_Base_Controller {
 				// 分配記錄
 				$aloc1 = array();
 				$aloc1['corp_id'] = $promo_user -> corp_id;
+				$aloc1['transfter_gift_id'] = 0;
 				$aloc1['game_id'] = $last_id;
 				$aloc1['ope_amt'] =	$aloc_amt;
 				$aloc1['user_id'] = $promo_user_id;
