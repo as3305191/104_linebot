@@ -521,7 +521,11 @@ class Line_bot extends MY_Base_Controller {
 											$alloc_amt = $residual_amt;
 											// 搜尋上一層推薦人
 											$promo_user = $this -> users_dao -> find_by_id($promo_user_id);
-											$promo_user_id = $promo_user -> promo_user_id;
+											if(!empty($promo_user)){
+												$promo_user_id = $promo_user -> promo_user_id;
+											}else{
+												$promo_user_id = 0;
+											}
 
 											if($promo_user_id == 0){
 												$aloc_com = array();
