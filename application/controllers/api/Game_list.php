@@ -120,9 +120,10 @@ class Game_list extends MY_Base_Controller {
 			// } while(count($un_done_list) > 0);
 			// ------------------------- start
 		$config = $this -> config_dao -> find_by_id(1);//設定%的地方
-		$pool_pct = floatval($config -> normal_pct)+floatval($config -> overall_pct);
-		$multiple = floor(floatval($pool_pct)*$temporarily_bet);
-
+		$pool_normal_pct = floatval($config -> normal_pct);//一般彩池
+		$pool_overall_pct = floatval($config -> overall_pct);//全盤彩池
+		$multiple_normal = floor(floatval($pool_normal_pct)*$temporarily_bet);
+		$multiple_overall = floor(floatval($pool_overall_pct)*$temporarily_bet);
 
 		$for姿儀 =floor(floatval($config -> com_pct)*$temporarily_bet);//姿儀你的3%
 
