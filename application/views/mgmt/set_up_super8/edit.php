@@ -8,7 +8,7 @@
 	<header>
 		<div class="widget-toolbar pull-left">
 			<a href="javascript:void(0);" id="back_parent" onclick="save_coin()" class="btn btn-default btn-danger">
-				<i class="fa fa-save"></i>新增
+				<i class="fa fa-save"></i>更新
 			</a>
 		</div>
 		<div class="widget-toolbar pull-left">
@@ -49,6 +49,7 @@
 						<label class="col-md-3 control-label">公司拆帳：</label>
 						<div class="col-md-6">
 							<input type="text" id="com_pct"  class="form-control"  value="" placeholder="如果1%請輸入0.01以此類推"/>
+							<span id="" style="color:red">COC版本公司拆帳 1/3介紹人拆分往上 1/3公司 1/3消滅</span>
 						</div>
 					</div>
 				</fieldset>

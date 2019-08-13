@@ -190,7 +190,7 @@ class Game_list extends MY_Base_Controller {
 
 		// 向上分配
 		$promo_user_id = 0;
-		$alloc_amt = floatval($company3) / 3.0;
+		$alloc_amt = floatval($company3) / 3.0;//公司拆帳1/3部分
 
 		do {
 			// code...
