@@ -199,7 +199,7 @@ class Game_list extends MY_Base_Controller {
 
 				// 分配記錄
 				$aloc1 = array();
-				$aloc1['corp_id'] = $item -> corp_id;
+				$aloc1['corp_id'] = $promo_user -> corp_id;
 				$aloc1['game_id'] = $last_id;
 				$aloc1['ope_amt'] =	$aloc_amt;
 				$aloc1['user_id'] = $promo_user_id;
@@ -212,7 +212,7 @@ class Game_list extends MY_Base_Controller {
 					$promo_user_id = 0;
 
 					$aloc_com = array();
-					$aloc_com['corp_id'] = $item -> corp_id;
+					$aloc_com['corp_id'] = $promo_user -> corp_id;
 					$aloc_com_amt = floatval($alloc_amt);
 					$aloc_com['amt'] =	$aloc_com_amt;
 					$aloc_com['income_type'] = "下注向上分配";
@@ -228,7 +228,7 @@ class Game_list extends MY_Base_Controller {
 
 					if($promo_user_id == 0){
 						$aloc_com = array();
-						$aloc_com['corp_id'] = $item -> corp_id;
+						$aloc_com['corp_id'] = 1;
 						$aloc_com_amt = floatval($alloc_amt);
 						$aloc_com['amt'] =	$aloc_com_amt;
 						$aloc_com['income_type'] = "下注向上分配";
@@ -244,7 +244,7 @@ class Game_list extends MY_Base_Controller {
 
 				// 向上分配給公司
 				$aloc_com = array();
-				$aloc_com['corp_id'] = $item -> corp_id;
+				$aloc_com['corp_id'] = 1;
 				$aloc_com_amt = floatval($alloc_amt);
 				$aloc_com['amt'] =	$aloc_com_amt;
 				$aloc_com['income_type'] = "下注向上分配";
