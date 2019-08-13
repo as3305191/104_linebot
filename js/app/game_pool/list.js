@@ -41,20 +41,22 @@ var GamepoolAppClass = (function(app) {
 			columns : [{
 				data : 'bet_type',
 				render : function(d,t,r){
-				if(d == 8){
-							return '<span style="color:red">下注8彩池</span>';
-						} else if(d == 40){
-							return '<span style="color:red">下注40彩池</span>';
-						} else if(d == 80){
-							return '<span style="color:red">下注80彩池</span>';
-						}
+					if(d == 8){
+						return '<span style="color:red">下注8彩池</span>';
 					}
+					if(d == 40){
+						return '<span style="color:red">下注40彩池</span>';
+					}
+					if(d == 80){
+						return '<span style="color:red">下注80彩池</span>';
+					}
+				}
 			},{
 				data : 'pool_amt'
 			},{
 				data : 'sum_bet_type_1'
 			}],
-			order : [[0, "desc"]],
+			order : [[0, "asc"]],
 			columnDefs : [],
 
 			footerCallback: function (row, data, start, end, display ) {
@@ -184,7 +186,7 @@ var GamepoolAppClass = (function(app) {
 
 		setInterval( function () {
 			 app.tableReload();
-		}, 1000 );
+		}, 10000 );
 
 		return app;
 	};

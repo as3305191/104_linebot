@@ -131,6 +131,8 @@ class Game_pool_dao extends MY_Model {
 		}
 
 		$this -> db -> group_by('bet_type');
+		// $this -> db -> order_by('bet_type','asc');
+
 		// $this -> db -> group_by('type');
 
 		// query results
@@ -150,6 +152,8 @@ class Game_pool_dao extends MY_Model {
 		$this -> db -> where("type", $type);
 		$this -> db -> where("bet_type", $bet_type);
 		// $this -> db -> group_by('bet_type');
+		$this -> db -> order_by('bet_type','asc');
+
 		$list = $this -> find_all();
 		if(!empty($list)) {
 			$item = $list[0];
