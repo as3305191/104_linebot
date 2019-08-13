@@ -140,28 +140,39 @@ class Game_list extends MY_Base_Controller {
 		$idata1['type']=1;
 		$last_id = $this -> game_pool_dao -> insert($idata1);
 
-		$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
-		$find_multiple=floatval($get_all)/$bet;
+		// $get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
+		// $find_multiple=floatval($get_all)/$bet;
 
 		$p=mt_rand(1,100);
 		if($p>=$config->normal_winning&&$p<=$config->overall_winning){//全盤
 			$type =1;
-			$list = $this -> advance_play_dao -> find_rand($get_all,$type);
+			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type);
+			$find_multiple=floatval($get_all)/$bet;
+			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type);
 
 		} elseif($p<=$config->normal_winning) {//一般
 			$type =0;
-			$list = $this -> advance_play_dao -> find_rand($get_all,$type);
+			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type);
+			$find_multiple=floatval($get_all)/$bet;
+			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type);
 
 		} elseif ($p>$config->overall_winning) {//沒中
 			$type =3;
-			$list = $this -> advance_play_dao -> find_rand($get_all,$type);
+			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type);
+			$find_multiple=floatval($get_all)/$bet;
+			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type);
 		}
 
 		$advance_id = $list[0]->id;
 		$total = floatval($list[0]->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type);
-		// $this -> to_json($list);
-		// $this -> to_json($p);
+		$qqq['$list']=$list;
+		$qqq['$find_multiple']=$find_multiple;
+		$qqq['$p']=$p;
+
+		$this -> to_json($qqq);
+
+
 
 
 	}

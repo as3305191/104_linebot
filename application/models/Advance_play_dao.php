@@ -87,13 +87,14 @@ class Advance_play_dao extends MY_Model {
 	function find_rand($get_all,$type) {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('_m.total_multiple<',floatval($get_all));
 		$this -> db -> order_by('id', 'RANDOM');
 		if($type==1){
 			$this -> db -> where('_m.type',$type);
+			$this -> db -> where('_m.total_multiple<',floatval($get_all));
 		}
 		if($type==0){
 			$this -> db -> where('_m.type',$type);
+			$this -> db -> where('_m.total_multiple<',floatval($get_all));
 		}
 		if($type==3){
 			$this -> db -> where('_m.type',0);
