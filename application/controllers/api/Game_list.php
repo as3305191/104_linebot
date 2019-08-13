@@ -151,11 +151,11 @@ class Game_list extends MY_Base_Controller {
 
 		$advance_id = $list->id;
 		$total = floatval($list->total_multiple)*$bet;
-		$this -> insert_total_price($bet,$total,$user_id,$advance_id);
+		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3);
 
 	}
 
-	public function insert_total_price($bet,$total,$user_id,$advance_id) {
+	public function insert_total_price($bet,$total,$user_id,$advance_id,$company3) {
 		$res1 = array();
 		// $res['success'] = TRUE;
 		$bet_o=$bet*8;
@@ -163,7 +163,7 @@ class Game_list extends MY_Base_Controller {
 		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$advance_id);
 		$res1['last_id']=$do_insert;
 
-<<<<<<< HEAD
+
 		// 1%介紹人拆分往上1%公司1%消滅
 		$last_id = $do_insert;
 		$promo_user = $this -> users_dao -> find_by_id($user_id);
@@ -256,9 +256,6 @@ class Game_list extends MY_Base_Controller {
 			}
 		} while ($promo_user_id > 0);
 
-
-=======
->>>>>>> 4feed91773d5ab6d4588a0de2b366c9ff53270b6
 		$this -> to_json($res1);
 	}
 
