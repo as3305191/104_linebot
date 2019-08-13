@@ -16,6 +16,7 @@ class Add_coin extends MY_Mgmt_Controller {
 
 		$this -> load -> model('Add_coin_dao', 'add_dao');
 		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
+		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
 
 	}
 
@@ -124,14 +125,15 @@ class Add_coin extends MY_Mgmt_Controller {
 			$idata['ntd_change']=$ntd;
 			$idata['current_ntd']=intval($get_current_ntd)+intval($ntd);
 			$last_id_insert_q = $this -> q_r_dao -> insert($idata);
+			$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
 
 			$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
 
 			$dq =  $this -> d_q_dao -> find_d_q($Date);
-			$cp = floatval($add_coin_daily->current_point); // 避免除0問題
+			$cp = floatval(intval($add_coin_daily->current_point)+intval($get_all_pool)); // 避免除0問題
 			$p = 0;
 			if($cp != 0) {
-				$p=floatval($add_coin_daily->current_ntd)/floatval($add_coin_daily->current_point);
+				$p=floatval($add_coin_daily->current_ntd)/floatval(intval($add_coin_daily->current_point)+intval($get_all_pool));
 			}
 			$price1=round($p,8);
 			$dtx['date'] = $Date;

@@ -18,6 +18,7 @@ class Line_img extends MY_Base_Controller {
 		$this -> load -> model('Play_game_dao', 'play_game_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
 		$this -> load -> model('Advance_play_dao', 'advance_play_dao');
+		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
 
 
 		// line models

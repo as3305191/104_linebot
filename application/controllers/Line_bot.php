@@ -24,6 +24,7 @@ class Line_bot extends MY_Base_Controller {
 		$this -> load -> model('Customer_service_line_room_dao', 'cs_line_room_dao');
 		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
+		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
 	}
 
 	public function index() {
@@ -553,17 +554,19 @@ class Line_bot extends MY_Base_Controller {
 
 
 								$Date = date("Y-m-d");
+								$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
 								$samt1 =  $this -> wtx_dao -> get_sum_amt_all($last_id);
 								$sntd =  $this -> q_r_dao -> get_sum_ntd($last_id);
 								$dq =  $this -> d_q_dao -> find_d_q($Date);
 								$dtx = array();
 								$dtx['date'] = $Date;
-								$dtx['average_price'] = floatval($sntd)/floatval($samt1);
-								$dtx['last_price'] = floatval($sntd)/floatval($samt1);
-								$dtx['now_price'] = floatval($sntd)/floatval($samt1);
+								$price=floatval($sntd)/floatval(intval($samt1)+intval($get_all_pool));
+								$dtx['average_price'] = $price;
+								$dtx['last_price'] = $price;
+								$dtx['now_price'] = $price;
 								if(!empty($dq)){
-									$u_data['last_price'] = floatval($sntd)/floatval($samt1);
-									$u_data['now_price'] = floatval($sntd)/floatval($samt1);
+									$u_data['last_price'] = $price;
+									$u_data['now_price'] =$price;
 									$this -> d_q_dao -> update_by($u_data,'id',$dq->id);
 
 								} else{
