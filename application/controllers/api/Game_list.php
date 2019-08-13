@@ -5,18 +5,16 @@ class Game_list extends MY_Base_Controller {
 		parent::__construct();
 		$this -> load -> model('Game_list_dao', 'gl_dao');
 		$this -> load -> model('Game_tiger_dao', 'game_tiger_dao');
+		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
 
+		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Advance_play_dao', 'advance_play_dao');
 		$this -> load -> model('Config_dao', 'config_dao');
 		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 
-		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
-		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 
-		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Transfer_gift_allocation_dao', 'tsga_dao');
 	}
 
 	public function testtest() {
@@ -122,11 +120,13 @@ class Game_list extends MY_Base_Controller {
 			// } while(count($un_done_list) > 0);
 			// ------------------------- start
 		$config = $this -> config_dao -> find_by_id(1);//設定%的地方
-		$pool_pct = floatval($config -> normal_pct)+floatval($config -> overall_pct);
-		$multiple = floor(floatval($pool_pct)*$temporarily_bet);
+		$pool_normal_pct = floatval($config -> normal_pct);//一般彩池
+		$pool_overall_pct = floatval($config -> overall_pct);//全盤彩池
+		$multiple_normal = floor(floatval($pool_normal_pct)*$temporarily_bet);
+		$multiple_overall = floor(floatval($pool_overall_pct)*$temporarily_bet);
 
-		// 公司3%
 		$company3 = floor(floatval($config -> com_pct)*$temporarily_bet);
+
 
 		$idata['bet_type']=$temporarily_bet;
 		$idata['pool_amt']=$multiple;
@@ -151,11 +151,11 @@ class Game_list extends MY_Base_Controller {
 
 		$advance_id = $list->id;
 		$total = floatval($list->total_multiple)*$bet;
-		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3);
+		$this -> insert_total_price($bet,$total,$user_id,$advance_id);
 
 	}
 
-	public function insert_total_price($bet,$total,$user_id,$advance_id,$company3) {
+	public function insert_total_price($bet,$total,$user_id,$advance_id) {
 		$res1 = array();
 		// $res['success'] = TRUE;
 		$bet_o=$bet*8;
@@ -163,6 +163,7 @@ class Game_list extends MY_Base_Controller {
 		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$advance_id);
 		$res1['last_id']=$do_insert;
 
+<<<<<<< HEAD
 		// 1%介紹人拆分往上1%公司1%消滅
 		$last_id = $do_insert;
 		$promo_user = $this -> users_dao -> find_by_id($user_id);
@@ -256,6 +257,8 @@ class Game_list extends MY_Base_Controller {
 		} while ($promo_user_id > 0);
 
 
+=======
+>>>>>>> 4feed91773d5ab6d4588a0de2b366c9ff53270b6
 		$this -> to_json($res1);
 	}
 
