@@ -126,9 +126,8 @@ class Add_coin extends MY_Mgmt_Controller {
 			$idata['current_ntd']=intval($get_current_ntd)+intval($ntd);
 			$last_id_insert_q = $this -> q_r_dao -> insert($idata);
 			$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
-
 			$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
-
+			$p1 = $this -> d_q_dao -> find_last_d_q($Date);
 			$dq =  $this -> d_q_dao -> find_d_q($Date);
 			$cp = floatval(intval($add_coin_daily->current_point)+intval($get_all_pool)); // 避免除0問題
 			$p = 0;
@@ -137,7 +136,7 @@ class Add_coin extends MY_Mgmt_Controller {
 			}
 			$price1=round($p,8);
 			$dtx['date'] = $Date;
-			$dtx['average_price'] = $price1;
+			$dtx['average_price'] = $p1->last_price;
 			$dtx['last_price'] = $price1;
 			$dtx['now_price'] = $price1;
 			if(!empty($dq)){

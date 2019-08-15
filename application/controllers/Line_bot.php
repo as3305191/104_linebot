@@ -563,6 +563,7 @@ class Line_bot extends MY_Base_Controller {
 								$samt1 =  $this -> wtx_dao -> get_sum_amt_all($last_id);
 								$sntd =  $this -> q_r_dao -> get_sum_ntd($last_id);
 								$dq =  $this -> d_q_dao -> find_d_q($Date);
+								$p1 = $this -> d_q_dao -> find_last_d_q($Date);
 								$dtx = array();
 								$dtx['date'] = $Date;
 								$cp = floatval(intval($samt1)+intval($get_all_pool)); // 避免除0問題
@@ -570,7 +571,7 @@ class Line_bot extends MY_Base_Controller {
 								if($cp != 0) {
 									$price=floatval($sntd)/floatval(intval($samt1)+intval($get_all_pool));
 								}
-								$dtx['average_price'] = $price;
+								$dtx['average_price'] = $p1->last_price;
 								$dtx['last_price'] = $price;
 								$dtx['now_price'] = $price;
 								if(!empty($dq)){
