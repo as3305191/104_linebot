@@ -560,16 +560,16 @@ class Line_bot extends MY_Base_Controller {
 
 								$Date = date("Y-m-d");
 								$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
-								$samt1 =  $this -> wtx_dao -> get_sum_amt_all($last_id);
+								$samt1 =  $this -> q_r_dao -> get_current_point1($last_id);
 								$sntd =  $this -> q_r_dao -> get_sum_ntd($last_id);
 								$dq =  $this -> d_q_dao -> find_d_q($Date);
 								$p1 = $this -> d_q_dao -> find_last_d_q($Date);
 								$dtx = array();
 								$dtx['date'] = $Date;
-								$cp = floatval(intval($samt1)+intval($get_all_pool)); // 避免除0問題
+								$cp = floatval(intval($samt1)); // 避免除0問題
 								$price = 0;
 								if($cp != 0) {
-									$price=floatval($sntd)/floatval(intval($samt1)+intval($get_all_pool));
+									$price=floatval($sntd)/floatval(intval($samt1));
 								}
 								$dtx['average_price'] = $p1->last_price;
 								$dtx['last_price'] = $price;
