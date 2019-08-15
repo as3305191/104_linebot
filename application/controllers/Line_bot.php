@@ -910,7 +910,7 @@ class Line_bot extends MY_Base_Controller {
 		$time = time();
 		$msg_arr[] = array(
 			"type" => "text",
-			"text" => base_url("line_img/line_result/{$id}/v1{$time}/1"),
+			"text" => base_url("line_img/line_result/{$id}/v1/1"),
 		);
 		return;
 		$msg_arr[] = array(
