@@ -1300,6 +1300,7 @@ class Line_img extends MY_Base_Controller {
 			$p = $this -> d_q_dao -> find_last_d_q($Date);
 			$dtx = array();
 			$dtx['date'] = $Date;
+			$dtx['average_price'] = $p->last_price;
 			$dtx['last_price'] = $p->now_price;
 			$dtx['now_price'] = $p->now_price;
 			$this -> d_q_dao -> insert($dtx);

@@ -105,12 +105,13 @@ class Line_bot extends MY_Base_Controller {
 					$p = $this -> d_q_dao -> find_last_d_q($Date);
 					$dtx = array();
 					$dtx['date'] = $Date;
+					$dtx['average_price'] = $p->last_price;
 					$dtx['last_price'] = $p->last_price;
 					$dtx['now_price'] = $p->now_price;
 					$this -> d_q_dao -> insert($dtx);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "今日開盤均價: 今日未開盤\n昨天開盤均價: {$p->average_price}\n目前均價: {$p->now_price}",
+						"text" => "今日開盤均價: {$p->last_price}\n目前均價: {$p->now_price}",
 					);
 				}
 				$sum_amt = intval($sum_amt);
@@ -564,7 +565,11 @@ class Line_bot extends MY_Base_Controller {
 								$dq =  $this -> d_q_dao -> find_d_q($Date);
 								$dtx = array();
 								$dtx['date'] = $Date;
-								$price=floatval($sntd)/floatval(intval($samt1)+intval($get_all_pool));
+								$cp = floatval(intval($samt1)+intval($get_all_pool)); // 避免除0問題
+								$price = 0;
+								if($cp != 0) {
+									$price=floatval($sntd)/floatval(intval($samt1)+intval($get_all_pool));
+								}
 								$dtx['average_price'] = $price;
 								$dtx['last_price'] = $price;
 								$dtx['now_price'] = $price;
@@ -1107,24 +1112,5 @@ class Line_bot extends MY_Base_Controller {
 
 	}
 
-	function aaaaaa() {
-		$sum_amt = $this -> wtx_dao -> get_sum_amt(524);
 
-		$Date = date("Y-m-d");
-		$price = $this -> d_q_dao -> find_d_q($Date);
-		if(!empty($price)){
-			$total=floatval($price->now_price)*floatval($sum_amt);
-
-		} else{
-			$p = $this -> d_q_dao -> find_last_d_q($Date);
-			$dtx = array();
-			$dtx['date'] = $Date;
-			$dtx['last_price'] = $p->now_price;
-			$dtx['now_price'] = $p->now_price;
-			$this -> d_q_dao -> insert($dtx);
-			$total=floatval($p->now_price)*floatval($sum_amt);
-		}
-		$this->to_json($sum_amt);
-
-	}
 }

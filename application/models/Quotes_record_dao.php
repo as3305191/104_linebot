@@ -164,7 +164,11 @@ class Quotes_record_dao extends MY_Model {
 		$dtx = array();
 		$get_current_ntd1=$this -> q_r_dao -> get_current_ntd();
 		$get_current_point1=$this -> q_r_dao -> get_current_point();
-		$p=floatval($get_current_ntd1->current_ntd)/floatval(intval($get_current_point1->current_point)+intval($get_all_pool));
+		$cp = floatval(intval($get_current_point1->current_point)+intval($get_all_pool)); // 避免除0問題
+		$p = 0;
+		if($cp != 0) {
+			$p=floatval($get_current_ntd1->current_ntd)/floatval(intval($get_current_point1->current_point)+intval($get_all_pool));
+		}
 		$price=round($p,8);
 		$dtx['date'] = $Date;
 		$dtx['average_price'] =$price;
