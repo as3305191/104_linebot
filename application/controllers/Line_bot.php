@@ -907,14 +907,15 @@ class Line_bot extends MY_Base_Controller {
 	}
 
 	private function show_super_8_not_first($id) {
+		$time = time();
 		$msg_arr[] = array(
 			"type" => "text",
-			"text" => base_url("line_img/line_result/{$id}/v1/1"),
+			"text" => base_url("line_img/line_result/{$id}/v1{$time}/1"),
 		);
 		return;
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_result/{$id}/v1/1"),
+			"baseUrl" => base_url("line_img/line_result/{$id}/v1{$time}/1"),
 			"altText" => "下注金額",
 			"baseSize" => array(
 				"width" => "1040",
