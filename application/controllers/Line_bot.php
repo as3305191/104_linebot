@@ -814,7 +814,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_8",
+					"text" => "下注_超八_0.8",
 					"area" => array(
 						"x" => 90,
 						"y" => 1234,
@@ -824,7 +824,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_40",
+					"text" => "下注_超八_8",
 					"area" => array(
 						"x" => 425,
 						"y" => 1234,
@@ -834,7 +834,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_80",
+					"text" => "下注_超八_40",
 					"area" => array(
 						"x" => 758,
 						"y" => 1234,
@@ -876,7 +876,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_8",
+					"text" => "下注_超八_0.8",
 					"area" => array(
 						"x" => 90,
 						"y" => 1443,
@@ -886,7 +886,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_40",
+					"text" => "下注_超八_8",
 					"area" => array(
 						"x" => 425,
 						"y" => 1443,
@@ -896,7 +896,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_80",
+					"text" => "下注_超八_40",
 					"area" => array(
 						"x" => 758,
 						"y" => 1443,
@@ -935,7 +935,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_8",
+					"text" => "下注_超八_0.8",
 					"area" => array(
 						"x" => 90,
 						"y" => 1234,
@@ -945,7 +945,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_40",
+					"text" => "下注_超八_8",
 					"area" => array(
 						"x" => 425,
 						"y" => 1234,
@@ -955,7 +955,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_80",
+					"text" => "下注_超八_40",
 					"area" => array(
 						"x" => 758,
 						"y" => 1234,
