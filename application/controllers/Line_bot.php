@@ -734,13 +734,13 @@ class Line_bot extends MY_Base_Controller {
 			$i['user_id'] = $user -> id;
 			$user_point=  $this -> wtx_dao -> get_sum_amt($user -> id);
 			if(mb_substr($message -> text,-1) == "8"){
-				if($user_point<8){
+				if($user_point<0.8){
 					$msg_arr[] = array(
 						"type" => "text",
 						"text" => "您的貨幣不到8,如果想取消請輸入881取消此功能",
 					);
 				} else{
-					$i['bet'] = 8;
+					$i['bet'] = 0.8;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$id=$data->last_id;
@@ -753,13 +753,13 @@ class Line_bot extends MY_Base_Controller {
 				}
 			}
 			if(mb_substr($message -> text,-2)=="40"){
-				if($user_point<40){
+				if($user_point<8){
 					$msg_arr[] = array(
 						"type" => "text",
 						"text" => "您的貨幣不到40,如果想取消請輸入881取消此功能",
 					);
 				} else{
-					$i['bet'] = 40;
+					$i['bet'] = 8;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$id=$data->last_id;
@@ -771,13 +771,13 @@ class Line_bot extends MY_Base_Controller {
 				}
 			}
 			if(mb_substr($message -> text,-2)=="80"){
-				if($user_point<80){
+				if($user_point<40){
 					$msg_arr[] = array(
 						"type" => "text",
 						"text" => "您的貨幣不到80,如果想取消請輸入881取消此功能",
 					);
 				} else{
-					$i['bet'] = 80;
+					$i['bet'] = 40;
 					$n_res = $this -> curl -> simple_post("/api/Game_list/game_tiger", $i);
 					$data = json_decode($n_res);
 					$id=$data->last_id;
