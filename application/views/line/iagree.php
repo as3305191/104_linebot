@@ -254,7 +254,7 @@ body{
 			?>
       <div class="font">
         <div class="col-xs-12 background" >
-          <img src="<?=base_url('img/line/background/6.jpg')?>" style="width:100%" >
+          <img src="<?=base_url('img/line/background/7.jpg')?>" style="width:100%" >
         </div >
 
         <div class="wa" >
@@ -280,7 +280,7 @@ body{
 
 			<div class="  font" >
 				<div class=" background" >
-					<img src="<?=base_url('img/line/background/6.jpg')?>" style="width:100%" >
+					<img src="<?=base_url('img/line/background/7.jpg')?>" style="width:100%" >
         </div >
 
 				<div class="circle" >
