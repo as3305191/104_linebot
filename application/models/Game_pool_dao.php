@@ -84,15 +84,17 @@ class Game_pool_dao extends MY_Model {
 		return $list[0];
 	}
 
-	function get_sum_pool_amt($last_id,$temporarily_bet,$type) {
+	function get_sum_pool_amt($last_id,$temporarily_bet,$type,$type_status) {
 		$this -> db -> select("sum(pool_amt) as pool_amt");
 		$this -> db -> where('id<=',$last_id);
 		$this -> db -> where('bet_type',$temporarily_bet);
 		if($type==1){
 			$this -> db -> where('type',$type);
+			$this -> db -> where('type_status',$type_status);
 		}
 		if($type==0){
 			$this -> db -> where('type',$type);
+			$this -> db -> where('type_status',$type_status);
 		}
 		if($type==3){
 			$this -> db -> where('type',0);

@@ -84,7 +84,7 @@ class Quotes_record_dao extends MY_Model {
 		return $list[0];
 	}
 
-	function insert_all_total($bet_o,$total,$for_q_amt,$user_id,$advance_id,$type) {
+	function insert_all_total($bet_o,$total,$for_q_amt,$user_id,$advance_id,$type,$type_status) {
 		$this -> load -> model('Com_tx_dao', 'ctx_dao');
 		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
@@ -105,12 +105,14 @@ class Quotes_record_dao extends MY_Model {
 			$idata2['bet_type']=$bet_o;
 			$idata2['pool_amt']=-$total;
 			$idata2['type']=1;
+			$idata2['type_status']=$type_status;
 			$this -> game_pool_dao -> insert($idata2);
 
 		}elseif ($type==0) {
 			$idata22['bet_type']=$bet_o;
 			$idata22['pool_amt']=-$total;
 			$idata22['type']=0;
+			$idata2['type_status']=$type_status;
 			$this -> game_pool_dao -> insert($idata22);
 
 		}

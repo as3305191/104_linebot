@@ -177,35 +177,267 @@ class Game_list extends MY_Base_Controller {
 		$idata_10['bet_type']=$temporarily_bet;
 		$idata_10['pool_amt']=$temporarily_bet*floatval(0.005);
 		$idata_10['type']=1;
-		$idata_04['type_status']="任意7";
-		$last_id = $this -> game_pool_dao -> insert($idata_10);
+		$idata_10['type_status']="任意7_seven";
+		$this -> game_pool_dao -> insert($idata_10);
 
+		$idata_11['bet_type']=$temporarily_bet;
+		$idata_11['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_11['type']=1;
+		$idata_11['type_status']="任意7_bar";
+		$this -> game_pool_dao -> insert($idata_11);
+
+		$idata_12['bet_type']=$temporarily_bet;
+		$idata_12['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_12['type']=1;
+		$idata_12['type_status']="任意7_medal";
+		$this -> game_pool_dao -> insert($idata_12);
+
+		$idata_13['bet_type']=$temporarily_bet;
+		$idata_13['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_13['type']=1;
+		$idata_13['type_status']="任意7_bell";
+		$this -> game_pool_dao -> insert($idata_13);
+
+		$idata_14['bet_type']=$temporarily_bet;
+		$idata_14['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_14['type']=1;
+		$idata_14['type_status']="任意7_watermelon";
+		$this -> game_pool_dao -> insert($idata_14);
+
+		$idata_15['bet_type']=$temporarily_bet;
+		$idata_15['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_15['type']=1;
+		$idata_15['type_status']="任意7_grape";
+		$this -> game_pool_dao -> insert($idata_15);
+
+		$idata_16['bet_type']=$temporarily_bet;
+		$idata_16['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_16['type']=1;
+		$idata_16['type_status']="任意7_orange";
+		$this -> game_pool_dao -> insert($idata_16);
+
+		$idata_17['bet_type']=$temporarily_bet;
+		$idata_17['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_17['type']=1;
+		$idata_17['type_status']="任意7_cherry";
+		$this -> game_pool_dao -> insert($idata_17);
+
+		$idata_20['bet_type']=$temporarily_bet;
+		$idata_20['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_20['type']=1;
+		$idata_20['type_status']="任意8_seven";
+		$this -> game_pool_dao -> insert($idata_20);
+
+		$idata_21['bet_type']=$temporarily_bet;
+		$idata_21['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_21['type']=1;
+		$idata_21['type_status']="任意8_bar";
+		$this -> game_pool_dao -> insert($idata_21);
+
+		$idata_22['bet_type']=$temporarily_bet;
+		$idata_22['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_22['type']=1;
+		$idata_22['type_status']="任意8_medal";
+		$this -> game_pool_dao -> insert($idata_22);
+
+		$idata_23['bet_type']=$temporarily_bet;
+		$idata_23['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_23['type']=1;
+		$idata_23['type_status']="任意8_bell";
+		$this -> game_pool_dao -> insert($idata_23);
+
+		$idata_24['bet_type']=$temporarily_bet;
+		$idata_24['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_24['type']=1;
+		$idata_24['type_status']="任意8_watermelon";
+		$this -> game_pool_dao -> insert($idata_24);
+
+		$idata_25['bet_type']=$temporarily_bet;
+		$idata_25['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_25['type']=1;
+		$idata_25['type_status']="任意8_grape";
+		$this -> game_pool_dao -> insert($idata_25);
+
+		$idata_26['bet_type']=$temporarily_bet;
+		$idata_26['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_26['type']=1;
+		$idata_26['type_status']="任意8_orange";
+		$this -> game_pool_dao -> insert($idata_26);
+
+		$idata_27['bet_type']=$temporarily_bet;
+		$idata_27['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_27['type']=1;
+		$idata_27['type_status']="任意8_cherry";
+		$this -> game_pool_dao -> insert($idata_27);
+
+		$idata_30['bet_type']=$temporarily_bet;
+		$idata_30['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_30['type']=1;
+		$idata_30['type_status']="任意9_seven";
+		$this -> game_pool_dao -> insert($idata_30);
+
+		$idata_31['bet_type']=$temporarily_bet;
+		$idata_31['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_31['type']=1;
+		$idata_31['type_status']="任意9_bar";
+		$this -> game_pool_dao -> insert($idata_31);
+
+		$idata_32['bet_type']=$temporarily_bet;
+		$idata_32['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_32['type']=1;
+		$idata_32['type_status']="任意9_medal";
+		$this -> game_pool_dao -> insert($idata_32);
+
+		$idata_33['bet_type']=$temporarily_bet;
+		$idata_33['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_33['type']=1;
+		$idata_33['type_status']="任意9_bell";
+		$this -> game_pool_dao -> insert($idata_33);
+
+		$idata_34['bet_type']=$temporarily_bet;
+		$idata_34['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_34['type']=1;
+		$idata_34['type_status']="任意9_watermelon";
+		$this -> game_pool_dao -> insert($idata_34);
+
+		$idata_35['bet_type']=$temporarily_bet;
+		$idata_35['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_35['type']=1;
+		$idata_35['type_status']="任意9_grape";
+		$this -> game_pool_dao -> insert($idata_35);
+
+		$idata_36['bet_type']=$temporarily_bet;
+		$idata_36['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_36['type']=1;
+		$idata_36['type_status']="任意9_orange";
+		$this -> game_pool_dao -> insert($idata_36);
+
+		$idata_37['bet_type']=$temporarily_bet;
+		$idata_37['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_37['type']=1;
+		$idata_37['type_status']="任意9_cherry";
+		$last_id = $this -> game_pool_dao -> insert($idata_37);
 		// $get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
 		// $find_multiple=floatval($get_all)/$bet;
 
 		$p=mt_rand(1,100);
 		if($p>=$config->normal_winning&&$p<=$config->overall_winning){//全盤
+			if($p==35){//任意7_seven
+				$type_status="任意7_seven";
+				$total_magnification=6;
+			}elseif($p==36){//任意7_bar
+				$type_status="任意7_bar";
+				$total_magnification=7;
+			}elseif($p==37){//任意7_medal
+				$type_status="任意7_medal";
+				$total_magnification=8;
+			}elseif($p==38){//任意7_bell
+				$type_status="任意7_bell";
+				$total_magnification=9;
+			}elseif($p==39){//任意7_watermelon
+				$type_status="任意7_watermelon";
+				$total_magnification=10;
+			}elseif($p==40){//任意7_grape
+				$type_status="任意7_grape";
+				$total_magnification=11;
+			}elseif($p==41){//任意7_orange
+				$type_status="任意7_orange";
+				$total_magnification=12;
+			}elseif($p==42){//任意7_cherry
+				$type_status="任意7_cherry";
+				$total_magnification=13;
+			}
+
+			elseif($p==43){//任意8_seven
+				$type_status="任意8_seven";
+				$total_magnification=14;
+			}elseif($p==44){//任意8_bar
+				$type_status="任意8_bar";
+				$total_magnification=15;
+			}elseif($p==45){//任意8_medal
+				$type_status="任意8_medal";
+				$total_magnification=16;
+			}elseif($p==46){//任意8_bell
+				$type_status="任意8_bell";
+				$total_magnification=17;
+			}elseif($p==47){//任意8_watermelon
+				$type_status="任意8_watermelon";
+				$total_magnification=18;
+			}elseif($p==48){//任意8_grape
+				$type_status="任意8_grape";
+				$total_magnification=19;
+			}elseif($p==49){//任意8_orange
+				$type_status="任意8_orange";
+				$total_magnification=20;
+			}elseif($p==50){//任意8_cherry
+				$type_status="任意8_cherry";
+				$total_magnification=21;
+			}
+			elseif($p==51){//任意9_seven
+				$type_status="任意9_seven";
+				$total_magnification=22;
+			}elseif($p==52){//任意9_bar
+				$type_status="任意9_bar";
+				$total_magnification=23;
+			}elseif($p==53){//任意9_medal
+				$type_status="任意9_medal";
+				$total_magnification=24;
+			}elseif($p==54){//任意9_bell
+				$type_status="任意9_bell";
+				$total_magnification=25;
+			}elseif($p==55){//任意9_watermelon
+				$type_status="任意9_watermelon";
+				$total_magnification=26;
+			}elseif($p==56){//任意9_grape
+				$type_status="任意9_grape";
+				$total_magnification=27;
+			}elseif($p==57){//任意9_orange
+				$type_status="任意9_orange";
+				$total_magnification=28;
+			}elseif($p==58){//任意9_cherry
+				$type_status="任意9_cherry";
+				$total_magnification=29;
+			}
+
 			$type =1;
-			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type);
+			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type,$type_status);
 			$find_multiple=floatval($get_all)/$bet;
-			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type);
+			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
 
 		} elseif($p<=$config->normal_winning) {//一般
+			if($p>=1&&$p<=15){//10-50
+				$type_status="10-50倍";
+				$total_magnification=1;
+			}elseif($p>=16&&$p<=25){//51-99
+				$type_status="51-99倍 ";
+				$total_magnification=2;
+			}elseif ($p>=26&&$p<=30) {//100-199
+				$type_status="100-199倍";
+				$total_magnification=3;
+			}elseif ($p>=31&&$p<=33) {//200-299
+				$type_status="200-299倍";
+				$total_magnification=4;
+			}elseif ($p==34) {//300-399
+				$type_status="300-399倍";
+				$total_magnification=5;
+			}
 			$type =0;
-			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type);
+			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type,$type_status);
 			$find_multiple=floatval($get_all)/$bet;
-			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type);
+			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
 
-		} elseif ($p>$config->overall_winning) {//沒中
+		} elseif ($p>intval($config->overall_winning)+intval($config->normal_winning)) {//沒中
 			$type =3;
-			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type);
+			$total_magnification=0;
+			$type_status=0;
+			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type,$type_status);
 			$find_multiple=floatval($get_all)/$bet;
-			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type);
+			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
 		}
 
 		$advance_id = $list[0]->id;
 		$total = floatval($list[0]->total_multiple)*$bet;
-		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type);
+		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type,$type_status);
 		// $qqq['$list']=$list;
 		// $qqq['$find_multiple']=$find_multiple;
 		// $qqq['$p']=$p;
@@ -214,12 +446,12 @@ class Game_list extends MY_Base_Controller {
 
 	}
 
-	public function insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type) {
+	public function insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type,$type_status) {
 		$res1 = array();
 		// $res['success'] = TRUE;
 		$bet_o=$bet*8;
 		$for_q_amt=$total-$bet_o;
-		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$advance_id,$type);
+		$do_insert=$this -> q_r_dao -> insert_all_total($bet_o,$total,$for_q_amt,$user_id,$advance_id,$type,$type_status);
 		$res1['last_id']=$do_insert;
 
 
@@ -370,7 +602,7 @@ class Game_list extends MY_Base_Controller {
 	public function advance_play(){
 
 
-		for($aa=0;$aa<1;$aa++){
+		for($aa=0;$aa<1000;$aa++){
 			$icon_arr = array(
 				'seven_b',
 				'seven_r',
@@ -415,7 +647,8 @@ class Game_list extends MY_Base_Controller {
 			$line6=0;
 			$line7=0;
 			$line8=0;
-
+			$system=0;
+			$num=0;
 			$new_icon_arr =shuffle($icon_arr);
 			$res1['newarray']=$icon_arr;
 		$match_arr = array(); // init match array
@@ -491,10 +724,14 @@ class Game_list extends MY_Base_Controller {
 			}
 			if($counter_seven_b+$counter_seven_r==9){
 				$counter_seven1=100000;
+
 			}
 			$res['seven']=1;
 			$res['counter_seven']=$counter_seven_b+$counter_seven_r;
-
+			if($counter_seven_b+$counter_seven_r>=7){
+				$system="seven";
+				$num=$counter_seven_b+$counter_seven_r;
+			}
 		}
 
 		if($counter_bar>2){
@@ -512,16 +749,22 @@ class Game_list extends MY_Base_Controller {
 			}
 			if($counter_bar==7){
 				$counter_bar1=6000;
+
 			}
 			if($counter_bar==8){
 				$counter_bar1=30000;
+
 			}
 			if($counter_bar==9){
 				$counter_bar1=70000;
+
 			}
 			$res['bar']=1;
 			$res['counter_bar']=$counter_bar;
-
+			if($counter_bar>=7){
+				$system="bar";
+				$num=$counter_bar;
+			}
 		}
 
 		if($counter_medal>2){
@@ -539,16 +782,22 @@ class Game_list extends MY_Base_Controller {
 			}
 			if($counter_medal==7){
 				$counter_medal1=3000;
+
 			}
 			if($counter_medal==8){
 				$counter_medal1=20000;
+
 			}
 			if($counter_medal==9){
 				$counter_medal1=60000;
+
 			}
 			$res['medal']=1;
 			$res['counter_medal']=$counter_medal;
-
+			if($counter_medal>=7){
+				$system="medal";
+				$num=$counter_medal;
+			}
 		}
 
 		if($counter_bell>2){
@@ -566,16 +815,22 @@ class Game_list extends MY_Base_Controller {
 			}
 			if($counter_bell==7){
 				$counter_bell1=1500;
+
 			}
 			if($counter_bell==8){
 				$counter_bell1=10000;
+
 			}
 			if($counter_bell==9){
 				$counter_bell1=50000;
+
 			}
 			$res['bell']=1;
 			$res['counter_bell']=$counter_bell;
-
+			if($counter_bell>=7){
+				$system="bell";
+				$num=$counter_bell;
+			}
 		}
 
 		if($counter_watermelon>3){
@@ -590,16 +845,22 @@ class Game_list extends MY_Base_Controller {
 			}
 			if($counter_watermelon==7){
 				$counter_watermelon1=1200;
+
 			}
 			if($counter_watermelon==8){
 				$counter_watermelon1=8000;
+
 			}
 			if($counter_watermelon==9){
 				$counter_watermelon1=40000;
+
 			}
 			$res['watermelon']=1;
 			$res['counter_watermelon']=$counter_watermelon;
-
+			if($counter_watermelon>=7){
+				$system="watermelon";
+				$num=$counter_watermelon;
+			}
 		}
 
 		if($counter_grape>3){
@@ -614,16 +875,22 @@ class Game_list extends MY_Base_Controller {
 			}
 			if($counter_grape==7){
 				$counter_grape1=900;
+
 			}
 			if($counter_grape==8){
 				$counter_grape1=6000;
+
 			}
 			if($counter_grape==9){
 				$counter_grape1=30000;
+
 			}
 			$res['grape']=1;
 			$res['counter_grape']=$counter_grape;
-
+			if($counter_grape>=7){
+				$system="grape";
+				$num=$counter_grape;
+			}
 		}
 
 		if($counter_cherry>3){
@@ -638,16 +905,22 @@ class Game_list extends MY_Base_Controller {
 			}
 			if($counter_cherry==7){
 				$counter_cherry1=300;
+
 			}
 			if($counter_cherry==8){
 				$counter_cherry1=2000;
+
 			}
 			if($counter_cherry==9){
 				$counter_cherry1=1000;
+
 			}
 			$res['cherry']=1;
 			$res['counter_cherry']=$counter_cherry;
-
+			if($counter_cherry>=7){
+				$system="cherry";
+				$num=$counter_cherry;
+			}
 		}
 
 		if($counter_orange>3){
@@ -662,16 +935,22 @@ class Game_list extends MY_Base_Controller {
 			}
 			if($counter_orange==7){
 				$counter_orange1=600;
+
 			}
 			if($counter_orange==8){
 				$counter_orange1=4000;
+
 			}
 			if($counter_orange==9){
 				$counter_orange1=20000;
+
 			}
 			$res['orange']=1;
 			$res['counter_orange']=$counter_orange;
-
+			if($counter_orange>=7){
+				$system="orange";
+				$num=$counter_orange;
+			}
 		}
 
 		if($match_arr[0][0]==$match_arr[0][1]&&$match_arr[0][0]==$match_arr[0][2]){
@@ -779,6 +1058,8 @@ class Game_list extends MY_Base_Controller {
 		$tx_11['result'] = $value;
 		$tx_11['total_multiple'] = $total;
 		$tx_11['win_result'] = $value1;
+		$tx_11['counter_system'] = $system;
+		$tx_11['counter_num'] = $num;
 
 		$last_id=	$this -> advance_play_dao -> insert($tx_11);
 	}
