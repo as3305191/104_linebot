@@ -147,6 +147,15 @@ class Game_pool_dao extends MY_Model {
 
 	}
 
+	function statistic_all() {
+		$this -> db -> select("bet_type, type_status, sum(pool_amt) as samt");
+		$this -> db -> from($this->table_name);
+		$this -> db -> group_by("bet_type");
+		$this -> db -> group_by("type_status");
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
 	function sum_amt_by_type($bet_type,$type) {
 		$this -> db -> select("sum(pool_amt) as amt");
 		// $this -> db -> select("bet_type");

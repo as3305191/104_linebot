@@ -31,7 +31,7 @@ var GamepoolAppClass = (function(app) {
 					d.bypass_101 = $('#s_bypass_101').is(':checked') ? 1 : 0;
 					return d;
 				},
-				dataSrc : 'items',
+				dataSrc : 'statistic_all',
 				dataType : 'json',
 				type : 'post'
 			},
@@ -52,9 +52,9 @@ var GamepoolAppClass = (function(app) {
 					}
 				}
 			},{
-				data : 'pool_amt'
+				data : 'type_status'
 			},{
-				data : 'sum_bet_type_1'
+				data : 'samt'
 			}],
 			order : [[0, "asc"]],
 			columnDefs : [],

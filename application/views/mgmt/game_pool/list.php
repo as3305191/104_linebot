@@ -45,7 +45,6 @@
 											<th class="min100">彩池名稱</th>
 											<th class="min100">一般彩池</th>
 											<th class="min100">全盤彩池</th>
-
 										</tr>
 									</thead>
 									<tbody>

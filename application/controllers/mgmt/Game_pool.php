@@ -44,6 +44,9 @@ class Game_pool extends MY_Base_Controller {
  		}
 		$res['items'] = $items;
 
+		$sa = $this -> game_pool_dao -> statistic_all();
+		$res['statistic_all'] = $sa;
+
 		$res['recordsFiltered'] = $this -> game_pool_dao -> find_all_pool_now($data, TRUE);
 		$res['recordsTotal'] = $this -> game_pool_dao -> find_all_pool_now($data, TRUE);
 
