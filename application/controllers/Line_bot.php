@@ -458,12 +458,13 @@ class Line_bot extends MY_Base_Controller {
 
 								$samt2 =  $this -> wtx_dao -> get_sum_amt_all($last_id);
 								$get_current_ntd = $this -> q_r_dao -> get_current_ntd();
+								$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
 
 								$ctx = array();
 								$ctx['tx_type'] = "transfer_gift";
 								$ctx['tx_id'] = $last_id;
 								$ctx['point_change'] = -floatval($ope_amt)/2.0;
-								$ctx['current_point'] = $samt2;
+								$ctx['current_point'] = $samt2 + $get_all_pool;
 								$ctx['ntd_change'] = 0;
 								$ctx['current_ntd'] = $get_current_ntd -> current_ntd;
 								$this -> q_r_dao -> insert($ctx);
@@ -563,7 +564,7 @@ class Line_bot extends MY_Base_Controller {
 
 
 								$Date = date("Y-m-d");
-								$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
+
 								$get_current_ntd1=$this -> q_r_dao -> get_current_ntd();
 								$get_current_point1=$this -> q_r_dao -> get_current_point();
 								$dq =  $this -> d_q_dao -> find_d_q($Date);

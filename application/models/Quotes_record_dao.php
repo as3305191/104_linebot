@@ -128,7 +128,7 @@ class Quotes_record_dao extends MY_Model {
 		$tx_1['tx_type'] = "play_game";
 		$tx_1['tx_id'] = $last_id;
 		$tx_1['point_change'] = $for_q_amt;
-		$current_point= intval($get_current_point->current_point)+intval($for_q_amt);
+		$current_point= floatval($get_current_point->current_point)+floatval($for_q_amt)+$get_all_pool; // 加上彩池
 		$tx_1['current_point'] =$current_point;
 		$tx_1['current_ntd'] =$get_current_ntd->current_ntd; // 需要紀錄ntd
 		$last_id_insert_q=$this -> q_r_dao -> insert($tx_1);
