@@ -566,10 +566,10 @@ class Line_bot extends MY_Base_Controller {
 								$p1 = $this -> d_q_dao -> find_last_d_q($Date);
 								$dtx = array();
 								$dtx['date'] = $Date;
-								$cp = floatval(intval($get_current_point1->current_point)+intval($get_all_pool)); // 避免除0問題
+								$cp = floatval(intval($get_current_point1->current_point)); // 避免除0問題
 								$p = 0;
 								if($cp != 0) {
-									$p=floatval($get_current_ntd1->current_ntd)/floatval(intval($get_current_point1->current_point)+intval($get_all_pool));
+									$p=floatval($get_current_ntd1->current_ntd)/floatval(intval($get_current_point1->current_point));
 								}
 								$price=round($p,8);
 								$dtx['average_price'] = $p1->last_price;
