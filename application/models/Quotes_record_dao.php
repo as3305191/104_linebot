@@ -100,7 +100,6 @@ class Quotes_record_dao extends MY_Model {
 		$bureau_num = generate_random_string($length = 4);
 		$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
 
-
 		if($type==1){
 			$idata2['bet_type']=$bet_o;
 			$idata2['pool_amt']=-$total;
@@ -114,8 +113,8 @@ class Quotes_record_dao extends MY_Model {
 			$idata22['type']=0;
 			$idata22['type_status']=$type_status;
 			$this -> game_pool_dao -> insert($idata22);
-
 		}
+
 		$tx_11 = array();
 		$tx_11['user_id'] = $user_id;
 		$tx_11['bet'] = $bet_o;
@@ -124,7 +123,6 @@ class Quotes_record_dao extends MY_Model {
 		$tx_11['advance_id'] = $advance_id;
 
 		$last_id=	$this -> play_game_dao -> insert($tx_11);
-
 
 		$tx_1 = array();
 		$tx_1['tx_type'] = "play_game";
