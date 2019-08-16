@@ -752,7 +752,7 @@ class Line_bot extends MY_Base_Controller {
 
 				}
 			}
-			if(mb_substr($message -> text,-1)=="8"){
+			if(mb_substr($message -> text,-2)=="08"){
 				if($user_point<8){
 					$msg_arr[] = array(
 						"type" => "text",
@@ -824,7 +824,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_8",
+					"text" => "下注_超八_08",
 					"area" => array(
 						"x" => 425,
 						"y" => 1234,
@@ -886,7 +886,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_8",
+					"text" => "下注_超八_08",
 					"area" => array(
 						"x" => 425,
 						"y" => 1443,
@@ -945,7 +945,7 @@ class Line_bot extends MY_Base_Controller {
 				),
 				array(
 					"type" => "message",
-					"text" => "下注_超八_8",
+					"text" => "下注_超八_08",
 					"area" => array(
 						"x" => 425,
 						"y" => 1234,
