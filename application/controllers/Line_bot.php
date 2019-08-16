@@ -96,10 +96,12 @@ class Line_bot extends MY_Base_Controller {
 			if($message -> text == '行情查詢') {
 				$Date = date("Y-m-d");
 				$price = $this -> d_q_dao -> find_d_q($Date);
+				$price1 = floatval($price->now_price)*1.05;
+				$price2 = floatval($price->now_price)*0.95;
 				if(!empty($price)){
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "今日開盤均價: {$price->average_price}\n目前均價: {$price->now_price}\n建議買價: {$price->now_price*1.05}\n建議賣價: {$price->now_price*0.95}",
+						"text" => "今日開盤均價: {$price->average_price}\n目前均價: {$price->now_price}\n建議買價: {$price1}\n建議賣價: {$price2}",
 					);
 				} else{
 					$p = $this -> d_q_dao -> find_last_d_q($Date);
@@ -109,9 +111,11 @@ class Line_bot extends MY_Base_Controller {
 					$dtx['last_price'] = $p->last_price;
 					$dtx['now_price'] = $p->now_price;
 					$this -> d_q_dao -> insert($dtx);
+					$price1 = floatval($p->now_price)*1.05;
+					$price2 = floatval($p->now_price)*0.95;
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "今日開盤均價: {$p->last_price}\n目前均價: {$p->now_price}\n建議買價:  {$price->now_price*1.05}\n建議賣價: {$price->now_price*0.95}",
+						"text" => "今日開盤均價: {$p->last_price}\n目前均價: {$p->now_price}\n建議買價: {$price1}\n建議賣價: {$price2}",
 					);
 				}
 				$sum_amt = intval($sum_amt);
