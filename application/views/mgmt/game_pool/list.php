@@ -42,9 +42,9 @@
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min100">彩池名稱</th>
-											<th class="min100">一般彩池</th>
-											<th class="min100">全盤彩池</th>
+											<th class="min100">下注</th>
+											<th class="min100">彩池類型</th>
+											<th class="min100">彩池</th>
 										</tr>
 									</thead>
 									<tbody>
