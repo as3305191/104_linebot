@@ -469,7 +469,7 @@ class Game_list extends MY_Base_Controller {
 		$qqq['$p']=$p;
 		$qqq['$p12']=$total_magnification;
 
-		$this -> to_json($qqq);
+		// $this -> to_json($qqq);
 
 	}
 
@@ -629,7 +629,7 @@ class Game_list extends MY_Base_Controller {
 	public function advance_play(){
 
 
-		for($aa=0;$aa<1000;$aa++){
+		for($aa=0;$aa<1;$aa++){
 			$icon_arr = array(
 				'seven_b',
 				'seven_r',
@@ -640,6 +640,11 @@ class Game_list extends MY_Base_Controller {
 				'grape',
 				'orange',
 				'cherry',
+			);
+			$icon_arr2 = array(
+				'seven_b',
+				'seven_r',
+
 			);
 			//-------計算出現次數
 			$counter_seven_b = 0;
@@ -676,46 +681,51 @@ class Game_list extends MY_Base_Controller {
 			$line8=0;
 			$system=0;
 			$num=0;
-			$new_icon_arr =shuffle($icon_arr);
-			$res1['newarray']=$icon_arr;
-		$match_arr = array(); // init match array
-		$res = array(); // init match array
+			shuffle($icon_arr);
+			$match_arr = array(); // init match array
+			$res = array(); // init match array
 
+		$count = 0;
 		for($i = 0 ; $i < 3 ; $i++) {
 			for($j = 0 ; $j < 3 ; $j++) {
-				for($k = 0 ; $k < 9 ; $k++) {
-					$row1 = array_rand($res1['newarray'],2);
+				if($count > 7) {
+					shuffle($icon_arr);
 				}
-				$match_arr[$i][$j] =$icon_arr[$row1[0]];
-				if($icon_arr[$row1[0]]=="seven_b"){
+				$count++;
+
+				$this_icon = $icon_arr[0];
+				$match_arr[$i][$j] = $this_icon;
+				if($this_icon=="seven_b"){
 					$counter_seven_b++;
 				}
-				if($icon_arr[$row1[0]]=="seven_r"){
+				if($this_icon=="seven_r"){
 					$counter_seven_r++;
 				}
-				if($icon_arr[$row1[0]]=="bar"){
+				if($this_icon=="bar"){
 					$counter_bar++;
 				}
-				if($icon_arr[$row1[0]]=="medal"){
+				if($this_icon=="medal"){
 					$counter_medal++;
 				}
-				if($icon_arr[$row1[0]]=="bell"){
+				if($this_icon=="bell"){
 					$counter_bell++;
 				}
-				if($icon_arr[$row1[0]]=="watermelon"){
+				if($this_icon=="watermelon"){
 					$counter_watermelon++;
 				}
-				if($icon_arr[$row1[0]]=="grape"){
+				if($this_icon=="grape"){
 					$counter_grape++;
 				}
-				if($icon_arr[$row1[0]]=="orange"){
+				if($this_icon=="orange"){
 					$counter_orange++;
 				}
-				if($icon_arr[$row1[0]]=="cherry"){
+				if($this_icon=="cherry"){
 					$counter_cherry++;
 				}
 			}
 		}
+		// $this->to_json ($match_arr);
+
 		if($counter_seven_b ==1 &&
 		$counter_seven_r ==1  &&
 		$counter_bar ==1 &&
