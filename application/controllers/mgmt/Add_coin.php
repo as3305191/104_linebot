@@ -125,7 +125,7 @@ class Add_coin extends MY_Mgmt_Controller {
 			$idata['tx_type']="add_coin";
 			$idata['tx_id']=$last_id;
 			$idata['point_change']=$point;
-			$idata['current_point']=floatva($get_current_point)+floatva($point)+$get_all_pool;
+			$idata['current_point']=floatval($get_current_point)+floatval($point)+$get_all_pool;
 			$idata['ntd_change']=$ntd;
 			$idata['current_ntd']=intval($get_current_ntd)+intval($ntd);
 			$last_id_insert_q = $this -> q_r_dao -> insert($idata);
