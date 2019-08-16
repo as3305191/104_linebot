@@ -132,6 +132,7 @@ class Game_list extends MY_Base_Controller {
 
 		$company3 = floatval($config -> com_pct)*$temporarily_bet;//公司3％
 
+		// 跨區
 		$idata_00['bet_type']="40";
 		$idata_00['pool_amt']=$temporarily_bet*floatval(0.01);
 		$idata_00['type']=0;
@@ -144,14 +145,21 @@ class Game_list extends MY_Base_Controller {
 		$idata_00['type_status']="100-199倍";
 		$this -> game_pool_dao -> insert($idata_00);//
 
+
 		$idata_00['bet_type']=$temporarily_bet;
-		$idata_00['pool_amt']=$temporarily_bet*floatval(0.25);
+		$idata_00['pool_amt']=$temporarily_bet*floatval(0.2);
+		$idata_00['type']=0;
+		$idata_00['type_status']="4-7倍";
+		$this -> game_pool_dao -> insert($idata_00);//
+
+		$idata_00['bet_type']=$temporarily_bet;
+		$idata_00['pool_amt']=$temporarily_bet*floatval(0.15);
 		$idata_00['type']=0;
 		$idata_00['type_status']="10-50倍";
 		$this -> game_pool_dao -> insert($idata_00);//
 
 		$idata_01['bet_type']=$temporarily_bet;
-		$idata_01['pool_amt']=$temporarily_bet*floatval(0.23);
+		$idata_01['pool_amt']=$temporarily_bet*floatval(0.13);
 		$idata_01['type']=0;
 		$idata_01['type_status']="51-99倍";
 		$this -> game_pool_dao -> insert($idata_01);
@@ -323,100 +331,101 @@ class Game_list extends MY_Base_Controller {
 
 		$p=mt_rand(1,100);
 		if($p>=$config->normal_winning&&$p<=intval($config->normal_winning)+intval($config->overall_winning)){//全盤
-			if($p==35){//任意7_seven
+			$p = mt_rand(1,24);
+			if($p==1){//任意7_seven
 				$type_status="任意7_seven";
 				$total_magnification=6;
 			}
-			if($p==36){//任意7_bar
+			if($p==2){//任意7_bar
 				$type_status="任意7_bar";
 				$total_magnification=7;
 			}
-			if($p==37){//任意7_medal
+			if($p==3){//任意7_medal
 				$type_status="任意7_medal";
 				$total_magnification=8;
 			}
-			if($p==38){//任意7_bell
+			if($p==4){//任意7_bell
 				$type_status="任意7_bell";
 				$total_magnification=9;
 			}
-			if($p==39){//任意7_watermelon
+			if($p==5){//任意7_watermelon
 				$type_status="任意7_watermelon";
 				$total_magnification=10;
 			}
-			if($p==40){//任意7_grape
+			if($p==6){//任意7_grape
 				$type_status="任意7_grape";
 				$total_magnification=11;
 			}
-			if($p==41){//任意7_orange
+			if($p==7){//任意7_orange
 				$type_status="任意7_orange";
 				$total_magnification=12;
 			}
-			if($p==42){//任意7_cherry
+			if($p==8){//任意7_cherry
 				$type_status="任意7_cherry";
 				$total_magnification=13;
 			}
 
-			 if($p==43){//任意8_seven
+			 if($p==9){//任意8_seven
 				$type_status="任意8_seven";
 				$total_magnification=14;
 			}
-			if($p==44){//任意8_bar
+			if($p==10){//任意8_bar
 				$type_status="任意8_bar";
 				$total_magnification=15;
 			}
-			if($p==45){//任意8_medal
+			if($p==11){//任意8_medal
 				$type_status="任意8_medal";
 				$total_magnification=16;
 			}
-			if($p==46){//任意8_bell
+			if($p==12){//任意8_bell
 				$type_status="任意8_bell";
 				$total_magnification=17;
 			}
-			if($p==47){//任意8_watermelon
+			if($p==13){//任意8_watermelon
 				$type_status="任意8_watermelon";
 				$total_magnification=18;
 			}
-			if($p==48){//任意8_grape
+			if($p==14){//任意8_grape
 				$type_status="任意8_grape";
 				$total_magnification=19;
 			}
-			if($p==49){//任意8_orange
+			if($p==15){//任意8_orange
 				$type_status="任意8_orange";
 				$total_magnification=20;
 			}
-			if($p==50){//任意8_cherry
+			if($p==16){//任意8_cherry
 				$type_status="任意8_cherry";
 				$total_magnification=21;
 			}
-			 if($p==51){//任意9_seven
+			 if($p==17){//任意9_seven
 				$type_status="任意9_seven";
 				$total_magnification=22;
 			}
-			if($p==52){//任意9_bar
+			if($p==18){//任意9_bar
 				$type_status="任意9_bar";
 				$total_magnification=23;
 			}
-			if($p==53){//任意9_medal
+			if($p==19){//任意9_medal
 				$type_status="任意9_medal";
 				$total_magnification=24;
 			}
-			if($p==54){//任意9_bell
+			if($p==20){//任意9_bell
 				$type_status="任意9_bell";
 				$total_magnification=25;
 			}
-			if($p==55){//任意9_watermelon
+			if($p==21){//任意9_watermelon
 				$type_status="任意9_watermelon";
 				$total_magnification=26;
 			}
-			if($p==56){//任意9_grape
+			if($p==22){//任意9_grape
 				$type_status="任意9_grape";
 				$total_magnification=27;
 			}
-			if($p==57){//任意9_orange
+			if($p==23){//任意9_orange
 				$type_status="任意9_orange";
 				$total_magnification=28;
 			}
-			if($p==58){//任意9_cherry
+			if($p==24){//任意9_cherry
 				$type_status="任意9_cherry";
 				$total_magnification=29;
 			}
@@ -428,23 +437,27 @@ class Game_list extends MY_Base_Controller {
 
 		} elseif($p<=$config->normal_winning) {//一般
 
-			if($p>=1&&$p<=15){//10-50
+			if($p>=1&&$p<=30){//4-7
+				$type_status="4-7倍";
+				$total_magnification=1;
+			}
+			if($p>=16&&$p<=45){//10-50
 				$type_status="10-50倍";
 				$total_magnification=1;
 			}
-			if($p>=16&&$p<=25){//51-99
+			if($p>=46&&$p<=55){//51-99
 				$type_status="51-99倍";
 				$total_magnification=2;
 			}
-			if ($p>=26&&$p<=30) {//100-199
+			if($p>=56&&$p<=60) {//100-199
 				$type_status="100-199倍";
 				$total_magnification=3;
 			}
-			if ($p>=31&&$p<=33) {//200-299
+			if($p>=61&&$p<=63) {//200-299
 				$type_status="200-299倍";
 				$total_magnification=4;
 			}
-			if ($p==34) {//300-399
+			if($p==64) {//300-399
 				$type_status="300-399倍";
 				$total_magnification=5;
 			}

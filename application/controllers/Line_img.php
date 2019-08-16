@@ -619,7 +619,7 @@ class Line_img extends MY_Base_Controller {
 		$win = json_decode($win_status);
 
 		$im = HOME_DIR . "img/line688/line/0808.jpg";
-		header("Content-Disposition: attachment; ");
+		// header("Content-Disposition: attachment; ");
 		header("Content-type: image/jpeg");
 		// header("Content-Length: " . filesize($im)); // 不要加這行
 		$jpg_image = imagecreatefromjpeg($im);
