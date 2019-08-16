@@ -124,21 +124,61 @@ class Game_list extends MY_Base_Controller {
 		$config = $this -> config_dao -> find_by_id(1);//設定%的地方
 		$pool_normal_pct = floatval($config -> normal_pct);//一般彩池
 		$pool_overall_pct = floatval($config -> overall_pct);//全盤彩池
+		$pool_cross_pct = floatval($config -> cross_pct);//跨區彩池
+
 		$multiple_normal = floatval($pool_normal_pct)*$temporarily_bet;
 		$multiple_overall = floatval($pool_overall_pct)*$temporarily_bet;
+		$multiple_cross = floatval($pool_cross_pct)*$temporarily_bet;
 
-		$company3 = floatval($config -> com_pct)*$temporarily_bet;
+		$company3 = floatval($config -> com_pct)*$temporarily_bet;//公司3％
 
+		$idata_00['bet_type']="40";
+		$idata_00['pool_amt']=$temporarily_bet*floatval(0.01);
+		$idata_00['type']=0;
+		$idata_00['type_status']="100-199倍";
+		$this -> game_pool_dao -> insert($idata_00);//
 
-		$idata['bet_type']=$temporarily_bet;
-		$idata['pool_amt']=$multiple_normal;
-		$idata['type']=0;
-		$last_id = $this -> game_pool_dao -> insert($idata);
+		$idata_00['bet_type']="0.8";
+		$idata_00['pool_amt']=$temporarily_bet*floatval(0.01);
+		$idata_00['type']=0;
+		$idata_00['type_status']="100-199倍";
+		$this -> game_pool_dao -> insert($idata_00);//
 
-		$idata1['bet_type']=$temporarily_bet;
-		$idata1['pool_amt']=$multiple_overall;
-		$idata1['type']=1;
-		$last_id = $this -> game_pool_dao -> insert($idata1);
+		$idata_00['bet_type']=$temporarily_bet;
+		$idata_00['pool_amt']=$temporarily_bet*floatval(0.25);
+		$idata_00['type']=0;
+		$idata_00['type_status']="10-50倍";
+		$this -> game_pool_dao -> insert($idata_00);//
+
+		$idata_01['bet_type']=$temporarily_bet;
+		$idata_01['pool_amt']=$temporarily_bet*floatval(0.23);
+		$idata_01['type']=0;
+		$idata_01['type_status']="1-99倍";
+		$this -> game_pool_dao -> insert($idata_01);
+
+		$idata_02['bet_type']=$temporarily_bet;
+		$idata_02['pool_amt']=$temporarily_bet*floatval(0.2);
+		$idata_02['type']=0;
+		$idata_02['type_status']="100-199倍";
+		$this -> game_pool_dao -> insert($idata_02);
+
+		$idata_03['bet_type']=$temporarily_bet;
+		$idata_03['pool_amt']=$temporarily_bet*floatval(0.1);
+		$idata_03['type']=0;
+		$idata_03['type_status']="200-299倍";
+		$this -> game_pool_dao -> insert($idata_03);
+
+		$idata_04['bet_type']=$temporarily_bet;
+		$idata_04['pool_amt']=$temporarily_bet*floatval(0.05);
+		$idata_04['type']=0;
+		$idata_04['type_status']="300-399倍";
+		$this -> game_pool_dao -> insert($idata_04);
+
+		$idata_10['bet_type']=$temporarily_bet;
+		$idata_10['pool_amt']=$temporarily_bet*floatval(0.005);
+		$idata_10['type']=1;
+		$idata_04['type_status']="任意7";
+		$last_id = $this -> game_pool_dao -> insert($idata_10);
 
 		// $get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet);
 		// $find_multiple=floatval($get_all)/$bet;
@@ -166,14 +206,11 @@ class Game_list extends MY_Base_Controller {
 		$advance_id = $list[0]->id;
 		$total = floatval($list[0]->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type);
-		$qqq['$list']=$list;
-		$qqq['$find_multiple']=$find_multiple;
-		$qqq['$p']=$p;
+		// $qqq['$list']=$list;
+		// $qqq['$find_multiple']=$find_multiple;
+		// $qqq['$p']=$p;
 
 		// $this -> to_json($qqq);
-
-
-
 
 	}
 
@@ -456,7 +493,7 @@ class Game_list extends MY_Base_Controller {
 				$counter_seven1=100000;
 			}
 			$res['seven']=1;
-			$res['counter_seven']=1;
+			$res['counter_seven']=$counter_seven_b+$counter_seven_r;
 
 		}
 
@@ -483,7 +520,7 @@ class Game_list extends MY_Base_Controller {
 				$counter_bar1=70000;
 			}
 			$res['bar']=1;
-			$res['counter_bar']=1;
+			$res['counter_bar']=$counter_bar;
 
 		}
 
@@ -510,7 +547,7 @@ class Game_list extends MY_Base_Controller {
 				$counter_medal1=60000;
 			}
 			$res['medal']=1;
-			$res['counter_medal']=1;
+			$res['counter_medal']=$counter_medal;
 
 		}
 
@@ -537,7 +574,7 @@ class Game_list extends MY_Base_Controller {
 				$counter_bell1=50000;
 			}
 			$res['bell']=1;
-			$res['counter_bell']=1;
+			$res['counter_bell']=$counter_bell;
 
 		}
 
@@ -561,7 +598,7 @@ class Game_list extends MY_Base_Controller {
 				$counter_watermelon1=40000;
 			}
 			$res['watermelon']=1;
-			$res['counter_watermelon']=1;
+			$res['counter_watermelon']=$counter_watermelon;
 
 		}
 
@@ -585,7 +622,7 @@ class Game_list extends MY_Base_Controller {
 				$counter_grape1=30000;
 			}
 			$res['grape']=1;
-			$res['counter_grape']=1;
+			$res['counter_grape']=$counter_grape;
 
 		}
 
@@ -609,7 +646,7 @@ class Game_list extends MY_Base_Controller {
 				$counter_cherry1=1000;
 			}
 			$res['cherry']=1;
-			$res['counter_cherry']=1;
+			$res['counter_cherry']=$counter_cherry;
 
 		}
 
@@ -633,7 +670,7 @@ class Game_list extends MY_Base_Controller {
 				$counter_orange1=20000;
 			}
 			$res['orange']=1;
-			$res['counter_orange']=1;
+			$res['counter_orange']=$counter_orange;
 
 		}
 

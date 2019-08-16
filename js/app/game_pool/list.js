@@ -41,14 +41,14 @@ var GamepoolAppClass = (function(app) {
 			columns : [{
 				data : 'bet_type',
 				render : function(d,t,r){
+					if(d == 0.8){
+						return '<span style="color:red">下注0.8彩池</span>';
+					}
 					if(d == 8){
 						return '<span style="color:red">下注8彩池</span>';
 					}
 					if(d == 40){
 						return '<span style="color:red">下注40彩池</span>';
-					}
-					if(d == 80){
-						return '<span style="color:red">下注80彩池</span>';
 					}
 				}
 			},{
