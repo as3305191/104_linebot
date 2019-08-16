@@ -50,7 +50,7 @@ var GamepoolAppClass = (function(app) {
 			}],
 			order : [[0, "asc"]],
 			columnDefs : [],
-
+			ordering: false,
 			footerCallback: function (row, data, start, end, display ) {
         var api = this.api();
 

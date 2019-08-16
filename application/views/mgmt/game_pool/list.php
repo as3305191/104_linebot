@@ -43,8 +43,8 @@
 									<thead>
 										<tr>
 											<th class="min100">下注</th>
-											<th class="min100">彩池類型</th>
-											<th class="min100">彩池</th>
+											<th class="min200">彩池類型</th>
+											<th class="">彩池</th>
 										</tr>
 									</thead>
 									<tbody>
