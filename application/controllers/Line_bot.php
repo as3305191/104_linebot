@@ -844,11 +844,6 @@ class Line_bot extends MY_Base_Controller {
 				),
 			)
 		);
-
-		$msg_arr[] = array(
-			"type" => "text",
-			"text" => "reulst",
-		);
 	}
 
 
@@ -910,13 +905,6 @@ class Line_bot extends MY_Base_Controller {
 					)
 				),
 			)
-		);
-
-		$this -> load -> model('Play_game_dao', 'play_game_dao');
-		$bet = $this -> play_game_dao -> find_by_id($id);
-		$msg_arr[] = array(
-			"type" => "text",
-			"text" => json_encode($bet),
 		);
 	}
 
