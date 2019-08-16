@@ -113,7 +113,7 @@ class Add_coin extends MY_Mgmt_Controller {
 			$atx['tx_type'] = "add_coin";
 			$atx['tx_id'] = $last_id;
 			$atx['corp_id'] = 1; // corp id
-			$atx['user_id'] = 528; // 固定給小林
+			$atx['user_id'] = 524; // 固定給小林
 			$atx['amt'] = $point;
 			$atx['brief'] = "系統增加點數 {$point}";
 			$this -> wtx_dao -> insert($atx);

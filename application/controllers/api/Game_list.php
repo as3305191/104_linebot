@@ -464,10 +464,10 @@ class Game_list extends MY_Base_Controller {
 		$advance_id = $list[0]->id;
 		$total = floatval($list[0]->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type,$type_status);
-		$qqq['$list']=$list;
-		// $qqq['$find_multiple']=$find_multiple;
-		$qqq['$p']=$p;
-		$qqq['$p12']=$total_magnification;
+		// $qqq['$list']=$list;
+		// // $qqq['$find_multiple']=$find_multiple;
+		// $qqq['$p']=$p;
+		// $qqq['$p12']=$total_magnification;
 
 		// $this -> to_json($qqq);
 
