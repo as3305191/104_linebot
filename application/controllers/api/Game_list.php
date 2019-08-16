@@ -453,7 +453,7 @@ class Game_list extends MY_Base_Controller {
 			$find_multiple=floatval($get_all)/$bet;
 			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
 
-		} if ($p>intval($config->overall_winning)+intval($config->normal_winning)) {//沒中
+		} elseif ($p>intval($config->overall_winning)+intval($config->normal_winning)) {//沒中
 			$type =3;
 			$type_status=0;
 			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type,$type_status);
@@ -473,7 +473,7 @@ class Game_list extends MY_Base_Controller {
 		$total = floatval($list1[0]->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type,$type_status);
 		$qqq['$list']=$list1;
-		// // $qqq['$find_multiple']=$find_multiple;
+		// $qqq['$find_multiple']=$find_multiple;
 		$qqq['$p']=$p;
 		$qqq['$p12']=$total_magnification;
 
