@@ -910,6 +910,11 @@ class Line_bot extends MY_Base_Controller {
 				),
 			)
 		);
+
+		$msg_arr[] = array(
+			"type" => "text",
+			"text" => base_url("line_img/line_result/{$id}/v1{$time}/1"),
+		);
 	}
 
 	private function show_super_8_not_first($id) {
