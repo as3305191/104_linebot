@@ -473,19 +473,18 @@ class Game_list extends MY_Base_Controller {
 			$find_multiple=floatval($get_all)/$bet;
 			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
 		}
+
 		if(empty($list)){
-			$type =3;
-			$total_magnification=0;
-			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type,$type_status);
+			$type=3;
+			$total_magnification=-1; // 0已經被4-7倍使用
+ 			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type,$type_status);
 			$find_multiple=floatval($get_all)/$bet;
-			$list1 = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
-		} else {
-			$list1=$list;
+			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
 		}
-		$advance_id = $list1[0]->id;
-		$total = floatval($list1[0]->total_multiple)*$bet;
+		$advance_id = $list[0]->id;
+		$total = floatval($list[0]->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type,$type_status);
-		$qqq['$list']=$list1;
+		$qqq['$list']=$list;
 		// $qqq['$find_multiple']=$find_multiple;
 		$qqq['$p']=$p;
 		$qqq['$p12']=$total_magnification;
