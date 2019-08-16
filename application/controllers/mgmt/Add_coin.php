@@ -101,6 +101,10 @@ class Add_coin extends MY_Mgmt_Controller {
 		$get_current_ntd = $this -> add_dao -> sum_all_ntd();
 		// $get_current_point=$this -> q_r_dao -> get_current_point();
 		$get_current_point =  $this -> wtx_dao -> get_sum_amt_total();
+
+		// 彩池
+		$get_all_pool = $this -> game_pool_dao -> get_all_pool_amt();
+
 		$Date = date("Y-m-d");
 
 		if(!empty($point)||!empty($ntd)) {
@@ -121,11 +125,10 @@ class Add_coin extends MY_Mgmt_Controller {
 			$idata['tx_type']="add_coin";
 			$idata['tx_id']=$last_id;
 			$idata['point_change']=$point;
-			$idata['current_point']=intval($get_current_point)+intval($point);
+			$idata['current_point']=floatva($get_current_point)+floatva($point)+$get_all_pool;
 			$idata['ntd_change']=$ntd;
 			$idata['current_ntd']=intval($get_current_ntd)+intval($ntd);
 			$last_id_insert_q = $this -> q_r_dao -> insert($idata);
-			$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
 			$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
 			$p1 = $this -> d_q_dao -> find_last_d_q($Date);
 			$dq =  $this -> d_q_dao -> find_d_q($Date);
@@ -134,7 +137,7 @@ class Add_coin extends MY_Mgmt_Controller {
 			if($cp != 0) {
 				$p=floatval($add_coin_daily->current_ntd)/floatval(intval($add_coin_daily->current_point));
 			}
-			$price1=round($p,8);
+			$price1 = round($p,8);
 			$dtx['date'] = $Date;
 			$dtx['average_price'] = $p1->last_price;
 			$dtx['last_price'] = $price1;
