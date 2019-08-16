@@ -153,7 +153,7 @@ class Game_list extends MY_Base_Controller {
 		$idata_01['bet_type']=$temporarily_bet;
 		$idata_01['pool_amt']=$temporarily_bet*floatval(0.23);
 		$idata_01['type']=0;
-		$idata_01['type_status']="1-99倍";
+		$idata_01['type_status']="51-99倍";
 		$this -> game_pool_dao -> insert($idata_01);
 
 		$idata_02['bet_type']=$temporarily_bet;
@@ -433,7 +433,7 @@ class Game_list extends MY_Base_Controller {
 				$total_magnification=1;
 			}
 			if($p>=16&&$p<=25){//51-99
-				$type_status="51-99倍 ";
+				$type_status="51-99倍";
 				$total_magnification=2;
 			}
 			if ($p>=26&&$p<=30) {//100-199
@@ -453,7 +453,7 @@ class Game_list extends MY_Base_Controller {
 			$find_multiple=floatval($get_all)/$bet;
 			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
 
-		} elseif ($p>intval($config->overall_winning)+intval($config->normal_winning)) {//沒中
+		} if ($p>intval($config->overall_winning)+intval($config->normal_winning)) {//沒中
 			$type =3;
 			$type_status=0;
 			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type,$type_status);
