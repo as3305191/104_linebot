@@ -99,7 +99,7 @@ class Line_bot extends MY_Base_Controller {
 				if(!empty($price)){
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "今日開盤均價: {$price->average_price}\n目前均價: {$price->now_price}",
+						"text" => "今日開盤均價: {$price->average_price}\n目前均價: {$price->now_price}\n建議買價: {$price->now_price*1.05}\n建議賣價: {$price->now_price*0.95}",
 					);
 				} else{
 					$p = $this -> d_q_dao -> find_last_d_q($Date);
@@ -111,7 +111,7 @@ class Line_bot extends MY_Base_Controller {
 					$this -> d_q_dao -> insert($dtx);
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "今日開盤均價: {$p->last_price}\n目前均價: {$p->now_price}",
+						"text" => "今日開盤均價: {$p->last_price}\n目前均價: {$p->now_price}\n建議買價:  {$price->now_price*1.05}\n建議賣價: {$price->now_price*0.95}",
 					);
 				}
 				$sum_amt = intval($sum_amt);
