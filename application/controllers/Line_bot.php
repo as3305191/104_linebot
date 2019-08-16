@@ -733,11 +733,11 @@ class Line_bot extends MY_Base_Controller {
 			$i = array();
 			$i['user_id'] = $user -> id;
 			$user_point=  $this -> wtx_dao -> get_sum_amt($user -> id);
-			if(mb_substr($message -> text,-1) == "8"){
+			if(mb_substr($message -> text,-3) == "0.8"){
 				if($user_point<0.8){
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "您的貨幣不到8,如果想取消請輸入881取消此功能",
+						"text" => "您的貨幣不到0.8,如果想取消請輸入881取消此功能",
 					);
 				} else{
 					$i['bet'] = 0.8;
@@ -752,11 +752,11 @@ class Line_bot extends MY_Base_Controller {
 
 				}
 			}
-			if(mb_substr($message -> text,-2)=="40"){
+			if(mb_substr($message -> text,-1)=="8"){
 				if($user_point<8){
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "您的貨幣不到40,如果想取消請輸入881取消此功能",
+						"text" => "您的貨幣不到8,如果想取消請輸入881取消此功能",
 					);
 				} else{
 					$i['bet'] = 8;
@@ -770,11 +770,11 @@ class Line_bot extends MY_Base_Controller {
 					$this -> show_super_8_second($msg_arr,$id, TRUE);
 				}
 			}
-			if(mb_substr($message -> text,-2)=="80"){
+			if(mb_substr($message -> text,-2)=="40"){
 				if($user_point<40){
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "您的貨幣不到80,如果想取消請輸入881取消此功能",
+						"text" => "您的貨幣不到40,如果想取消請輸入881取消此功能",
 					);
 				} else{
 					$i['bet'] = 40;
