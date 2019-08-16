@@ -439,7 +439,7 @@ class Game_list extends MY_Base_Controller {
 
 			if($p>=1&&$p<=30){//4-7
 				$type_status="4-7倍";
-				$total_magnification=1;
+				$total_magnification=0;
 			}
 			if($p>=16&&$p<=45){//10-50
 				$type_status="10-50倍";

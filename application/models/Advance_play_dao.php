@@ -101,7 +101,12 @@ class Advance_play_dao extends MY_Model {
 			$this -> db -> where('_m.total_multiple',0.00000000);
 		}
 
-		if($total_magnification<=5 && $total_magnification>0){
+		if($total_magnification<=5 && $total_magnification>=0){
+			if($total_magnification==0){
+				//4-7
+				$this -> db -> where('_m.total_multiple>=4');
+				$this -> db -> where('_m.total_multiple<=7');
+			}
 			if($total_magnification==1){
 				//10-50
 				$this -> db -> where('_m.total_multiple>=10');
