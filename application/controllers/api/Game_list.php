@@ -322,7 +322,7 @@ class Game_list extends MY_Base_Controller {
 		$total_magnification=0;
 
 		$p=mt_rand(1,100);
-		if($p>=$config->normal_winning&&$p<=$config->overall_winning){//全盤
+		if($p>=$config->normal_winning&&$p<=intval($config->normal_winning)+intval($config->overall_winning)){//全盤
 			if($p==35){//任意7_seven
 				$type_status="任意7_seven";
 				$total_magnification=6;
@@ -460,14 +460,22 @@ class Game_list extends MY_Base_Controller {
 			$find_multiple=floatval($get_all)/$bet;
 			$list = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
 		}
-
-		$advance_id = $list[0]->id;
-		$total = floatval($list[0]->total_multiple)*$bet;
+		if(empty($list)){
+			$type =3;
+			$total_magnification=0;
+			$get_all=$this -> game_pool_dao -> get_sum_pool_amt($last_id,$temporarily_bet,$type,$type_status);
+			$find_multiple=floatval($get_all)/$bet;
+			$list1 = $this -> advance_play_dao -> find_rand($find_multiple,$type,$total_magnification);
+		} else {
+			$list1=$list;
+		}
+		$advance_id = $list1[0]->id;
+		$total = floatval($list1[0]->total_multiple)*$bet;
 		$this -> insert_total_price($bet,$total,$user_id,$advance_id,$company3,$type,$type_status);
-		// $qqq['$list']=$list;
+		$qqq['$list']=$list1;
 		// // $qqq['$find_multiple']=$find_multiple;
-		// $qqq['$p']=$p;
-		// $qqq['$p12']=$total_magnification;
+		$qqq['$p']=$p;
+		$qqq['$p12']=$total_magnification;
 
 		// $this -> to_json($qqq);
 

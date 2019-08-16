@@ -102,153 +102,153 @@ class Advance_play_dao extends MY_Model {
 		}
 
 		if($total_magnification<=5 && $total_magnification>0){
-			if($total_magnification==1){
+			if($total_magnification=1){
 				//10-50
 				$this -> db -> where('_m.total_multiple>=10');
 				$this -> db -> where('_m.total_multiple<=50');
 			}
-			if($total_magnification==2){
+			if($total_magnification=2){
 				//51-99
 				$this -> db -> where('_m.total_multiple>=51');
 				$this -> db -> where('_m.total_multiple<=99');
 			}
-			if($total_magnification==3){
+			if($total_magnification=3){
 				//100-199
 				$this -> db -> where('_m.total_multiple>=100');
 				$this -> db -> where('_m.total_multiple<=199');
 			}
-			if($total_magnification==4){
+			if($total_magnification=4){
 				//200-299
 				$this -> db -> where('_m.total_multiple>=200');
 				$this -> db -> where('_m.total_multiple<=299');
 			}
-			if($total_magnification==5){
+			if($total_magnification=5){
 				//300-399
 				$this -> db -> where('_m.total_multiple>300');
 				$this -> db -> where('_m.total_multiple<399');
 			}
 		} elseif($total_magnification>5 && $total_magnification<=13){//全盤7
-				if($total_magnification==6){
+				if($total_magnification=6){
 					$this -> db -> where('_m.counter_num',7);
-					$this -> db -> where('_m.counter_system',seven);
+					$this -> db -> where('_m.counter_system','seven');
 
 				}
-				if($total_magnification==7){
+				if($total_magnification=7){
 					$this -> db -> where('_m.counter_num',7);
-					$this -> db -> where('_m.counter_system',bar);
+					$this -> db -> where('_m.counter_system','bar');
 
 				}
-				if($total_magnification==8){
+				if($total_magnification=8){
 					$this -> db -> where('_m.counter_num',7);
-					$this -> db -> where('_m.counter_system',medal);
+					$this -> db -> where('_m.counter_system','medal');
 
 				}
-				if($total_magnification==9){
+				if($total_magnification=9){
 					$this -> db -> where('_m.counter_num',7);
-					$this -> db -> where('_m.counter_system',bell);
+					$this -> db -> where('_m.counter_system','bell');
 
 				}
-				if($total_magnification==10){
+				if($total_magnification=10){
 					$this -> db -> where('_m.counter_num',7);
-					$this -> db -> where('_m.counter_system',watermelon);
+					$this -> db -> where('_m.counter_system','watermelon');
 
 				}
-				if($total_magnification==11){
+				if($total_magnification=11){
 					$this -> db -> where('_m.counter_num',7);
-					$this -> db -> where('_m.counter_system',grape);
+					$this -> db -> where('_m.counter_system','grape');
 
 				}
-				if($total_magnification==12){
+				if($total_magnification=12){
 					$this -> db -> where('_m.counter_num',7);
-					$this -> db -> where('_m.counter_system',orange);
+					$this -> db -> where('_m.counter_system','orange');
 
 				}
-				if($total_magnification==13){
+				if($total_magnification=13){
 					$this -> db -> where('_m.counter_num',7);
-					$this -> db -> where('_m.counter_system',cherry);
+					$this -> db -> where('_m.counter_system','cherry');
 
 				}
 			}elseif($total_magnification>13 && $total_magnification<=21){//全盤8
 
-				if($total_magnification==14){
+				if($total_magnification=14){
 					$this -> db -> where('_m.counter_num',8);
-					$this -> db -> where('_m.counter_system',seven);
+					$this -> db -> where('_m.counter_system','seven');
 
 				}
-				if($total_magnification==15){
+				if($total_magnification=15){
 					$this -> db -> where('_m.counter_num',8);
-					$this -> db -> where('_m.counter_system',bar);
+					$this -> db -> where('_m.counter_system','bar');
 
 				}
-				if($total_magnification==16){
+				if($total_magnification=16){
 					$this -> db -> where('_m.counter_num',8);
-					$this -> db -> where('_m.counter_system',medal);
+					$this -> db -> where('_m.counter_system','medal');
 
 				}
-				if($total_magnification==17){
+				if($total_magnification=17){
 					$this -> db -> where('_m.counter_num',8);
-					$this -> db -> where('_m.counter_system',bell);
+					$this -> db -> where('_m.counter_system','bell');
 
 				}
-				if($total_magnification==18){
+				if($total_magnification=18){
 					$this -> db -> where('_m.counter_num',8);
-					$this -> db -> where('_m.counter_system',watermelon);
+					$this -> db -> where('_m.counter_system','watermelon');
 
 				}
-				if($total_magnification==19){
+				if($total_magnification=19){
 					$this -> db -> where('_m.counter_num',8);
-					$this -> db -> where('_m.counter_system',grape);
+					$this -> db -> where('_m.counter_system','grape');
 
 				}
-				if($total_magnification==20){
+				if($total_magnification=20){
 					$this -> db -> where('_m.counter_num',8);
-					$this -> db -> where('_m.counter_system',orange);
+					$this -> db -> where('_m.counter_system','orange');
 
 				}
-				if($total_magnification==21){
+				if($total_magnification=21){
 					$this -> db -> where('_m.counter_num',8);
-					$this -> db -> where('_m.counter_system',cherry);
+					$this -> db -> where('_m.counter_system','cherry');
 
 				}
 			}elseif($total_magnification>21 && $total_magnification<=29){//全盤9
-				if($total_magnification==22){
+				if($total_magnification=22){
 					$this -> db -> where('_m.counter_num',9);
-					$this -> db -> where('_m.counter_system',seven);
+					$this -> db -> where('_m.counter_system','seven');
 
 				}
-				if($total_magnification==23){
+				if($total_magnification=23){
 					$this -> db -> where('_m.counter_num',9);
-					$this -> db -> where('_m.counter_system',bar);
+					$this -> db -> where('_m.counter_system','bar');
 
 				}
-				if($total_magnification==24){
+				if($total_magnification=24){
 					$this -> db -> where('_m.counter_num',9);
-					$this -> db -> where('_m.counter_system',medal);
+					$this -> db -> where('_m.counter_system','medal');
 
 				}
-				if($total_magnification==25){
+				if($total_magnification=25){
 					$this -> db -> where('_m.counter_num',9);
-					$this -> db -> where('_m.counter_system',bell);
+					$this -> db -> where('_m.counter_system','bell');
 
 				}
-				if($total_magnification==26){
+				if($total_magnification=26){
 					$this -> db -> where('_m.counter_num',9);
-					$this -> db -> where('_m.counter_system',watermelon);
+					$this -> db -> where('_m.counter_system','watermelon');
 
 				}
-				if($total_magnification==27){
+				if($total_magnification=27){
 					$this -> db -> where('_m.counter_num',9);
-					$this -> db -> where('_m.counter_system',grape);
+					$this -> db -> where('_m.counter_system','grape');
 
 				}
-				if($total_magnification==28){
+				if($total_magnification=28){
 					$this -> db -> where('_m.counter_num',9);
-					$this -> db -> where('_m.counter_system',orange);
+					$this -> db -> where('_m.counter_system','orange');
 
 				}
-				if($total_magnification==29){
+				if($total_magnification=29){
 					$this -> db -> where('_m.counter_num',9);
-					$this -> db -> where('_m.counter_system',cherry);
+					$this -> db -> where('_m.counter_system','cherry');
 
 				}
 			}
@@ -258,7 +258,11 @@ class Advance_play_dao extends MY_Model {
     $this -> db -> limit(1);
 		$query = $this -> db -> get();
 		$list = $query -> result();
-		return $list;
+		if(!empty($list) ) {
+			return $list;
+		} else{
+			return NULL;
+		}
 	}
 }
 ?>
