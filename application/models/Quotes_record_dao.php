@@ -112,7 +112,7 @@ class Quotes_record_dao extends MY_Model {
 			$idata22['bet_type']=$bet_o;
 			$idata22['pool_amt']=-$total;
 			$idata22['type']=0;
-			$idata2['type_status']=$type_status;
+			$idata22['type_status']=$type_status;
 			$this -> game_pool_dao -> insert($idata22);
 
 		}
