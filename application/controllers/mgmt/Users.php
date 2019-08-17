@@ -413,6 +413,7 @@ class Users extends MY_Mgmt_Controller {
 			'address',
 			'birthday',
 			'user_name',
+			'nick_name',
 			'email',
 			'mobile',
 			'is_valid_mobile',
