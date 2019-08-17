@@ -147,14 +147,7 @@
 						</div>
 					</div>
 				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">郵遞區號</label>
-						<div class="col-md-6">
-							<input type="text"  class="form-control" name="zip" value="<?= isset($item) ? $item -> zip  : '' ?>" />
-						</div>
-					</div>
-				</fieldset>
+				
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">地址</label>
@@ -174,17 +167,6 @@
 							   </span>
 							</div>
 
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">地區<?= $item -> lang ?></label>
-						<div class="col-md-6">
-							<select name="lang" onchange="">
-								<option value="cht" <?= isset($item) && $item -> lang == 'cht' ? 'selected' : '' ?>>台灣</option>
-								<option value="chs" <?= isset($item) && $item -> lang == 'chs' ? 'selected' : '' ?>>大陸</option>
-							</select>
 						</div>
 					</div>
 				</fieldset>
@@ -218,6 +200,17 @@
 							<select name="is_bypass_sum_amt_rank" class="form-control">
 								<option value="1" <?= isset($item) && $item -> is_bypass_sum_amt_rank == '1' ? 'selected' : '' ?>>是</option>
 								<option value="0" <?= isset($item) && $item -> is_bypass_sum_amt_rank == '0' ? 'selected' : '' ?>>否</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">免手續費</label>
+						<div class="col-md-6">
+							<select name="is_bypass_service_fee" class="form-control">
+								<option value="1" <?= isset($item) && $item -> is_bypass_service_fee == '1' ? 'selected' : '' ?>>是</option>
+								<option value="0" <?= isset($item) && $item -> is_bypass_service_fee == '0' ? 'selected' : '' ?>>否</option>
 							</select>
 						</div>
 					</div>

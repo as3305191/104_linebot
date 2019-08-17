@@ -417,8 +417,7 @@ class Users extends MY_Mgmt_Controller {
 			'mobile',
 			'is_valid_mobile',
 			'is_bypass_sum_amt_rank',
-			'lang',
-			'zip'
+			'is_bypass_service_fee',
 		));
 
 		if(empty($id)) {
