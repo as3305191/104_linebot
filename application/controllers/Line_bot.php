@@ -460,14 +460,6 @@ class Line_bot extends MY_Base_Controller {
 								$get_current_ntd = $this -> q_r_dao -> get_current_ntd();
 								$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
 
-								$ctx = array();
-								$ctx['tx_type'] = "transfer_gift";
-								$ctx['tx_id'] = $last_id;
-								$ctx['point_change'] = -floatval($ope_amt)/2.0;
-								$ctx['current_point'] = $samt2 + $get_all_pool;
-								$ctx['ntd_change'] = 0;
-								$ctx['current_ntd'] = $get_current_ntd -> current_ntd;
-								$this -> q_r_dao -> insert($ctx);
 
 								// 公司分潤
 								$tx1 = array();
@@ -562,6 +554,14 @@ class Line_bot extends MY_Base_Controller {
 									}
 								} while ($promo_user_id > 0);
 
+								$ctx = array();
+								$ctx['tx_type'] = "transfer_gift";
+								$ctx['tx_id'] = $last_id;
+								$ctx['point_change'] = -floatval($ope_amt)/2.0;
+								$ctx['current_point'] = $samt2 + $get_all_pool;
+								$ctx['ntd_change'] = 0;
+								$ctx['current_ntd'] = $get_current_ntd -> current_ntd;
+								$this -> q_r_dao -> insert($ctx);
 
 								$Date = date("Y-m-d");
 
