@@ -124,15 +124,6 @@ class Quotes_record_dao extends MY_Model {
 
 		$last_id=	$this -> play_game_dao -> insert($tx_11);
 
-		$tx_1 = array();
-		$tx_1['tx_type'] = "play_game";
-		$tx_1['tx_id'] = $last_id;
-		$tx_1['point_change'] = $for_q_amt;
-		$current_point= floatval($get_current_point->current_point)+floatval($for_q_amt)+$get_all_pool; // 加上彩池
-		$tx_1['current_point'] =$current_point;
-		$tx_1['current_ntd'] =$get_current_ntd->current_ntd; // 需要紀錄ntd
-		$last_id_insert_q=$this -> q_r_dao -> insert($tx_1);
-
 		$tx1 = array();
 		$tx1['corp_id'] = 1;
 		$tx1['user_id'] = $user_id;
@@ -156,8 +147,38 @@ class Quotes_record_dao extends MY_Model {
 		$tx['tx_id'] = $last_id;
 		$tx['brief'] = "會員 {$user_id} 遊戲贏得 {$total} ";
 		// $tx['brief'] = "會員 xxx 遊戲贏得 {$total} ";
-
 		$this -> wtx_dao -> insert($tx);
+
+		return $last_id;
+	}
+
+	function insert_all_total1($bet_o,$total,$for_q_amt,$user_id,$advance_id,$type,$type_status,$last_id) {
+		$this -> load -> model('Com_tx_dao', 'ctx_dao');
+		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
+		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
+		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
+		$this -> load -> model('Play_game_dao', 'play_game_dao');
+		$this -> load -> model('Config_dao', 'config_dao');
+		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
+
+		$config = $this -> config_dao -> find_by_id(1);//設定%的地方
+
+		$get_current_point=$this -> q_r_dao -> get_current_point();
+		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
+		$bureau_num = generate_random_string($length = 4);
+		$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
+
+
+		$tx_1 = array();
+		$tx_1['tx_type'] = "play_game";
+		$tx_1['tx_id'] = $last_id;
+		$tx_1['point_change'] = $for_q_amt;
+		$current_point= floatval($get_current_point->current_point)+floatval($for_q_amt)+$get_all_pool; // 加上彩池
+		$tx_1['current_point'] =$current_point;
+		$tx_1['current_ntd'] =$get_current_ntd->current_ntd; // 需要紀錄ntd
+		$last_id_insert_q=$this -> q_r_dao -> insert($tx_1);
+
+
 		$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
 		$Date = date("Y-m-d");
 		$p1 = $this -> d_q_dao -> find_last_d_q($Date);
@@ -181,9 +202,7 @@ class Quotes_record_dao extends MY_Model {
 			$this -> d_q_dao -> insert($dtx);
 		}
 
-		return $last_id;
 	}
-
 
 	function find_last() {
 		$this -> db -> order_by("id", 'desc');

@@ -598,6 +598,8 @@ class Game_list extends MY_Base_Controller {
 
 			}
 		} while ($promo_user_id > 0);
+		$last_id11=$do_insert;
+		$this -> q_r_dao -> insert_all_total1($bet_o,$total,$for_q_amt,$user_id,$advance_id,$type,$type_status,$last_id11);
 
 		$this -> to_json($res1);
 	}
