@@ -167,13 +167,14 @@ class Quotes_record_dao extends MY_Model {
 		$get_current_ntd=$this -> q_r_dao -> get_current_ntd();
 		$bureau_num = generate_random_string($length = 4);
 		$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
+		$get_all_wtx=$this -> wtx_dao -> get_sum_amt_total();
 
 
 		$tx_1 = array();
 		$tx_1['tx_type'] = "play_game";
 		$tx_1['tx_id'] = $last_id;
 		$tx_1['point_change'] = $for_q_amt;
-		$current_point= floatval($get_current_point->current_point)+floatval($for_q_amt)+$get_all_pool; // 加上彩池
+		$current_point= $get_all_wtx+$get_all_pool; // 加上彩池
 		$tx_1['current_point'] =$current_point;
 		$tx_1['current_ntd'] =$get_current_ntd->current_ntd; // 需要紀錄ntd
 		$last_id_insert_q=$this -> q_r_dao -> insert($tx_1);
@@ -184,10 +185,10 @@ class Quotes_record_dao extends MY_Model {
 		$p1 = $this -> d_q_dao -> find_last_d_q($Date);
 		$dq =  $this -> d_q_dao -> find_d_q($Date);
 		$dtx = array();
-		$cp = floatval(intval($get_current_point->current_point)); // 避免除0問題
+		$cp = floatval(intval($current_point)); // 避免除0問題
 		$p = 0;
 		if($cp != 0) {
-			$p=floatval($get_current_ntd->current_ntd)/floatval(intval($get_current_point->current_point));
+			$p=floatval($get_current_ntd->current_ntd)/floatval(intval($current_point));
 		}
 		$price=round($p,8);
 		$dtx['date'] = $Date;
