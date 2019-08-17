@@ -553,12 +553,15 @@ class Line_bot extends MY_Base_Controller {
 
 									}
 								} while ($promo_user_id > 0);
+								$get_all_wtx=$this -> wtx_dao -> get_sum_amt_total();
+								$get_all_pool=$this -> game_pool_dao -> get_all_pool_amt();
 
 								$ctx = array();
 								$ctx['tx_type'] = "transfer_gift";
 								$ctx['tx_id'] = $last_id;
 								$ctx['point_change'] = -floatval($ope_amt)/2.0;
-								$ctx['current_point'] = $samt2 + $get_all_pool;
+								$current_point= $get_all_wtx+$get_all_pool; // 加上彩池
+								$ctx['current_point'] = $current_point;
 								$ctx['ntd_change'] = 0;
 								$ctx['current_ntd'] = $get_current_ntd -> current_ntd;
 								$this -> q_r_dao -> insert($ctx);
@@ -571,10 +574,10 @@ class Line_bot extends MY_Base_Controller {
 								$p1 = $this -> d_q_dao -> find_last_d_q($Date);
 								$dtx = array();
 								$dtx['date'] = $Date;
-								$cp = floatval(intval($get_current_point1->current_point)); // 避免除0問題
+								$cp = floatval(intval($current_point)); // 避免除0問題
 								$p = 0;
 								if($cp != 0) {
-									$p=floatval($get_current_ntd1->current_ntd)/floatval(intval($get_current_point1->current_point));
+									$p=floatval($get_current_ntd1->current_ntd)/floatval(intval($current_point));
 								}
 								$price=round($p,8);
 								$dtx['average_price'] = $p1->last_price;
