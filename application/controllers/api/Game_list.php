@@ -515,6 +515,16 @@ class Game_list extends MY_Base_Controller {
 		$aloc_com_1['note'] = "下注向上分配分潤 {$aloc_com_1_amt}";
 		$this -> ctx_dao -> insert($aloc_com_1);
 
+		// 公司分潤 point
+		$atx = array();
+		$atx['tx_type'] = "add_coin_game";
+		$atx['tx_id'] = $last_id;
+		$atx['corp_id'] = 1; // corp id
+		$atx['user_id'] = 528; // 固定給小林
+		$atx['amt'] = $aloc_com_1_amt;
+		$atx['brief'] = "下注向上分配分潤 {$aloc_com_1_amt}";
+		$this -> wtx_dao -> insert($atx);
+
 		// 向上分配
 		$promo_user_id = 0;
 		$alloc_amt = floatval($company3) / 3.0;//公司拆帳1/3部分
@@ -560,6 +570,16 @@ class Game_list extends MY_Base_Controller {
 					$aloc_com['note'] = "下注向上分配分潤 {$aloc_com_amt}";
 					$this -> ctx_dao -> insert($aloc_com);
 
+					// 公司分潤 point
+					$atx = array();
+					$atx['tx_type'] = "add_coin_game";
+					$atx['tx_id'] = $last_id;
+					$atx['corp_id'] = 1; // corp id
+					$atx['user_id'] = 528; // 固定給小林
+					$atx['amt'] = $aloc_com_amt;
+					$atx['brief'] = "下注向上分配分潤 {$aloc_com_amt}";
+					$this -> wtx_dao -> insert($atx);
+
 				}else {
 					$alloc_amt = $residual_amt;
 					// 搜尋上一層推薦人
@@ -579,6 +599,16 @@ class Game_list extends MY_Base_Controller {
 						$aloc_com['income_id'] = $last_id;
 						$aloc_com['note'] = "下注向上分配分潤 {$aloc_com_amt}";
 						$this -> ctx_dao -> insert($aloc_com);
+
+						// 公司分潤 point
+						$atx = array();
+						$atx['tx_type'] = "add_coin_game";
+						$atx['tx_id'] = $last_id;
+						$atx['corp_id'] = 1; // corp id
+						$atx['user_id'] = 528; // 固定給小林
+						$atx['amt'] = $aloc_com_amt;
+						$atx['brief'] = "下注向上分配分潤 {$aloc_com_amt}";
+						$this -> wtx_dao -> insert($atx);
 					}
 
 				}
@@ -595,6 +625,16 @@ class Game_list extends MY_Base_Controller {
 				$aloc_com['income_id'] = $last_id;
 				$aloc_com['note'] = "下注向上分配分潤 {$aloc_com_amt}";
 				$this -> ctx_dao -> insert($aloc_com);
+
+				// 公司分潤 point
+				$atx = array();
+				$atx['tx_type'] = "add_coin_game";
+				$atx['tx_id'] = $last_id;
+				$atx['corp_id'] = 1; // corp id
+				$atx['user_id'] = 528; // 固定給小林
+				$atx['amt'] = $aloc_com_amt;
+				$atx['brief'] = "下注向上分配分潤 {$aloc_com_amt}";
+				$this -> wtx_dao -> insert($atx);
 
 			}
 		} while ($promo_user_id > 0);
