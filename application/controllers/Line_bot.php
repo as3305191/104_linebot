@@ -483,6 +483,16 @@ class Line_bot extends MY_Base_Controller {
 									$tx1['note'] = "贈禮公司分潤 {$amt1}";
 									$this -> ctx_dao -> insert($tx1);
 
+									// 公司分潤 point
+									$atx = array();
+									$atx['tx_type'] = "add_coin_gift";
+									$atx['tx_id'] = $last_id;
+									$atx['corp_id'] = 1; // corp id
+									$atx['user_id'] = 528; // 固定給小林
+									$atx['amt'] = $amt1;
+									$atx['brief'] = "贈禮公司分潤 {$amt1}";
+									$this -> wtx_dao -> insert($atx);
+
 									// 向上分配
 									$promo_user_id = 0;
 									$alloc_amt = floatval($ope_amt) / 4.0;
@@ -527,6 +537,16 @@ class Line_bot extends MY_Base_Controller {
 												$aloc_com['note'] = "贈禮向上分配分潤 {$aloc_com_amt}";
 												$this -> ctx_dao -> insert($aloc_com);
 
+												// 公司分潤 point
+												$atx = array();
+												$atx['tx_type'] = "add_coin_gift";
+												$atx['tx_id'] = $last_id;
+												$atx['corp_id'] = 1; // corp id
+												$atx['user_id'] = 528; // 固定給小林
+												$atx['amt'] = $aloc_com_amt;
+												$atx['brief'] = "贈禮向上分配分潤 {$aloc_com_amt}";
+												$this -> wtx_dao -> insert($atx);
+
 											}else {
 												$alloc_amt = $residual_amt;
 												// 搜尋上一層推薦人
@@ -546,6 +566,16 @@ class Line_bot extends MY_Base_Controller {
 													$aloc_com['income_id'] = $last_id;
 													$aloc_com['note'] = "贈禮向上分配分潤 {$aloc_com_amt}";
 													$this -> ctx_dao -> insert($aloc_com);
+
+													// 公司分潤 point
+													$atx = array();
+													$atx['tx_type'] = "add_coin_gift";
+													$atx['tx_id'] = $last_id;
+													$atx['corp_id'] = 1; // corp id
+													$atx['user_id'] = 528; // 固定給小林
+													$atx['amt'] = $aloc_com_amt;
+													$atx['brief'] = "贈禮向上分配分潤 {$aloc_com_amt}";
+													$this -> wtx_dao -> insert($atx);
 												}
 
 											}
@@ -562,6 +592,16 @@ class Line_bot extends MY_Base_Controller {
 											$aloc_com['income_id'] = $last_id;
 											$aloc_com['note'] = "贈禮向上分配分潤 {$aloc_com_amt}";
 											$this -> ctx_dao -> insert($aloc_com);
+
+											// 公司分潤 point
+											$atx = array();
+											$atx['tx_type'] = "add_coin_gift";
+											$atx['tx_id'] = $last_id;
+											$atx['corp_id'] = 1; // corp id
+											$atx['user_id'] = 528; // 固定給小林
+											$atx['amt'] = $aloc_com_amt;
+											$atx['brief'] = "贈禮向上分配分潤 {$aloc_com_amt}";
+											$this -> wtx_dao -> insert($atx);
 
 										}
 									} while ($promo_user_id > 0);
