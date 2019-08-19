@@ -98,8 +98,8 @@ define('CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '83bb1fa30ec4638ac
 
 define('LOGIN_CHANNEL_ID', (ENVIRONMENT_SETUP == 'production' ? '1603348495' : '1603348495'));
 define('LOGIN_CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '0c2db1d52348e24d56b83e12e24e58ec' : '0c2db1d52348e24d56b83e12e24e58ec'));
-define('BASE_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://fish.17lineplay.com/coc_bot' : 'https://fish.17lineplay.com/coc_bot'));
-define('GAME_WEB_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://fish.17lineplay.com/coc_bot/line_login' : 'https://fish.17lineplay.com/coc_bot/line_login'));
+define('BASE_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://fish.17lineplay.com/coc_bot' : 'https://fish.17lineplay.com/coc_bot_dev'));
+define('GAME_WEB_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://fish.17lineplay.com/coc_bot/line_login' : 'https://fish.17lineplay.com/coc_bot_dev/line_login'));
 define('PUSH_URL', (ENVIRONMENT_SETUP == 'production' ? 'http://34.80.8.20:8988/check_push' : 'http://34.80.8.20:8988/check_push'));
 
 define('HOME_DIR', './');
@@ -121,8 +121,6 @@ define('PLAY_SECONDS', 30);
 define('OPENING_SECONDS', 1);
 define('OPEN_SECONDS', 10);
 define('BONUS_SECONDS', 3);
-
-define('WANG_URL', 'http://scratch-demo-api.wangzugames.com/waa/v1/');
 
 define('RACE_BET_SECONDS', 180);
 define('RACE_RACE_SECONDS', 0);
