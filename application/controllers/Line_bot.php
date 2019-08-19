@@ -1086,8 +1086,8 @@ class Line_bot extends MY_Base_Controller {
 			),
 			"actions" => array(
 				array(
-					"type" => "message",
-					"text" => "line://app/1603348495-3gP8o0wv",
+					"type" => "uri",
+					"linkUri" => "line://app/1603348495-3gP8o0wv",
 					"area" => array(
 						"x" => 16,
 						"y" => 13,
