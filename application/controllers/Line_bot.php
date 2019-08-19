@@ -1078,7 +1078,7 @@ class Line_bot extends MY_Base_Controller {
 		$line_share_url = urlencode("立即加入coc娛樂虛擬貨幣平台，讓你體驗漲的感覺及虛擬貨幣的娛樂應用\n" . GAME_WEB_URL . "?promo={$user->gift_id}");
 		$msg_arr[] = array(
 			"type" => "imagemap",
-			"baseUrl" => base_url("line_img/line_jpg/share/v2/1"),
+			"baseUrl" => base_url("line_img/line_jpg/share/v3/1"),
 			"altText" => "功能選單",
 			"baseSize" => array(
 				"width" => "1040",
