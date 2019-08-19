@@ -73,7 +73,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-
 $db['default'] = array(
 	'dsn'	=> 'mysql:host=' . (ENVIRONMENT_SETUP == 'production' ? '10.94.0.5' : '34.80.100.131')  . '; dbname=' . (ENVIRONMENT_SETUP == 'production' ? 'coc_bot' : 'coc_bot_dev') . '; charset=utf8;',
 	'username' => 'apple',
