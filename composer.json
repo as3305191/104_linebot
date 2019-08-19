@@ -11,6 +11,7 @@
     "require": {
         "codeigniter/framework": "3.1.9",
         "alibabacloud/client": "^1.0",
-        "monolog/monolog": "1.0.*"
+        "monolog/monolog": "1.0.*",
+        "robmorgan/phinx": "^0.10.8"
     }
 }

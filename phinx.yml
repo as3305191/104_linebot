@@ -1,0 +1,26 @@
+paths:
+    migrations: '%%PHINX_CONFIG_DIR%%/db/migrations'
+    seeds: '%%PHINX_CONFIG_DIR%%/db/seeds'
+
+environments:
+    default_migration_table: phinxlog
+    default_database: development
+    production:
+        adapter: mysql
+        host: 34.80.100.131
+        name: coc_bot
+        user: apple
+        pass: '!apple'
+        port: 3306
+        charset: utf8
+
+    development:
+        adapter: mysql
+        host: 34.80.100.131
+        name: coc_bot_dev
+        user: apple
+        pass: '!apple'
+        port: 3306
+        charset: utf8
+
+version_order: creation
