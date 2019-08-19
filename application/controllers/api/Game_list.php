@@ -437,27 +437,27 @@ class Game_list extends MY_Base_Controller {
 
 		} elseif($p<=$config->normal_winning) {//一般
 
-			if($p>=1&&$p<=30){//4-7
+			if($p>=1&&$p<=40){//4-7
 				$type_status="4-7倍";
 				$total_magnification=0;
 			}
-			if($p>=16&&$p<=45){//10-50
+			if($p>=41&&$p<=60){//10-50
 				$type_status="10-50倍";
 				$total_magnification=1;
 			}
-			if($p>=46&&$p<=55){//51-99
+			if($p>=61&&$p<=70){//51-99
 				$type_status="51-99倍";
 				$total_magnification=2;
 			}
-			if($p>=56&&$p<=60) {//100-199
+			if($p>=71&&$p<=80) {//100-199
 				$type_status="100-199倍";
 				$total_magnification=3;
 			}
-			if($p>=61&&$p<=63) {//200-299
+			if($p>=81&&$p<=85) {//200-299
 				$type_status="200-299倍";
 				$total_magnification=4;
 			}
-			if($p==64) {//300-399
+			if($p>=86&&$p<=88) {//300-399
 				$type_status="300-399倍";
 				$total_magnification=5;
 			}
