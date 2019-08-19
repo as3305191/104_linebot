@@ -1087,7 +1087,7 @@ class Line_bot extends MY_Base_Controller {
 			"actions" => array(
 				array(
 					"type" => "message",
-					"text" => "前往官方",
+					"text" => "line://app/1603348495-3gP8o0wv",
 					"area" => array(
 						"x" => 16,
 						"y" => 13,
