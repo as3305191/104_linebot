@@ -96,17 +96,21 @@ class Set_up_super8 extends MY_Mgmt_Controller {
 		$overall_pct = $this -> get_post('overall_pct');
 		$normal_winning = $this -> get_post('normal_winning');
 		$overall_winning = $this -> get_post('overall_winning');
+		$cross_pct = $this -> get_post('cross_pct');
+
 		$id=1;
 		$data['com_pct']=$com_pct;
 		$data['normal_pct']=$normal_pct;
 		$data['overall_pct']=$overall_pct;
+		$data['cross_pct']=$cross_pct;
+
 		$data1['normal_winning']=$normal_winning;
-		$data1['overall_winning']=floatval($overall_winning)+floatval($normal_winning);
-		$sum=floatval($com_pct)+floatval($normal_pct)+floatval($overall_pct);
+		$data1['overall_winning']=$overall_winning;
+		$sum=floatval($com_pct)+floatval($normal_pct)+floatval($overall_pct)floatval($cross_pct);
 		$sum1=floatval($overall_winning)+floatval($normal_winning);
 
-		if(!empty($com_pct)||!empty($normal_pct)||!empty($overall_pct)) {
-			if(!empty($com_pct)&&!empty($normal_pct)&&!empty($overall_pct)) {
+		if(!empty($com_pct)||!empty($normal_pct)||!empty($overall_pct)||!empty($cross_pct)) {
+			if(!empty($com_pct)&&!empty($normal_pct)&&!empty($overall_pct)&&!empty($cross_pct)) {
 				if($sum==1){
 					$this -> config_dao -> update_by($data,'id',$id);
 					$res['success'] = "true";

@@ -15,16 +15,19 @@
 			公司拆帳：<span id="config_com_pct"><?= !empty($config) ? $config -> com_pct : 0 ?></span>
 		</div>
 		<div class="widget-toolbar pull-left">
-			一般拆帳：<span id="config_normal_pct"><?= !empty($config) ? $config -> normal_pct : 0 ?></span>
+			一般彩池：<span id="config_normal_pct"><?= !empty($config) ? $config -> normal_pct : 0 ?></span>
 		</div>
 		<div class="widget-toolbar pull-left">
-			全盤拆帳：<span id="config_overall_pct"><?= !empty($config) ? $config -> overall_pct : 0 ?></span>
+			全盤彩池：<span id="config_overall_pct"><?= !empty($config) ? $config -> overall_pct : 0 ?></span>
+		</div>
+		<div class="widget-toolbar pull-left">
+			跨區彩池：<span id="config_cross_pct"><?= !empty($config) ? $config -> cross_pct : 0 ?></span>
 		</div>
 		<div class="widget-toolbar pull-left">
 			一般中獎：<span id="config_normal_winning"><?= !empty($config) ? $config -> normal_winning : 0 ?></span>
 		</div>
 		<div class="widget-toolbar pull-left">
-			全盤中獎：<span id="config_overall_winning"><?= !empty($config) ? $config -> overall_winning-$config -> normal_winning : 0 ?></span>
+			全盤中獎：<span id="config_overall_winning"><?= !empty($config) ? $config -> overall_winning : 0 ?></span>
 		</div>
 	</header>
 
@@ -56,7 +59,7 @@
 
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">一般拆帳：</label>
+						<label class="col-md-3 control-label">一般彩池：</label>
 						<div class="col-md-6">
 							<input type="text" id="normal_pct"  class="form-control" value="" placeholder="如果1%請輸入0.01以此類推"/>
 						</div>
@@ -65,9 +68,18 @@
 
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">全盤拆帳：</label>
+						<label class="col-md-3 control-label">全盤彩池：</label>
 						<div class="col-md-6">
 							<input type="text" id="overall_pct"  class="form-control" value="" placeholder="如果1%請輸入0.01以此類推"/>
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">跨區彩池：</label>
+						<div class="col-md-6">
+							<input type="text" id="cross_pct"  class="form-control" value="" placeholder="如果1%請輸入0.01以此類推"/>
 						</div>
 					</div>
 				</fieldset>
@@ -121,7 +133,8 @@
 					normal_pct: $('#normal_pct').val(),
 					overall_pct: $('#overall_pct').val(),
 					normal_winning: $('#normal_winning').val(),
-					overall_winning: $('#overall_winning').val()
+					overall_winning: $('#overall_winning').val(),
+					cross_pct: $('#cross_pct').val()
 				},
 				dataType: 'json',
 				success: function(d) {

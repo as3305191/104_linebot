@@ -86,6 +86,7 @@
 					console.log(d);
 					$("#current_point").text(d.current_point);
 					$("#current_ntd").text(d.current_ntd);
+					currentApp.doEdit();
 				}
 				// failure:function(){
 				// 	alert('faialure');
