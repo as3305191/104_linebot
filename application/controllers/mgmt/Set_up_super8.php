@@ -106,7 +106,7 @@ class Set_up_super8 extends MY_Mgmt_Controller {
 
 		$data1['normal_winning']=$normal_winning;
 		$data1['overall_winning']=$overall_winning;
-		$sum=floatval($com_pct)+floatval($normal_pct)+floatval($overall_pct)floatval($cross_pct);
+		$sum=floatval($com_pct)+floatval($normal_pct)+floatval($overall_pct)+floatval($cross_pct);
 		$sum1=floatval($overall_winning)+floatval($normal_winning);
 
 		if(!empty($com_pct)||!empty($normal_pct)||!empty($overall_pct)||!empty($cross_pct)) {
