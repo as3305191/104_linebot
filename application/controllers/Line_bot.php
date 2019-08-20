@@ -708,6 +708,15 @@ class Line_bot extends MY_Base_Controller {
 				$amt = $message -> text;
 				if(intval($amt) <= 100000) {
 					$amt = intval($amt);
+
+					$Date = date("Y-m-d");
+					$price = $this -> d_q_dao -> find_d_q($Date);
+					$price1 = floatval($price->now_price)*floatval(1.05);
+
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "現價買價 {$price1}",
+					);
 					$msg_arr[] = array(
 						"type" => "text",
 						"text" => "請確認金額 {$amt} 是否正確？",
