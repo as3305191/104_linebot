@@ -334,31 +334,7 @@ class User_buy extends MY_Base_Controller {
 	public function notify() {
 		$this -> do_log('notify');
 
-		$amt_arr = array(
-			150,
-			300,
-			450,
-			1490,
-			2990,
-			6000,
-			10000,
-			20000,
-			30000,
-		);
-		$coin_arr = array(
-			750000,
-			1500000,
-			2250000,
-			7450000,
-			15000000,
-			30300000,
-			50800000,
-			102000000,
-			153600000,
-		);
-
 		$data = json_decode(json_encode($_POST, JSON_UNESCAPED_UNICODE));
-		// $data = json_decode($this->security->xss_clean($this->input->raw_input_stream));
 
 		$RetCode = $data -> RtnCode;
 		if($RetCode == 1) {
@@ -382,8 +358,7 @@ class User_buy extends MY_Base_Controller {
 				$tx['corp_id'] = $pr -> corp_id;
 				$tx['user_id'] = $pr -> user_id;
 
-				$amt_idx = array_search(intval($pr->amt), $amt_arr);
-				$tx_amt = $coin_arr[$amt_idx];
+				$tx_amt = intval($pr->amt);
 
 				$tx['amt'] = $tx_amt;
 				$tx['brief'] = "購買金幣 {$tx_amt} 花費 {$pr->amt}";
@@ -398,23 +373,7 @@ class User_buy extends MY_Base_Controller {
 					"text" => "{$pr->sn} 繳費成功，入帳 {$tx_amt} 金幣"
 				);
 				$res = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
-				// intro
-				// $tx = array();
-				// $tx['buy_record_id'] = $br -> id;
-				// $tx['user_id'] = $b_user -> intro_id;
-				// $tx['total_price'] = $br -> total_price;
-				// $tx['percent'] = 20;
-				// $tx['amt'] = $br -> total_price * 20.0 / 100.0;
-				// $this -> tx_dao -> insert($tx);
-				//
-				// // manager
-				// $tx = array();
-				// $tx['buy_record_id'] = $br -> id;
-				// $tx['user_id'] = $b_user -> manager_id;
-				// $tx['total_price'] = $br -> total_price;
-				// $tx['percent'] = 10;
-				// $tx['amt'] = $br -> total_price * 10.0 / 100.0;
-				// $this -> tx_dao -> insert($tx);
+
 			}
 		}
 
