@@ -131,7 +131,7 @@ class Line_bot extends MY_Base_Controller {
 
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "請輸入金額，超商繳費最低100最高6000，ATM繳費最低100最高30000",
+					"text" => "Linebot:請輸入想購買的台幣金額？（單筆上限台幣10萬）",
 				);
 			}
 
@@ -683,12 +683,6 @@ class Line_bot extends MY_Base_Controller {
 				$msg_arr[] = array(
 					"type" => "text",
 					"text" => "ATM繳費連結 $pay_url"
-				);
-
-				$pay_url = base_url("tx/do_tx?l_user_id={$user->id}&tx_amt={$amt}&tx_type=market");
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "超商繳費連結 $pay_url"
 				);
 
 				// $last_id = $this -> payment_dao -> insert(array(
