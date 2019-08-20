@@ -1116,8 +1116,8 @@ class Line_bot extends MY_Base_Controller {
 					)
 				),
 				array(
-					"type" => "message",
-					"text" => "合作提案",
+					"type" => "uri",
+					"linkUri" => "http://nav.cx/9Upx2Ou",
 					"area" => array(
 						"x" => 539,
 						"y" => 309,
