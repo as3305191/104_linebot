@@ -715,7 +715,7 @@ class Line_bot extends MY_Base_Controller {
 					);
 					$msg_arr[] = array(
 						"type" => "imagemap",
-						"baseUrl" => "https://wa-lotterygame.com/wa_backend/line_img/line_jpg/yes_or_no/v1/1",
+						"baseUrl" => base_url("line_img/line_jpg/yes_or_no/v2/1"),
 						"altText" => "請確認金額 {$amt} 是否正確？",
 						"baseSize" => array(
 							"width" => "1040",
