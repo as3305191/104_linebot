@@ -13,6 +13,8 @@ class User_buy extends MY_Base_Controller {
 		$this -> load -> model('Users_dao', 'u_dao');
 		$this -> load -> model('Products_dao', 'p_dao');
 
+		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
+
 		//載入SDK(路徑可依系統規劃自行調整)
 		include APPPATH . 'third_party/ECPay.Payment.Integration.php';
 		include APPPATH . 'third_party/submit.class.php';
@@ -358,11 +360,15 @@ class User_buy extends MY_Base_Controller {
 				$tx['corp_id'] = $pr -> corp_id;
 				$tx['user_id'] = $pr -> user_id;
 
-				$tx_amt = intval($pr->amt);
+				$Date = date("Y-m-d");
+				$price = $this -> d_q_dao -> find_d_q($Date);
+				$price1 = floatval($price->now_price)*floatval(1.05);
+				$tx_amt = floatval($pr->amt) / $price1;
 
 				$tx['amt'] = $tx_amt;
-				$tx['brief'] = "購買金幣 {$tx_amt} 花費 {$pr->amt}";
-				$this -> wtx_dao -> insert($tx);
+				$tx['brief'] = "購買COC幣 {$tx_amt} 花費 {$pr->amt}";
+				$last_wtx_id = $this -> wtx_dao -> insert($tx);
+				$wtx = $this -> wtx_dao -> find_by_id($last_wtx_id);
 
 				// send line bot message
 				$out_user = $this -> u_dao -> find_by_id($pr -> user_id);
@@ -370,7 +376,7 @@ class User_buy extends MY_Base_Controller {
 				$p['to'] = $out_user -> line_sub;
 				$p['messages'][] = array(
 					"type" => "text",
-					"text" => "{$pr->sn} 繳費成功，入帳 {$tx_amt} 金幣"
+					"text" => "您成功繳費 {$pr->amt} 購買coc coin {$wtx->amt}，請錢包查詢查收。"
 				);
 				$res = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
 
