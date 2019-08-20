@@ -131,7 +131,12 @@ class Line_bot extends MY_Base_Controller {
 
 				$msg_arr[] = array(
 					"type" => "text",
-					"text" => "Linebot:請輸入想購買的台幣金額？（單筆上限台幣10萬）",
+					"text" => "＊如需離開購買流程請輸入 881",
+				);
+
+				$msg_arr[] = array(
+					"type" => "text",
+					"text" => "請輸入想購買的台幣金額？（單筆上限台幣10萬）",
 				);
 			}
 
@@ -677,7 +682,7 @@ class Line_bot extends MY_Base_Controller {
 
 			// 儲值
 		} elseif($line_session -> type == "購買金幣__請輸入金額") {
-			if(strrpos($message -> text, "購買金幣--金額--") === 0) {
+			if(strrpos($message -> text, "購買貨幣--數量--") === 0) {
 				$amt = mb_substr($message -> text, 10);
 				$pay_url = base_url("tx/do_tx?l_user_id={$user->id}&tx_amt={$amt}&tx_type=atm");
 				$msg_arr[] = array(
@@ -685,28 +690,9 @@ class Line_bot extends MY_Base_Controller {
 					"text" => "ATM繳費連結 $pay_url"
 				);
 
-				// $last_id = $this -> payment_dao -> insert(array(
-				// 	'user_id' => $user -> id,
-				// 	'type_name' => "Etag",
-				// 	'uid' => $line_session -> uid,
-				// 	'car_plate' => $line_session -> car_plate,
-				// 	'amt' => $amt,
-				// ));
-				//
-				// $sn = date("YmdHi")."{$last_id}";
-				// $this -> payment_dao -> update(array(
-				// 	"sn" => $sn
-				// ), $last_id);
-				//
-
 				$this -> users_dao -> update(array(
 					"line_session" => ''
 				), $user -> id);
-				//
-				// $msg_arr[] = array(
-				// 	"type" => "text",
-				// 	"text" => "本繳費單 {$sn} 將送審金幣繳費系統，在金幣足夠下將直接進行扣款金幣，系統將在繳費完成後通知用戶。"
-				// );
 
 			} elseif(strrpos($message -> text, "購買金幣--取消購買") === 0) {
 				$msg_arr[] = array(
@@ -717,11 +703,11 @@ class Line_bot extends MY_Base_Controller {
 					"line_session" => ""
 				), $user -> id);
 			} else {
-				if($message -> text == "請輸入金額，至少1000金幣") {
+				if($message -> text == "請輸入小於100000的金額") {
 					return;
 				}
 				$amt = $message -> text;
-				if(intval($amt) >= 1000) {
+				if(intval($amt) <= 100000) {
 					$amt = intval($amt);
 					$msg_arr[] = array(
 						"type" => "text",
@@ -738,7 +724,7 @@ class Line_bot extends MY_Base_Controller {
 						"actions" => array(
 							array(
 								"type" => "message",
-								"text" => "購買金幣--金額--{$amt}",
+								"text" => "購買貨幣--金額--{$amt}",
 								"area" => array(
 									"x" => 0,
 									"y" => 0,
@@ -748,7 +734,7 @@ class Line_bot extends MY_Base_Controller {
 							),
 							array(
 								"type" => "message",
-								"text" => "購買金幣--取消購買",
+								"text" => "購買貨幣--取消購買",
 								"area" => array(
 									"x" => 520,
 									"y" => 0,
@@ -761,7 +747,7 @@ class Line_bot extends MY_Base_Controller {
 				} else {
 					$msg_arr[] = array(
 						"type" => "text",
-						"text" => "請輸入大於1000的數字",
+						"text" => "請輸入小於100000的金額",
 					);
 				}
 			}
