@@ -722,6 +722,7 @@ class Line_bot extends MY_Base_Controller {
 							"width" => "1040",
 							"height" => "520"
 						),
+						
 						"actions" => array(
 							array(
 								"type" => "uri",
