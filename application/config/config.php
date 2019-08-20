@@ -24,9 +24,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $root = '';
+$by_pass_arr = array(
+  "localhost",
+  "35.221.129.234",
+  "0.0.0.0",
+);
 if(isset($_SERVER["SERVER_NAME"])) { // for cli testing
   $server_name = $_SERVER["SERVER_NAME"];
-  $root=(isset($_SERVER['HTTPS']) ? (($server_name == 'localhost' || $server_name == '35.221.129.234') ? "http://" : "https://") : (($server_name == 'localhost' || $server_name == '35.221.129.234') ? "http://" : "https://")) .$_SERVER['HTTP_HOST'];
+  // var_dump($server_name);
+  $root=(isset($_SERVER['HTTPS']) ? (in_array($server_name,$by_pass_arr) ? "http://" : "https://") : (in_array($server_name,$by_pass_arr)  ? "http://" : "https://")) .$_SERVER['HTTP_HOST'];
   $root.= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
 }
 $config['base_url'] = $root;
