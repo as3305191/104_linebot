@@ -722,7 +722,7 @@ class Line_bot extends MY_Base_Controller {
 							"width" => "1040",
 							"height" => "520"
 						),
-						
+
 						"actions" => array(
 							array(
 								"type" => "uri",
@@ -736,7 +736,7 @@ class Line_bot extends MY_Base_Controller {
 							),
 							array(
 								"type" => "message",
-								"text" => "購買貨幣--取消購買",
+								"text" => "881",
 								"area" => array(
 									"x" => 520,
 									"y" => 0,
