@@ -694,7 +694,7 @@ class Line_bot extends MY_Base_Controller {
 					"line_session" => ''
 				), $user -> id);
 
-			} elseif(strrpos($message -> text, "購買金幣--取消購買") === 0) {
+			} elseif(strrpos($message -> text, "購買貨幣--取消購買") === 0) {
 				$msg_arr[] = array(
 					"type" => "text",
 					"text" => "該購買已經取消",
