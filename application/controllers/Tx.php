@@ -40,15 +40,9 @@ class Tx extends MY_Base_Controller {
 		$tx_amt = $this -> get_get('tx_amt');
 		$tx_amt = intval($tx_amt);
 		$l_user_id = $this -> get_get('l_user_id');
-		$gift_id = $this -> get_get('gift_id');
-		//
-		if(!empty($gift_id)) {
-			$l_user_id = $gift_id;
-		}
 
 		// check chs
-		$login_user = $this -> u_dao -> find_by('gift_id', $l_user_id);
-
+		$login_user = $this -> u_dao -> find_by('wallet_code', $l_user_id);
 		$corp = $this -> c_dao -> find_by_id(1);
 
 		$data['user_id'] = $login_user -> id;
@@ -58,7 +52,6 @@ class Tx extends MY_Base_Controller {
 		$data['sn'] = 'P' . date('YmdHis');
 		$id = $this -> dao -> insert($data);
 		$item = $this -> dao -> find_by_id($id);
-
 
 		try {
     		$obj = new ECPay_AllInOne();
@@ -92,11 +85,12 @@ class Tx extends MY_Base_Controller {
         $obj->Send['MerchantTradeNo']   =  $item -> sn ;                             //訂單編號
         $obj->Send['MerchantTradeDate'] = date('Y/m/d H:i:s');                        //交易時間
         $obj->Send['TotalAmount']       = $item -> amt;                                       //交易金額
-        $obj->Send['TradeDesc']         = "捕魚奪寶繳款 {$item->amt}";                           //交易描述
+        $obj->Send['TradeDesc']         = "COC繳款 {$item->amt}";                           //交易描述
         $obj->Send['ChoosePayment']     = $ChoosePayment;              			          //付款方式:ATM
+        $obj->Send['ChooseSubPayment']     = "CHINATRUST";              			          //付款方式:ATM
 
         //訂單的商品資料
-        array_push($obj->Send['Items'], array('Name' => "捕魚奪寶繳款", 'Price' => intval($item -> amt),
+        array_push($obj->Send['Items'], array('Name' => "COC繳款繳款", 'Price' => intval($item -> amt),
                    'Currency' => "元", 'Quantity' => (int) "1", 'URL' => "dedwed"));
 
         //延伸參數(可依系統需求選擇是否代入)
@@ -106,7 +100,7 @@ class Tx extends MY_Base_Controller {
 					// $obj->SendExtend['ClientRedirectURL'] = base_url('/');      //預設空值
 				}
 				if($tx_type == 'market') { // cvs
-					$obj->SendExtend['Desc_1']            = "捕魚奪寶繳款";      //交易描述1 會顯示在超商繳費平台的螢幕上。預設空值
+					$obj->SendExtend['Desc_1']            = "COC繳款";      //交易描述1 會顯示在超商繳費平台的螢幕上。預設空值
 					$obj->SendExtend['Desc_2']            = '';      //交易描述2 會顯示在超商繳費平台的螢幕上。預設空值
 					$obj->SendExtend['Desc_3']            = '';      //交易描述3 會顯示在超商繳費平台的螢幕上。預設空值
 					$obj->SendExtend['Desc_4']            = '';      //交易描述4 會顯示在超商繳費平台的螢幕上。預設空值

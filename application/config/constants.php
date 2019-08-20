@@ -92,12 +92,12 @@ define('HASH_KEY', '');
 define('HASH_IV', '');
 
 // line
-define('CHANNEL_ACCESS_TOKEN', (ENVIRONMENT_SETUP == 'production' ? 'go8wVeBhujLrYpAf+5szEug5oaBffO+HYeOfZQ+bL4AUOiEjqN6TrJh6ROTGd1qa2jxh3XnqeJr8RUxDfjnSKEJQ80B4OhAS+teAfloTqMLB45rLtvSJvIZ7mhItuCpT1UCoOdbyI4fQ6MY05yIR5gdB04t89/1O/w1cDnyilFU=' : 'go8wVeBhujLrYpAf+5szEug5oaBffO+HYeOfZQ+bL4AUOiEjqN6TrJh6ROTGd1qa2jxh3XnqeJr8RUxDfjnSKEJQ80B4OhAS+teAfloTqMLB45rLtvSJvIZ7mhItuCpT1UCoOdbyI4fQ6MY05yIR5gdB04t89/1O/w1cDnyilFU='));
-define('CHANNEL_ID', (ENVIRONMENT_SETUP == 'production' ? '1603348732' : '1603348732'));
-define('CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '83bb1fa30ec4638aceb79012ecb8c12a' : '83bb1fa30ec4638aceb79012ecb8c12a'));
+define('CHANNEL_ACCESS_TOKEN', (ENVIRONMENT_SETUP == 'production' ? 'go8wVeBhujLrYpAf+5szEug5oaBffO+HYeOfZQ+bL4AUOiEjqN6TrJh6ROTGd1qa2jxh3XnqeJr8RUxDfjnSKEJQ80B4OhAS+teAfloTqMLB45rLtvSJvIZ7mhItuCpT1UCoOdbyI4fQ6MY05yIR5gdB04t89/1O/w1cDnyilFU=' : 'i5GBrWeeUMXrCzvX9TNIgBD301uqZOzVZAil+D0L11Z9zO+5Ekr5Bgd2fOn4U7RKaANf6xKDepadOSsJl1GWcHXkkr+oo+yeosLFflVgXd737LH51i3qkUh8pd7G8dQhoq1WHhLIErIvu/UYYitlGAdB04t89/1O/w1cDnyilFU='));
+define('CHANNEL_ID', (ENVIRONMENT_SETUP == 'production' ? '1603348732' : '1610399784'));
+define('CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '83bb1fa30ec4638aceb79012ecb8c12a' : '0a80ef116047945a40b3e9315d0dab4c'));
 
-define('LOGIN_CHANNEL_ID', (ENVIRONMENT_SETUP == 'production' ? '1603348495' : '1603348495'));
-define('LOGIN_CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '0c2db1d52348e24d56b83e12e24e58ec' : '0c2db1d52348e24d56b83e12e24e58ec'));
+define('LOGIN_CHANNEL_ID', (ENVIRONMENT_SETUP == 'production' ? '1603348495' : '1610399515'));
+define('LOGIN_CHANNEL_SECRET', (ENVIRONMENT_SETUP == 'production' ? '0c2db1d52348e24d56b83e12e24e58ec' : 'e9fbf8477b0bccb59c76b8bd3ed7ce3f'));
 define('BASE_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://fish.17lineplay.com/coc_bot' : 'https://fish.17lineplay.com/coc_bot_dev'));
 define('GAME_WEB_URL', (ENVIRONMENT_SETUP == 'production' ? 'https://fish.17lineplay.com/coc_bot/line_login' : 'https://fish.17lineplay.com/coc_bot_dev/line_login'));
 define('PUSH_URL', (ENVIRONMENT_SETUP == 'production' ? 'http://34.80.8.20:8988/check_push' : 'http://34.80.8.20:8988/check_push'));
