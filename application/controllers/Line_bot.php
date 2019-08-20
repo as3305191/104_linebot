@@ -724,7 +724,7 @@ class Line_bot extends MY_Base_Controller {
 						"actions" => array(
 							array(
 								"type" => "message",
-								"text" => "購買貨幣--金額--{$amt}",
+								"text" => "購買貨幣--數量--{$amt}",
 								"area" => array(
 									"x" => 0,
 									"y" => 0,
