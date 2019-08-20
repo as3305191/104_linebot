@@ -684,7 +684,7 @@ class Line_bot extends MY_Base_Controller {
 		} elseif($line_session -> type == "購買金幣__請輸入金額") {
 			if(strrpos($message -> text, "購買貨幣--數量--") === 0) {
 				$amt = mb_substr($message -> text, 10);
-				$pay_url = base_url("tx/do_tx?l_user_id={$user->id}&tx_amt={$amt}&tx_type=atm");
+				$pay_url = base_url("tx/do_tx?l_user_id={$user->wallet_code}&tx_amt={$amt}&tx_type=atm");
 				$msg_arr[] = array(
 					"type" => "text",
 					"text" => "ATM繳費連結 $pay_url"
