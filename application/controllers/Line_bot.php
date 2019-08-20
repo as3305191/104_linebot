@@ -122,7 +122,7 @@ class Line_bot extends MY_Base_Controller {
 				$gift_id = $user -> gift_id;
 			}
 
-			if($message -> text == "線上儲值") {
+			if($message -> text == "繳費服務") {
 				$line_session = new stdClass;
 				$line_session -> type = "購買金幣__請輸入金額";
 				$this -> users_dao -> update(array(
