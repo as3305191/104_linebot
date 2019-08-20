@@ -686,10 +686,9 @@ class Line_bot extends MY_Base_Controller {
 				$amt = mb_substr($message -> text, 10);
 				$pay_url = base_url("tx/do_tx?l_user_id={$user->wallet_code}&tx_amt={$amt}&tx_type=atm");
 				$msg_arr[] = array(
-					"type" => "uri",
-					"linkUri" => "ATM繳費連結 $pay_url"
+					"type" => "text",
+					"text" => "ATM繳費連結 $pay_url"
 				);
-
 				$this -> users_dao -> update(array(
 					"line_session" => ''
 				), $user -> id);
@@ -713,6 +712,8 @@ class Line_bot extends MY_Base_Controller {
 						"type" => "text",
 						"text" => "請確認金額 {$amt} 是否正確？",
 					);
+
+					$pay_url = base_url("tx/do_tx?l_user_id={$user->wallet_code}&tx_amt={$amt}&tx_type=atm");
 					$msg_arr[] = array(
 						"type" => "imagemap",
 						"baseUrl" => base_url("line_img/line_jpg/yes_or_no/v2/1"),
@@ -723,8 +724,8 @@ class Line_bot extends MY_Base_Controller {
 						),
 						"actions" => array(
 							array(
-								"type" => "message",
-								"text" => "購買貨幣--數量--{$amt}",
+								"type" => "uri",
+								"linkUri" => $pay_url,
 								"area" => array(
 									"x" => 0,
 									"y" => 0,
