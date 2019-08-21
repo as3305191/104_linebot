@@ -433,7 +433,6 @@ class User_buy extends MY_Base_Controller {
 					"text" => "您成功繳費 {$pr->amt} 購買coc coin {$wtx->amt}，請錢包查詢查收。"
 				);
 				$res = call_line_api("POST", "https://api.line.me/v2/bot/message/push", json_encode($p), CHANNEL_ACCESS_TOKEN);
-
 			}
 		}
 
