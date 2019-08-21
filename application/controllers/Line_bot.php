@@ -706,6 +706,7 @@ class Line_bot extends MY_Base_Controller {
 					"type" => "text",
 					"text" => "購買已完成",
 				);
+				
 				$this -> users_dao -> update(array(
 					"line_session" => ""
 				), $user -> id);
