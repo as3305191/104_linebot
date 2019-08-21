@@ -122,22 +122,31 @@ class Line_bot extends MY_Base_Controller {
 				$gift_id = $user -> gift_id;
 			}
 
-			if($message -> text == "繳費服務") {
-				$line_session = new stdClass;
-				$line_session -> type = "購買金幣__請輸入金額";
-				$this -> users_dao -> update(array(
-					"line_session" => json_encode($line_session)
-				), $user -> id);
+			if($message -> text == "繳費服務" ) {
 
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "＊如需離開購買流程請輸入 881",
-				);
+				if(ENVIRONMENT_SETUP == 'production') {
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "敬請期待",
+					);
+				} else {
+					$line_session = new stdClass;
+					$line_session -> type = "購買金幣__請輸入金額";
+					$this -> users_dao -> update(array(
+						"line_session" => json_encode($line_session)
+					), $user -> id);
 
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "請輸入想購買的台幣金額？（單筆上限台幣10萬）",
-				);
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "＊如需離開購買流程請輸入 881",
+					);
+
+					$msg_arr[] = array(
+						"type" => "text",
+						"text" => "請輸入想購買的台幣金額？（單筆上限台幣10萬）",
+					);
+				}
+
 			}
 
 			if($message -> text == "線上儲值123") {
