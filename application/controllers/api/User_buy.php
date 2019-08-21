@@ -389,6 +389,7 @@ class User_buy extends MY_Base_Controller {
 				// 彩池
 				$get_all_pool = $this -> game_pool_dao -> get_all_pool_amt();
 
+
 				// 建立增加際ㄌ路
 				$idata['tx_type']="add_coin_buy";
 				$idata['tx_id']=$last_id;
