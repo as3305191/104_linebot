@@ -412,6 +412,7 @@ class User_buy extends MY_Base_Controller {
 				$dtx['last_price'] = $price1;
 				$dtx['now_price'] = $price1;
 				if(!empty($dq)){
+					$u_data = array();
 					$u_data['last_price'] = $price1;
 					$u_data['now_price'] = $price1;
 					$this -> d_q_dao -> update_by($u_data,'id',$dq->id);
