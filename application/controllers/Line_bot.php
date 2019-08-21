@@ -701,12 +701,12 @@ class Line_bot extends MY_Base_Controller {
 				$this -> users_dao -> update(array(
 					"line_session" => ""
 				), $user -> id);
-			} elseif(strrpos($message -> text, "系統儲值為ATM轉帳功能") === 0) {
+			} elseif(strrpos($message -> text, "儲值系統為ATM轉帳功能") === 0) {
 				$msg_arr[] = array(
 					"type" => "text",
 					"text" => "購買已完成",
 				);
-				
+
 				$this -> users_dao -> update(array(
 					"line_session" => ""
 				), $user -> id);
