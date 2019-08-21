@@ -701,15 +701,6 @@ class Line_bot extends MY_Base_Controller {
 				$this -> users_dao -> update(array(
 					"line_session" => ""
 				), $user -> id);
-			} elseif(strrpos($message -> text, "儲值系統為ATM轉帳功能") === 0) {
-				$msg_arr[] = array(
-					"type" => "text",
-					"text" => "購買已完成",
-				);
-
-				$this -> users_dao -> update(array(
-					"line_session" => ""
-				), $user -> id);
 			} else {
 				if($message -> text == "請輸入小於100000的金額") {
 					return;
@@ -743,8 +734,8 @@ class Line_bot extends MY_Base_Controller {
 
 						"actions" => array(
 							array(
-								"type" => "uri",
-								"linkUri" => $pay_url,
+								"type" => "text",
+								"text" => "購買貨幣--數量--{$amt}",
 								"area" => array(
 									"x" => 0,
 									"y" => 0,
