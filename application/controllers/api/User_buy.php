@@ -419,6 +419,11 @@ class User_buy extends MY_Base_Controller {
 					$this -> d_q_dao -> insert($dtx);
 				}
 
+				// update pay record
+				$u_data = array();
+				$u_data['points'] = $tx_amt;
+				$this -> dao -> update($u_data, $pr -> id);
+
 				// send line bot message
 				$out_user = $this -> u_dao -> find_by_id($pr -> user_id);
 				$p = array();
