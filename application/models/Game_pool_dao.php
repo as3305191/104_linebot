@@ -116,16 +116,12 @@ class Game_pool_dao extends MY_Model {
 		}
 		return 0;
 	}
-	
 	function find_all_pool_now($data, $is_count = FALSE) {
 		$start = $data['start'];
 		$limit = $data['length'];
 		// select
 		$this -> db -> from("$this->table_name as _m");
-
-		$this -> db -> select("sum(pool_amt) as pool_amt");
-		// $this -> db -> select("type");
-		$this -> db -> select("bet_type");
+		$this -> db -> select("bet_type, type_status, sum(pool_amt) as samt");
 		$this -> db -> where('type',0);
 
 
@@ -134,7 +130,9 @@ class Game_pool_dao extends MY_Model {
 		}
 
 		$this -> db -> group_by('bet_type');
-		// $this -> db -> order_by('bet_type','asc');
+		$this -> db -> group_by('type_status');
+
+		$this -> db -> order_by('type_status','asc');
 
 		// $this -> db -> group_by('type');
 
@@ -157,14 +155,18 @@ class Game_pool_dao extends MY_Model {
 		return $list;
 	}
 
-	function sum_amt_by_type($bet_type,$type) {
-		$this -> db -> select("sum(pool_amt) as amt");
-		// $this -> db -> select("bet_type");
+	function sum_amt_by_type($bet_type,$type,$type_status) {
+		$this -> db -> select("bet_type, type_status, sum(pool_amt) as samt");
+
 
 		$this -> db -> where("type", $type);
 		$this -> db -> where("bet_type", $bet_type);
-		// $this -> db -> group_by('bet_type');
-		$this -> db -> order_by('bet_type','asc');
+		$this -> db -> where("type_status", $type_status);
+
+		$this -> db -> group_by('bet_type');
+		$this -> db -> group_by('type_status');
+
+		$this -> db -> order_by('type_status','asc');
 
 		$list = $this -> find_all();
 		if(!empty($list)) {

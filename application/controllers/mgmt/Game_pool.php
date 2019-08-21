@@ -40,7 +40,9 @@ class Game_pool extends MY_Base_Controller {
 		$items = $this -> game_pool_dao -> find_all_pool_now($data);
 		foreach($items  as $each) {
 			$bet_type=$each->bet_type;
- 			$each -> sum_bet_type_1 = $this -> game_pool_dao -> sum_amt_by_type($bet_type, 1);
+			$type_status=$each->type_status;
+
+ 			$each -> sum_bet_type_1 = $this -> game_pool_dao -> sum_amt_by_type($bet_type, 1,$type_status);
  		}
 		$res['items'] = $items;
 
