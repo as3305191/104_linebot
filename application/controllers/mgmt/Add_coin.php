@@ -97,14 +97,6 @@ class Add_coin extends MY_Mgmt_Controller {
 		$data['point']=$point;
 		$data['ntd']=$ntd;
 
-		// $get_current_ntd = $this -> q_r_dao -> get_current_ntd();
-		$get_current_ntd = $this -> add_dao -> sum_all_ntd();
-		// $get_current_point=$this -> q_r_dao -> get_current_point();
-		$get_current_point =  $this -> wtx_dao -> get_sum_amt_total();
-
-		// 彩池
-		$get_all_pool = $this -> game_pool_dao -> get_all_pool_amt();
-
 		$Date = date("Y-m-d");
 
 		if(!empty($point)||!empty($ntd)) {
@@ -122,12 +114,20 @@ class Add_coin extends MY_Mgmt_Controller {
 			$atx['brief'] = "系統增加點數 {$point}";
 			$this -> wtx_dao -> insert($atx);
 
+			// -- 重新計算 --
+			// ntd
+			$get_current_ntd = $this -> add_dao -> sum_all_ntd();
+			// point
+			$get_current_point =  $this -> wtx_dao -> get_sum_amt_total();
+			// 彩池
+			$get_all_pool = $this -> game_pool_dao -> get_all_pool_amt();
+
 			$idata['tx_type']="add_coin";
 			$idata['tx_id']=$last_id;
 			$idata['point_change']=$point;
-			$idata['current_point']=floatval($get_current_point)+floatval($point)+$get_all_pool;
+			$idata['current_point']=floatval($get_current_point)+$get_all_pool;
 			$idata['ntd_change']=$ntd;
-			$idata['current_ntd']=intval($get_current_ntd)+intval($ntd);
+			$idata['current_ntd']=floatval($get_current_ntd);
 			$last_id_insert_q = $this -> q_r_dao -> insert($idata);
 			$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
 			$p1 = $this -> d_q_dao -> find_last_d_q($Date);

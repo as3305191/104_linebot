@@ -15,6 +15,10 @@ class User_buy extends MY_Base_Controller {
 
 		$this -> load -> model('Daily_quotes_dao', 'd_q_dao');
 
+		$this -> load -> model('Add_coin_dao', 'add_dao');
+		$this -> load -> model('Quotes_record_dao', 'q_r_dao');
+		$this -> load -> model('Game_pool_dao', 'game_pool_dao');
+
 		//載入SDK(路徑可依系統規劃自行調整)
 		include APPPATH . 'third_party/ECPay.Payment.Integration.php';
 		include APPPATH . 'third_party/submit.class.php';
@@ -369,6 +373,50 @@ class User_buy extends MY_Base_Controller {
 				$tx['brief'] = "購買COC幣 {$tx_amt} 花費 {$pr->amt}";
 				$last_wtx_id = $this -> wtx_dao -> insert($tx);
 				$wtx = $this -> wtx_dao -> find_by_id($last_wtx_id);
+
+				// ------- 變更 --------
+				// insert
+				$a_data = array();
+				$a_data['point']=$tx_amt;
+				$a_data['ntd']=$pr->amt;
+				$last_id=$this -> add_dao -> insert($a_data);
+				$add_coin=$this -> add_dao -> find_by_id($last_id);
+
+				// ntd
+				$get_current_ntd = $this -> add_dao -> sum_all_ntd();
+				// point
+				$get_current_point =  $this -> wtx_dao -> get_sum_amt_total();
+				// 彩池
+				$get_all_pool = $this -> game_pool_dao -> get_all_pool_amt();
+
+				// 建立增加際ㄌ路
+				$idata['tx_type']="add_coin_buy";
+				$idata['tx_id']=$last_id;
+				$idata['point_change']=$point;
+				$idata['current_point']=floatval($get_current_point)+$get_all_pool;
+				$idata['ntd_change']=$ntd;
+				$idata['current_ntd']=floatval($get_current_ntd);
+				$last_id_insert_q = $this -> q_r_dao -> insert($idata);
+				$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
+				$p1 = $this -> d_q_dao -> find_last_d_q($Date);
+				$dq =  $this -> d_q_dao -> find_d_q($Date);
+				$cp = floatval(intval($add_coin_daily->current_point)); // 避免除0問題
+				$p = 0;
+				if($cp != 0) {
+					$p=floatval($add_coin_daily->current_ntd)/floatval(intval($add_coin_daily->current_point));
+				}
+				$price1 = round($p,8);
+				$dtx['date'] = $Date;
+				$dtx['average_price'] = $p1->last_price;
+				$dtx['last_price'] = $price1;
+				$dtx['now_price'] = $price1;
+				if(!empty($dq)){
+					$u_data['last_price'] = $price1;
+					$u_data['now_price'] = $price1;
+					$this -> d_q_dao -> update_by($u_data,'id',$dq->id);
+				} else{
+					$this -> d_q_dao -> insert($dtx);
+				}
 
 				// send line bot message
 				$out_user = $this -> u_dao -> find_by_id($pr -> user_id);
