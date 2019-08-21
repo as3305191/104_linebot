@@ -36,4 +36,12 @@ class MyFirstMigration extends AbstractMigration
                   ->addColumn('created', 'datetime')
                   ->create();
     }
+    public function up()
+    {
+    
+    }
+    public function down()
+    {
+
+    }
 }
