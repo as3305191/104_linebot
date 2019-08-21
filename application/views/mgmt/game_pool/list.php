@@ -42,9 +42,37 @@
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min100">下注</th>
-											<th class="min200">彩池類型</th>
-											<th class="">彩池</th>
+											<th class="min100">下注金額</th>
+											<th class="min100">100-199倍</th>
+											<th class="min100">10-50倍</th>
+											<th class="min100">51-99倍</th>
+											<th class="min100">100-199倍</th>
+											<th class="min100">200-299倍</th>
+											<th class="min100">300-399倍</th>
+											<th class="min100">任意7_藍紅七</th>
+											<th class="min100">任意7_BAR</th>
+											<th class="min100">任意7_星星</th>
+											<th class="min100">任意7_鈴鐺</th>
+											<th class="min100">任意7_西瓜</th>
+											<th class="min100">任意7_葡萄</th>
+											<th class="min100">任意7_橘子</th>
+											<th class="min100">任意7_荔枝</th>
+											<th class="min100">任意8_藍紅七</th>
+											<th class="min100">任意8_BAR</th>
+											<th class="min100">任意8_星星</th>
+											<th class="min100">任意8_鈴鐺</th>
+											<th class="min100">任意8_西瓜</th>
+											<th class="min100">任意8_葡萄</th>
+											<th class="min100">任意8_橘子</th>
+											<th class="min100">任意8_荔枝</th>
+											<th class="min100">任意9_藍紅七</th>
+											<th class="min100">任意9_BAR</th>
+											<th class="min100">任意9_星星</th>
+											<th class="min100">任意9_鈴鐺</th>
+											<th class="min100">任意9_西瓜</th>
+											<th class="min100">任意9_葡萄</th>
+											<th class="min100">任意9_橘子</th>
+											<th class="min100">任意9_荔枝</th>
 										</tr>
 									</thead>
 									<tbody>

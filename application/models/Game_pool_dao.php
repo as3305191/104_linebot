@@ -116,6 +116,7 @@ class Game_pool_dao extends MY_Model {
 		}
 		return 0;
 	}
+	
 	function find_all_pool_now($data, $is_count = FALSE) {
 		$start = $data['start'];
 		$limit = $data['length'];
