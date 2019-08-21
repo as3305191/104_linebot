@@ -393,9 +393,9 @@ class User_buy extends MY_Base_Controller {
 				// 建立增加際ㄌ路
 				$idata['tx_type']="add_coin_buy";
 				$idata['tx_id']=$last_id;
-				$idata['point_change']=$point;
+				$idata['point_change']=$tx_amt;
 				$idata['current_point']=floatval($get_current_point)+$get_all_pool;
-				$idata['ntd_change']=$ntd;
+				$idata['ntd_change']=$pr->amt;
 				$idata['current_ntd']=floatval($get_current_ntd);
 				$last_id_insert_q = $this -> q_r_dao -> insert($idata);
 				$add_coin_daily=$this -> q_r_dao -> find_by_id($last_id_insert_q);
