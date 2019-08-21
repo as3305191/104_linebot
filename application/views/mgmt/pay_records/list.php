@@ -43,25 +43,15 @@
 									<thead>
 										<tr>
 											<th class="min200">序號</th>
-											<th class="min100">公司</th>
-											<th class="min100">使用者帳號</th>
+											<th class="min100">圖片</th>
+											<th class="min100">暱稱</th>
 											<th class="min100">金額</th>
-											<th class="min100">付款方式</th>
-											<th class="min100">狀態</th>
+											<th class="min100">金幣數量</th>
 											<th class="min150">建立時間</th>
 										</tr>
 										<tr class="search_box">
 									    <th><input class="form-control input-xs" type="text" /></th>
-									    <th>
-												<?php if($login_user -> role_id == 99): ?>
-													<select id="s_corp_id" class="form-control input-xs">
-														<option value="0">-</option>
-														<?php foreach($corp_list as $each): ?>
-															<option value="<?= $each -> id ?>"><?= $each -> corp_name ?></option>
-														<?php endforeach ?>
-													</select>
-												<?php endif ?>
-											</th>
+
 											<th><input class="form-control input-xs" type="text" /></th>
 											<th></th>
 											<th></th>

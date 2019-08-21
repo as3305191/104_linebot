@@ -29,7 +29,6 @@ class Pay_records extends MY_Base_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['sum_amt'] = $this -> wtx_dao -> get_sum_amt($data['login_user_id']);
-		$data['corp_list'] = $this -> c_dao -> find_all();
 
 		$login_user = $this -> u_dao -> find_by_id($data['login_user_id']);
 		$data['login_user'] = $login_user;

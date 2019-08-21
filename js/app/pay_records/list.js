@@ -18,32 +18,27 @@ var PayRecordsAppClass = (function(app) {
 			columns : [{
 				data : 'sn'
 			}, {
-				data : 'corp_name'
+				data : 'line_picture',render: function(d,t,r) {
+					return '<img src="' + d + '" style="width: 30px;" />';
+				}
 			}, {
-				data : 'user_account'
+				data : 'nick_name'
 			}, {
 				data : 'amt',render: function(d,t,r) {
 					return numberWithCommas(d);
 				}
 			}, {
-				data : 'pay_type_name'
-			}, {
-				data : 'pay_status_name',
+				data : 'points',
 				render: function(d,t,r) {
-					if(r.status == 0) {
-						return "<font color='red'>" + d + "</font>";
-					}
-					if(r.status == 1) {
-						return "<font color='green'>" + d + "</font>";
-					}
+					return d;
 				}
 			}, {
 				data : 'create_time'
 			}],
 
-			order : [[6, "desc"]],
+			order : [[5, "desc"]],
 			columnDefs : [{
-				"targets" : [0,1,2,3,4,5,6],
+				"targets" : [0,1,2,3,4,5],
 				"orderable" : false
 			}]
 		}));

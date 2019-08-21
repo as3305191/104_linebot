@@ -26,6 +26,8 @@ class Pay_records_dao extends MY_Model {
 		$this -> db -> select('pt.type_name as pay_type_name');
 		$this -> db -> select('ps.pay_status_name');
 		$this -> db -> select('u.account as user_account');
+		$this -> db -> select('u.line_picture');
+		$this -> db -> select('u.nick_name');
 		$this -> db -> select('c.corp_name as corp_name');
 
 		// join
