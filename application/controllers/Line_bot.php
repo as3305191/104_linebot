@@ -743,8 +743,8 @@ class Line_bot extends MY_Base_Controller {
 
 						"actions" => array(
 							array(
-								"type" => "uri",
-								"linkUri" => $pay_url,
+								"type" => "text",
+								"text" => "購買貨幣--數量--{$amt}",
 								"area" => array(
 									"x" => 0,
 									"y" => 0,
